@@ -1,28 +1,41 @@
 <!doctype html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="mobileApp">
 <head>
-  <meta charset="utf-8">
-  <title>My AngularJS App</title>
-  <link rel="stylesheet" href="css/app.css"/>
-</head>
-<body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
+  
+  <title>iLab Mobile App</title>
+   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
+  <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.js"></script>
+  <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
 
-  <div ng-view></div>
-
-  <div>Angular seed app: v<span app-version></span></div>
-
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
-  -->
-  <script src="lib/angular/angular.js"></script>
   <script src="js/app.js"></script>
-  <script src="js/services.js"></script>
   <script src="js/controllers.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/directives.js"></script>
+  
+</head>
+<body ng-controller="appController">
+</br>
+<div align="center" ng-hide="foobar">
+  <div style="border: solid 1px #000000;width: 400px;" >  
+    <h1>Login</h1>  </br>
+    <form name="mobform" ng-submit="submit()" >
+       <!--Username:  <input ng-model="form.username" type="text" /></br></br>
+       Password:  <input ng-model="form.password" type="text" /></br></br>-->
+     Username:  <input ng-model="username" type="text" tooltip="Enter your username" tooltip-trigger="focus" tooltip-placement="right"/></br></br>
+      Password:  <input ng-model="password" type="password" tooltip="Enter your password" tooltip-trigger="focus" tooltip-placement="right" /></br></br>
+      <button style="background: Blue;color: #FFF;width: 150px">Submit</button>
+     
+    </form>
+    
+  </div>
+</div>
+
+<div ng-view></div>
+
+
+
+
+<!--<ul >
+    <li ng-repeat="lab in labs"><a href="">{{lab.header}}</a> - {{lab.desc}}</li>
+  </ul>-->
 </body>
 </html>
