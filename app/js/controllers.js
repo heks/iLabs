@@ -85,8 +85,40 @@ function appController($scope, $location){
         var url = "http://ilabcentral.org/radioactivity/";    
         $(location).attr('href',url);
       }
-
- 
+      $scope.drawGraph = function(){
+        $('#graph').highcharts({
+                chart: {
+                  type: 'line',
+                  backgroundColor: '#FCFFC5'
+                },
+                title: {
+                  text: 'Radioactivity'
+                },
+                
+                xAxis: {
+                  categories: ['20','25','30'],
+                  title: {
+                    text: 'Distances( mm)'
+                  }
+                },
+                yAxis: {
+                  title: {
+                    text: 'Radioactivity Intensity( Particle Counts)'
+                  }
+                },
+                series: [
+                      {
+                        name: 'Trial1( prticle counts)',
+                        data: [110, 89, 86]
+                      },
+                      {
+                        name: 'Trial2( particle counts)',
+                        data: [133, 78, 73]
+                      }
+                    ]
+              });
+      }
+    
 		  $scope.opts = {
     		backdropFade: true,
     		dialogFade:true

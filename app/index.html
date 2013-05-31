@@ -8,8 +8,6 @@
   <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
   <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>--> 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> 
-  <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7/prototype.js"></script>
-  <script src="http://code.highcharts.com/adapters/prototype-adapter.js"></script>
   <script src="lib/highcharts/highcharts.js"></script>
   <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
   <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
@@ -19,41 +17,7 @@
   <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
   <!--<script src="js/directives.js"></script>-->
- <script type="text/javascript">
-      $(function(){
-              $('#container').highcharts({
-                chart: {
-                  type: 'line',
-                  backgroundColor: '#FCFFC5'
-                },
-                title: {
-                  text: 'Radioactivity'
-                },
-                
-                xAxis: {
-                  categories: ['20','25','30'],
-                  title: {
-                    text: 'Distances( mm)'
-                  }
-                },
-                yAxis: {
-                  title: {
-                    text: 'Radioactivity Intensity( Particle Counts)'
-                  }
-                },
-                series: [
-                      {
-                        name: 'Trial1( prticle counts)',
-                        data: [110, 89, 86]
-                      },
-                      {
-                        name: 'Trial2( particle counts)',
-                        data: [133, 78, 73]
-                      }
-                    ]
-              });
-      });
-  </script>
+ 
  
 </head>
 <body ng-controller="appController" id="home">
@@ -81,7 +45,7 @@
      
     </form>
    <!-- <span style="color: White">Current path: {{location.absUrl()}}</span> -->
-   <div id="container" style="height: 300px;width: 450px"></div>
+   
   </div>
 </div>
 </div>
