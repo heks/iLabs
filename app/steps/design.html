@@ -1,0 +1,132 @@
+<style type="text/css">
+
+.b1{
+	width:90px;
+    height:40px;
+	background:#0000ff;
+	position:absolute;
+	left:3%;
+    top:5%;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1em;
+    
+    }
+    .header{
+	position:absolute;
+	left:40%;
+    top:7%;
+    color: #0000ff;
+    font-weight: bold;
+    font-size: 1.5em;
+    
+}
+.b2{
+	width:90px;
+    height:40px;
+	background:#0000ff;
+	position:absolute;
+	left:87%;
+    top:5%;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1em;
+}
+.block{
+	background:#5aa;
+    border-radius:10px;
+    position:absolute;
+    left:10%;
+    right:10%;
+    top:30%;
+    margin-left:auto;
+    margin-top:-12%;
+    margin-bottom: auto;
+	
+}
+.text{
+	color: #fff;
+	font-size: 1.2em;
+	
+}
+
+form{
+background-color: #52854C;
+font-family: Georgia;
+color: white;
+padding: 25px;
+width: 500px;
+border: 2px black solid;
+border-radius: 15px;
+-moz-border-radius: 15px;
+-webkit-border-radius: 15px;
+-khtml-border-radius:15px;
+
+box-shadow:inset 1px 1px 2px #999;
+-webkit-box-shadow:inset 1px 1px 2px #999;
+-moz-box-shadow:inset 1px 1px 2px #999;
+-khtml-box-shadow:inset 1px 1px 2px #999;
+}
+</style>
+
+
+<div class="block">
+	
+		<button class="b1" ng-click="DB()">Back</button>
+		<span class="header">Design</span>
+		<button class="b2" ng-click="DN()">Next</button>
+	</br>
+<div  style="padding: 50px 0px 0px 0px"><hr/></div>
+	<div  style="padding: 45px 0px 0px 20px">
+		<span class="text">Learn more about each variable, mouse over the question mark icon next to the variable.</span>
+		
+	</div>
+	<div  style="padding: 50px 0px 0px 20px">
+		<form name="designForm">
+			<h1>Experiment Design</h1>
+			<table>
+					<tr>
+					<td style="color: White; font-size: 1.5em" >Distances</td>
+					<td><input type="text" ng-model="distance" style="margin: 5px 30px 10px 3px;"></td>
+					<td><a tooltip-placement="right" tooltip-html-unsafe="{{htmlTooltip1}}"><img src="../img/question.png"></a></td>
+					</tr>
+					<tr>
+					<td style="color: White; font-size: 1.5em">Measurement Time(s)</td>
+					<td>
+					<select>
+					<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+					<option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+					</select>
+					</td>
+					<td><a tooltip-placement="right" tooltip-html-unsafe="{{htmlTooltip2}}"><img src="../img/question.png"></a></td>
+					</tr>
+					<tr>
+					<td style="color: White; font-size: 1.5em">Number of Trials</td>
+					<td>
+					<select>
+					<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+					<option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+					</select>
+					</td>
+					<td><a tooltip-placement="right" tooltip-html-unsafe="{{htmlTooltip3}}"><img src="../img/question.png"></a></td>
+					</tr>
+			</table>
+		</form>
+		<span class="text">Please answer the question below.  When you click "Next", the experiment will run.</span>
+
+		</br></br>
+		<span class="text">Why did you choose these distances, measurement time, and number of trials?</span></br></br>
+
+		<textarea  cols="120" ng-model="d.textarea" placeholder="Please answer to the question here..."></textarea></br>
+
+		
+	</div>
+	</br>
+</div>
+
+
+
+
+
+
+
