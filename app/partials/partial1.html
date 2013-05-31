@@ -1,23 +1,47 @@
-  
+<style type="text/css">
+.textwht{
+
+	color: #fff;
+	font-size: 1.5em;
+	
+}
+
+.textblk{
+	color: #000;
+	font-size: 1.5em;
+	
+}
+.lg{
+	font-weight: bold;
+}
+.sm{
+	font-weight: normal;
+}
+</style> 
 
 <div>
-	<h1>My Groups</h1>
-	<p>Select the group you would like to use for this session.</p>
+	<div style="padding: 40px "><span style="color:Blue; font-size:70px; font-weight:bold">My Groups</span></br></br></br>
+		<p class="textwht lg">Select the group you would like to use for this session.</p>
+	</div>
+	
 	<hr/>
-	<h3>Available Groups and Labs</h3>
-	Open Experiment Group - User experiment group for general users of the NU version of the radioactivity lab
+	<div style="padding: 40px ">
+	<h1 class="textwht lg">Available Groups and Labs</h1>
+	<span class="textwht sm">Open Experiment Group - User experiment group for general users of the NU version of the radioactivity lab</span></br></br>
 	<!--<ul>
 		<li><a href="">Radioactivity iLab</a> - A lab to investigate the intensity of radiation over distance.</li>
 	</ul>-->
-	<ul >
+	<ul class="textwht sm">
 		
 		<li ng-repeat="lab in labs"><a href="" ng-click="open()">{{lab.header}}</a> - {{lab.desc}}</li>
-	</ul>
-	Powder XRD Test Group - Powder XRD Test Group
-	<ul>
+	</ul></br></br>
+	<span class="textwht sm">Powder XRD Test Group - Powder XRD Test Group</span></br></br>
+	<ul class="textwht sm">
 		<li ng-repeat="foo in foos"><a href="" ng-click="openP()">{{foo.header}}</a> - {{foo.desc}}</li>
 	</ul>
+</div> 
 	<hr/>
+
 </div>
 <!-- Radioactivity Lab -->
 <div modal="shouldBeOpen" close="close()" options="opts">
@@ -27,24 +51,25 @@
         </div>
         <div class="modal-body">
 
-<strong>What is this lab about?</strong>
+<span class="textblk lg">What is this lab about?</span>
 
-<p>In this lab, you can investigate the intensity of radiation over distance using a radioactive strontium-90 sample and a Geiger counter, which is an instrument used to measure radioactive radiation.</p>
-
-
-<strong>How does the lab equipment work?</strong>
-
-<p>As the strontium-90 sample decays, it emits radioactive beta particles. The Geiger counter detects the number of radioactive particles that are present at a given distance from the strontium-90 source. This equipment is located at the University of Queensland in Australia. Click on the webcam to see this equipment live in Australia.</p>
+<p class="textblk sm">In this lab, you can investigate the intensity of radiation over distance using a radioactive strontium-90 sample and a Geiger counter, which is an instrument used to measure radioactive radiation.</p>
 
 
-<strong>What can I do in this lab?</strong>
+<span class="textblk lg">How does the lab equipment work?</span>
 
-<p>Following the cycle of steps below, you can investigate how radiation changes over distance by collecting measurements of radiation at different distances from the source of radiation (strontium-90). Mouse over the steps below to find out more about each step of the lab. When you're ready to begin the lab, click Start below.</p>
+<p class="textblk sm">As the strontium-90 sample decays, it emits radioactive beta particles. The Geiger counter detects the number of radioactive particles that are present at a given distance from the strontium-90 source. This equipment is located at the University of Queensland in Australia. Click on the webcam to see this equipment live in Australia.</p>
+
+
+<span class="textblk lg">What can I do in this lab?</span>
+
+<p class="textblk sm">Following the cycle of steps below, you can investigate how radiation changes over distance by collecting measurements of radiation at different distances from the source of radiation (strontium-90). Mouse over the steps below to find out more about each step of the lab. When you're ready to begin the lab, click Start below.</p>
 
         </div>
         <div class="modal-footer">
-        	<button style="background: Green;color: #FFF;width: 100px" ng-click="start()">Start Lab</button>
-            <button class="btn btn-warning cancel" ng-click="close()">Cancel</button>
+        	<button  style="background-color: Green" ng-click="start()">Start Lab</button>
+        	<button  style="background-color: Orange" ng-click="close()">Cancel</button>
+            <!--<button class="btn btn-warning cancel" ng-click="close()">Cancel</button>-->
         </div>
 </div>
 <!--end -->
@@ -52,30 +77,32 @@
 <div modal="shouldBeOpenP" close="close()" options="optsP">
         <div class="modal-header">
   
-<h1>Powder X-ray Diffraction iLab</h1>
+<h1 >Powder X-ray Diffraction iLab</h1>
 </hr>
         </div>
         <div class="modal-body">
 
 
-<strong>What is this lab about?</strong>
+<span class="textblk lg">What is this lab about?</span>
 
-<p>In this lab, you can investigate the use of powder X-ray diffraction technique to study the crystalline lattice structure of Silicone sample.</p>
-
-
-<strong>How does the lab equipment work?</strong>
-
- <p>X-ray diffractometers consist of three basic elements: an X-ray tube, a sample holder, and an X-ray detector. X-rays are generated in a cathode ray tube by heating a filament to produce electrons, accelerating the electrons toward a target by applying a voltage, and bombarding the target material with electrons. When electrons have sufficient energy to dislodge inner shell electrons of the target material, characteristic X-ray spectra are produced.  These X-rays are collimated and directed onto the sample. As the sample and detector are rotated, the intensity of the reflected X-rays is recorded. When the geometry of the incident X-rays impinging the sample satisfies the Bragg Equation, constructive interference occurs and a peak in intensity occurs. A detector records and processes this X-ray signal and converts the signal to a count rate which is then output to a device such as a printer or computer monitor. This equipment is located at the Jerome B. Cohen X-ray Diffraction Facility at Northwestern University Materials Research Science and Engineering Center (NU-MRSEC). </p>
+<p class="textblk sm">In this lab, you can investigate the use of powder X-ray diffraction technique to study the crystalline lattice structure of Silicone sample.</p>
 
 
-<strong>What can I do in this lab?</strong>
+<span class="textblk lg">How does the lab equipment work?</span>
 
-<p>Following the cycle of steps below, you can investigate how to characterize the sample crystalline structure and determine the unit cell dimensions. Mouse over the steps below to find out more about each step of the lab. When you're ready to begin the lab, click Start below.</p>
+ <p class="textblk sm">X-ray diffractometers consist of three basic elements: an X-ray tube, a sample holder, and an X-ray detector. X-rays are generated in a cathode ray tube by heating a filament to produce electrons, accelerating the electrons toward a target by applying a voltage, and bombarding the target material with electrons. When electrons have sufficient energy to dislodge inner shell electrons of the target material, characteristic X-ray spectra are produced.  These X-rays are collimated and directed onto the sample. As the sample and detector are rotated, the intensity of the reflected X-rays is recorded. When the geometry of the incident X-rays impinging the sample satisfies the Bragg Equation, constructive interference occurs and a peak in intensity occurs. A detector records and processes this X-ray signal and converts the signal to a count rate which is then output to a device such as a printer or computer monitor. This equipment is located at the Jerome B. Cohen X-ray Diffraction Facility at Northwestern University Materials Research Science and Engineering Center (NU-MRSEC). </p>
+
+
+<span class="textblk lg">What can I do in this lab?</span>
+
+<p class="textblk sm">Following the cycle of steps below, you can investigate how to characterize the sample crystalline structure and determine the unit cell dimensions. Mouse over the steps below to find out more about each step of the lab. When you're ready to begin the lab, click Start below.</p>
 
         </div>
         <div class="modal-footer">
-        	<button style="background: Green;color: #FFF;width: 100px" ng-click="startP()">Start Lab</button>
-            <button class="btn btn-warning cancel" ng-click="closeP()">Cancel</button>
+        	<button  style="background-color: Green" ng-click="startP()">Start Lab</button>
+        	<button  style="background-color: Orange" ng-click="closeP()">Cancel</button>
+        	<!--<button style="background: Green;color: #FFF;width: 100px; height: 30px" ng-click="startP()">Start</button>
+            <button class="btn btn-warning cancel" ng-click="closeP()">Cancel</button>-->
         </div>
 </div>
 <!--end -->

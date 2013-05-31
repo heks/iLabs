@@ -6,27 +6,84 @@
    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
   <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.js"></script>
   <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>--> 
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7/prototype.js"></script>
+  <script src="http://code.highcharts.com/adapters/prototype-adapter.js"></script>
+  <script src="lib/highcharts/highcharts.js"></script>
   <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+  <link href="css/app.css" rel="stylesheet">
+  <link href="css/group.css" rel="stylesheet">
 
   <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
-  
+  <!--<script src="js/directives.js"></script>-->
+ <script type="text/javascript">
+      $(function(){
+              $('#container').highcharts({
+                chart: {
+                  type: 'line',
+                  backgroundColor: '#FCFFC5'
+                },
+                title: {
+                  text: 'Radioactivity'
+                },
+                
+                xAxis: {
+                  categories: ['20','25','30'],
+                  title: {
+                    text: 'Distances( mm)'
+                  }
+                },
+                yAxis: {
+                  title: {
+                    text: 'Radioactivity Intensity( Particle Counts)'
+                  }
+                },
+                series: [
+                      {
+                        name: 'Trial1( prticle counts)',
+                        data: [110, 89, 86]
+                      },
+                      {
+                        name: 'Trial2( particle counts)',
+                        data: [133, 78, 73]
+                      }
+                    ]
+              });
+      });
+  </script>
+ 
 </head>
-<body ng-controller="appController">
-</br>
+<body ng-controller="appController" id="home">
+
+<!--</br>
 <div align="center" ng-hide="foobar">
   <div style="border: solid 1px #000000;width: 400px;" >  
-    <h1>Login</h1>  </br>
+    <h1>Login</h1>  </br>-->
+<div ng-hide="foobar">
+<div class="rain">
+<div id="div-1b"><span style="color: Yellow; font-size: 60px">iLabCentral</span></div><div id="div-2b"><em style="color: White;font-size: 20px">Lab Manager</em></div>
+  <div class="border start">
     <form name="mobform" ng-submit="submit()" >
        <!--Username:  <input ng-model="form.username" type="text" /></br></br>
        Password:  <input ng-model="form.password" type="text" /></br></br>-->
-     Username:  <input ng-model="username" type="text" tooltip="Enter your username" tooltip-trigger="focus" tooltip-placement="right"/></br></br>
+    <!-- Username:  <input ng-model="username" type="text" tooltip="Enter your username" tooltip-trigger="focus" tooltip-placement="right"/></br></br>
       Password:  <input ng-model="password" type="password" tooltip="Enter your password" tooltip-trigger="focus" tooltip-placement="right" /></br></br>
-      <button style="background: Blue;color: #FFF;width: 150px">Submit</button>
+      <button style="background: Blue;color: #FFF;width: 150px">Submit</button> -->
+
+        <label for="username" class="username">Email</label>
+        <input ng-model="username" type="text" tooltip="Enter your password" tooltip-trigger="focus" tooltip-placement="bottom"/>
+        <label for="pass" class="password">Password</label>
+        <input ng-model="password" type="password" tooltip="Enter your password" tooltip-trigger="focus" tooltip-placement="bottom"/>
+        <div id="div-3b"><button>Log In</button></div>
      
     </form>
-    
+   <!-- <span style="color: White">Current path: {{location.absUrl()}}</span> -->
+   <div id="container" style="height: 300px;width: 450px"></div>
   </div>
+</div>
 </div>
 
 <div ng-view></div>

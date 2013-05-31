@@ -2,12 +2,16 @@
 
 var app = angular.module('mobileApp', ['ui.bootstrap']);
  
+app.run(function($rootScope, $location) {
+    $rootScope.location = $location;
+});
+
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $routeProvider.when('/partial1', {
         templateUrl: '/partials/partial1.html',
         controller: appController
     });
-    
+
     $routeProvider.when('/partial2', {
       templateUrl: '/partials/partial2.html',
       controller: appController
@@ -23,6 +27,41 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       controller: appController
     });
 
+    $routeProvider.when('/research', {
+      templateUrl: '/steps/research.html',
+      controller: appController
+    });
+
+    $routeProvider.when('/question', {
+      templateUrl: '/steps/question.html',
+      controller: appController
+    });
+
+    $routeProvider.when('/design', {
+      templateUrl: '/steps/design.html',
+      controller: appController
+    });
+
+    $routeProvider.when('/investigate', {
+      templateUrl: '/steps/investigate.html',
+      controller: appController
+    });
+
+    $routeProvider.when('/analyze', {
+      templateUrl: '/steps/analyze.html',
+      controller: appController
+    });
+
+    $routeProvider.when('/interpret', {
+      templateUrl: '/steps/interpret.html',
+      controller: appController
+    });
+
+    $routeProvider.when('/exit',{
+      templateUrl: 'http://ilabcentral.org/radioactivity/',
+      controller: app/appController
+    });
+
     $routeProvider.when('', {
       templateUrl: '/index.html',
       controller: appController
@@ -33,6 +72,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     $locationProvider.html5Mode(true);
     
 }]);
+
+
 
 
 
