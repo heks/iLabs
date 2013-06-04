@@ -50,15 +50,23 @@
 	
 }
 </style>
+<link rel="stylesheet"  href="../css/popup.css">
+<!--<script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>-->
+<script src="../js/popup.js">
 
+</script>
 
-<div class="block">
+<div class="block" ng-init="graph()">
 	
 		<button class="b1" ng-click="AB()">Back</button>
 		<span class="header">Analyze</span>
 		<button class="b2" ng-click="AN()">Next</button>
 	</br>
 	<div  style="padding: 47px 0px 0px 0px"><hr/></div>
+
+<!--<a href="#" ng-click="graph()" class="topopup">Click Here Trigger</a>-->
+
+    
 
 	<div  style="padding: 45px 0px 0px 20px">
 		<span class="text">You can now graph your experimental results to see how radiation changes as a function of distance. Click on the Graph Data button below to graph and analyze your data.</span></br>
@@ -70,18 +78,55 @@
 	</div>
 	
 	<div  style="padding: 0px 0px 0px 20px">
-<div  style="padding: 40px 0px 0px 360px">
-	<img src="../img/edit.png">
-		<img src="../img/delete.png">
+<div  style="padding: 40px 0px 0px 10px" ng-hide="maingraph" id="duplicater">
+	<a ng-click="graph()" class="topopup" style="cursor:pointer"><img src="../img/edit.png"></a>
+		<a ng-click="deleteGraph()" style="cursor:pointer"><img src="../img/delete.png"></a></br>
+		<div id="g1" ng-init="drawGraph('g1','Graph Title');drawGraph('g2','Graph Title')" style="height: 300px;width: 450px; "></div>
 </div>
 		<!--<img src="../img/graph.jpg">-->
-		<div id="graph" ng-init="drawGraph()" style="height: 300px;width: 450px"></div>
+		
 	</div>
 </br>
 	<div  style="padding: 10px 0px 0px 20px">
-	<img src="../img/add.png">
+       
+	<a ng-click="duplicate()" style="cursor:pointer"><img src="../img/add.png"></a>
 	<span style="color: White; ">Add another graph</span>
 	
 </div>
 </br>
 </div>
+<div id="toPopup" ng-hide="graphdiv">
+<div class="closediv">
+        <a ng-click="closegraph()" style="pointer: cursor"><img src="../img/no.png" ></a>
+    </div>
+       	<span class="ecs_tooltip">Press Esc to close <span class="arrow"></span></span>
+		<div id="popup_content"> <!--your content start-->
+			<!--<div style="float: right;"><span>{{title}}</span></div>-->
+
+            <p><div id="g2"   style="height: 300px;width: 450px;float: left"></div>
+            	<div style="float: right;border: 1px">
+            		<label>Name of the Graph</label>
+            		<input type="text" ng-model="name" placeholder="Enter the title here"></br>
+            		<button style="background: Orange"  ng-click="insert()">Insert</button>
+            	</div>
+            </p>
+            <p align="center"><a href="#" class="livebox"></a></p></br></br>
+        </div> <!--your content end-->
+
+    </div> <!--toPopup end-->
+
+	
+   	<div id="backgroundPopup"></div>
+
+<!--<div modal="shouldBeOpen" close="close()" options="opts" >-->
+<!--<div modal="shouldBeOpen" ng-model="graphdiv" ng-show="hidediv">
+        
+        <div class="modal-body">
+        	<div id="g2"  ng-hide="graphbar" style="height: 300px;width: 450px"></div>
+        </div>
+        <div class="modal-footer">
+        	<button  style="background-color: Green" ng-click="insert()">Insert</button>
+        	<button  style="background-color: Orange" ng-click="close()">Cancel</button>
+         
+        </div>
+</div>-->

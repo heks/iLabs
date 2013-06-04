@@ -1,17 +1,29 @@
-<a href="partial1">Back</a>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Creating Popup Div | istockphp.com</title>
+<link href="../css/popup.css" rel="stylesheet" type="text/css" media="all" />
 
-<h1>Radioactivity iLab</h1>
-<hr/>
-<strong>What is this lab about?</strong>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
+<script src="../js/popup.js"></script>
+</head>
 
-<p>In this lab, you can investigate the intensity of radiation over distance using a radioactive strontium-90 sample and a Geiger counter, which is an instrument used to measure radioactive radiation.</p>
+<body>
+	<a href="#" class="topopup">Click Here Trigger</a>
 
+    <div id="toPopup">
 
-<strong>How does the lab equipment work?</strong>
+        <div class="close"></div>
+       	<span class="ecs_tooltip">Press Esc to close <span class="arrow"></span></span>
+		<div id="popup_content"> <!--your content start-->
+            <p>netus et malesuada fames ac turpis egestas. </p>
+            <p align="center"><a href="#" class="livebox">Click Here Trigger</a></p>
+        </div> <!--your content end-->
 
-<p>As the strontium-90 sample decays, it emits radioactive beta particles. The Geiger counter detects the number of radioactive particles that are present at a given distance from the strontium-90 source. This equipment is located at the University of Queensland in Australia. Click on the webcam to see this equipment live in Australia.</p>
+    </div> <!--toPopup end-->
 
-
-<strong>What can I do in this lab?</strong>
-
-<p>Following the cycle of steps below, you can investigate how radiation changes over distance by collecting measurements of radiation at different distances from the source of radiation (strontium-90). Mouse over the steps below to find out more about each step of the lab. When you're ready to begin the lab, click Start below.</p>
+	<div class="loader"></div>
+   	<div id="backgroundPopup"></div>
+</body>
+</html>

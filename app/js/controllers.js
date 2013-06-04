@@ -9,6 +9,7 @@ function appController($scope, $location){
 
       $scope.open = function () {
     	 $scope.shouldBeOpen = true;
+       //alert("hello");
   	  };
 
   	  $scope.close = function () {
@@ -16,10 +17,38 @@ function appController($scope, $location){
     	 $scope.shouldBeOpen = false;
       };
 
+      $scope.closegraph = function () {
+       $scope.graphdiv = true;
+       $("#toPopup").fadeOut("normal");
+      $("#backgroundPopup").fadeOut("normal");
+      };
+
+      $scope.deleteGraph = function () {
+       $scope.maingraph = true;
+      };
+
+      $scope.addGraph = function () {
+       $scope.maingraph = false;
+      };
+
+      var count = 0;
+      $scope.duplicate = function(){
+        
+        //$('#duplicater').clone().insertAfter("#duplicater");
+        var clonedDiv = $('#duplicater').clone();
+        
+        count++;
+        clonedDiv.attr("id", "dup"+count);
+        clonedDiv.attr("ng-hide", "maingraph"+count);
+        $('#duplicater').after(clonedDiv);
+
+      }
+
       $scope.start = function () {
     	 $scope.shouldBeOpen = false;
     	 $location.path("research");
       };
+
 
       $scope.openP = function () {
     	 $scope.shouldBeOpenP = true;
@@ -57,6 +86,7 @@ function appController($scope, $location){
 
       $scope.DN = function(){
         $location.path("investigate");
+        alert($scope.distance);
       }
 
       $scope.InvesB = function(){
@@ -69,7 +99,7 @@ function appController($scope, $location){
 
       $scope.AB = function(){
         $location.path("investigate");
-      }
+      };
 
       $scope.AN = function(){
         $location.path("interpret");
@@ -85,39 +115,75 @@ function appController($scope, $location){
         var url = "http://ilabcentral.org/radioactivity/";    
         $(location).attr('href',url);
       }
-      $scope.drawGraph = function(){
-        $('#graph').highcharts({
-                chart: {
-                  type: 'line',
-                  backgroundColor: '#FCFFC5'
-                },
-                title: {
-                  text: 'Radioactivity'
-                },
-                
-                xAxis: {
-                  categories: ['20','25','30'],
+
+      $scope.insert = function(){
+        //alert($scope.name);
+        var t = $scope.name;
+        $scope.title = t;
+        $scope.drawGraph('g1', t);
+        $scope.drawGraph('g2', t);
+        /*$('#g1').highcharts({
                   title: {
-                    text: 'Distances( mm)'
-                  }
-                },
-                yAxis: {
-                  title: {
-                    text: 'Radioactivity Intensity( Particle Counts)'
-                  }
-                },
-                series: [
-                      {
-                        name: 'Trial1( prticle counts)',
-                        data: [110, 89, 86]
-                      },
-                      {
-                        name: 'Trial2( particle counts)',
-                        data: [133, 78, 73]
-                      }
-                    ]
-              });
+                          text: 'Radioactivity'
+                        }
+        });*/
       }
+      $scope.drawGraph = function(n, t){
+        var n; var t;
+        if(n == 'g1'){
+          var div = "#"+n;
+        }
+        if(n == 'g2'){
+          var div = "#"+n;
+        }
+        //alert(div);
+              $(div).highcharts({
+                        chart: {
+                          type: 'line',
+                          backgroundColor: '#FCFFC5'
+                        },
+                        title: {
+                          text: t
+                        },
+                        
+                        xAxis: {
+                          categories: ['20','25','30'],
+                          title: {
+                            text: 'Distances( mm)'
+                          }
+                        },
+                        yAxis: {
+                          title: {
+                            text: 'Radioactivity Intensity( Particle Counts)'
+                          }
+                        },
+                        series: [
+                              {
+                                name: 'Trial1( prticle counts)',
+                                data: [110, 89, 86]
+                              },
+                              {
+                                name: 'Trial2( particle counts)',
+                                data: [133, 78, 73]
+                              }
+                            ]
+                      });
+        
+      };
+      
+
+      
+      $scope.edit = function () {
+        $scope.hidediv = true;
+        $scope.shouldBeOpen = true;
+      /*$scope.shouldBeOpen = true;
+       */
+       /*newwindow=window.open("../steps/graph.html",'graph','height=200,width=150');
+       if (window.focus) {newwindow.focus()}
+       return false;*/
+      
+      };
+
     
 		  $scope.opts = {
     		backdropFade: true,
@@ -142,6 +208,102 @@ function appController($scope, $location){
         {"question": "What is Strontium-90?"}
 
        ];
+
+       $scope.random = function() {
+                        //var value = Math.floor((Math.random()*100)+1);
+                        var value = 100;
+                        var type;
+
+                        if (value < 25) {
+                              type = 'success';
+                        } else if (value < 50) {
+                              type = 'info';
+                        } else if (value < 75) {
+                              type = 'warning';
+                        } else {
+                              type = 'danger';
+                        }
+
+
+        //$scope.dynamic = value;
+        $scope.dynamicObject = {
+                  value: value,
+                  type: type
+        };
+  };
+
+       $scope.graph = function(){
+
+                 jQuery(function($) {
+
+  $("a.topopup").click(function() {
+      loading(); // loading
+      loadPopup();
+      /*setTimeout(function(){ // then show popup, deley in .5 second
+        loadPopup(); // function show popup
+      }, 500); // .5 second*/
+  return false;
+  });
+
+  /* event for close the popup */
+  $("div.close").hover(
+          function() {
+            $('span.ecs_tooltip').show();
+          },
+          function () {
+              $('span.ecs_tooltip').hide();
+            }
+        );
+
+  $("div.close").click(function() {
+    disablePopup();  // function close pop up
+  });
+
+  $(this).keyup(function(event) {
+    if (event.which == 27) { // 27 is 'Ecs' in the keyboard
+      disablePopup();  // function close pop up
+    }
+  });
+
+        $("div#backgroundPopup").click(function() {
+    disablePopup();  // function close pop up
+  });
+
+  $('a.livebox').click(function() {
+    alert('Hello World!');
+  return false;
+  });
+
+   /************** start: functions. **************/
+  function loading() {
+    $("div.loader").show();
+  }
+  function closeloading() {
+    $("div.loader").fadeOut('normal');
+  }
+
+  var popupStatus = 0; // set value
+
+  function loadPopup() {
+    if(popupStatus == 0) { // if value is 0, show popup
+      closeloading(); // fadeout loading
+      $("#toPopup").fadeIn(0500); // fadein popup div
+      $("#backgroundPopup").css("opacity", "0.7"); // css opacity, supports IE7, IE8
+      $("#backgroundPopup").fadeIn(0001);
+      popupStatus = 1; // and set value to 1
+    }
+  }
+
+  function disablePopup() {
+    if(popupStatus == 1) { // if value is 1, close popup
+      $("#toPopup").fadeOut("normal");
+      $("#backgroundPopup").fadeOut("normal");
+      popupStatus = 0;  // and set value to 0
+    }
+  }
+  /************** end: functions. **************/
+}); // jQuery End
+       }
 
 
        $scope.design = function(){
