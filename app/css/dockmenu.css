@@ -1,0 +1,49 @@
+ul#navigation {
+    position: fixed;
+    margin: 0px;
+    padding: 0px;
+    top: 200px;
+    left: 0px;
+    list-style: none;
+    z-index:9999;
+}
+ul#navigation li {
+    width: 100px;
+}
+ul#navigation li a {
+    display: block;
+    margin-left: -2px;
+    width: 100px;
+    height: 70px;    
+    /*background-color:#CFCFCF;*/
+    background-color: #fff;
+    background-repeat:no-repeat;
+    background-position:center center;
+    border:1px solid #AFAFAF;
+    -moz-border-radius:0px 10px 10px 0px;
+    -webkit-border-bottom-right-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -khtml-border-bottom-right-radius: 10px;
+    -khtml-border-top-right-radius: 10px;
+    /*-moz-box-shadow: 0px 4px 3px #000;
+    -webkit-box-shadow: 0px 4px 3px #000;
+    */
+    opacity: 0.6;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+}
+ul#navigation .simulation a{
+	background-color: #52d017;
+    background-image: url(../img/simulation_48x48.png);
+}
+ul#navigation .webcam a      {
+	background-color: #1589ff;
+    background-image: url(../img/webcam_48x48.png);
+}
+ul#navigation .myacc a      {
+	background-color: #ffff00;
+    background-image: url(../img/account_48x48.png);
+}
+ul#navigation .msgs a      {
+	background-color: #f535aa;
+    background-image: url(../img/message_48x48.png);
+}

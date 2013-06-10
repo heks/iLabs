@@ -20,7 +20,7 @@ function appController($scope, $location){
       $scope.closegraph = function () {
        $scope.graphdiv = true;
        $("#toPopup").fadeOut("normal");
-      $("#backgroundPopup").fadeOut("normal");
+       $("#backgroundPopup").fadeOut("normal");
       };
 
       $scope.deleteGraph = function () {
@@ -86,7 +86,7 @@ function appController($scope, $location){
 
       $scope.DN = function(){
         $location.path("investigate");
-        alert($scope.distance);
+        //alert($scope.distance);
       }
 
       $scope.InvesB = function(){
@@ -122,11 +122,7 @@ function appController($scope, $location){
         $scope.title = t;
         $scope.drawGraph('g1', t);
         $scope.drawGraph('g2', t);
-        /*$('#g1').highcharts({
-                  title: {
-                          text: 'Radioactivity'
-                        }
-        });*/
+        
       }
       $scope.drawGraph = function(n, t){
         var n; var t;
@@ -171,17 +167,35 @@ function appController($scope, $location){
         
       };
       
+      $scope.sidebar = function(){
 
+         $('#navigation a').stop().animate({'marginLeft':'-85px'},1000);
+
+                $('#navigation > li').hover(
+                    function () {
+                        $('a',$(this)).stop().animate({'marginLeft':'-2px'},200);
+                    },
+                    function () {
+                        $('a',$(this)).stop().animate({'marginLeft':'-85px'},200);
+                    }
+                );
+
+      }
+
+      $scope.simulation = function(){
+        $location.path("simulation");
+      }
+      $scope.account = function(){
+        $location.path("account");
+      }
+      $scope.messages = function(){
+        $location.path("messages");
+      }
       
       $scope.edit = function () {
         $scope.hidediv = true;
         $scope.shouldBeOpen = true;
-      /*$scope.shouldBeOpen = true;
-       */
-       /*newwindow=window.open("../steps/graph.html",'graph','height=200,width=150');
-       if (window.focus) {newwindow.focus()}
-       return false;*/
-      
+            
       };
 
     

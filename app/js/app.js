@@ -6,6 +6,15 @@ app.run(function($rootScope, $location) {
     $rootScope.location = $location;
 });
 
+
+/*app.controller('appController', ['$scope', '$rootScope', function($scope, $rootScope) {
+    
+    $scope.changeLanguage = function (lang) {
+        $rootScope.currentLanguage = lang;
+    }
+
+}]);*/
+
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $routeProvider.when('/partial1', {
         templateUrl: '/partials/partial1.html',
@@ -59,6 +68,21 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 
     $routeProvider.when('/exit',{
       templateUrl: 'http://ilabcentral.org/radioactivity/',
+      controller: app/appController
+    });
+
+    $routeProvider.when('/simulation',{
+      templateUrl: '/steps/simulation.html',
+      controller: app/appController
+    });
+
+     $routeProvider.when('/account',{
+      templateUrl: '/steps/account.html',
+      controller: app/appController
+    });
+
+      $routeProvider.when('/messages',{
+      templateUrl: '/steps/messages.html',
       controller: app/appController
     });
 

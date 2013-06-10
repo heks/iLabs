@@ -55,19 +55,48 @@ a:visited { color: #10486b; text-decoration: none;}
 	font-weight: bold;
 }
 </style>
+<link rel="stylesheet" href="../css/dockmenu.css">
+<script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
+<script type="text/javascript">
+            $(function() {
+                $('#navigation a').stop().animate({'marginLeft':'-85px'},1000);
 
+                $('#navigation > li').hover(
+                    function () {
+                        $('a',$(this)).stop().animate({'marginLeft':'-2px'},200);
+                    },
+                    function () {
+                        $('a',$(this)).stop().animate({'marginLeft':'-85px'},200);
+                    }
+                );
+            });
+</script>
 
-
-<div class="block">
+<div class="block" >
 	
 		<span class="header">Research</span>
 		<button class="b2" ng-click="RN()">Next</button>
 </br>
 <div  style="padding: 36px 0px 0px 0px"><hr/></div>
-	<div align="center" style="padding: 25px 0px 0px 0px">
+
+<div id="main" ng-init="sidebar()">
+		<ul id="navigation">
+            <li class="simulation" ng-click="simulation()"><a href="" title="Simulation"></a></li>
+            <li class="webcam"><a href="http://radioactivity.sesp.northwestern.edu/vidAll.html" title="Webcam" target="_blank"></a></li>
+            <li class="myacc"><a href=""   ng-click="account()" title="My Account"></a></li>
+            <li class="msgs"><a href="" ng-click="messages()" title="Messages"></a></li>
+            
+        </ul>
+    
+</div>
+
+
+
+	<div  align="center" style="padding: 25px 0px 0px 0px">
+
 		<span class="text">Click below to read important background information involved in this lab.</span></br>
 	</div>
-	<div style="padding: 10px 0px 0px 200px">	
+	<div style="padding: 10px 0px 0px 200px" >	
 		<ul>
 			<li ng-repeat="qtn in qtns">
 					<a>{{qtn.question}}</a>

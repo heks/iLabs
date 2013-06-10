@@ -51,6 +51,8 @@
 }
 </style>
 
+<link rel="stylesheet" href="../css/dock.css">
+<script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
 
 <div class="block">
 	
@@ -59,7 +61,23 @@
 		<button class="b2" ng-click="QN()">Next</button>
 	</br>
 <div  style="padding: 36px 0px 0px 0px"><hr/></div>
-	<div  style="padding: 45px 0px 0px 20px">
+<div  style="float:right">
+<div id="main" style="float:right">
+<div><img src="../img/settings.png"></div>
+<div>
+
+        <div class="bubble me">
+        	<a ng-click="simulation()"><img src="../img/simulation_48x48.png"></a>
+        	<a href="http://radioactivity.sesp.northwestern.edu/vidAll.html" target="_blank"><img src="../img/webcam_48x48.png"></a>
+        	<a ng-click="account()"><img src="../img/account_48x48.png"></a>
+        	<a ng-click="messages()"><img src="../img/message_48x48.png"></a>
+        </div>
+
+</div>
+	
+</div>
+
+	<div  style="padding: 15px 0px 0px 20px">
 		<span class="text">What are you trying to find out in this lab?  What question are you trying to answer?  This question is called your research question, which guides your experimental design in the next step. </span></br>
 		
 	</div>
