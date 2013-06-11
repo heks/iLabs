@@ -63,17 +63,17 @@
 <div  style="padding: 36px 0px 0px 0px"><hr/></div>
 <div  style="float:right">
 <div id="main" style="float:right">
-<div><img src="../img/settings.png"></div>
-<div>
+	<div><img src="../img/settings.png"></div>
+	<div>
 
         <div class="bubble me">
-        	<a ng-click="simulation()"><img src="../img/simulation_48x48.png"></a>
-        	<a href="http://radioactivity.sesp.northwestern.edu/vidAll.html" target="_blank"><img src="../img/webcam_48x48.png"></a>
-        	<a ng-click="account()"><img src="../img/account_48x48.png"></a>
-        	<a ng-click="messages()"><img src="../img/message_48x48.png"></a>
+        	<a ng-click="simulation('question')"><img src="../img/simulation_48x48.png"></a>
+        	<a ng-click="webcam('question')"><img src="../img/webcam_48x48.png"></a>
+        	<a ng-click="account('question')"><img src="../img/account_48x48.png"></a>
+        	<a ng-click="messages('question')"><img src="../img/message_48x48.png"></a>
         </div>
 
-</div>
+	</div>
 	
 </div>
 
@@ -83,7 +83,10 @@
 	</div>
 	<div  style="padding: 50px 0px 0px 20px">
 		<span class="text">Write your research question below.</span></br></br>
-		<textarea  cols="120" placeholder="Please enter your research question here..."></textarea>
+		<div >
+		    <textarea  id="question" cols="120" placeholder="Please enter your research question here..."></textarea>
+		    <a ng-click="clear('question')"><img src="../img/no.png"></a>
+	    </div>
 
 	</div>
 </br></br>

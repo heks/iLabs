@@ -68,7 +68,8 @@ box-shadow:inset 1px 1px 2px #999;
 -khtml-box-shadow:inset 1px 1px 2px #999;
 }
 </style>
-
+<link rel="stylesheet" href="../css/dock.css">
+<script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
 
 <div class="block">
 	
@@ -77,21 +78,34 @@ box-shadow:inset 1px 1px 2px #999;
 		<button class="b2" ng-click="DN()">Next</button>
 	</br>
 <div  style="padding: 50px 0px 0px 0px"><hr/></div>
+<div id="main" style="float:right">
+    <div><img src="../img/settings.png"></div>
+    <div>
+
+        <div class="bubble me">
+            <a ng-click="simulation('design')"><img src="../img/simulation_48x48.png"></a>
+            <a ng-click="webcam('design')"><img src="../img/webcam_48x48.png"></a>
+            <a ng-click="account('design')"><img src="../img/account_48x48.png"></a>
+            <a ng-click="messages('design')"><img src="../img/message_48x48.png"></a>
+        </div>
+
+    </div>
+</div>
 	<div  style="padding: 45px 0px 0px 20px">
 		<span class="text">Learn more about each variable, mouse over the question mark icon next to the variable.</span>
 		
 	</div>
 	<div  style="padding: 50px 0px 0px 20px">
 		<form name="designForm">
-			<h1>Experiment Design</h1>
+			<h2>Experiment Design</h2>
 			<table>
 					<tr>
-					<td style="color: White; font-size: 1.5em" >Distances</td>
+					<td class="text" >Distances</td>
 					<td><input type="text" style="color: Black" ng-model="distance" style="margin: 5px 30px 10px 3px;"></td>
 					<td><a tooltip-placement="right" tooltip-html-unsafe="{{htmlTooltip1}}"><img src="../img/question.png"></a></td>
 					</tr>
 					<tr>
-					<td style="color: White; font-size: 1.5em">Measurement Time(s)</td>
+					<td class="text">Measurement Time(s)</td>
 					<td>
 					<select>
 					<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
@@ -101,7 +115,7 @@ box-shadow:inset 1px 1px 2px #999;
 					<td><a tooltip-placement="right" tooltip-html-unsafe="{{htmlTooltip2}}"><img src="../img/question.png"></a></td>
 					</tr>
 					<tr>
-					<td style="color: White; font-size: 1.5em">Number of Trials</td>
+					<td class="text">Number of Trials</td>
 					<td>
 					<select>
 					<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
@@ -116,9 +130,10 @@ box-shadow:inset 1px 1px 2px #999;
 
 		</br></br>
 		<span class="text">Why did you choose these distances, measurement time, and number of trials?</span></br></br>
-
-		<textarea  cols="120" ng-model="d.textarea" placeholder="Please answer to the question here..."></textarea></br>
-
+		<div>
+		<textarea  id="design" cols="120" ng-model="d.textarea" placeholder="Please answer to the question here..."></textarea>
+		<a ng-click="clear('design')"><img src="../img/no.png"></a>
+	</div>
 		
 	</div>
 	</br>

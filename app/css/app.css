@@ -10,17 +10,18 @@ font-family: 'Helvetica', 'Lucida Grande', 'Arial', sans-serif;
 
 .border,
 .rain{
-height: 500px;
-width: 500px;
+height: 400px;
+width: 300px;
 }
 
 /* Layout with mask */
 .rain{
-padding: 10px 12px 12px 10px;
+padding: 10px 20px 12px 17px;
 -moz-box-shadow: 10px 10px 10px rgba(0,0,0,1) inset, -9px -9px 8px rgba(0,0,0,1) inset;
 -webkit-box-shadow: 8px 8px 8px rgba(0,0,0,1) inset, -9px -9px 8px rgba(0,0,0,1) inset;
-box-shadow: 8px 8px 8px rgba(0,0,0,1) inset, -9px -9px 8px rgba(0,0,0,1) inset;
-margin: 100px auto;
+box-shadow: 8px 10px 5px rgba(0,0,0,0) inset, -9px -9px 5px rgba(0,0,0,0) inset;
+margin: 40px auto;
+/*border: 2px solid #fff;*/
 }
 /* Artifical "border" to clear border to bypass mask */
 .border{
@@ -110,23 +111,23 @@ background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 150, from(#242424), to
 }
 #div-1b {
      position:absolute;
-     padding: 50px 10px 12px 110px;
+     padding: 30px 10px 12px 70px;
 
 }
 #div-2b{
   position: absolute;
-  padding: 90px 10px 12px 190px;
+  padding: 50px 10px 12px 130px;
 }
 form label.username{
 display: block;
-padding: 150px 10px 5px 15px;
-font-size: 24px;
+padding: 90px 10px 5px 15px;
+font-size: 18px;
 color: #FFF;
 }
 form label.password{
 display: block;
-padding: 50px 10px 5px 15px;
-font-size: 24px;
+padding: 20px 10px 5px 15px;
+font-size: 18px;
 color: #FFF;
 }
 form input{
@@ -142,6 +143,7 @@ border: 1px solid #000;
 padding: 5px;
 color: #444;
 font-size: 20px;
+font-color: #000;
 }
 form input:focus{
 outline: 1px solid #555;
@@ -170,7 +172,8 @@ text-shadow: 0 1px 1px #000;
 }
 #div-3b{
   position: absolute;
-  padding: 60px 10px 12px 170px;
+  padding: 40px 10px 12px 80px;
+  border-radius: 5px;
 }
 button{
   color: #FFF;

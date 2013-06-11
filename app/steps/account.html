@@ -32,7 +32,8 @@ box-shadow:inset 1px 1px 2px #fff;
 }
 
 </style>
-<div><button class="b1" ng-click="QB()">Back</button></div>
+<div id="url" style="color: White;display:none">{{location.absUrl()}}</div> 
+<div><button class="b1" ng-click="navigate_back('url')">Back</button></div>
 <div  align="center" style="padding: 60px 0px 0px 20px">
 	
 	<h2 style="color:Blue">My Account</h2>

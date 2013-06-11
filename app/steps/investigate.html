@@ -113,6 +113,8 @@
 
 </style>
 
+<link rel="stylesheet" href="../css/dock.css">
+<script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
 
 <div class="block">
 	
@@ -122,13 +124,33 @@
 	</br>
 	<div  style="padding: 55px 0px 0px 0px"><hr/></div>
 
+    <div id="main" style="float:right">
+    <div><img src="../img/settings.png"></div>
+    <div>
+
+        <div class="bubble me">
+            <a ng-click="simulation('investigate')"><img src="../img/simulation_48x48.png"></a>
+            <a ng-click="webcam('investigate')"><img src="../img/webcam_48x48.png"></a>
+            <a ng-click="account('investigate')"><img src="../img/account_48x48.png"></a>
+            <a ng-click="messages('investigate')"><img src="../img/message_48x48.png"></a>
+        </div>
+
+    </div>
+</div>
+
 	<div  style="padding: 45px 0px 0px 20px">
 		<span class="text">What do you predict will happen in this experiment?  What do you think you will see in your results?</span></br>
-		<textarea  cols="120" placeholder="Please enter your answer here..."></textarea>
+        <div>
+		<textarea  id="invest1" cols="120" placeholder="Please enter your answer here..."></textarea>
+        <a ng-click="clear('invest1')"><img src="../img/no.png"></a>
+        </div>
 	</div>
 	<div  style="padding: 40px 0px 0px 20px">
 		<span class="text">What are your initial observations about your result?</span></br></br>
-		<textarea  cols="120" placeholder="Please enter your answer here..."></textarea>
+        <div>
+		   <textarea  id="invest2" cols="120" placeholder="Please enter your answer here..."></textarea>
+           <a ng-click="clear('invest2')"><img src="../img/no.png"></a>
+       </div>
 
 	</div>
 	<div  class="block1" style="padding: 0px 0px 0px 140px">

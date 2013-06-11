@@ -3,8 +3,43 @@
 function appController($scope, $location){
 
       $scope.submit = function(){
-       $location.path("partial1");
-       $scope.foobar = true;
+        var username = $scope.mobform.username;
+        var password = $scope.mobform.password;
+//alert(username + "," + password);
+        /*var paramsData = "username=rasmiroy&password=Pichu@18";
+        $.ajax({
+            type: "GET",
+            url: "http://165.124.241.86/login.php",
+            data: paramsData,
+            dataType: "xml",
+            success: function(xml){
+                   //process xml from server
+                   var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc), $Coupon = $xml.find("Coupon");
+                   alert($Coupon.text());
+            }
+        });*/
+        /*$.get(
+            'http://165.124.241.86/login.php?username=rasmiroy&password=Pichu@18',
+            function(data) { alert(data); }
+        );*/
+       /*$.ajax({
+            url: 'http://165.124.241.86/login.php?username=rasmiroy&password=Pichuaug18',
+            crossDomain: 'true',
+            type: 'GET',
+            dataType: 'json',
+            success: function() { alert('success!'); },
+            error: function() { alert('failed!'); },
+
+        });*/
+
+         /*$.get("http://165.124.241.86/login.php?username=rasmiroy&password=Pichu@18", function(data) {
+          alert("Data Loaded: " + data);
+          });*/
+        
+          $location.path("partial1");
+          $scope.foobar = true;
+       
+        
       };
 
       $scope.open = function () {
@@ -124,6 +159,8 @@ function appController($scope, $location){
         $scope.drawGraph('g2', t);
         
       }
+      
+
       $scope.drawGraph = function(n, t){
         var n; var t;
         if(n == 'g1'){
@@ -182,14 +219,26 @@ function appController($scope, $location){
 
       }
 
-      $scope.simulation = function(){
-        $location.path("simulation");
+      $scope.simulation = function(path){
+        $location.path("simulation/"+path);
       }
-      $scope.account = function(){
-        $location.path("account");
+      $scope.account = function(path){
+        $location.path("account/"+path);
       }
-      $scope.messages = function(){
-        $location.path("messages");
+      $scope.messages = function(path){
+       
+        $location.path("messages/"+path);
+      }
+      $scope.webcam = function(path){
+       
+        $location.path("webcam/"+path);
+      }
+      
+      $scope.navigate_back = function(div_id){
+        var url = $('#'+div_id).text();
+        var value = url.substring(url.lastIndexOf('/') + 1);
+        //alert(value);
+        $location.path(value);
       }
       
       $scope.edit = function () {
@@ -320,6 +369,8 @@ function appController($scope, $location){
        }
 
 
+
+
        $scope.design = function(){
 
           /*var item = $scope.design.dist;
@@ -382,5 +433,65 @@ function appController($scope, $location){
           xmlhttp.send(data);
   
         };
+
+        $scope.toggle = function(div_id) {
+          var el = document.getElementById(div_id);
+          if ( el.style.display == 'none' ) { el.style.display = 'block';}
+          else {el.style.display = 'none';}
+        }
+
+        $scope.blanket_size = function(popUpDivVar) {
+          if (typeof window.innerWidth != 'undefined') {
+            viewportheight = window.innerHeight;
+          } else {
+            viewportheight = document.documentElement.clientHeight;
+          }
+          if ((viewportheight > document.body.parentNode.scrollHeight) && (viewportheight > document.body.parentNode.clientHeight)) {
+            blanket_height = viewportheight;
+          } else {
+            if (document.body.parentNode.clientHeight > document.body.parentNode.scrollHeight) {
+              blanket_height = document.body.parentNode.clientHeight;
+            } else {
+              blanket_height = document.body.parentNode.scrollHeight;
+            }
+          }
+          var blanket = document.getElementById('blanket');
+          blanket.style.height = blanket_height + 'px';
+          var popUpDiv = document.getElementById(popUpDivVar);
+          popUpDiv_height=blanket_height/2-150;//150 is half popup's height
+          popUpDiv.style.top = popUpDiv_height + 'px';
+        }
+
+        $scope.window_pos = function(popUpDivVar) {
+          if (typeof window.innerWidth != 'undefined') {
+            viewportwidth = window.innerHeight;
+          } else {
+            viewportwidth = document.documentElement.clientHeight;
+          }
+          if ((viewportwidth > document.body.parentNode.scrollWidth) && (viewportwidth > document.body.parentNode.clientWidth)) {
+            window_width = viewportwidth;
+          } else {
+            if (document.body.parentNode.clientWidth > document.body.parentNode.scrollWidth) {
+              window_width = document.body.parentNode.clientWidth;
+            } else {
+              window_width = document.body.parentNode.scrollWidth;
+            }
+          }
+          var popUpDiv = document.getElementById(popUpDivVar);
+          window_width=window_width/2-150;//150 is half popup's width
+          popUpDiv.style.left = window_width + 'px';
+        }
+
+        $scope.popup = function(windowname) {
+          $scope.blanket_size(windowname);
+          $scope.window_pos(windowname);
+          $scope.toggle('blanket');
+          $scope.toggle(windowname);   
+        }
+
+        $scope.clear = function(text_id){
+          //document.getElementById(text_id).value = "";
+          $('#'+text_id).val("");
+        }
 
 }

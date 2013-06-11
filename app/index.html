@@ -13,6 +13,7 @@
   <script src="js/popup.js"></script>
   <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
+  <!--<script src="js/directive.js"></script>-->
   <!--<script src="js/jquery.js"></script>
   <script src="js/interface.js"></script>-->
 
@@ -34,7 +35,7 @@
     <h1>Login</h1>  </br>-->
 <div ng-hide="foobar">
 <div class="rain">
-<div id="div-1b"><span style="color: Yellow; font-size: 60px">iLabCentral</span></div><div id="div-2b"><em style="color: White;font-size: 20px">Lab Manager</em></div>
+<div id="div-1b"><span style="color: Yellow; font-size: 30px">iLabCentral</span></div><div id="div-2b"><em style="color: White;font-size: 15px">Lab Manager</em></div>
   <div class="border start">
     <form name="mobform" ng-submit="submit()" >
        <!--Username:  <input ng-model="form.username" type="text" /></br></br>
@@ -43,14 +44,14 @@
       Password:  <input ng-model="password" type="password" tooltip="Enter your password" tooltip-trigger="focus" tooltip-placement="right" /></br></br>
       <button style="background: Blue;color: #FFF;width: 150px">Submit</button> -->
 
-        <label for="username" class="username">Email</label>
-        <input ng-model="username" type="text" tooltip="Enter your password" tooltip-trigger="focus" tooltip-placement="bottom"/>
+        <label for="username" class="username">Username</label>
+        <input ng-model="mobform.username" style="color: Black" type="text" tooltip="Enter your username" tooltip-trigger="focus" tooltip-placement="right"/>
         <label for="pass" class="password">Password</label>
-        <input ng-model="password" type="password" tooltip="Enter your password" tooltip-trigger="focus" tooltip-placement="bottom"/>
-        <div id="div-3b"><button>Log In</button></div>
+        <input ng-model="mobform.password" style="color: Black" type="password" tooltip="Enter your password" tooltip-trigger="focus" tooltip-placement="right"/>
+        <div id="div-3b"><button style="border-radius: 20px;">Log In</button></div>
      
     </form>
-   <!-- <span style="color: White">Current path: {{location.absUrl()}}</span> -->
+   <span style="color: White">Current path: {{location.absUrl()}}</span> 
    
   </div>
 </div>

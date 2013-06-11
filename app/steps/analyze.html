@@ -52,9 +52,9 @@
 </style>
 <link rel="stylesheet"  href="../css/popup.css">
 <!--<script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>-->
-<script src="../js/popup.js">
-
-</script>
+<script src="../js/popup.js"></script>
+<link rel="stylesheet" href="../css/dock.css">
+<script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
 
 <div class="block" ng-init="graph()">
 	
@@ -66,7 +66,19 @@
 
 <!--<a href="#" ng-click="graph()" class="topopup">Click Here Trigger</a>-->
 
-    
+    <div id="main" style="float:right">
+    <div><img src="../img/settings.png"></div>
+    <div>
+
+        <div class="bubble me">
+            <a ng-click="simulation('analyze')"><img src="../img/simulation_48x48.png"></a>
+            <a ng-click="webcam('analyze')"><img src="../img/webcam_48x48.png"></a>
+            <a ng-click="account('analyze')"><img src="../img/account_48x48.png"></a>
+            <a ng-click="messages('analyze')"><img src="../img/message_48x48.png"></a>
+        </div>
+
+    </div>
+</div>
 
 	<div  style="padding: 45px 0px 0px 20px">
 		<span class="text">You can now graph your experimental results to see how radiation changes as a function of distance. Click on the Graph Data button below to graph and analyze your data.</span></br>
@@ -95,6 +107,7 @@
 </div>
 </br>
 </div>
+
 <div id="toPopup" ng-hide="graphdiv">
 <div class="closediv">
         <a ng-click="closegraph()" style="pointer: cursor"><img src="../img/no.png" ></a>

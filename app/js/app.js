@@ -68,22 +68,27 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 
     $routeProvider.when('/exit',{
       templateUrl: 'http://ilabcentral.org/radioactivity/',
-      controller: app/appController
+      controller: appController
     });
 
-    $routeProvider.when('/simulation',{
+    $routeProvider.when('/simulation/:Id',{
       templateUrl: '/steps/simulation.html',
-      controller: app/appController
+      controller: appController
     });
 
-     $routeProvider.when('/account',{
+     $routeProvider.when('/account/:Id',{
       templateUrl: '/steps/account.html',
-      controller: app/appController
+      controller: appController
     });
 
-      $routeProvider.when('/messages',{
+      $routeProvider.when('/messages/:Id',{
       templateUrl: '/steps/messages.html',
-      controller: app/appController
+      controller: appController
+    });
+
+       $routeProvider.when('/webcam/:Id',{
+      templateUrl: '/steps/webcam.html',
+      controller: appController
     });
 
     $routeProvider.when('', {

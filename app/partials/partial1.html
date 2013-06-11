@@ -1,32 +1,36 @@
 <style type="text/css">
+.grouptxt{
+	color: Blue;
+	font-size:30px;
+	font-weight: bold;
+}
 .textwht{
 
 	color: #fff;
-	font-size: 1.5em;
+	font-size: 15px;
 	
 }
 
 .textblk{
 	color: #000;
-	font-size: 1.5em;
+	font-size: 15px;
 	
 }
 .lg{
 	font-weight: bold;
+	font-style: italic;
 }
 .sm{
 	font-weight: normal;
 }
 </style> 
 
+
 <div>
-	<div style="padding: 40px "><span style="color:Blue; font-size:70px; font-weight:bold">My Groups</span></br></br></br>
-		<p class="textwht lg">Select the group you would like to use for this session.</p>
-	</div>
-	
-	<hr/>
-	<div style="padding: 40px ">
-	<h1 class="textwht lg">Available Groups and Labs</h1>
+	<div style="padding: 30px "><span class="grouptxt">My Groups</span></br></br></br>
+		<p class="textwht lg">Select the group you would like to use for this session.</p></br>
+		<hr/>
+		<h1 class="textwht lg">Available Groups and Labs</h1>
 	<span class="textwht sm">Open Experiment Group - User experiment group for general users of the NU version of the radioactivity lab</span></br></br>
 	<!--<ul>
 		<li><a href="">Radioactivity iLab</a> - A lab to investigate the intensity of radiation over distance.</li>
@@ -40,47 +44,49 @@
 		<li ng-repeat="foo in foos"><a href="" ng-click="openP()">{{foo.header}}</a> - {{foo.desc}}</li>
 	</ul>
 </div> 
-	<hr/>
-
-</div>
+	
+	</div>
+	
+	
 <!-- Radioactivity Lab -->
-<div modal="shouldBeOpen" close="close()" options="opts">
+<div modal="shouldBeOpen" close="close()" options="opts" style="overflow: auto;height:224px;width:50px;">
         <div class="modal-header">
-            <h1>Radioactivity iLab</h1>
-<hr/>
+            <h2>Radioactivity iLab</h2>
+			
         </div>
-        <div class="modal-body">
+        <div class="modal-body" style="overflow: auto;height:224px;">
 
-<span class="textblk lg">What is this lab about?</span>
+			<span class="textblk lg">What is this lab about?</span>
 
-<p class="textblk sm">In this lab, you can investigate the intensity of radiation over distance using a radioactive strontium-90 sample and a Geiger counter, which is an instrument used to measure radioactive radiation.</p>
-
-
-<span class="textblk lg">How does the lab equipment work?</span>
-
-<p class="textblk sm">As the strontium-90 sample decays, it emits radioactive beta particles. The Geiger counter detects the number of radioactive particles that are present at a given distance from the strontium-90 source. This equipment is located at the University of Queensland in Australia. Click on the webcam to see this equipment live in Australia.</p>
+			<p class="textblk sm">In this lab, you can investigate the intensity of radiation over distance using a radioactive strontium-90 sample and a Geiger counter, which is an instrument used to measure radioactive radiation.</p>
 
 
-<span class="textblk lg">What can I do in this lab?</span>
+			<span class="textblk lg">How does the lab equipment work?</span>
 
-<p class="textblk sm">Following the cycle of steps below, you can investigate how radiation changes over distance by collecting measurements of radiation at different distances from the source of radiation (strontium-90). Mouse over the steps below to find out more about each step of the lab. When you're ready to begin the lab, click Start below.</p>
+			<p class="textblk sm">As the strontium-90 sample decays, it emits radioactive beta particles. The Geiger counter detects the number of radioactive particles that are present at a given distance from the strontium-90 source. This equipment is located at the University of Queensland in Australia. Click on the webcam to see this equipment live in Australia.</p>
 
-        </div>
-        <div class="modal-footer">
+
+			<span class="textblk lg">What can I do in this lab?</span>
+
+			<p class="textblk sm">Following the cycle of steps below, you can investigate how radiation changes over distance by collecting measurements of radiation at different distances from the source of radiation (strontium-90). Mouse over the steps below to find out more about each step of the lab. When you're ready to begin the lab, click Start below.</p>
+		<div class="modal-footer">
         	<button  style="background-color: Green" ng-click="start()">Start Lab</button>
         	<button  style="background-color: Orange" ng-click="close()">Cancel</button>
-            <!--<button class="btn btn-warning cancel" ng-click="close()">Cancel</button>-->
+           
         </div>
+        </div>
+        
 </div>
+
 <!--end -->
 <!-- PowderXRD Lab -->
-<div modal="shouldBeOpenP" close="close()" options="optsP">
+<div modal="shouldBeOpenP" close="close()" options="optsP" style="overflow: auto;height:224px;width:50px;">
         <div class="modal-header">
   
-<h1 >Powder X-ray Diffraction iLab</h1>
+<h2>Powder X-ray Diffraction iLab</h2>
 </hr>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" style="overflow: auto;height:224px;">
 
 
 <span class="textblk lg">What is this lab about?</span>
