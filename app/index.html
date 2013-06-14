@@ -20,30 +20,41 @@
   <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
   <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
   <link href="css/popup.css" rel="stylesheet">
-  <link href="css/app.css" rel="stylesheet">
+  <!--<link href="css/app.css" rel="stylesheet">-->
   <!--<link href="css/style.css" rel="stylesheet">-->
   <link href="css/dockmenu.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/desktop.css">
+  <link rel="stylesheet" href="css/iphone.css">
  
  
  
 </head>
 <body ng-controller="appController" id="home">
+  <div ng-hide="foobar">
+      <div class="rain">
+                  <div class="header_lg"><span>iLabCentral</span></div>
+                  <div class="header_sm"><span>Lab Manager</span></div>
+                  <div>
+                      <form name="mobform" ng-submit="submit()">
+                                
+                                <div class="form_element">
+                                <label for="username">Username</label>
+                                <input class="input" type="text" ng-model="mobform.username" style="height:50px;margin-bottom:50px"/>
+                                <label>Password</label>
+                                <input class="input" type="password" ng-model="mobform.password" style="height:50px;margin-bottom:50px"/></br>
+                                <button value="Login" class="submit">LOGIN</button>
+                              </div>
+                      </form> 
+                  </div>
+    </div>
+</div>
 
-<!--</br>
-<div align="center" ng-hide="foobar">
-  <div style="border: solid 1px #000000;width: 400px;" >  
-    <h1>Login</h1>  </br>-->
-<div ng-hide="foobar">
+<!--<div ng-hide="foobar">
 <div class="rain">
 <div id="div-1b"><span style="color: Yellow; font-size: 30px">iLabCentral</span></div><div id="div-2b"><em style="color: White;font-size: 15px">Lab Manager</em></div>
   <div class="border start">
     <form name="mobform" ng-submit="submit()" >
-       <!--Username:  <input ng-model="form.username" type="text" /></br></br>
-       Password:  <input ng-model="form.password" type="text" /></br></br>-->
-    <!-- Username:  <input ng-model="username" type="text" tooltip="Enter your username" tooltip-trigger="focus" tooltip-placement="right"/></br></br>
-      Password:  <input ng-model="password" type="password" tooltip="Enter your password" tooltip-trigger="focus" tooltip-placement="right" /></br></br>
-      <button style="background: Blue;color: #FFF;width: 150px">Submit</button> -->
-
+      
         <label for="username" class="username">Username</label>
         <input ng-model="mobform.username" style="color: Black" type="text" tooltip="Enter your username" tooltip-trigger="focus" tooltip-placement="right"/>
         <label for="pass" class="password">Password</label>
@@ -51,22 +62,14 @@
         <div id="div-3b"><button style="border-radius: 20px;">Log In</button></div>
      
     </form>
-   <span style="color: White">Current path: {{location.absUrl()}}</span> 
+   
    
   </div>
 </div>
-</div>
-    <!--<p>
-        <button ng-click="changeLanguage('de')">{{'GERMAN' | i18n}}</button>       
-        <button ng-click="changeLanguage('en')">{{'ENGLISH' | i18n}}</button>     
-    </p>-->
+</div>-->
+   
 <div ng-view></div>
 
-
-
-
-<!--<ul >
-    <li ng-repeat="lab in labs"><a href="">{{lab.header}}</a> - {{lab.desc}}</li>
-  </ul>-->
 </body>
 </html>
+<!--<span style="color: White">Current path: {{location.absUrl()}}</span> -->

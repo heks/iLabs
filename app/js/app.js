@@ -21,6 +21,11 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         controller: appController
     });
 
+    $routeProvider.when('/home', {
+        templateUrl: '/partials/home.html',
+        controller: appController
+    });
+
     $routeProvider.when('/partial2', {
       templateUrl: '/partials/partial2.html',
       controller: appController

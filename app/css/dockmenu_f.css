@@ -1,0 +1,71 @@
+<style type="text/css">
+<!--
+.expand-up {
+  font-family:Arial, Helvetica, sans-serif;
+  line-height:normal;
+  height:150px;
+  width:500px;
+  background: url(/images/demos/macosx-style-background.png) no-repeat;
+  overflow:visible;
+  margin-bottom:30px;
+}
+/* reset margins and paddings */
+.expand-up * {
+  margin: 0;
+  padding: 0;
+}
+.expand-up ul {
+  margin-left:10px;
+}
+.expand-up ul li {
+  float:left;
+  list-style-type:none;
+  /* create a reserved space for expanded image to make this work in ie */
+  padding-top:65px;
+  /* margin to place the menu at the bottom */
+  margin-top:25px;
+}
+.expand-up ul li a {
+  text-decoration:none;
+}
+.expand-up ul li a img {
+  width:50px;  /* initial width of images, 50% of width */
+  height:50px; /* initial height of images, 50% of height */
+  border:none;
+}
+/* initially, don't show the label inside <span> tag */
+.expand-up ul li a span {
+  display:none;
+}
+.expand-up ul li:hover a span {
+  /* show item label on mouse hover */
+  display:block;
+  font-size:14px;
+  text-align:center;
+  color:#fff;
+  /* move label up to move image up */
+  margin-top:-65px;
+}
+/* expand the image to 100% on mouse hover.
+** again, ideal dimension of image is equal to width and height below
+*/
+.expand-up ul li:hover a img {
+  width:100px;
+  height:100px;
+}
+/* expand the image next to the right of active image to 60% using + selector */
+.expand-up ul li:hover + li a img {
+  width:60px;
+  height:60px;
+  /* move image up by 10px so bottom aligns with other images */
+  margin-top:-10px;
+}
+/* expand the image second to the right of active image to 55% using + selectors */
+.expand-up ul li:hover + li + li a img {
+  width:55px;
+  height:55px;
+  /* move image up by 5px so bottom aligns with the other items */
+  margin-top:-5px;
+}
+-->
+</style>

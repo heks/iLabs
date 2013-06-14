@@ -3,8 +3,8 @@
 function appController($scope, $location){
 
       $scope.submit = function(){
-        var username = $scope.mobform.username;
-        var password = $scope.mobform.password;
+        //var username = $scope.mobform.username;
+        //var password = $scope.mobform.password;
 //alert(username + "," + password);
         /*var paramsData = "username=rasmiroy&password=Pichu@18";
         $.ajax({
@@ -22,22 +22,29 @@ function appController($scope, $location){
             'http://165.124.241.86/login.php?username=rasmiroy&password=Pichu@18',
             function(data) { alert(data); }
         );*/
-       /*$.ajax({
-            url: 'http://165.124.241.86/login.php?username=rasmiroy&password=Pichuaug18',
+      $.ajax({
+            url: 'http://165.124.240.255/login.php?username=rasmiroy&password=Pichuaug18',
             crossDomain: 'true',
             type: 'GET',
             dataType: 'json',
             success: function() { alert('success!'); },
             error: function() { alert('failed!'); },
 
+        });
+
+      
+      
+
+       /*$.getJSON('http://165.124.240.255/login.php?username=rasmiroy&password=Pichuaug18', function(response) {
+        alert("response");   
         });*/
 
          /*$.get("http://165.124.241.86/login.php?username=rasmiroy&password=Pichu@18", function(data) {
           alert("Data Loaded: " + data);
           });*/
         
-          $location.path("partial1");
-          $scope.foobar = true;
+          /*$location.path("home");
+          $scope.foobar = true;*/
        
         
       };
@@ -150,6 +157,8 @@ function appController($scope, $location){
         var url = "http://ilabcentral.org/radioactivity/";    
         $(location).attr('href',url);
       }
+
+
 
       $scope.insert = function(){
         //alert($scope.name);
