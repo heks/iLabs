@@ -125,12 +125,12 @@
 <script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
 <link rel="stylesheet" type="text/css" href="../css/image.css">
 
- <div id="dvalues" style="color: White;display:block;font-size:30px">{{location.absUrl()}}</div> 
+ <!--<div id="dvalues" style="color: White;display:block;font-size:30px">{{location.absUrl()}}</div> -->
 <div >
             <div class="header">
-                <div class="left_img" ><a  ng-click="InvesB()"><img src="../img/back_64x64.png" style="width:100px;height:100px"></a></div>
+                <div class="left_img" ><a  ng-click="InvesB()"><img src="../img/back_64x64.png" id="left_img"></a></div>
                 <div class="heading_lng">Investigate</div>
-                <div class="right_img" ><a ng-click="InvesN()"><img src="../img/next_64x64.png" style="width:100px;height:100px"></a></div>
+                <div class="right_img" ><a ng-click="InvesN()"><img src="../img/next_64x64.png" id="right_img"></a></div>
             </div></br>
             <div class="content">
                 <div id="main" style="float:right">
@@ -146,12 +146,12 @@
                     <span class="textwht sm">What are your initial observations about your result?</span></br></br>
                     <div>
                         <textarea  id="invest2" cols="120" rows="8" placeholder="Please enter your answer here..."></textarea>
-                        <a ng-click="clear('invest2')"><img src="../img/no.png"></a>
+                        <a ng-click="clear('invest2')"><img src="../img/no.png"></a></br>
                     </div>
-
+</br>
                 </div>
-            </br></br>
-                <div id="result" ng-init="load_values()" style="color:White;font-weight:bold;font-size:40px;line-height:1.2em">
+            </br></br></br>
+                <div id="result" ng-init="load_values()" class="result">
                     Distances(mm):  {{resdistances}}</br>
                     Measurement Time(s):   {{res_m_times}}</br>
                     Number of Trials:   {{res_nof_trials}}</br>

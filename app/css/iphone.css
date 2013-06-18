@@ -141,6 +141,10 @@
             height: 100px;
             display: block;
        }
+       #left_img{
+        width:100px;
+        height: 100px;
+       }
        .right_img{
             float: right;
             margin-top: -50px;
@@ -150,6 +154,10 @@
        .right_img > img{
             width: 150px;
             height: 100px;
+       }
+       #right_img{
+        width:100px;
+        height: 100px;
        }
        div.history_div{
         margin-top:300px;
@@ -211,7 +219,6 @@
         margin-top: 170px;
       }
       .textwht{
-
         color: #fff;
         font-size: 45px;
         line-height: 1.2em;
@@ -224,7 +231,6 @@
       }
 
       .textblue{
-
         color: Blue;
         font-size: 45px;
         line-height: 1.2em;
@@ -291,6 +297,12 @@
             height: 50px;
             width:200px;
             margin-bottom: 20px;
+          }
+          .result{
+            color: #fff;
+            font-weight: bold;
+            font-size: 40px;
+            line-height: 1.3em;
           }
           .exit{
             width:180px;

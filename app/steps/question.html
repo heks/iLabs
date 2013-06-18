@@ -67,9 +67,9 @@
 
 <div>
             <div class="header">
-                <div class="left_img" ><a  ng-click="QB()"><img src="../img/back_64x64.png" style="width:100px;height:100px"></a></div>
+                <div class="left_img" ><a  ng-click="QB()"><img src="../img/back_64x64.png" id="left_img" ></a></div>
                 <div class="heading_lng">Question</div>
-                <div class="right_img" ><a ng-click="QN()"><img src="../img/next_64x64.png" style="width:100px;height:100px"></a></div>
+                <div class="right_img" ><a ng-click="QN()"><img src="../img/next_64x64.png" id="right_img"></a></div>
             </div></br>
             <div class="content">
             	<div id="main" style="float:right">
@@ -81,7 +81,7 @@
 				<div   style="float:left">
 					<span class="textwht sm">Write your research question below.</span></br></br>
 					<div >
-		    			<textarea  id="question" cols="160" rows="8" style="font-size:30px;" placeholder="Please enter your research question here..."></textarea>
+		    			<textarea  id="question" cols="120" rows="5" placeholder="Please enter your research question here..."></textarea>
 		    			<a ng-click="clear('question')"><img src="../img/no.png"></a>
 	    			</div>
 				</div>

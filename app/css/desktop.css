@@ -33,6 +33,15 @@
               margin-left: 90px;
               /*padding: 30px 10px 12px 120px;*/
        }
+       .heading_lng{
+            margin-top: 35px;
+            font-size: 35px;
+            font-weight: bolder;
+            color:#fff;
+            margin-left: 500px;
+            /*border: 1px solid #000;
+            width: 30px;*/
+       }
        .header_sm{
               color: White;
               font-size: 10px;
@@ -128,7 +137,7 @@
 
        }
        .heading{
-            margin-top: 10px;
+            margin-top: 20px;
             font-size: 35px;
             font-weight: bolder;
             color:#fff;
@@ -138,14 +147,31 @@
        }
        .left_img{
             float: left;
-            margin-top: 20px;
+            margin-top: -5px;
             margin-left: 50px;
+       }
+       .left_img > img{
+           width: 80px;
+            height: 80px;
+            display: block;
+       }
+       #left_img{
+        width:80px;
+        height: 80px;
        }
        .right_img{
             float: right;
-            margin-top: -35px;
+            margin-top: -59px;
             margin-right: 50px;
             position: relative;
+       }
+       .right_img > img{
+            width: 80px;
+            height: 80px;
+       }
+       #right_img{
+        width:80px;
+        height: 80px;
        }
        div.history_div{
         margin-top:100px;
@@ -186,7 +212,8 @@
         color: #fff;
         font-size: 20px;
         font-weight: bold;
-        margin-top: 60px;
+        margin-top: 30px;
+        line-height: .6em;
       }
       .t1{
         background: #fbb917;
@@ -227,5 +254,109 @@
         font-weight: bold;
         margin-bottom: 60px;
       }
+      .content{
+        margin-top: 100px;
+      }
+      .textwht{
+
+        color: #fff;
+        font-size: 35px;
+        line-height: 1.2em;
+      }
+
+      .textblk{
+        color: #000;
+        font-size: 30px;
+        line-height: 1.2em;
+      }
+
+      .textblue{
+
+        color: Blue;
+        font-size: 30px;
+        line-height: 1.2em;
+      }
+      .lg{
+        font-weight: bold;
+        font-style: italic;
+      }
+      .sm{
+        font-weight: normal;
+        line-height: ;
+      }
+      .smr{
+        color: White;
+        font-size: 30px;
+        font-weight: normal;
+        line-height: 1.2em;
+      }
+      .txt_bh{
+        color: Blue;
+        font-size: 45px;
+        line-height: 1.2em;
+        font-weight: bold;
+      }
+      a{cursor: pointer; color: #fff; font-size: 1.3em;}
+      a:hover { color: #0000ff;  text-decoration: none;}
+      a:visited { color: #10486b; text-decoration: none;}
+      #blanket {
+          background-color:#111;
+          opacity: 0.65;
+          filter:alpha(opacity=65);
+          position:absolute;
+          z-index: 9001;
+          top:0px;
+          left:0px;
+          width:100%;
+          }
+      #popUpDiv {
+          position:absolute;
+          background-color:#eeeeee;
+          width:300px;
+          height:300px;
+          z-index: 9002;
+          border-radius: 30px;
+          }
+      .designform{
+          background-color: #52854C;
+          font-family: Georgia;
+          color: white;
+          padding: 25px;
+          width: 650px;
+          border: 2px black solid;
+          border-radius: 15px;
+          -moz-border-radius: 15px;
+          -webkit-border-radius: 15px;
+          -khtml-border-radius:15px;
+
+          box-shadow:inset 1px 1px 2px #999;
+          -webkit-box-shadow:inset 1px 1px 2px #999;
+          -moz-box-shadow:inset 1px 1px 2px #999;
+          -khtml-box-shadow:inset 1px 1px 2px #999;
+          }
+          input.design{
+            height: 50px;
+            width:200px;
+            margin-bottom: 20px;
+          }
+          
+          .result{
+            color: #fff;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 1.3em;
+          }
+          .exit{
+            width:180px;
+            height:45px;
+            background:#008000;
+            position:absolute;
+            left:78%;
+            top:89%;
+            color: #fff;
+            font-weight: bold;
+            font-size: 2em;
+            border-radius: 100px
+          }
        
 }
