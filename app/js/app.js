@@ -7,22 +7,29 @@ app.run(function($rootScope, $location) {
 });
 
 
-/*app.controller('appController', ['$scope', '$rootScope', function($scope, $rootScope) {
-    
-    $scope.changeLanguage = function (lang) {
-        $rootScope.currentLanguage = lang;
-    }
-
-}]);*/
-
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $routeProvider.when('/partial1', {
         templateUrl: '/partials/partial1.html',
         controller: appController
     });
 
+    $routeProvider.when('/partial1/:Id/:Key', {
+        templateUrl: '/partials/partial1.html',
+        controller: appController
+    });
+
+    $routeProvider.when('/home/:Id/:Key', {
+        templateUrl: '/partials/home.html',
+        controller: appController
+    });
+
     $routeProvider.when('/home', {
         templateUrl: '/partials/home.html',
+        controller: appController
+    });
+
+    $routeProvider.when('/mygroups', {
+        templateUrl: '/partials/mygroups.html',
         controller: appController
     });
 
@@ -57,6 +64,11 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     });
 
     $routeProvider.when('/investigate', {
+      templateUrl: '/steps/investigate.html',
+      controller: appController
+    });
+
+    $routeProvider.when('/investigate/:Dis/:Times/:Trials', {
       templateUrl: '/steps/investigate.html',
       controller: appController
     });

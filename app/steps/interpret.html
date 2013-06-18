@@ -1,4 +1,4 @@
-<style type="text/css">
+<!--<style type="text/css">
 
 .b1{
 	width:90px;
@@ -63,10 +63,48 @@
 }
 </style>
 
-<link rel="stylesheet" href="../css/dock.css">
-<script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
+<link rel="stylesheet" href="../css/dock.css">-->
 
-<div class="block">
+<script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
+<link rel="stylesheet" type="text/css" href="../css/iphone.css">
+<link rel="stylesheet" type="text/css" href="../css/desktop.css">
+<!--<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/interface.js"></script>-->
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="../css/dockmenu_f.css">
+<script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
+<link rel="stylesheet" type="text/css" href="../css/image.css">
+
+<div>
+            <div class="header">
+                <div class="left_img" ><a  ng-click="InvesB()"><img src="../img/back_64x64.png" style="width:100px;height:100px"></a></div>
+                <div class="heading_lng">Investigate</div>
+                <div class="right_img" ><a ng-click="InvesN()"><img src="../img/next_64x64.png" style="width:100px;height:100px"></a></div>
+            </div></br>
+            <div class="content">
+                <div id="main" style="float:right">
+                    <img src="../img/settings.png">
+                </div>
+                <div  style="float:left">
+					<span class="textwht sm">What type of relationship exists between radiation and distance?  Is it linear or non-linear, positive or negative?  How do you know?</span></br>
+					<div>
+						<textarea  id="inter1" cols="120" rows="8" placeholder="Please enter your answer here..."></textarea>
+						<a ng-click="clear('inter1')"><img src="../img/no.png"></a>
+					</div></br></br>
+            	</div>
+            	<div  style="float:left">
+					<span class="textwht sm">Does the data you collected give you a definite answer to your research question?  Why or why not?  If not, how would you change your experimental design to better investigate your research question?</span></br></br>
+					<div>
+						<textarea  id="inter2" cols="120" rows="8" placeholder="Please enter your answer here..."></textarea>
+						<a ng-click="clear('inter2')"><img src="../img/no.png"></a>
+					</div>
+				</div>
+				<div style="padding: 70px 0px 0px 20px">
+					<button class="exit" ng-click="Exitlab()">Exit</button>
+				</div>
+			</div>
+</div>
+<!--<div class="block">
 	
 		<button class="b1" ng-click="InterB()">Back</button>
 		<span class="header">Interpret</span>
@@ -114,4 +152,4 @@
 		<button class="exit" ng-click="Exitlab()">Exit</button>
 	</div>
 
-</div>
+</div>-->

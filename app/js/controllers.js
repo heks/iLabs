@@ -3,55 +3,60 @@
 function appController($scope, $location){
 
       $scope.submit = function(){
-        //var username = $scope.mobform.username;
-        //var password = $scope.mobform.password;
-//alert(username + "," + password);
-        /*var paramsData = "username=rasmiroy&password=Pichu@18";
-        $.ajax({
-            type: "GET",
-            url: "http://165.124.241.86/login.php",
-            data: paramsData,
-            dataType: "xml",
-            success: function(xml){
-                   //process xml from server
-                   var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc), $Coupon = $xml.find("Coupon");
-                   alert($Coupon.text());
-            }
-        });*/
-        /*$.get(
-            'http://165.124.241.86/login.php?username=rasmiroy&password=Pichu@18',
-            function(data) { alert(data); }
-        );*/
-      $.ajax({
-            url: 'http://165.124.240.255/login.php?username=rasmiroy&password=Pichuaug18',
-            crossDomain: 'true',
-            type: 'GET',
-            dataType: 'json',
-            success: function() { alert('success!'); },
-            error: function() { alert('failed!'); },
-
-        });
-
-      
-      
-
-       /*$.getJSON('http://165.124.240.255/login.php?username=rasmiroy&password=Pichuaug18', function(response) {
-        alert("response");   
-        });*/
-
-         /*$.get("http://165.124.241.86/login.php?username=rasmiroy&password=Pichu@18", function(data) {
-          alert("Data Loaded: " + data);
-          });*/
-        
-          /*$location.path("home");
-          $scope.foobar = true;*/
+        var username = $scope.mobform.username;
+        var password = $scope.mobform.password;
+        //alert(username+" "+password);
        
-        
-      };
+        var params = "username=rasmiroy&password=Pichuaug18";
+        //var params = "username="+username+"&password="+password;
 
+      /* $.ajax({
+              url: 'http://165.124.240.127/login.php',
+              crossDomain: 'false',
+              type: 'GET',
+              data: params,
+              dataType: 'jsonp',
+              success: function(json) {
+                var couponID = json['couponId'];
+                var passKey = json['passKey']; 
+                
+                $('#result_ID').html(couponID);
+                $('#result_Key').html(passKey);
+                
+                //$scope.navigate_home(couponID, passKey);
+                // window.location="http://localhost:8000/partials/home.html";
+                //$location.path("home/"+couponID+"/"+passKey);
+                $location.path("home");
+                $scope.foobar = true;
+                 },
+                
+              error: function() { alert('failed!');}
+
+          });*/
+$location.path("home");
+$scope.foobar = true;
+      };
+     
+      /*$scope.experiments = function(div_id){
+        
+        var url = $('#'+div_id).text();
+        var split = url.split("/");
+        var id = split[4];
+        var key = split[5];
+        //alert(split[4]+";"+split[5]+";");
+        $location.path("partial1/"+id+"/"+key);
+        //alert("DDD");
+      }*/
+      $scope.experiments = function(){
+       $location.path("mygroups");
+      }
+
+      $scope.identity = function(){
+       alert($("#result_ID").text());
+      }
+     
       $scope.open = function () {
     	 $scope.shouldBeOpen = true;
-       //alert("hello");
   	  };
 
   	  $scope.close = function () {
@@ -128,9 +133,24 @@ function appController($scope, $location){
 
       $scope.DN = function(){
         $location.path("investigate");
-        //alert($scope.distance);
+        //$scope.display_dis($scope.distances);
+        var dis = $scope.distances;
+        var times = $scope.m_times;
+        var trials = $scope.nof_trials;
+        var split_dis = dis.replace(",","-");
+        $location.path("investigate/"+split_dis+"/"+times+"/"+trials);
+        //$('#distance_value').html(dis);
+       
+       // $('#result').html($scope.distance);
+       //$('#result_Key').html(passKey);
+        //alert($scope.distances+";"+$scope.m_times+";"+$scope.nof_trials);
       }
-
+      $scope.load_values = function(){
+       var value =  $("#dvalues").text();
+       var split = value.split("/");
+       $scope.resdistances = split[4];
+      }
+      //$scope.resdistances = "$scope.distances";
       $scope.InvesB = function(){
         $location.path("design");
       }
@@ -380,7 +400,7 @@ function appController($scope, $location){
 
 
 
-       $scope.design = function(){
+       $scope.startLab = function(Cid, Ckey){
 
           /*var item = $scope.design.dist;
           var value = item.split(',');*/
@@ -393,8 +413,8 @@ function appController($scope, $location){
                             '<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">' +
                             '<soap12:Header>' +
                             '<sbAuthHeader xmlns="http://ilab.mit.edu">' +
-                            '<couponID>130684</couponID>' +
-                            '<couponPassKey>861527620284598</couponPassKey>' +
+                            '<couponID>'+Cid+'</couponID>' +
+                            '<couponPassKey>'+Ckey+'</couponPassKey>' +
                             '</sbAuthHeader>' +
                             '</soap12:Header>' +
                             '<soap12:Body>' +

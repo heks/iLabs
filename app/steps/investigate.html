@@ -1,4 +1,4 @@
-<style type="text/css">
+<!--<style type="text/css">
 
 .b1{
 	width:90px;
@@ -113,10 +113,53 @@
 
 </style>
 
-<link rel="stylesheet" href="../css/dock.css">
-<script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
+<link rel="stylesheet" href="../css/dock.css">-->
 
-<div class="block">
+<script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
+<link rel="stylesheet" type="text/css" href="../css/iphone.css">
+<link rel="stylesheet" type="text/css" href="../css/desktop.css">
+<!--<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/interface.js"></script>-->
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="../css/dockmenu_f.css">
+<script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
+<link rel="stylesheet" type="text/css" href="../css/image.css">
+
+ <div id="dvalues" style="color: White;display:block;font-size:30px">{{location.absUrl()}}</div> 
+<div >
+            <div class="header">
+                <div class="left_img" ><a  ng-click="InvesB()"><img src="../img/back_64x64.png" style="width:100px;height:100px"></a></div>
+                <div class="heading_lng">Investigate</div>
+                <div class="right_img" ><a ng-click="InvesN()"><img src="../img/next_64x64.png" style="width:100px;height:100px"></a></div>
+            </div></br>
+            <div class="content">
+                <div id="main" style="float:right">
+                    <img src="../img/settings.png">
+                </div>
+                <div  style="float:left">
+                    <span class="textwht sm">What do you predict will happen in this experiment?  What do you think you will see in your results?</span></br></br>
+                    <div>
+                    <textarea  id="invest1" cols="120" rows="8"placeholder="Please enter your answer here..."></textarea>
+                    <a ng-click="clear('invest1')"><img src="../img/no.png"></a>
+                </div></br></br>
+                <div  style="float:left">
+                    <span class="textwht sm">What are your initial observations about your result?</span></br></br>
+                    <div>
+                        <textarea  id="invest2" cols="120" rows="8" placeholder="Please enter your answer here..."></textarea>
+                        <a ng-click="clear('invest2')"><img src="../img/no.png"></a>
+                    </div>
+
+                </div>
+            </br></br>
+                <div id="result" ng-init="load_values()" style="color:White;font-weight:bold;font-size:40px;line-height:1.2em">
+                    Distances(mm):  {{resdistances}}</br>
+                    Measurement Time(s):   {{res_m_times}}</br>
+                    Number of Trials:   {{res_nof_trials}}</br>
+                </div>
+<div id="distance_value"></div>
+            </div>
+</div>
+<!--<div class="block">
 	
 		<button class="b1" ng-click="InvesB()">Back</button>
 		<span class="header">Investigate</span>
@@ -176,8 +219,7 @@
 			</div>
 			<div ng-init="random()" >
 				Status:	completed</br>
-				<!--<h2>Dynamic <button class="btn btn-primary" type="button" ng-click="random()">Randomize</button></h2>
-        <pre width="10px">Value: {{dynamic}}</pre>-->
+				
         <div style="width:200px">
         <progress value="dynamicObject" class="progress-success" animate="false" ></progress></br>
     </div>
@@ -192,4 +234,4 @@
 		<button class="result">Retrieve Results</button>
 	</div>
 </br></br>
-</div>
+</div>-->

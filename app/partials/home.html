@@ -1,23 +1,31 @@
 <link rel="stylesheet" type="text/css" href="../css/iphone.css">
 <link rel="stylesheet" type="text/css" href="../css/desktop.css">
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/interface.js"></script>
+<!--<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/interface.js"></script>-->
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="../css/dockmenu_f.css">
 <script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
 <link rel="stylesheet" type="text/css" href="../css/image.css">
 
-<div class="header">
-		<div class="left_img" ><img src="../img/home_40x40.png"></div>
-        <div class="heading">HOME</div>
-        <div class="right_img" ><a id="opn" ng-click="options()"><img src="../img/gear_40x40.png"></a></div>
-</div></br>
-<div class="circleBase type1" align="center">
-<div style="margin-top: 110px"><span class="type1_txt">Experiment</br></br> History</span></div>
+
+<div id="home_url" style="color: White;display:none">{{location.absUrl()}}</div> 
+<div>
+			<div class="header">
+				<!--<div class="left_img" ><img src="../img/home_40x40.png"></div>-->
+		        <div class="heading">HOME</div>
+		        <!--<div class="right_img" ><a id="opn" ng-click="options()"><img src="../img/gear_40x40.png"></a></div>-->
+			</div></br>
+			<div align="center">
+				<div class="squareBase t1" align="center"></br></br></br></br>
+					<div ><span class="txt">Experiment </br></br>History</span></div>
+				</div></br>
+
+				<div class="squareBase t2" align="center"></br></br></br></br>
+					<div  ng-click="experiments()"><span class="txt">New</br></br>Experiment</span></div>
+				</div>
+			</div>
 </div>
-<div class="circleBase type2" align="center">
-<div style="margin-top: 110px"><span class="type1_txt">New </br></br>Experiment</span></div>
-</div>
+<!--<a ng-click="experiments()" style="color:white">Click</a>-->
 <!--<div align="center" class="history_div"><button>Experiment History</button></div>
 <div align="center" class="exp_div"><button >New Experiment</button></div>-->
 <!--<div class="expand-up" style="align:bottom">
