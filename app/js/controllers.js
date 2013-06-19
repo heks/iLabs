@@ -3,16 +3,16 @@
 function appController($scope, $location){
 
       $scope.submit = function(){
-       // $scope.soapjson();
-        var username = $scope.mobform.username;
-        var password = $scope.mobform.password;
+        //$scope.soapjson();
+       var username = $scope.mobform.username;
+       var password = $scope.mobform.password;
         //alert(username+" "+password);
        
-        var params = "username=rasmiroy&password=Pichuaug18";
+       var params = "username=rasmiroy&password=Pichuaug18";
         //var params = "username="+username+"&password="+password;
 
-      $.ajax({
-              url: 'http://165.124.240.127/login.php',
+       $.ajax({
+              url: 'http://165.124.240.27/login.php',
               crossDomain: 'false',
               type: 'GET',
               data: params,
@@ -21,12 +21,9 @@ function appController($scope, $location){
                 var couponID = json['couponId'];
                 var passKey = json['passKey']; 
                 
-                $('#result_ID').html(couponID);
-                $('#result_Key').html(passKey);
+                $('#coupon_Id').html(couponID);
+                $('#coupon_Key').html(passKey);
                 
-                //$scope.navigate_home(couponID, passKey);
-                // window.location="http://localhost:8000/partials/home.html";
-                //$location.path("home/"+couponID+"/"+passKey);
                 $location.path("home");
                 $scope.foobar = true;
                  },
@@ -94,11 +91,11 @@ function appController($scope, $location){
 
       $scope.start = function () {
     	 $scope.shouldBeOpen = false;
-    	 //$location.path("research");
-       var ID = $("#result_ID").text();
-       var Key = $("#result_Key").text();
+    	 $location.path("research");
+       //var ID = $("#result_ID").text();
+       //var Key = $("#result_Key").text();
        //alert(ID+" ; "+Key);
-       $scope.startLab(ID, Key);
+       //$scope.startLab(ID, Key);
       };
 
 
@@ -137,17 +134,15 @@ function appController($scope, $location){
       }
 
       $scope.DN = function(){
-        $location.path("investigate");
-        //$scope.display_dis($scope.distances);
-        var dis = $scope.distances;
+        
+        var cid = $("#coupon_Id").text();
+        var ckey = $("#coupon_Key").text();
+        var distances = $scope.distances;
         var times = $scope.m_times;
         var trials = $scope.nof_trials;
-        var split_dis = dis.replace(",","-");
-        $location.path("investigate/"+split_dis+"/"+times+"/"+trials);
-        //$('#distance_value').html(dis);
-       
-       // $('#result').html($scope.distance);
-       //$('#result_Key').html(passKey);
+        $scope.submitDesign(cid, ckey, distances, times, trials);
+        $location.path("investigate");
+      
         //alert($scope.distances+";"+$scope.m_times+";"+$scope.nof_trials);
       }
       $scope.load_values = function(){
@@ -402,22 +397,104 @@ function appController($scope, $location){
 }); // jQuery End
        }
 
+       $scope.res_distances = $("#distances").text();
+       $scope.res_m_times = $("#duration").text();
+       $scope.res_nof_trials = $("#repeat").text();
 
-       $scope.soapjson = function(){
-        $.ajax({
-                type:'POST',
-                dataType:'jsonp',
-                jsonp:'jsonp',
-                url:'http://ilabs.sesp.northwestern.edu/iLabServiceBroker/ilabServiceBroker.asmx',
-                success:function(data) {
-                    alert(data);
-                },
-                error:function() {
-                    alert("Sorry, I can't get the feed");  
-                }
-            });
+       $scope.submitDesign = function(cid, ckey, distances, duration, repeat){
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("POST", "http://ilabs.sesp.northwestern.edu/iLabServiceBroker/ilabServiceBroker.asmx", true);
+
+        var data  =  '<?xml version="1.0" encoding="utf-8"?>' +
+                     '<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'+
+                     '<SOAP-ENV:Header>'+
+                     '<tns:sbAuthHeader xmlns:tns="http://ilab.mit.edu">'+
+                     '<tns:couponID>'+cid+'</tns:couponID>'+
+                     '<tns:couponPassKey>'+ckey+'</tns:couponPassKey>' +
+                     '</tns:sbAuthHeader>'+  
+                     '</SOAP-ENV:Header>'+  
+                     '<SOAP-ENV:Body>'+  
+                     '<i0:Submit xmlns:i0="http://ilab.mit.edu">'+  
+                     '<i0:labServerID>9164ebd6edfd46f2b09dd7175af45ad8</i0:labServerID>'+  
+                     '<i0:experimentSpecification>'+ 
+                     '&lt;experimentSpecification&gt;'+  
+                     '&lt;setupId&gt;RadioactivityVsDistance&lt;/setupId&gt;'+  
+                     '&lt;setupName&gt;Radioactivity versus Distance&lt;/setupName&gt;'+  
+                     '&lt;sourceName&gt;Strontium-90&lt;/sourceName&gt;'+  
+                     '&lt;absorberName&gt;None&lt;/absorberName&gt;'+  
+                     '&lt;distance&gt;'+distances+'&lt;/distance&gt;'+  
+                     '&lt;duration&gt;'+duration+'&lt;/duration&gt;'+  
+                     '&lt;repeat&gt;'+repeat+'&lt;/repeat&gt;'+  
+                     '&lt;/experimentSpecification&gt;'+ 
+                     '</i0:experimentSpecification>'+  
+                     '<i0:priorityHint>0</i0:priorityHint>'+  
+                     '<i0:emailNotification>false</i0:emailNotification>'+  
+                     '</i0:Submit>'+  
+                     '</SOAP-ENV:Body>'+  
+                     '</SOAP-ENV:Envelope>'
+//alert(data);
+                   xmlhttp.onreadystatechange = function(){
+                        if(xmlhttp.readyState ==4){
+                              if (xmlhttp.status == 200){
+                                  var xmlDoc = xmlhttp.responseXML;
+                                  //alert(xmlhttp.responseText);
+                                  timer = $(xmlDoc).find("estRuntime").text();
+                                  display_timer = "Your result will be available in "+timer+"seconds!!!";
+                                  $("#timer").html(display_timer);
+                                  experimentID = $(xmlDoc).find("experimentID").text();
+                                  $('#exp_Id').html(experimentID);
+                                  $('#distances').html(distances);
+                                  $('#duration').html(duration);
+                                  $('#repeat').html(repeat);
+
+                                  //alert(experimentID);
+                                  
+                              }else{
+                                  alert("Error: "+ xmlhttp.status + " : "+xmlhttp.responseText)
+                              }
+                        }
+                    }
+
+                   xmlhttp.setRequestHeader('Content-Type', 'text/xml');
+                   xmlhttp.send(data);
        }
 
+       $scope.retrieveResult = function(){
+        var cid = $("#coupon_Id").text();
+        var ckey = $("#coupon_Key").text();
+        var expid = $('#exp_Id').text();
+        //alert(expid);
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("POST", "http://ilabs.sesp.northwestern.edu/iLabServiceBroker/ilabServiceBroker.asmx", true);
+
+        var data = '<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">'+
+                   '<soap12:Header>' +
+                   '<sbAuthHeader xmlns="http://ilab.mit.edu">' +
+                   '<couponID>'+cid+'</couponID>' +
+                   '<couponPassKey>'+ckey+'</couponPassKey>' +
+                   '</sbAuthHeader>' +
+                   '</soap12:Header>' +
+                   '<soap12:Body>' +
+                   '<RetrieveResult xmlns="http://ilab.mit.edu">' +
+                   '<experimentID>'+expid+'</experimentID>' +
+                   '</RetrieveResult>' +
+                   '</soap12:Body>' +
+                   '</soap12:Envelope>'   
+
+            xmlhttp.onreadystatechange = function(){
+              if(xmlhttp.readyState == 4){
+                  if(xmlhttp.status == 200){
+                      xmlDoc = xmlhttp.responseXML;
+                      alert(xmlhttp.responseText);
+                  }
+              }
+            }
+
+            xmlhttp.setRequestHeader('Content-Type', 'text/xml');
+            xmlhttp.send(data);
+       }
+       
        $scope.startLab = function(Cid, Ckey){
 
           /*var item = $scope.design.dist;
@@ -478,6 +555,8 @@ function appController($scope, $location){
           xmlhttp.send(data);
   
         };
+
+       
 
         $scope.toggle = function(div_id) {
           var el = document.getElementById(div_id);

@@ -51,14 +51,14 @@
 }
 </style>-->
 
-<link rel="stylesheet" type="text/css" href="../css/iphone.css">
-<link rel="stylesheet" type="text/css" href="../css/desktop.css">
+<link rel="stylesheet" type="text/css" href="Mobile-iLabs/app/css/iphone.css">
+<link rel="stylesheet" type="text/css" href="Mobile-iLabs/app/css/desktop.css">
 <!--<script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/interface.js"></script>-->
-<link href="../css/style.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="../css/dockmenu_f.css">
+<link href="Mobile-iLabs/app/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="Mobile-iLabs/app/css/dockmenu_f.css">
 <script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
-<link rel="stylesheet" type="text/css" href="../css/image.css">
+<link rel="stylesheet" type="text/css" href="Mobile-iLabs/app/css/image.css">
 
 
 <!--<link rel="stylesheet" href="../css/dock.css">-->
@@ -67,15 +67,20 @@
 
 <div>
             <div class="header">
-                <div class="left_img" ><a  ng-click="QB()"><img src="../img/back_64x64.png" id="left_img" ></a></div>
+                <div class="left_img" ><a  ng-click="QB()"><img src="Mobile-iLabs/app/img/back_64x64.png" id="left_img" ></a></div>
                 <div class="heading_lng">Question</div>
-                <div class="right_img" ><a ng-click="QN()"><img src="../img/next_64x64.png" id="right_img"></a></div>
+                <div class="right_img" ><a ng-click="QN()"><img src="Mobile-iLabs/app/img/next_64x64.png" id="right_img"></a></div>
             </div></br>
             <div class="content">
-            	<div id="main" style="float:right">
-					<img src="../img/settings.png">
-            	</div>
-            	<div  style="float:left">
+            	<div id="main2" ng-init="sidebar()">
+                    <ul id="navigation">
+                        <li class="simulation" ng-click="simulation('question')"><a href="" title="Simulation"></a></li>
+                        <li class="webcam" ng-click="webcam('question')"><a href="" title="Webcam"></a></li>
+                        <li class="myacc"><a href=""   ng-click="account('question')" title="My Account"></a></li>
+                        <li class="msgs"><a href="" ng-click="messages('question')" title="Messages"></a></li>
+                    </ul>
+                </div>
+            	<div  style="float:right">
 					<span class="textwht sm">What are you trying to find out in this lab?  What question are you trying to answer?  This question is called your research question, which guides your experimental design in the next step. </span></br></br></br>
 				</div>
 				<div   style="float:left">

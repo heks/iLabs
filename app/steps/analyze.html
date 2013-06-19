@@ -51,31 +51,36 @@
 }
 </style>-->
 <script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
-<link rel="stylesheet" type="text/css" href="../css/iphone.css">
-<link rel="stylesheet" type="text/css" href="../css/desktop.css">
+<link rel="stylesheet" type="text/css" href="Mobile-iLabs/app/css/iphone.css">
+<link rel="stylesheet" type="text/css" href="Mobile-iLabs/app/css/desktop.css">
 <!--<script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/interface.js"></script>-->
-<link href="../css/style.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="../css/dockmenu_f.css">
+<link href="Mobile-iLabs/app/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="Mobile-iLabs/app/css/dockmenu_f.css">
 <script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
-<link rel="stylesheet" type="text/css" href="../css/image.css">
-<link rel="stylesheet"  href="../css/popup.css">
+<link rel="stylesheet" type="text/css" href="Mobile-iLabs/app/css/image.css">
+<link rel="stylesheet"  href="Mobile-iLabs/app/css/popup.css">
 <!--<script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>-->
-<script src="../js/popup.js"></script>
+<script src="Mobile-iLabs/app/js/popup.js"></script>
 <!--<link rel="stylesheet" href="../css/dock.css">-->
 <script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
 
 <div>
             <div class="header">
-                <div class="left_img" ><a  ng-click="AB()"><img src="../img/back_64x64.png" id="left_img"></a></div>
+                <div class="left_img" ><a  ng-click="AB()"><img src="Mobile-iLabs/app/img/back_64x64.png" id="left_img"></a></div>
                 <div class="heading_lng">Analyze</div>
-                <div class="right_img" ><a ng-click="AN()"><img src="../img/next_64x64.png" id="right_img"></a></div>
+                <div class="right_img" ><a ng-click="AN()"><img src="Mobile-iLabs/app/img/next_64x64.png" id="right_img"></a></div>
             </div></br>
             <div class="content">
-                <div id="main" style="float:right">
-                    <img src="../img/settings.png">
+                <div id="main2" ng-init="sidebar()">
+                    <ul id="navigation">
+                        <li class="simulation" ng-click="simulation('analyze')"><a href="" title="Simulation"></a></li>
+                        <li class="webcam" ng-click="webcam('analyze')"><a href="" title="Webcam"></a></li>
+                        <li class="myacc"><a href=""   ng-click="account('analyze')" title="My Account"></a></li>
+                        <li class="msgs"><a href="" ng-click="messages('analyze')" title="Messages"></a></li>
+                    </ul>
                 </div>
-                <div  style="float:left">
+                <div  style="float:right">
                     <span class="textwht sm">You can now graph your experimental results to see how radiation changes as a function of distance. Click on the Graph Data button below to graph and analyze your data.</span></br>
                 </div>
                 <div  style="float:left">
@@ -83,9 +88,9 @@
                 </div>
                 <div  style="float:left">
                     <div  style="padding: 40px 0px 0px 10px" ng-hide="maingraph" id="duplicater">
-                        <a ng-click="graph()" class="topopup" style="cursor:pointer"><img src="../img/edit.png"></a>
-                        <a ng-click="deleteGraph()" style="cursor:pointer"><img src="../img/delete.png"></a>
-                        <a ng-click="duplicate()" style="cursor:pointer"><img src="../img/add.png"></a>
+                        <a ng-click="graph()" class="topopup" style="cursor:pointer"><img src="Mobile-iLabs/app/img/edit.png"></a>
+                        <a ng-click="deleteGraph()" style="cursor:pointer"><img src="Mobile-iLabs/app/img/delete.png"></a>
+                        <a ng-click="duplicate()" style="cursor:pointer"><img src="Mobile-iLabs/app/img/add.png"></a>
                         <span style="color: White; ">Add another graph</span></br>
                         <div id="g1" ng-init="drawGraph('g1','Graph Title');drawGraph('g2','Graph Title')" style="height: 300px;width: 450px; "></div></br>
                     </div></br>
@@ -99,7 +104,7 @@
 </div>
 <div id="toPopup" ng-hide="graphdiv">
 <div class="closediv">
-        <a ng-click="closegraph()" style="pointer: cursor"><img src="../img/no.png" ></a>
+        <a ng-click="closegraph()" style="pointer: cursor"><img src="Mobile-iLabs/app/img/no.png" ></a>
     </div>
         <span class="ecs_tooltip">Press Esc to close <span class="arrow"></span></span>
         <div id="popup_content"> 

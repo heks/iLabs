@@ -9,77 +9,92 @@ app.run(function($rootScope, $location) {
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $routeProvider.when('/partial1', {
-        templateUrl: '/partials/partial1.html',
+        //templateUrl: '/partials/partial1.html',
+        templateUrl: 'Mobile-iLabs/app/partials/partial1.html',
         controller: appController
     });
 
     $routeProvider.when('/partial1/:Id/:Key', {
-        templateUrl: '/partials/partial1.html',
+        //templateUrl: '/partials/partial1.html',
+        templateUrl: 'Mobile-iLabs/app/partials/partial1.html',
         controller: appController
     });
 
     $routeProvider.when('/home/:Id/:Key', {
-        templateUrl: '/partials/home.html',
+        //templateUrl: '/partials/home.html',
+        templateUrl: 'Mobile-iLabs/app/partials/home.html',
         controller: appController
     });
 
     $routeProvider.when('/home', {
-        templateUrl: '/partials/home.html',
+        //templateUrl: '/partials/home.html',
+        templateUrl: 'Mobile-iLabs/app/partials/home.html',
         controller: appController
     });
 
     $routeProvider.when('/mygroups', {
-        templateUrl: '/partials/mygroups.html',
+        //templateUrl: '/partials/mygroups.html',
+        templateUrl: 'Mobile-iLabs/app/partials/mygroups.html',
         controller: appController
     });
 
     $routeProvider.when('/partial2', {
-      templateUrl: '/partials/partial2.html',
+      //templateUrl: '/partials/partial2.html',
+      templateUrl: 'Mobile-iLabs/app/partials/partial2.html',
       controller: appController
     });
 
     $routeProvider.when('/partial3', {
-      templateUrl: '/partials/partial3.html',
+      //templateUrl: '/partials/partial3.html',
+      templateUrl: 'Mobile-iLabs/app/partials/partial3.html',
       controller: appController
     });
 
     $routeProvider.when('/partial4', {
-      templateUrl: '/partials/partial4.html',
+     // templateUrl: '/partials/partial4.html',
+     templateUrl: 'Mobile-iLabs/app/partials/partial4.html',
       controller: appController
     });
 
     $routeProvider.when('/research', {
-      templateUrl: '/steps/research.html',
+     // templateUrl: '/steps/research.html',
+     templateUrl: 'Mobile-iLabs/app/steps/research.html',
       controller: appController
     });
 
     $routeProvider.when('/question', {
-      templateUrl: '/steps/question.html',
+      //templateUrl: '/steps/question.html',
+      templateUrl: 'Mobile-iLabs/app/steps/question.html',
       controller: appController
     });
 
     $routeProvider.when('/design', {
-      templateUrl: '/steps/design.html',
+      //templateUrl: '/steps/design.html',
+      templateUrl: 'Mobile-iLabs/app/steps/design.html',
       controller: appController
     });
 
     $routeProvider.when('/investigate', {
-      templateUrl: '/steps/investigate.html',
+      //templateUrl: '/steps/investigate.html',
+      templateUrl: 'Mobile-iLabs/app/steps/investigate.html',
       controller: appController
     });
 
     $routeProvider.when('/investigate/:Dis/:Times/:Trials', {
-      templateUrl: '/steps/investigate.html',
+      //templateUrl: '/steps/investigate.html',
+      templateUrl: 'Mobile-iLabs/app/steps/investigate.html',
       controller: appController
     });
 
     $routeProvider.when('/analyze', {
-      templateUrl: '/steps/analyze.html',
+      //templateUrl: '/steps/analyze.html',
+      templateUrl: 'Mobile-iLabs/app/steps/analyze.html',
       controller: appController
     });
 
     $routeProvider.when('/interpret', {
-      templateUrl: '/steps/interpret.html',
+      //templateUrl: '/steps/interpret.html',
+      templateUrl: 'Mobile-iLabs/app/steps/interpret.html',
       controller: appController
     });
 
@@ -89,27 +104,32 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     });
 
     $routeProvider.when('/simulation/:Id',{
-      templateUrl: '/steps/simulation.html',
+      //templateUrl: '/steps/simulation.html',
+      templateUrl: '/Mobile-iLabs/app/steps/simulation.html',
       controller: appController
     });
 
      $routeProvider.when('/account/:Id',{
-      templateUrl: '/steps/account.html',
+      //templateUrl: '/steps/account.html',
+      templateUrl: '/Mobile-iLabs/app/steps/account.html',
       controller: appController
     });
 
       $routeProvider.when('/messages/:Id',{
-      templateUrl: '/steps/messages.html',
+      //templateUrl: '/steps/messages.html',
+      templateUrl: '/Mobile-iLabs/app/steps/messages.html',
       controller: appController
     });
 
        $routeProvider.when('/webcam/:Id',{
-      templateUrl: '/steps/webcam.html',
+      //templateUrl: '/steps/webcam.html',
+      templateUrl: '/Mobile-iLabs/app/steps/webcam.html',
       controller: appController
     });
 
     $routeProvider.when('', {
-      templateUrl: '/index.html',
+      //templateUrl: '/index.html',
+      templateUrl: 'Mobile-iLabs/app/index.html',
       controller: appController
     });
 
