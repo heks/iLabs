@@ -3,6 +3,7 @@
 function appController($scope, $location){
 
       $scope.submit = function(){
+       // $scope.soapjson();
         var username = $scope.mobform.username;
         var password = $scope.mobform.password;
         //alert(username+" "+password);
@@ -10,7 +11,7 @@ function appController($scope, $location){
         var params = "username=rasmiroy&password=Pichuaug18";
         //var params = "username="+username+"&password="+password;
 
-      /* $.ajax({
+      $.ajax({
               url: 'http://165.124.240.127/login.php',
               crossDomain: 'false',
               type: 'GET',
@@ -32,9 +33,9 @@ function appController($scope, $location){
                 
               error: function() { alert('failed!');}
 
-          });*/
-$location.path("home");
-$scope.foobar = true;
+          });
+//$location.path("home");
+//$scope.foobar = true;
       };
      
       /*$scope.experiments = function(div_id){
@@ -93,7 +94,11 @@ $scope.foobar = true;
 
       $scope.start = function () {
     	 $scope.shouldBeOpen = false;
-    	 $location.path("research");
+    	 //$location.path("research");
+       var ID = $("#result_ID").text();
+       var Key = $("#result_Key").text();
+       //alert(ID+" ; "+Key);
+       $scope.startLab(ID, Key);
       };
 
 
@@ -398,7 +403,20 @@ $scope.foobar = true;
        }
 
 
-
+       $scope.soapjson = function(){
+        $.ajax({
+                type:'POST',
+                dataType:'jsonp',
+                jsonp:'jsonp',
+                url:'http://ilabs.sesp.northwestern.edu/iLabServiceBroker/ilabServiceBroker.asmx',
+                success:function(data) {
+                    alert(data);
+                },
+                error:function() {
+                    alert("Sorry, I can't get the feed");  
+                }
+            });
+       }
 
        $scope.startLab = function(Cid, Ckey){
 
@@ -418,12 +436,9 @@ $scope.foobar = true;
                             '</sbAuthHeader>' +
                             '</soap12:Header>' +
                             '<soap12:Body>' +
-                            '<Submit xmlns="http://ilab.mit.edu">' +
+                            '<GetLabStatus xmlns="http://ilab.mit.edu">' +
                             '<labServerID>9164ebd6edfd46f2b09dd7175af45ad8</labServerID>' +
-                            '<experimentSpecification>&lt;experimentSpecification&gt; &lt;setupId&gt;RadioactivityVsDistance&lt;/setupId&gt; &lt;setupName&gt;Radioactivity versus Distance&lt;/setupName&gt; &lt;sourceName&gt;Strontium-90&lt;/sourceName&gt; &lt;absorberName&gt;None&lt;/absorberName&gt; &lt;distance&gt;20, 25, 30&lt;/distance&gt; &lt;duration&gt;2&lt;/duration&gt; &lt;repeat&gt;2&lt;/repeat&gt; &lt;/experimentSpecification&gt;</experimentSpecification>' +
-                            '<priorityHint>0</priorityHint>' +
-                            '<emailNotification>false</emailNotification>' +
-                            '</Submit>' +
+                            '</GetLabStatus>' +
                             '</soap12:Body>' +
                             '</soap12:Envelope>'
 
@@ -459,6 +474,7 @@ $scope.foobar = true;
 
           // Send the POST request
           xmlhttp.setRequestHeader('Content-Type', 'text/xml');
+          //xmlhttp.setRequestHeader('Access-Control-Allow-Origin: *');
           xmlhttp.send(data);
   
         };
