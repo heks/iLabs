@@ -28,7 +28,7 @@ function appController($scope, $location){
                 $scope.foobar = true;
                  },
                 
-              error: function() { alert('failed!');}
+              error: function() {}
 
           });
 //$location.path("home");
