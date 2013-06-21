@@ -141,32 +141,38 @@
                         <li class="msgs"><a href="" ng-click="messages('investigate')" title="Messages"></a></li>
                     </ul>
                 </div>
-                <div id="timer" style="color:Green;display:block;font-size:25px"></div>
+                <div id="timer" style="color:Green;display:block;font-size:25px">Calculating....</div>
+
+                <div id="countdown" style="color:Orange;display:block;font-size:25px"></div>
                 <div  style="float:right">
                     <span class="textwht sm">What do you predict will happen in this experiment?  What do you think you will see in your results?</span></br></br>
                     <div>
-                    <textarea  id="invest1" cols="120" rows="8"placeholder="Please enter your answer here..."></textarea>
+                    <textarea  id="invest1" cols="120" ng-model="Investxt1" rows="8"placeholder="Please enter your answer here..."></textarea>
                     <a ng-click="clear('invest1')"><img src="Mobile-iLabs/app/img/no.png"></a>
                 </div></br></br>
                 <div  style="align:center">
                     <span class="textwht sm">What are your initial observations about your result?</span></br></br>
                     <div>
-                        <textarea  id="invest2" cols="120" rows="8" placeholder="Please enter your answer here..."></textarea>
+                        <textarea  id="invest2" ng-model="Investxt2" cols="120" rows="8" placeholder="Please enter your answer here..."></textarea>
                         <a ng-click="clear('invest2')"><img src="Mobile-iLabs/app/img/no.png"></a></br>
                     </div>
 </br>
-<div id="result" style="align:center" ng-init="load_values()" class="result">
-                    Distances(mm):  {{res_distances}}</br>
+
+<div id="result" style="align:center" class="result">
+                   <!-- Distances(mm):  {{res_distances}}</br>
                     Measurement Time(s):   {{res_m_times}}</br>
-                    Number of Trials:   {{res_nof_trials}}</br>
-                    <button ng-click="retrieveResult()">Retrieve Results</button>
+                    Number of Trials:   {{res_nof_trials}}</br>-->
+                    <button ng-click="retrieveResult()" class="topopup">Retrieve Results</button>
+
+
                 </div>
                 </div>
             </br></br></br>
 
-<div id="distance_value"></div>
+
             </div>
 </div>
+
 <!--<div class="block">
 	
 		<button class="b1" ng-click="InvesB()">Back</button>

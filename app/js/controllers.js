@@ -126,7 +126,11 @@ function appController($scope, $location){
       }
 
       $scope.QN = function(){
-        $location.path("design");
+        if($scope.Qtxt == undefined){
+          alert("Please fill out the empty fields");
+      }else{
+          $location.path("design");
+        }
       }
 
       $scope.DB = function(){
@@ -141,26 +145,333 @@ function appController($scope, $location){
         var times = $scope.m_times;
         var trials = $scope.nof_trials;
         $scope.submitDesign(cid, ckey, distances, times, trials);
-        $location.path("investigate");
+        if($scope.Dtxt == undefined){
+          alert("Please fill out the empty fields");
+        }else{
+          $location.path("investigate");
+        }
+        //$location.path("investigate");
       
         //alert($scope.distances+";"+$scope.m_times+";"+$scope.nof_trials);
       }
-      $scope.load_values = function(){
-       var value =  $("#dvalues").text();
-       var split = value.split("/");
-       $scope.resdistances = split[4];
+      $scope.load_values = function(timer){
+            
+        for(var i=timer;i=0;i--){
+          //$("#countdown").html(timer);
+        }
+      };
+
+      $scope.countDown = function(timer){
+
+        var count = timer;
+        countdown = setInterval(function(){
+              //document.getElementById("countdown").style.display = "block";
+              $('#countdown').html("Remaining time : "+count+ " seconds");
+              if(count == 0){
+                    //window.location = "http://google.com";
+                    $('#timer').hide();
+                    $('#countdown').hide();
+                    //$scope.storeResultlocal();
+                    //document.getElementById("timer").style.display = "none";
+                    //document.getElementById("countdown").style.display = "none";
+                    alert("Result is ready to view");
+              }
+              if(count == -2){
+                $scope.storeResultlocal();
+              }
+              count--;
+        },1000);
+
       }
-      //$scope.resdistances = "$scope.distances";
+
+      $scope.storeResultlocal = function(){
+              var cid = $("#coupon_Id").text();
+              var ckey = $("#coupon_Key").text();
+              var expid = $('#exp_Id').text();
+              //alert(expid);
+              var xmlhttp = new XMLHttpRequest();
+              xmlhttp.open("POST", "http://ilabs.sesp.northwestern.edu/iLabServiceBroker/ilabServiceBroker.asmx", true);
+
+              var data = '<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">'+
+                         '<soap12:Header>' +
+                         '<sbAuthHeader xmlns="http://ilab.mit.edu">' +
+                         '<couponID>'+cid+'</couponID>' +
+                         '<couponPassKey>'+ckey+'</couponPassKey>' +
+                         '</sbAuthHeader>' +
+                         '</soap12:Header>' +
+                         '<soap12:Body>' +
+                         '<RetrieveResult xmlns="http://ilab.mit.edu">' +
+                         '<experimentID>'+expid+'</experimentID>' +
+                         '</RetrieveResult>' +
+                         '</soap12:Body>' +
+                         '</soap12:Envelope>'   
+
+                  xmlhttp.onreadystatechange = function(){
+                    if(xmlhttp.readyState == 4){
+                        if(xmlhttp.status == 200){
+                            xmlDoc = xmlhttp.responseXML;
+                            //alert(xmlhttp.responseText);
+                            result = $(xmlDoc).find("experimentResults").text();
+                            var distance = $(result).find("dataVector")[0].getAttribute('distance');
+                            vector1 = $(result).find("dataVector").length;
+                            vecdata = $(result).find("dataVector").text();
+                            var d1 = $(result).find("dataVector")[2];
+                            var d2 = d1.childNodes[0];
+                            var d3 = d2.nodeValue;
+                            //alert(vector1);
+                            //txt = $(result).find("dataVector")[0].getAttributeNode('distance');
+                            //var arr = array();
+                            var dist_arr = new Array();
+                            for(var k=0; k<vector1; k++){
+                              var distance = $(result).find("dataVector")[k].getAttribute('distance');
+                              dist_arr[k] = distance;
+                            }
+                      //store distances in local storage
+                      localStorage.setItem( 'Distances', dist_arr);
+
+                      var value = new Array(); var tr1 = new Array(); var tr2 = new Array(); var data = new Array();var tr3 = new Array();var tr4 = new Array();
+                      var tr5 = new Array();var tr6 = new Array();var tr7 = new Array();var tr8 = new Array();var tr9 = new Array();var tr10 = new Array();
+                        //var chart = $('#graph').highcharts();
+                          for(var i=0; i < vector1; i++){
+                                  var distance = $(result).find("dataVector")[i].getAttribute('distance');
+                                  var d1 = $(result).find("dataVector")[i];
+                                  var d2 = d1.childNodes[0];
+                                  var d3 = d2.nodeValue;
+                                  value[i] = d3;
+                                  var split = value[i].split(",");
+                                  var length = split.length;
+                                  
+                                  switch(length){
+                                    case 1:
+                                            tr1[i] = parseInt(split[0]);
+                                            break;
+                                    case 2:
+                                            tr1[i] = parseInt(split[0]);tr2[i] = parseInt(split[1]);
+                                            break;
+                                    case 3:
+                                            tr1[i] = parseInt(split[0]);tr2[i] = parseInt(split[1]);tr3[i] = parseInt(split[2]);
+                                            break;
+                                    case 4:
+                                            tr1[i] = parseInt(split[0]);tr2[i] = parseInt(split[1]);tr3[i] = parseInt(split[2]);
+                                            tr4[i] = parseInt(split[3]);
+                                            break;
+                                    case 5:
+                                            tr1[i] = parseInt(split[0]);tr2[i] = parseInt(split[1]);tr3[i] = parseInt(split[2]);
+                                            tr4[i] = parseInt(split[3]);tr5[i] = parseInt(split[4]);
+                                            break;
+                                    case 6:
+                                            tr1[i] = parseInt(split[0]);tr2[i] = parseInt(split[1]);tr3[i] = parseInt(split[2]);
+                                            tr4[i] = parseInt(split[3]);tr5[i] = parseInt(split[4]);tr6[i] = parseInt(split[5]);
+                                            break;
+                                    case 7:
+                                            tr1[i] = parseInt(split[0]);tr2[i] = parseInt(split[1]);tr3[i] = parseInt(split[2]);
+                                            tr4[i] = parseInt(split[3]);tr5[i] = parseInt(split[4]);tr6[i] = parseInt(split[5]);
+                                            tr7[i] = parseInt(split[6]);
+                                            break;
+                                    case 8:
+                                            tr1[i] = parseInt(split[0]);tr2[i] = parseInt(split[1]);tr3[i] = parseInt(split[2]);
+                                            tr4[i] = parseInt(split[3]);tr5[i] = parseInt(split[4]);tr6[i] = parseInt(split[5]);
+                                            tr7[i] = parseInt(split[6]);tr8[i] = parseInt(split[7]);
+                                            break;
+                                    case 9:
+                                            tr1[i] = parseInt(split[0]);tr2[i] = parseInt(split[1]);tr3[i] = parseInt(split[2]);
+                                            tr4[i] = parseInt(split[3]);tr5[i] = parseInt(split[4]);tr6[i] = parseInt(split[5]);
+                                            tr7[i] = parseInt(split[6]);tr8[i] = parseInt(split[7]);tr9[i] = parseInt(split[8]);
+                                            break;
+                                    case 10:
+                                            tr1[i] = parseInt(split[0]);tr2[i] = parseInt(split[1]);tr3[i] = parseInt(split[2]);
+                                            tr4[i] = parseInt(split[3]);tr5[i] = parseInt(split[4]);tr6[i] = parseInt(split[5]);
+                                            tr7[i] = parseInt(split[6]);tr8[i] = parseInt(split[7]);tr9[i] = parseInt(split[8]);
+                                            tr10[i] = parseInt(split[9]);
+                                            break;
+
+                                    }
+                                  
+                                }
+localStorage.setItem('Length',length);
+switch(length){
+  case 1: 
+  var combine = new Array(tr1);
+  localStorage.setItem('Combine1',combine);
+  break;
+  case 2:
+  var combine = new Array(tr1,tr2);
+  localStorage.setItem('Combine2',combine);
+  /*for(var j=0; j<combine.length;j++){
+    chart.addSeries({
+                    name: "Trial"+(j+1),
+                    data: combine[j]
+                    
+                  });
+  }*/
+
+  break;
+  case 3:
+  var combine = new Array(tr1,tr2,tr3);
+  for(var j=0; j<combine.length;j++){
+    chart.addSeries({
+                    name: "Trial"+(j+1),
+                    data: combine[j]
+                    
+                  });
+  }
+  break;
+  case 4:
+  var combine = new Array(tr1,tr2,tr3,tr4);
+  for(var j=0; j<combine.length;j++){
+    chart.addSeries({
+                    name: "Trial"+(j+1),
+                    data: combine[j]
+                    
+                  });
+  }
+  break;
+  case 5:
+  var combine = new Array(tr1,tr2,tr3,tr4,tr5);
+  for(var j=0; j<combine.length;j++){
+    chart.addSeries({
+                    name: "Trial"+(j+1),
+                    data: combine[j]
+                    
+                  });
+  }
+  break;
+  case 6:
+  var combine = new Array(tr1,tr2,tr3,tr4,tr5,tr6);
+  for(var j=0; j<combine.length;j++){
+    chart.addSeries({
+                    name: "Trial"+(j+1),
+                    data: combine[j]
+                    
+                  });
+  }
+  break;
+  case 7:
+  var combine = new Array(tr1,tr2,tr3,tr4,tr5,tr6,tr7);
+  for(var j=0; j<combine.length;j++){
+    chart.addSeries({
+                    name: "Trial"+(j+1),
+                    data: combine[j]
+                    
+                  });
+  }
+  break;
+  case 8:
+  var combine = new Array(tr1,tr2,tr3,tr4,tr5,tr6,tr7,tr8);
+  for(var j=0; j<combine.length;j++){
+    chart.addSeries({
+                    name: "Trial"+(j+1),
+                    data: combine[j]
+                    
+                  });
+  }
+  break;
+  case 9:
+  var combine = new Array(tr1,tr2,tr3,tr4,tr5,tr6,tr7,tr8,tr9);
+  for(var j=0; j<combine.length;j++){
+    chart.addSeries({
+                    name: "Trial"+(j+1),
+                    data: combine[j]
+                    
+                  });
+  }
+  break;
+  case 10:
+  var combine = new Array(tr1,tr2,tr3,tr4,tr5,tr6,tr7,tr8,tr9,tr10);
+  for(var j=0; j<combine.length;j++){
+    chart.addSeries({
+                    name: "Trial"+(j+1),
+                    data: combine[j]
+                    
+                  });
+  }
+  break;
+}
+
+                  }
+              }
+            }
+
+            xmlhttp.setRequestHeader('Content-Type', 'text/xml');
+            xmlhttp.send(data);
+       };
+
+      $scope.localGraph = function(){
+                  var distances = localStorage.getItem('Distances');
+                  var length = localStorage.getItem('Length');
+alert(distance +" ; "+length);
+                 /* $("#graph").highcharts({
+                                 chart: {
+                                    type: 'line',
+                                    backgroundColor: '#FCFFC5'
+                                  },
+                                  title: {
+                                    text: "radioactivity"
+                                  },
+                                  
+                                  xAxis: {
+                                    //categories: ['45','65','75'],
+                                    categories: distances,
+                                    title: {
+                                      text: 'Distances( mm)'
+                                    }
+                                  },
+                                  yAxis: {
+                                    title: {
+                                      text: 'Radioactivity Intensity( Particle Counts)'
+                                    }
+                                  },
+                                  series: []
+                                   
+
+                                });
+
+switch(length){
+          case 1: 
+          var data = localStorage.getItem('Combine1',combine);
+          for(var j=0; j<data.length;j++){
+              chart.addSeries({
+                                name: "Trial"+(j+1),
+                                data: data[j]
+                                
+                              });
+        }
+        break;
+        case 2:
+        var data = localStorage.getItem('Combine2',combine);
+        for(var j=0; j<data.length;j++){
+            chart.addSeries({
+                              name: "Trial"+(j+1),
+                              data: data[j]
+                              
+                            });
+        }
+
+        break;
+}*/
+
+       };
+
       $scope.InvesB = function(){
         $location.path("design");
       }
 
       $scope.InvesN = function(){
-        $location.path("analyze");
+        if($scope.Investxt1 == undefined){
+          alert("Please fill out the empty fields");
+        }else if($scope.Investxt2 == undefined){
+          alert("Please fill out the empty fields");
+        }else{
+          $location.path("analyze");
+        }
+        //$location.path("analyze");
       }
 
       $scope.AB = function(){
+        $('#timer').hide();
+        $('#countdown').hide();
         $location.path("investigate");
+
       };
 
       $scope.AN = function(){
@@ -174,8 +485,16 @@ function appController($scope, $location){
       $scope.Exitlab = function(){
         //$location.path("http://ilabcentral.org/radioactivity/");
         //$location.replace();
-        var url = "http://ilabcentral.org/radioactivity/";    
-        $(location).attr('href',url);
+        if($scope.Intertxt1 == undefined){
+          alert("Please fill out the empty fields");
+        }else if($scope.Intertxt2 == undefined){
+          alert("Please fill out the empty fields");
+        }else{
+          var url = "http://ilabcentral.org/radioactivity/";    
+          $(location).attr('href',url);
+        }
+        //var url = "http://ilabcentral.org/radioactivity/";    
+        //$(location).attr('href',url);
       }
 
 
@@ -200,19 +519,19 @@ function appController($scope, $location){
 
     // Build SOAP request
     var data = '<?xml version="1.0" encoding="utf-8"?>' +
-                  '<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">'+
-            '<soap12:Header>' +
-            '<sbAuthHeader xmlns="http://ilab.mit.edu">' +
-              '<couponID>'+cid+'</couponID>' +
-              '<couponPassKey>'+ckey+'</couponPassKey>' +
-            '</sbAuthHeader>' +
-          '</soap12:Header>' +
-          '<soap12:Body>' +
-            '<RetrieveResult xmlns="http://ilab.mit.edu">' +
-              '<experimentID>'+expid+'</experimentID>' +
-            '</RetrieveResult>' +
-          '</soap12:Body>' +
-        '</soap12:Envelope>'
+               '<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">'+
+               '<soap12:Header>' +
+               '<sbAuthHeader xmlns="http://ilab.mit.edu">' +
+               '<couponID>'+cid+'</couponID>' +
+               '<couponPassKey>'+ckey+'</couponPassKey>' +
+               '</sbAuthHeader>' +
+               '</soap12:Header>' +
+               '<soap12:Body>' +
+               '<RetrieveResult xmlns="http://ilab.mit.edu">' +
+               '<experimentID>'+expid+'</experimentID>' +
+               '</RetrieveResult>' +
+               '</soap12:Body>' +
+               '</soap12:Envelope>'
 //alert(data);
     xmlhttp.onreadystatechange = function(){
       if(xmlhttp.readyState == 4){
@@ -244,7 +563,7 @@ function appController($scope, $location){
                           backgroundColor: '#FCFFC5'
                         },
                         title: {
-                          text: "radioactivity"
+                          text: "Radioactivity"
                         },
                         
                         xAxis: {
@@ -646,7 +965,9 @@ switch(length){
        $scope.res_nof_trials = $("#repeat").text();
 
        $scope.submitDesign = function(cid, ckey, distances, duration, repeat){
-
+        //document.getElementById("countdown").style.display = "none";
+        //display_timer = "Calculating......";
+        //$("#timer").html(display_timer);
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("POST", "http://ilabs.sesp.northwestern.edu/iLabServiceBroker/ilabServiceBroker.asmx", true);
 
@@ -683,9 +1004,12 @@ switch(length){
                               if (xmlhttp.status == 200){
                                   var xmlDoc = xmlhttp.responseXML;
                                   //alert(xmlhttp.responseText);
+                                  
                                   timer = $(xmlDoc).find("estRuntime").text();
                                   display_timer = "Your result will be available in "+timer+"seconds!!!";
                                   $("#timer").html(display_timer);
+                                  $scope.countDown(timer);
+                                  //$('#timer').text(display_timer);
                                   experimentID = $(xmlDoc).find("experimentID").text();
                                   $('#exp_Id').html(experimentID);
                                   $('#distances').html(distances);
@@ -704,7 +1028,7 @@ switch(length){
                    xmlhttp.send(data);
        }
 
-       $scope.retrieveResult = function(){
+       $scope.retrieveResult = function(div_id){
         var cid = $("#coupon_Id").text();
         var ckey = $("#coupon_Key").text();
         var expid = $('#exp_Id').text();
@@ -731,6 +1055,8 @@ switch(length){
                   if(xmlhttp.status == 200){
                       xmlDoc = xmlhttp.responseXML;
                       alert(xmlhttp.responseText);
+                      //$scope.popup(div_id);
+                      
                   }
               }
             }
