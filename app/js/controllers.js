@@ -743,7 +743,9 @@ switch(length){
                                   var xmlDoc = xmlhttp.responseXML;
                                   //alert(xmlhttp.responseText);
                                   
-                                  timer = $(xmlDoc).find("estRuntime").text();
+                                  runtime = $(xmlDoc).find("estRuntime").text();
+                                  timer = parseInt(runtime) + parseInt(5);
+                                  //timer = timer + 5;
                                   if(timer > 0){
                                   display_timer = "Your result will be available in "+timer+"seconds!!!";
                                   $("#timer").html(display_timer);
