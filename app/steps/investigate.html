@@ -141,7 +141,7 @@
                         <li class="msgs"><a href="" ng-click="messages('investigate')" title="Messages"></a></li>
                     </ul>
                 </div>
-                <div id="timer" style="color:Green;display:block;font-size:25px">Calculating....</div>
+                <div id="timer" style="color:Green;display:block;font-size:25px"></div>
 
                 <div id="countdown" style="color:Orange;display:block;font-size:25px"></div>
                 <div  style="float:right">
@@ -158,8 +158,8 @@
                     </div>
 </br>
 
-<div id="result" style="align:center" class="result">
-                   <!-- Distances(mm):  {{res_distances}}</br>
+<div id="result" style="align:center;display:block" class="result">
+                    <!--Distances(mm):  {{res_distances}}</br>
                     Measurement Time(s):   {{res_m_times}}</br>
                     Number of Trials:   {{res_nof_trials}}</br>-->
                     <button ng-click="retrieveResult()" class="topopup">Retrieve Results</button>
