@@ -2,18 +2,16 @@
 /* Controllers */
 function appController($scope, $location){
 
-      $scope.submit = function(){
-        //$scope.soapjson();
-       var username = $scope.mobform.username;
-       var password = $scope.mobform.password;
-        //alert(username+" "+password);
-        $scope.login(username, password);
-        
-        
-        
-      }
-       
-       
+  $scope.submit = function(){
+    // show loading graphic
+    $('#waiting').show();
+    //$scope.soapjson();
+    var username = $scope.mobform.username;
+    var password = $scope.mobform.password;
+    //alert(username+" "+password);
+    $scope.login(username, password);
+  }
+
        $scope.login = function(username, password){
           //var params = "username=""&password=Pichuaug18";
           var params = "username="+username+"&password="+password;
@@ -43,6 +41,8 @@ function appController($scope, $location){
                 error: function() { 
                   alert('Error');
                 }
+          }).done(function () {
+            $('#waiting').hide();
           });
         }
 
