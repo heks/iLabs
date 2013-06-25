@@ -11,12 +11,11 @@ function appController($scope, $location){
     //alert(username+" "+password);
     $scope.login(username, password);
   }
-
-       $scope.login = function(username, password){
+  $scope.login = function(username, password){
           //var params = "username=""&password=Pichuaug18";
           var params = "username="+username+"&password="+password;
           $.ajax({
-                url: 'http://165.124.241.159/login.php',
+                url: 'http://ilabs.sesp.northwestern.edu/sbapi/login.php',
                 crossDomain: 'false',
                 type: 'GET',
                 data: params,
@@ -44,22 +43,11 @@ function appController($scope, $location){
           }).done(function () {
             $('#waiting').hide();
           });
-        }
+  }
 
-     
-      /*$scope.experiments = function(div_id){
-        
-        var url = $('#'+div_id).text();
-        var split = url.split("/");
-        var id = split[4];
-        var key = split[5];
-        //alert(split[4]+";"+split[5]+";");
-        $location.path("partial1/"+id+"/"+key);
-        //alert("DDD");
-      }*/
-      $scope.experiments = function(){
+  $scope.experiments = function(){
        $location.path("mygroups");
-      }
+  }
 
       $scope.identity = function(){
        alert($("#result_ID").text());
@@ -748,7 +736,7 @@ switch(length){
                      '</i0:Submit>'+  
                      '</SOAP-ENV:Body>'+  
                      '</SOAP-ENV:Envelope>'
-                   //alert(data);
+//alert(data);
                    xmlhttp.onreadystatechange = function(){
                         if(xmlhttp.readyState ==4){
                               if (xmlhttp.status == 200){
@@ -756,7 +744,7 @@ switch(length){
                                   //alert(xmlhttp.responseText);
                                   
                                   runtime = $(xmlDoc).find("estRuntime").text();
-                                  timer = parseInt(runtime) + parseInt(5);
+                                  timer = parseInt(runtime) + parseInt(10);
                                   //timer = timer + 5;
                                   if(timer > 0){
                                   display_timer = "Your result will be available in "+timer+"seconds!!!";
@@ -791,7 +779,6 @@ switch(length){
         var expid = $('#exp_Id').text();
         //alert(expid);
         var xmlhttp = new XMLHttpRequest();
-           alert(expid);
         xmlhttp.open("POST", "http://ilabs.sesp.northwestern.edu/iLabServiceBroker/ilabServiceBroker.asmx", true);
 
         var data = '<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">'+
