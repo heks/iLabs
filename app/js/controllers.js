@@ -7,33 +7,48 @@ function appController($scope, $location){
        var username = $scope.mobform.username;
        var password = $scope.mobform.password;
         //alert(username+" "+password);
+        $scope.login(username, password);
+        
+        
+        
+      }
        
-       var params = "username=rasmiroy&password=Pichuaug18";
-        //var params = "username="+username+"&password="+password;
+       
+       $scope.login = function(username, password){
+          //var params = "username=""&password=Pichuaug18";
+          var params = "username="+username+"&password="+password;
 
-       $.ajax({
-              url: 'http://165.124.240.27/login.php',
-              crossDomain: 'false',
-              type: 'GET',
-              data: params,
-              dataType: 'jsonp',
-              success: function(json) {
-                var couponID = json['couponId'];
-                var passKey = json['passKey']; 
-                
-                $('#coupon_Id').html(couponID);
-                $('#coupon_Key').html(passKey);
-                
-                $location.path("home");
-                $scope.foobar = true;
-                 },
-                
-              error: function() { alert('failed!');}
+          $.ajax({
+                url: 'http://165.124.241.159/login.php',
+                crossDomain: 'false',
+                type: 'GET',
+                data: params,
+                dataType: 'jsonp',
+                async: false,
+                success: function(json) {
+                  var couponID = json['couponId'];
+                  var passKey = json['passKey']; 
+                  var error = json['error'];
+                  if(error == undefined){
+                    $('#coupon_Id').html(couponID);
+                    $('#coupon_Key').html(passKey);
+                    
+                    $location.path("home");
+                    $scope.foobar = true;
+                  }
+                  else{
+                    alert("Credentials invalid");
+                  }
+                  
+                },
+                  
+                error: function() { 
+                  alert('Error');
+                }
+              });
+          
 
-          });
-//$location.path("home");
-//$scope.foobar = true;
-      };
+        }
      
       /*$scope.experiments = function(div_id){
         
@@ -433,7 +448,7 @@ function appController($scope, $location){
                      '</i0:Submit>'+  
                      '</SOAP-ENV:Body>'+  
                      '</SOAP-ENV:Envelope>'
-//alert(data);
+                   //alert(data);
                    xmlhttp.onreadystatechange = function(){
                         if(xmlhttp.readyState ==4){
                               if (xmlhttp.status == 200){
@@ -466,6 +481,7 @@ function appController($scope, $location){
         var expid = $('#exp_Id').text();
         //alert(expid);
         var xmlhttp = new XMLHttpRequest();
+           alert(expid);
         xmlhttp.open("POST", "http://ilabs.sesp.northwestern.edu/iLabServiceBroker/ilabServiceBroker.asmx", true);
 
         var data = '<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">'+
