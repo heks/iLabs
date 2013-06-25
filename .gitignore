@@ -1,4 +1,4 @@
 logs/*
-!.gitkeep
+.gitkeep
 *.swp
 Thumbs.db
