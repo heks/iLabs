@@ -51,8 +51,10 @@
 }
 </style>-->
 
-<link rel="stylesheet" type="text/css" href="/app/css/iphone.css">
-<link rel="stylesheet" type="text/css" href="/app/css/desktop.css">
+<link rel="stylesheet" type="text/css" href="Mobile-iLabs/app/css/iphone.css">
+<link rel="stylesheet" type="text/css" href="Mobile-iLabs/app/css/desktop.css">
+<link href="Mobile-iLabs/app/css/tablet.css" rel="stylesheet">
+
 <!--<script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/interface.js"></script>-->
 <link href="/app/css/style.css" rel="stylesheet" type="text/css" />
@@ -87,8 +89,8 @@
 				<div   style="float:left">
 					<span class="textwht sm">Write your research question below.</span></br></br>
 					<div >
-		    			<textarea  id="question" cols="120" rows="5" placeholder="Please enter your research question here..."></textarea>
-		    			<a ng-click="clear('question')"><img src="../img/no.png"></a>
+		    			<textarea  ng-model="Qtxt" id="question" cols="120" rows="5" placeholder="Please enter your research question here..."></textarea>
+		    			<a ng-click="clear('question')"><img src="Mobile-iLabs/app/img/no.png"></a>
 	    			</div>
 				</div>
 </div>
