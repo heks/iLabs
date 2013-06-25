@@ -32,12 +32,12 @@ function appController($scope, $location){
                       return;
                     }
                     console.log(data);
-                    $('#coupon_Id').html(data['couponID']);
+                    $('#coupon_Id').html(data['couponId']);
                     $('#coupon_Key').html(data['passKey']);
                     $location.path("home").replace();
                     $scope.foobar = true;
                   });
-                  ;w
+                  
 
                 },
                 error: function() { 
