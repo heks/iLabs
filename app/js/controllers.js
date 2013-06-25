@@ -17,7 +17,6 @@ function appController($scope, $location){
        $scope.login = function(username, password){
           //var params = "username=""&password=Pichuaug18";
           var params = "username="+username+"&password="+password;
-
           $.ajax({
                 url: 'http://165.124.241.159/login.php',
                 crossDomain: 'false',
@@ -25,29 +24,26 @@ function appController($scope, $location){
                 data: params,
                 dataType: 'jsonp',
                 async: false,
-                success: function(json) {
-                  var couponID = json['couponId'];
-                  var passKey = json['passKey']; 
-                  var error = json['error'];
-                  if(error == undefined){
-                    $('#coupon_Id').html(couponID);
-                    $('#coupon_Key').html(passKey);
-                    
-                    $location.path("home");
+                success: function(data) {
+                  $scope.$apply(function(){
+                    $scope.result=data.message;
+                    if (data['error']) {
+                      alert("Credentials Invalid");
+                      return;
+                    }
+                    console.log(data);
+                    $('#coupon_Id').html(data['couponID']);
+                    $('#coupon_Key').html(data['passKey']);
+                    $location.path("home").replace();
                     $scope.foobar = true;
-                  }
-                  else{
-                    alert("Credentials invalid");
-                  }
-                  
+                  });
+                  ;w
+
                 },
-                  
                 error: function() { 
                   alert('Error');
                 }
-              });
-          
-
+          });
         }
 
      
