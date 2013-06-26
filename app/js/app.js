@@ -51,7 +51,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     $routeProvider.when('/partial2', {
 
       //templateUrl: '/partials/partial2.html',
-      templateUrl: 'Mobile-iLab/Mobile-iLab/app/partials/partial2.html',
+      templateUrl: '/Mobile-iLab/app/partials/partial2.html',
 
       controller: appController
     });
