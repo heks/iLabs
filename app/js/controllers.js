@@ -15,7 +15,7 @@ function appController($scope, $location){
           //var params = "username=""&password=Pichuaug18";
           var params = "username="+username+"&password="+password;
           $.ajax({
-                url: 'http://165.124.241.159/login.php',
+                url: 'http://ilabs.sesp.northwestern.edu/sbapi/login.php',
                 crossDomain: 'false',
                 type: 'GET',
                 data: params,
