@@ -1,7 +1,9 @@
 
 /* Controllers */
 function appController($scope, $location){
-
+/*$scope.$on('$viewContentLoaded', function() {
+    console.log('Child1 has loaded');
+  });*/
   $scope.submit = function(){
     // show loading graphic
     $('#waiting').show();
@@ -45,6 +47,7 @@ function appController($scope, $location){
             $('#waiting').hide();
           });
   }
+
 
   $scope.experiments = function(){
        $location.path("mygroups");
