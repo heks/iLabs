@@ -1,7 +1,5 @@
-
-/* Controllers */
 function appController($scope, $location){
-
+  
   $scope.submit = function(){
     // show loading graphic
     $('#waiting').show();
@@ -11,6 +9,7 @@ function appController($scope, $location){
     //alert(username+" "+password);
     $scope.login(username, password);
   }
+  
   $scope.login = function(username, password){
           //var params = "username=""&password=Pichuaug18";
           var params = "username="+username+"&password="+password;
@@ -34,6 +33,7 @@ function appController($scope, $location){
                     $('#coupon_Key').html(data['passKey']);
                     $location.path("home").replace();
                     $scope.foobar = true;
+
                   });
                   
 

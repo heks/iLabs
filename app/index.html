@@ -3,6 +3,7 @@
 <head>
   
   <title>iLab Mobile App</title>
+
    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
   <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.js"></script>
   <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
@@ -27,6 +28,7 @@
   <link href="./css/tablet.css" rel="stylesheet">
 
  <script>
+ 
 
 if(document.URL == 'http://ilabs.sesp.northwestern.edu/Mobile-iLab/app/'){
 var imported = document.createElement('script');
@@ -37,12 +39,11 @@ var imported = document.createElement('script');
 imported.src = './js/app_local.js'; 
 document.head.appendChild(imported);
  }
+
+
+
  </script>
-
- 
-
- 
- 
+  
 </head>
 <body ng-controller="appController" id="home">
   <div ng-hide="foobar">

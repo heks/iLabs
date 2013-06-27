@@ -13,7 +13,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         //templateUrl: '/partials/partial1.html',
         templateUrl: 'Mobile-iLab/app/partials/partial1.html',
 
-        controller: appController
+        controller: labCtrl
     });
 
     $routeProvider.when('/partial1/:Id/:Key', {
@@ -21,7 +21,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         //templateUrl: '/partials/partial1.html',
         templateUrl: 'Mobile-iLab/app/partials/partial1.html',
 
-        controller: appController
+        controller: labCtrl
     });
 
     $routeProvider.when('/home/:Id/:Key', {
@@ -29,7 +29,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         //templateUrl: '/partials/home.html',
         templateUrl: 'Mobile-iLab/app/partials/home.html',
 
-        controller: appController
+        controller: loginCtrl
     });
 
     $routeProvider.when('/home', {
@@ -37,7 +37,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         //templateUrl: '/partials/home.html',
         templateUrl: 'Mobile-iLab/app/partials/home.html',
 
-        controller: appController
+        controller: loginCtrl
     });
 
     $routeProvider.when('/mygroups', {
@@ -45,7 +45,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         //templateUrl: '/partials/mygroups.html',
         templateUrl: 'Mobile-iLab/app/partials/mygroups.html',
 
-        controller: appController
+        controller: groupCtrl
     });
 
     $routeProvider.when('/partial2', {
@@ -77,7 +77,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
      // templateUrl: '/steps/research.html',
      templateUrl: 'Mobile-iLab/app/steps/research.html',
 
-      controller: appController
+      controller: researchCtrl
     });
 
     $routeProvider.when('/question', {
@@ -85,7 +85,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       //templateUrl: '/steps/question.html',
       templateUrl: 'Mobile-iLab/app/steps/question.html',
 
-      controller: appController
+      controller: questionCtrl
     });
 
     $routeProvider.when('/design', {
@@ -93,7 +93,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       //templateUrl: '/steps/design.html',
       templateUrl: 'Mobile-iLab/app/steps/design.html',
 
-      controller: appController
+      controller: designCtrl
     });
 
     $routeProvider.when('/investigate', {
@@ -101,7 +101,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       //templateUrl: '/steps/investigate.html',
       templateUrl: 'Mobile-iLab/app/steps/investigate.html',
 
-      controller: appController
+      controller: investigateCtrl;
     });
 
     $routeProvider.when('/investigate/:Dis/:Times/:Trials', {
@@ -109,7 +109,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       //templateUrl: '/steps/investigate.html',
       templateUrl: 'Mobile-iLab/app/steps/investigate.html',
 
-      controller: appController
+      controller: investigateCtrl
     });
 
     $routeProvider.when('/analyze', {
@@ -117,7 +117,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       //templateUrl: '/steps/analyze.html',
       templateUrl: 'Mobile-iLab/app/steps/analyze.html',
 
-      controller: appController
+      controller: analyzeCtrl
     });
 
     $routeProvider.when('/interpret', {
@@ -125,7 +125,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       //templateUrl: '/steps/interpret.html',
       templateUrl: 'Mobile-iLab/app/steps/interpret.html',
 
-      controller: appController
+      controller: interpretCtrl
     });
 
     $routeProvider.when('/exit',{
@@ -165,7 +165,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       controller: appController
     });
 
-    $routeProvider.when('', {
+    $routeProvider.when('/', {
 
       //templateUrl: '/index.html',
       templateUrl: 'Mobile-iLab/app/index.html',
@@ -175,7 +175,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 
     $routeProvider.otherwise({ redirectTo: '' });
 
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
+    //$locationProvider.hashPrefix("");
     
 }]);
 
