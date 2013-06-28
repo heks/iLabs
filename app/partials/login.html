@@ -1,24 +1,19 @@
-
-    <div class="rain" ng-controller="loginCtrl">
-     <div class="header_lg"><span>iLabCentral</span></div>
-     <div class="header_sm"><span>Lab Manager</span></div>
-     <div>
-       <form name="mobform" >
-         <div class="form_element">
-           <label for="username">Username</label>
-           <input class="input" type="text" ng-model="mobform.username" style="height:50px;margin-bottom:50px"/>
-           <label>Password</label>
-           <input class="input" type="password" ng-model="mobform.password" style="height:50px;margin-bottom:50px"/></br>
-           <button value="Login" class="submit" ng-click="submit()">LOGIN</button>
-         </div>
-	 <div id="waiting" style="display:none">
-	   <div id="backdrop"></div>
-	   <div id="wait-box"><img id="loading_img" src="./img/loading_transparent.gif" /></div>
-	 </div>
-      </form> 
-    </div>
-
-   
-
+<div class="rain" ng-controller="loginCtrl">
+  <div class="header_lg"><span>iLabCentral</span></div>
+  <div class="header_sm"><span>Lab Manager</span></div>
+  <div>
+    <form name="mobform" >
+      <div class="form_element">
+        <label for="username">Username</label>
+        <input class="input" type="text" ng-model="mobform.username" style="height:50px;margin-bottom:50px"/>
+        <label>Password</label>
+        <input class="input" type="password" ng-model="mobform.password" style="height:50px;margin-bottom:50px"/></br>
+        <button value="Login" class="submit" ng-click="submit()">LOGIN</button>
+      </div>
+      <div id="waiting" style="display:none">
+        <div id="backdrop"></div>
+        <div id="wait-box"><img id="loading_img" src="./img/loading_transparent.gif" /></div>
+      </div>
+    </form> 
   </div>
- 
+</div>

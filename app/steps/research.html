@@ -1,105 +1,49 @@
-
-<link href="./css/dockmenu_f.css" rel="stylesheet">
-<link href="./css/dockmenu.css" rel="stylesheet">
-<link href="./css/dock.css" rel="stylesheet">
-<link href="./css/desktop.css" rel="stylesheet">
-<link href="./css/iphone.css" rel="stylesheet" >
-<link href="./css/tablet.css" rel="stylesheet">
-<link href="./css/style.css" rel="stylesheet">
-<link href="./css/image.css" rel="stylesheet">
-<link href="./css/popup.css" rel="stylesheet">
-
-
-<script src="./js/popupdiv.js"></script>
-
-<script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
-
-
 <script type="text/javascript">
-            $(function() {
-                $('#navigation a').stop().animate({'marginLeft':'-85px'},1000);
+    $(function() {
+        $('#navigation a').stop().animate({'marginLeft':'-85px'},1000);
 
-                $('#navigation > li').hover(
-                    function () {
-                        $('a',$(this)).stop().animate({'marginLeft':'-2px'},200);
-                    },
-                    function () {
-                        $('a',$(this)).stop().animate({'marginLeft':'-85px'},200);
-                    }
-                );
-            });
+        $('#navigation > li').hover(
+            function () {
+                $('a',$(this)).stop().animate({'marginLeft':'-2px'},200);
+            },
+            function () {
+                $('a',$(this)).stop().animate({'marginLeft':'-85px'},200);
+            }
+        );
+    });
 </script>
 
 <div ng-controller="researchCtrl">
-            <div class="header">
-                <!--<div class="left_img" ><img src="../img/back_64x64.png" style="width:100px;height:100px"></div>-->
-                <div class="heading_lng">Research</div>
-
-                <div class="right_img" ><a id="opn" ng-click="RN()"><img src="./img/next_64x64.png" id="right_img"></a></div>
-
-            </div></br>
-            <div class="content">
-                <div id="main2" ng-init="sidebar()">
-                    <ul id="navigation">
-                        <li class="simulation" ng-click="simulation('research')"><a href="" title="Simulation"></a></li>
-                        <li class="webcam" ng-click="webcam('research')"><a href="" title="Webcam"></a></li>
-                        <li class="myacc"><a href=""   ng-click="account('research')" title="My Account"></a></li>
-                        <li class="msgs"><a href="" ng-click="messages('research')" title="Messages"></a></li>
-                    </ul>
-                </div>
-                <div  align="center" style="padding: 25px 0px 0px 0px">
-                    <span class="textwht sm">Click below to read important background information involved in this lab.</span></br>
-                </div>
-                <div style="padding: 10px 0px 0px 200px" >  
-                    <ul>
-                        <li ng-repeat="qtn in qtns">
-                            <a class="textblue sm" ng-click="popup('popUpDiv')">{{qtn.question}}</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    <div class="header">
+        <div class="heading_lng">Research</div>
+        <div class="right_img" ><a id="opn" ng-click="RN()"><img src="./img/next_64x64.png" id="right_img"></a></div>
+    </div>
+    </br>
+    <div class="content">
+        <div id="main2" ng-init="sidebar()">
+            <ul id="navigation">
+                <li class="simulation" ng-click="simulation('research')"><a href="" title="Simulation"></a></li>
+                <li class="webcam" ng-click="webcam('research')"><a href="" title="Webcam"></a></li>
+                <li class="myacc"><a href=""   ng-click="account('research')" title="My Account"></a></li>
+                <li class="msgs"><a href="" ng-click="messages('research')" title="Messages"></a></li>
+            </ul>
+        </div>
+        <div  align="center" style="padding: 25px 0px 0px 0px">
+            <span class="textwht sm">Click below to read important background information involved in this lab.</span></br>
+        </div>
+        <div style="padding: 10px 0px 0px 200px" >  
+            <ul>
+                <li ng-repeat="qtn in qtns">
+                    <a class="textblue sm" ng-click="popup('popUpDiv')">{{qtn.question}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
 </div>
+
 <div id="blanket" style="display:none;"></div>
+
 <div id="popUpDiv" style="display:none;">
     <a href="#" style="float:right" ng-click="popup('popUpDiv')"><img src="./img/no.png"></a>
 </div>
-<!--<div class="block" >
-	
-		<span class="header">Research</span>
-		<button class="b2" ng-click="RN()">Next</button>
-</br>
-<div  style="padding: 36px 0px 0px 0px"><hr/></div>
-
-<div id="main2" ng-init="sidebar()">
-		<ul id="navigation">
-            <li class="simulation" ng-click="simulation('research')"><a href="" title="Simulation"></a></li>
-            <li class="webcam" ng-click="webcam('research')"><a href="" title="Webcam"></a></li>
-            <li class="myacc"><a href=""   ng-click="account('research')" title="My Account"></a></li>
-            <li class="msgs"><a href="" ng-click="messages('research')" title="Messages"></a></li>
-            
-        </ul>
-    
-</div>
-
-
-
-	<div  align="center" style="padding: 25px 0px 0px 0px">
-
-		<span class="text">Click below to read important background information involved in this lab.<a ng-click="identity()">Click</a></span></br>
-
-	</div>
-    
-	<div style="padding: 10px 0px 0px 200px" >	
-		<ul>
-			<li ng-repeat="qtn in qtns">
-					<a style="font-size:15px" ng-click="popup('popUpDiv')">{{qtn.question}}</a>
-			</li>
-		</ul>
-	</div>
-</br></br>
-</div>
-<div id="blanket" style="display:none;"></div>
-<div id="popUpDiv" style="display:none;">
-    <a href="#" style="float:right" ng-click="popup('popUpDiv')"><img src="../img/no.png"></a>
-</div>-->
-<!--<a href="#" onclick="popup('popUpDiv')" >Pop Up</a>-->

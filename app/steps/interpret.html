@@ -1,161 +1,38 @@
-<!--<style type="text/css">
-
-.b1{
-	width:90px;
-    height:40px;
-	background:#0000ff;
-	position:absolute;
-	left:3%;
-    top:5%;
-    color: #fff;
-    font-weight: bold;
-    font-size: 1em;
-    
-}
-.header{
-	position:absolute;
-	left:40%;
-    top:7%;
-    color: #0000ff;
-    font-weight: bold;
-    font-size: 1.5em;
-    
-}
-.b2{
-	width:90px;
-    height:40px;
-	background:#0000ff;
-	position:absolute;
-	left:87%;
-    top:5%;
-    color: #fff;
-    font-weight: bold;
-    font-size: 1em;
-}
-.block{
-	/*width:60%;*/
-    background:#5aa;
-    border-radius:10px;
-    position:absolute;
-    left:10%;
-    right:10%;
-    top:30%;
-    margin-left:auto;
-    margin-top:-12%;
-    margin-bottom: auto;
-}
-.text{
-	color: #fff;
-	font-size: 1.2em;
-	
-}
-.exit{
-	width:130px;
-    height:35px;
-	background:#008000;
-	position:absolute;
-	left:78%;
-    top:89%;
-    color: #fff;
-    font-weight: bold;
-    font-size: 1.2em;
-    border-radius: 100px
-}
-</style>
-
-<link rel="stylesheet" href="../css/dock.css">-->
-
-<link href="./css/dockmenu_f.css" rel="stylesheet">
-<link href="./css/desktop.css" rel="stylesheet">
-<link href="./css/iphone.css" rel="stylesheet" >
-<link href="./css/tablet.css" rel="stylesheet">
-<link href="./css/style.css" rel="stylesheet">
-<link href="./css/image.css" rel="stylesheet">
-<link href="./css/popup.css" rel="stylesheet">
-
-<script src="./js/popup.js"></script>
-<script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
-
 <div ng-controller="interpretCtrl">
-            <div class="header">
-                <div class="left_img" ><a  ng-click="InterB()"><img src="./img/back_64x64.png" id="left_img"></a></div>
-                <div class="heading_lng">Interpret</div>
-                <!--<div class="right_img" ><a ng-click="InvesN()"><img src="../img/next_64x64.png" style="width:100px;height:100px"></a></div>-->
-            </div></br>
-            <div class="content">
-                <div id="main2" ng-init="sidebar()">
-                    <ul id="navigation">
-                        <li class="simulation" ng-click="simulation('interpret')"><a href="" title="Simulation"></a></li>
-                        <li class="webcam" ng-click="webcam('interpret')"><a href="" title="Webcam"></a></li>
-                        <li class="myacc"><a href=""   ng-click="account('interpret')" title="My Account"></a></li>
-                        <li class="msgs"><a href="" ng-click="messages('interpret')" title="Messages"></a></li>
-                    </ul>
-                </div>
-                <div  style="float:right">
-					<span class="textwht sm">What type of relationship exists between radiation and distance?  Is it linear or non-linear, positive or negative?  How do you know?</span></br>
-					<div>
-						<textarea  ng-model="Intertxt1" id="inter1" cols="120" rows="8" placeholder="Please enter your answer here..."></textarea>
-						<a ng-click="clear('inter1')"><img src="./img/no.png"></a>
-					</div></br></br>
-            	</div>
-            	<div  style="float:left">
-					<span class="textwht sm">Does the data you collected give you a definite answer to your research question?  Why or why not?  If not, how would you change your experimental design to better investigate your research question?</span></br></br>
-					<div>
-						<textarea  ng-model="Intertxt2" id="inter2" cols="120" rows="8" placeholder="Please enter your answer here..."></textarea>
-						<a ng-click="clear('inter2')"><img src="./img/no.png"></a>
-					</div>
-				</div>
-				<div style="padding: 70px 0px 0px 20px">
-					<button class="exit" ng-click="Exitlab()">Exit</button>
-				</div>
-			</div>
-</div>
-<!--<div class="block">
+	<div class="header">
+		<div class="left_img" ><a  ng-click="InterB()"><img src="./img/back_64x64.png" id="left_img"></a></div>
+		<div class="heading_lng">Interpret</div>
+
+	</div></br>
 	
-		<button class="b1" ng-click="InterB()">Back</button>
-		<span class="header">Interpret</span>
+	<div class="content">
+		<div id="main2" ng-init="sidebar()">
+			<ul id="navigation">
+				<li class="simulation" ng-click="simulation('interpret')"><a href="" title="Simulation"></a></li>
+				<li class="webcam" ng-click="webcam('interpret')"><a href="" title="Webcam"></a></li>
+				<li class="myacc"><a href=""   ng-click="account('interpret')" title="My Account"></a></li>
+				<li class="msgs"><a href="" ng-click="messages('interpret')" title="Messages"></a></li>
+			</ul>
+		</div>
 		
-	</br>
-<div  style="padding: 45px 0px 0px 0px"><hr/></div>
-
-<div id="main" style="float:right">
-    <div><img src="../img/settings.png"></div>
-    <div>
-
-        <div class="bubble me">
-            <a ng-click="simulation('interpret')"><img src="../img/simulation_48x48.png"></a>
-            <a ng-click="webcam('interpret')"><img src="../img/webcam_48x48.png"></a>
-            <a ng-click="account('interpret')"><img src="../img/account_48x48.png"></a>
-            <a ng-click="messages('interpret')"><img src="../img/message_48x48.png"></a>
-        </div>
-
-    </div>
+		<div  style="float:right">
+			<span class="textwht sm">What type of relationship exists between radiation and distance?  Is it linear or non-linear, positive or negative?  How do you know?</span></br>
+			<div>
+				<textarea  ng-model="Intertxt1" id="inter1" cols="120" rows="8" placeholder="Please enter your answer here..."></textarea>
+				<a ng-click="clear('inter1')"><img src="./img/no.png"></a>
+			</div></br></br>
+		</div>
+		
+		<div  style="float:left">
+			<span class="textwht sm">Does the data you collected give you a definite answer to your research question?  Why or why not?  If not, how would you change your experimental design to better investigate your research question?</span></br></br>
+			<div>
+				<textarea  ng-model="Intertxt2" id="inter2" cols="120" rows="8" placeholder="Please enter your answer here..."></textarea>
+				<a ng-click="clear('inter2')"><img src="./img/no.png"></a>
+			</div>
+		</div>
+		
+		<div style="padding: 70px 0px 0px 20px">
+			<button class="exit" ng-click="Exitlab()">Exit</button>
+		</div>
+	</div>
 </div>
-	<div  style="padding: 40px 0px 0px 20px">
-
-		<span class="text">What type of relationship exists between radiation and distance?  Is it linear or non-linear, positive or negative?  How do you know?</span></br>
-		<div>
-		<textarea  id="inter1" cols="120" placeholder="Please enter your answer here..."></textarea>
-		<a ng-click="clear('inter1')"><img src="../img/no.png"></a>
-	</div>
-		
-	</div>
-	<div  style="padding: 50px 0px 0px 20px">
-		<span class="text">Does the data you collected give you a definite answer to your research question?  Why or why not?  If not, how would you change your experimental design to better investigate your research question?</span></br></br>
-		<div>
-		<textarea  id="inter2" cols="120" placeholder="Please enter your answer here..."></textarea>
-		<a ng-click="clear('inter2')"><img src="../img/no.png"></a>
-	</div>
-	</div>
-</br>
-	<div style="padding: 10px 0px 0px 20px">
-		<span class="text">Select your options and click "Exit" button</span></br>
-		<input type="checkbox" ng-model="download"> <span style="color: White">Download</span><br/>
-		<input type="checkbox" ng-model="emailme"> <span style="color: White">Email Me</span><br/>
-	</div>
-</br>
-	<div style="padding: 50px 0px 0px 20px">
-		<button class="exit" ng-click="Exitlab()">Exit</button>
-	</div>
-
-</div>-->

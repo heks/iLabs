@@ -1,76 +1,31 @@
-
-<link href="./css/dockmenu_f.css" rel="stylesheet">
-<link href="./css/desktop.css" rel="stylesheet">
-<link href="./css/iphone.css" rel="stylesheet" >
-<link href="./css/tablet.css" rel="stylesheet">
-<link href="./css/style.css" rel="stylesheet">
-<link href="./css/image.css" rel="stylesheet">
-<link href="./css/popup.css" rel="stylesheet">
-
-<script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
-
-
 <div ng-controller="questionCtrl">
-            <div class="header">
-                <div class="left_img" ><a  ng-click="QB()"><img src="./img/back_64x64.png" id="left_img" ></a></div>
-                <div class="heading_lng">Question</div>
-                <div class="right_img" ><a ng-click="QN()"><img src="./img/next_64x64.png" id="right_img"></a></div>
-            </div></br>
-            <div class="content">
-            	<div id="main2" ng-init="sidebar()">
-                    <ul id="navigation">
-                        <li class="simulation" ng-click="simulation('question')"><a href="" title="Simulation"></a></li>
-                        <li class="webcam" ng-click="webcam('question')"><a href="" title="Webcam"></a></li>
-                        <li class="myacc"><a href=""   ng-click="account('question')" title="My Account"></a></li>
-                        <li class="msgs"><a href="" ng-click="messages('question')" title="Messages"></a></li>
-                    </ul>
-                </div>
-            	<div  style="float:right">
-					<span class="textwht sm">What are you trying to find out in this lab?  What question are you trying to answer?  This question is called your research question, which guides your experimental design in the next step. </span></br></br></br>
-				</div>
-				<div   style="float:left">
-					<span class="textwht sm">Write your research question below.</span></br></br>
-					<div >
-		    			<textarea  ng-model="Qtxt" id="question" cols="120" rows="5" placeholder="Please enter your research question here..."></textarea>
-		    			<a ng-click="clear('question')"><img src="./img/no.png"></a>
-	    			</div>
-				</div>
-</div>
-
-<!--<div class="block">
-	
-		<button class="b1" ng-click="QB()">Back</button>
-		<span class="header">Question</span>
-		<button class="b2" ng-click="QN()">Next</button>
+	<div class="header">
+		<div class="left_img" ><a  ng-click="QB()"><img src="./img/back_64x64.png" id="left_img" ></a></div>
+		<div class="heading_lng">Question</div>
+		<div class="right_img" ><a ng-click="QN()"><img src="./img/next_64x64.png" id="right_img"></a></div>
+	</div>
 	</br>
-<div  style="padding: 36px 0px 0px 0px"><hr/></div>
-<div  style="float:right">
-<div id="main" style="float:right">
-	<div><img src="../img/settings.png"></div>
-	<div>
-
-        <div class="bubble me">
-        	<a ng-click="simulation('question')"><img src="../img/simulation_48x48.png"></a>
-        	<a ng-click="webcam('question')"><img src="../img/webcam_48x48.png"></a>
-        	<a ng-click="account('question')"><img src="../img/account_48x48.png"></a>
-        	<a ng-click="messages('question')"><img src="../img/message_48x48.png"></a>
-        </div>
-
+	<div class="content">
+		<div id="main2" ng-init="sidebar()">
+			<ul id="navigation">
+				<li class="simulation" ng-click="simulation('question')"><a href="" title="Simulation"></a></li>
+				<li class="webcam" ng-click="webcam('question')"><a href="" title="Webcam"></a></li>
+				<li class="myacc"><a href=""   ng-click="account('question')" title="My Account"></a></li>
+				<li class="msgs"><a href="" ng-click="messages('question')" title="Messages"></a></li>
+			</ul>
+		</div>
+		
+		<div  style="float:right">
+			<span class="textwht sm">What are you trying to find out in this lab?  What question are you trying to answer?  This question is called your research question, which guides your experimental design in the next step. </span></br></br></br>
+		</div>
+		
+		<div   style="float:left">
+			<span class="textwht sm">Write your research question below.</span></br></br>
+			<div >
+				<textarea  ng-model="Qtxt" id="question" cols="120" rows="5" placeholder="Please enter your research question here..."></textarea>
+				<a ng-click="clear('question')"><img src="./img/no.png"></a>
+			</div>
+		</div>
 	</div>
-	
 </div>
 
-	<div  style="padding: 15px 0px 0px 20px">
-		<span class="text">What are you trying to find out in this lab?  What question are you trying to answer?  This question is called your research question, which guides your experimental design in the next step. </span></br>
-		
-	</div>
-	<div  style="padding: 50px 0px 0px 20px">
-		<span class="text">Write your research question below.</span></br></br>
-		<div >
-		    <textarea  id="question" cols="120" placeholder="Please enter your research question here..."></textarea>
-		    <a ng-click="clear('question')"><img src="../img/no.png"></a>
-	    </div>
-
-	</div>
-</br></br>
-</div>-->
