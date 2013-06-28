@@ -1,221 +1,73 @@
-<!--<style type="text/css">
-
-.b1{
-	width:90px;
-    height:40px;
-	background:#0000ff;
-	position:absolute;
-	left:3%;
-    top:5%;
-    color: #fff;
-    font-weight: bold;
-    font-size: 1em;
-    
-    }
-    .header{
-	position:absolute;
-	left:40%;
-    top:7%;
-    color: #0000ff;
-    font-weight: bold;
-    font-size: 1.5em;
-    
-}
-.b2{
-	width:90px;
-    height:40px;
-	background:#0000ff;
-	position:absolute;
-	left:87%;
-    top:5%;
-    color: #fff;
-    font-weight: bold;
-    font-size: 1em;
-}
-.block{
-	background:#5aa;
-    border-radius:10px;
-    position:absolute;
-    left:10%;
-    right:10%;
-    top:30%;
-    margin-left:auto;
-    margin-top:-12%;
-    margin-bottom: auto;
-	
-}
-.text{
-	color: #fff;
-	font-size: 1.2em;
-	
-}
-
-form{
-background-color: #52854C;
-font-family: Georgia;
-color: white;
-padding: 25px;
-width: 500px;
-border: 2px black solid;
-border-radius: 15px;
--moz-border-radius: 15px;
--webkit-border-radius: 15px;
--khtml-border-radius:15px;
-
-box-shadow:inset 1px 1px 2px #999;
--webkit-box-shadow:inset 1px 1px 2px #999;
--moz-box-shadow:inset 1px 1px 2px #999;
--khtml-box-shadow:inset 1px 1px 2px #999;
-}
-</style>
-<link rel="stylesheet" href="../css/dock.css">-->
-<link href="./css/dockmenu_f.css" rel="stylesheet">
-<link href="./css/desktop.css" rel="stylesheet">
-<link href="./css/iphone.css" rel="stylesheet" >
-<link href="./css/tablet.css" rel="stylesheet">
-<link href="./css/style.css" rel="stylesheet">
-<link href="./css/image.css" rel="stylesheet">
-
-<script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
-
 <div ng-controller="designCtrl">
-            <div class="header">
-                <div class="left_img" ><a  ng-click="DB()"><img src="./img/back_64x64.png" id="left_img"></a></div>
-                <div class="heading_lng">Design</div>
-                <div class="right_img" ><a ng-click="DN()"><img src="./img/next_64x64.png" id="right_img"></a></div>
-            </div></br>
-            <div class="content">
-            	<div id="main2" ng-init="sidebar()">
-                    <ul id="navigation">
-                        <li class="simulation" ng-click="simulation('design')"><a href="" title="Simulation"></a></li>
-                        <li class="webcam" ng-click="webcam('design')"><a href="" title="Webcam"></a></li>
-                        <li class="myacc"><a href=""   ng-click="account('design')" title="My Account"></a></li>
-                        <li class="msgs"><a href="" ng-click="messages('design')" title="Messages"></a></li>
-                    </ul>
-                </div>
-            	<div  style="float:right">
-					<span class="textwht sm">Learn more about each variable, mouse over the question mark icon next to the variable.</span>
-				</div></br></br></br></br></br></br></br></br></br></br></br>
-
-				<div  align="center">
-					<div name="designForm" class="designform">
-							<h1>Experiment Design</h1></br><hr/></br></br>
-							<table>
-									<tr>
-									<td class="smr" >Distances</td>
-									<td><input type="text" style="color: Black" ng-model="distances" class="design"></td>
-									<td><a tooltip-placement="right" tooltip-html-unsafe="{{htmlTooltip1}}"><img src="./img/question.png"></a></td>
-									</tr>
-									<tr>
-									<td class="smr">Measurement Time(s)</td>
-									<td>
-									<select style="width:80px;height:50px;font-size:25px;font-weight:bold; margin-bottom: 20px;" ng-model="m_times">
-									<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-									<option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
-									</select>
-									</td>
-									<td><a tooltip-placement="right" tooltip-html-unsafe="{{htmlTooltip2}}"><img src="./img/question.png"></a></td>
-									</tr>
-									<tr>
-									<td class="smr">Number of Trials</td>
-									<td>
-									<select style="width:80px;height:50px;font-size:25px;font-weight:bold; margin-bottom: 20px;" ng-model="nof_trials">
-									<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-									<option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
-									</select>
-									</td>
-									<td><a tooltip-placement="right" tooltip-html-unsafe="{{htmlTooltip3}}"><img src="./img/question.png"></a></td>
-									</tr>
-							</table>
-					</div>
-					</br>
-				</div>
-				<div style="float:left">
-					<span class="textwht sm">Please answer the question below.  When you click "Next", the experiment will run.</span>
-					</br></br>
-					<span class="textwht sm">Why did you choose these distances, measurement time, and number of trials?</span></br></br>
-					<div>
-						<textarea  id="design" cols="120" rows="8" ng-model="Dtxt" style="font-size:10px;" placeholder="Please answer to the question here..."></textarea>
-						<a ng-click="clear('design')"><img src="./img/no.png"></a>
-					</div>
-				</br></br>
-				</div>
-				
-            </div>
-</div>
-
-
-<!--<div class="block">
-	
-		<button class="b1" ng-click="DB()">Back</button>
-		<span class="header">Design</span>
-		<button class="b2" ng-click="DN()">Next</button>
-	</br>
-<div  style="padding: 50px 0px 0px 0px"><hr/></div>
-<div id="main" style="float:right">
-    <div><img src="../img/settings.png"></div>
-    <div>
-
-        <div class="bubble me">
-            <a ng-click="simulation('design')"><img src="../img/simulation_48x48.png"></a>
-            <a ng-click="webcam('design')"><img src="../img/webcam_48x48.png"></a>
-            <a ng-click="account('design')"><img src="../img/account_48x48.png"></a>
-            <a ng-click="messages('design')"><img src="../img/message_48x48.png"></a>
-        </div>
-
-    </div>
-</div>
-	<div  style="padding: 45px 0px 0px 20px">
-		<span class="text">Learn more about each variable, mouse over the question mark icon next to the variable.</span>
-		
-	</div>
-	<div  style="padding: 50px 0px 0px 20px">
-		<form name="designForm">
-			<h2>Experiment Design</h2>
-			<table>
-					<tr>
-					<td class="text" >Distances</td>
-					<td><input type="text" style="color: Black" ng-model="distance" style="margin: 5px 30px 10px 3px;"></td>
-					<td><a tooltip-placement="right" tooltip-html-unsafe="{{htmlTooltip1}}"><img src="../img/question.png"></a></td>
-					</tr>
-					<tr>
-					<td class="text">Measurement Time(s)</td>
-					<td>
-					<select>
-					<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-					<option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
-					</select>
-					</td>
-					<td><a tooltip-placement="right" tooltip-html-unsafe="{{htmlTooltip2}}"><img src="../img/question.png"></a></td>
-					</tr>
-					<tr>
-					<td class="text">Number of Trials</td>
-					<td>
-					<select>
-					<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-					<option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
-					</select>
-					</td>
-					<td><a tooltip-placement="right" tooltip-html-unsafe="{{htmlTooltip3}}"><img src="../img/question.png"></a></td>
-					</tr>
-			</table>
-		</form>
-		<span class="text">Please answer the question below.  When you click "Next", the experiment will run.</span>
-
-		</br></br>
-		<span class="text">Why did you choose these distances, measurement time, and number of trials?</span></br></br>
-		<div>
-		<textarea  id="design" cols="120" ng-model="d.textarea" placeholder="Please answer to the question here..."></textarea>
-		<a ng-click="clear('design')"><img src="../img/no.png"></a>
-	</div>
-		
+	<div class="header">
+		<div class="left_img" ><a  ng-click="DB()"><img src="./img/back_64x64.png" id="left_img"></a></div>
+		<div class="heading_lng">Design</div>
+		<div class="right_img" ><a ng-click="DN()"><img src="./img/next_64x64.png" id="right_img"></a></div>
 	</div>
 	</br>
-</div>-->
+	<div class="content">
+		<div id="main2" ng-init="sidebar()">
+			<ul id="navigation">
+				<li class="simulation" ng-click="simulation('design')"><a href="" title="Simulation"></a></li>
+				<li class="webcam" ng-click="webcam('design')"><a href="" title="Webcam"></a></li>
+				<li class="myacc"><a href=""   ng-click="account('design')" title="My Account"></a></li>
+				<li class="msgs"><a href="" ng-click="messages('design')" title="Messages"></a></li>
+			</ul>
+		</div>
+		
+		<div  style="float:right">
+			<span class="textwht sm">Learn more about each variable, mouse over the question mark icon next to the variable.
+			</span>
+		</div>
+		</br></br></br></br></br></br></br></br></br></br></br>
 
+		<div  align="center">
+			<div name="designForm" class="designform">
+				<h1>Experiment Design</h1></br><hr/></br></br>
+				<table>
+					<tr>
+						<td class="smr" >Distances</td>
+						<td><input type="text" style="color: Black" ng-model="distances" class="design"></td>
+						<td><a tooltip-placement="right" tooltip-html-unsafe="{{htmlTooltip1}}"><img src="./img/question.png">
+						</a></td>
+					</tr>
+					<tr>
+						<td class="smr">Measurement Time(s)</td>
+						<td>
+							<select style="width:80px;height:50px;font-size:25px;font-weight:bold; margin-bottom: 20px;" ng-model="m_times">
+								<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+								<option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+							</select>
+						</td>
+						<td><a tooltip-placement="right" tooltip-html-unsafe="{{htmlTooltip2}}"><img src="./img/question.png"></a></td>
+					</tr>
+					<tr>
+						<td class="smr">Number of Trials</td>
+						<td>
+							<select style="width:80px;height:50px;font-size:25px;font-weight:bold; margin-bottom: 20px;" ng-model="nof_trials">
+								<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+								<option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+							</select>
+						</td>
+						<td><a tooltip-placement="right" tooltip-html-unsafe="{{htmlTooltip3}}"><img src="./img/question.png"></a></td>
+					</tr>
+				</table>
+			</div>
+			</br>
+		</div>
+		
+		<div style="float:left">
+			<span class="textwht sm">Please answer the question below.  When you click "Next", the experiment will run.</span>
+			</br></br>
+			<span class="textwht sm">Why did you choose these distances, measurement time, and number of trials?</span></br></br>
+			<div>
+				<textarea  id="design" cols="120" rows="8" ng-model="Dtxt" style="font-size:10px;" placeholder="Please answer to the question here..."></textarea>
+				<a ng-click="clear('design')"><img src="./img/no.png"></a>
+			</div>
+			</br></br>
+		</div>
 
-
-
-
+	</div>
+</div>
 
 
