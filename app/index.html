@@ -15,6 +15,11 @@
 		 <script src="./js/controllers.js"></script>
 		 <script src="./js/directives.js"></script>
 		 <script src="./js/popupdiv.js"></script>
+		 <script>
+		 	$(window).unload(function(){
+		 		localStorage.clear();
+		 	});
+		 </script>
 
 
 		 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
@@ -41,7 +46,7 @@
 	  <div id="duration" style="color:white;display:none"></div>
 	  <div id="repeat" style="color:white;display:none"></div>
 	  <div id="exp_Id" style="color:white;display:none"></div>
-	  
+	  <span> {{checkSession()}}</span>
 	  <div ng-view></div>
 
 	</body>

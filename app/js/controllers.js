@@ -35,6 +35,7 @@ mobileApp.controller('loginCtrl',
                       //$location.path("#/home").replace();
                       $location.path("home");
                       $scope.foobar = true;
+                      sessionStorage.setItem("loggedIn", "true");
                     });
                     
 
@@ -707,6 +708,7 @@ mobileApp.controller('interpretCtrl',
         }else if($scope.Intertxt2 == undefined){
           alert("Please fill out the empty fields");
         }else{
+          sessionStorage.setItem("loggedIn", "false");;
           var url = "http://ilabcentral.org/radioactivity/";    
           $(location).attr('href',url);
         }
@@ -760,11 +762,11 @@ mobileApp.controller('accCtrl',
   });
 
 /* Controllers */
-function appController($scope, $location){
-$scope.sidebar = function(){
+mobileApp.controller('appController',
+  function appController($scope, $location){
 
+    $scope.sidebar = function(){
          $('#navigation a').stop().animate({'marginLeft':'-85px'},1000);
-
                 $('#navigation > li').hover(
                     function () {
                         $('a',$(this)).stop().animate({'marginLeft':'-2px'},200);
@@ -773,7 +775,13 @@ $scope.sidebar = function(){
                         $('a',$(this)).stop().animate({'marginLeft':'-85px'},200);
                     }
                 );
-
+      }
+      $scope.checkSession = function(){
+        var session = sessionStorage.getItem("loggedIn");
+        if(session == null || session == "false"){
+          $location.path('login');
+        }
+        
       }
 
-}
+});
