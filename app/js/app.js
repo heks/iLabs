@@ -1,13 +1,21 @@
 
 
-var app = angular.module('mobileApp', ['ui.bootstrap']);
+/*var app = angular.module('mobileApp', ['ui.bootstrap']);
  
 app.run(function($rootScope, $location) {
     $rootScope.location = $location;
+    console.log($location);
 });
+
+//document.getElementsByTagName("base")[0].href = location.href;      
 
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+  $routeProvider.when('/login', {
+      templateUrl: 'partials/login.html',
+      controller: appController
+    });
+
     $routeProvider.when('/partial1', {
 
         //templateUrl: '/partials/partial1.html',
@@ -29,7 +37,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         //templateUrl: '/partials/home.html',
         templateUrl: 'Mobile-iLab/app/partials/home.html',
 
-        controller: appController
+        controller: homeController
     });
 
     $routeProvider.when('/home', {
@@ -51,7 +59,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     $routeProvider.when('/partial2', {
 
       //templateUrl: '/partials/partial2.html',
-      templateUrl: 'Mobile-iLab/Mobile-iLab/app/partials/partial2.html',
+      templateUrl: '/Mobile-iLab/app/partials/partial2.html',
 
       controller: appController
     });
@@ -169,19 +177,85 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 
       //templateUrl: '/index.html',
       templateUrl: 'Mobile-iLab/app/index.html',
+      //templateUrl: 'Mobile-iLab/app/partials/login.html',
+       //templateUrl: 'partials/login.html',
 
       controller: appController
     });
 
-    $routeProvider.otherwise({ redirectTo: '' });
+  
+
+    $routeProvider.otherwise({ redirectTo: '/login' });
 
     $locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix('!');
     
-}]);
+}]);*/
 
 
+var mobileApp = angular.module('mobileApp', ['ui.bootstrap'])
+  .config(function($routeProvider, $locationProvider) {
+    $routeProvider.when('/login', {
+      templateUrl: 'partials/login.html',
+      controller: 'loginCtrl'
+    })
+    .when('/home', {
+      templateUrl: 'partials/home.html',
+      controller: 'homeCtrl'
+    })
+    .when('/mygroups', {
+      templateUrl: 'partials/mygroups.html',
+      controller: 'groupCtrl'
+    })
+    .when('/partial1', {
+      templateUrl: 'partials/partial1.html',
+      controller: 'labCtrl'
+    })
+    .when('/research', {
+      templateUrl: 'steps/research.html',
+      controller: 'researchCtrl'
+    })
+    .when('/question', {
+      templateUrl: 'steps/question.html',
+      controller: 'questionCtrl'
+    })
+    .when('/design', {
+      templateUrl: 'steps/design.html',
+      controller: 'designCtrl'
+    })
+    .when('/investigate', {
+      templateUrl: 'steps/investigate.html',
+      controller: 'investigateCtrl'
+    })
+    .when('/analyze', {
+      templateUrl: 'steps/analyze.html',
+      controller: 'analyzeCtrl'
+    })
+    .when('/interpret', {
+      templateUrl: 'steps/interpret.html',
+      controller: 'interpretCtrl'
+    })
+    .when('/simulation/:Id',{
+      templateUrl: 'steps/simulation.html',
+      controller: 'simCtrl'
+    })
+     .when('/account/:Id',{
+      templateUrl: 'steps/account.html',
+      controller: 'accCtrl'
+    })
+     .when('/messages/:Id',{
+      templateUrl: 'steps/messages.html',
+      controller: 'msgCtrl'
+    })
+     .when('/webcam/:Id',{
+      templateUrl: 'steps/webcam.html',
+      controller: 'webCtrl'
+    })
+    .otherwise({
+      redirectTo: '/login'
+    });
+  }).run(function($rootScope, $location) {
+    $rootScope.location = $location;
+});
 
-
-
-    
 

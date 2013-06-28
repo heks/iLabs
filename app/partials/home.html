@@ -1,21 +1,22 @@
 
 
-<link href="Mobile-iLab/app/css/dockmenu_f.css" rel="stylesheet">
-<link href="Mobile-iLab/app/css/desktop.css" rel="stylesheet">
-<link href="Mobile-iLab/app/css/desktop.css" rel="stylesheet">
-<link href="Mobile-iLab/app/css/iphone.css" rel="stylesheet" >
-<link href="Mobile-iLab/app/css/tablet.css" rel="stylesheet">
-<link href="Mobile-iLab/app/css/style.css" rel="stylesheet">
-<link href="Mobile-iLab/app/css/image.css" rel="stylesheet">
+<link href="./css/dockmenu_f.css" rel="stylesheet">
+<link href="./css/desktop.css" rel="stylesheet">
+<link href="./css/desktop.css" rel="stylesheet">
+<link href="./css/iphone.css" rel="stylesheet" >
+<link href="./css/tablet.css" rel="stylesheet">
+<link href="./css/style.css" rel="stylesheet">
+<link href="./css/image.css" rel="stylesheet">
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
-<script src="Mobile-iLab/app/js/app.js"></script>
+<script src="./js/app.js"></script>
 
 <script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
 
 
 
-<div id="home_url" style="color: White;display:none">{{location.absUrl()}}</div> 
-<div>
+
+
+	<div ng-controller="homeCtrl">
 			<div class="header">
 				<!--<div class="left_img" ><img src="../img/home_40x40.png"></div>-->
 		        <div class="heading">HOME</div>
@@ -28,7 +29,7 @@
 
 			</div>
 			<div align="center">
-				
+				<div id="home_url" style="color: White;display:block">{{location.absUrl()}}</div> 
 				<a id="btn1" ng-click="">Experiment History</a>
 				<a id="btn2" ng-click="experiments()">New Experiment</a>
 				<!--<div class="squareBase t1" align="center"></br></br></br></br>
@@ -39,7 +40,8 @@
 					<div  ng-click="experiments()"><span class="txt">New</br></br>Experiment</span></div>
 				</div>-->
 			</div>
-</div>
+		</div>
+
 <!--<a ng-click="experiments()" style="color:white">Click</a>-->
 <!--<div align="center" class="history_div"><button>Experiment History</button></div>
 <div align="center" class="exp_div"><button >New Experiment</button></div>-->

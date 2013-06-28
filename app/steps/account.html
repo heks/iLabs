@@ -32,12 +32,13 @@ box-shadow:inset 1px 1px 2px #fff;
 }
 
 </style>
+<div ng-controller="accCtrl">
 <div id="url" style="color: White;display:none">{{location.absUrl()}}</div> 
 <div><button class="b1" ng-click="navigate_back('url')">Back</button></div>
 <div  align="center" style="padding: 60px 0px 0px 20px">
 	
 	
-	<div  style="padding: 0px 0px 0px 460px"><img src="../img/edit_32x32.png"></div>
+	<div  style="padding: 0px 0px 0px 460px"><img src="./img/edit_32x32.png"></div>
 		<form name="designForm">
 			
 			<table>
@@ -65,4 +66,5 @@ box-shadow:inset 1px 1px 2px #fff;
 			</table>
 			<button style="background-color: Blue;color: White;font-size: 1em" >Save Changes</button>
 		</form>
+</div>
 </div>

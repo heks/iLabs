@@ -65,20 +65,20 @@
 
 <link rel="stylesheet" href="../css/dock.css">-->
 
-<link href="Mobile-iLab/app/css/dockmenu_f.css" rel="stylesheet">
-<link href="Mobile-iLab/app/css/desktop.css" rel="stylesheet">
-<link href="Mobile-iLab/app/css/iphone.css" rel="stylesheet" >
-<link href="Mobile-iLab/app/css/tablet.css" rel="stylesheet">
-<link href="Mobile-iLab/app/css/style.css" rel="stylesheet">
-<link href="Mobile-iLab/app/css/image.css" rel="stylesheet">
-<link href="Mobile-iLab/app/css/popup.css" rel="stylesheet">
+<link href="./css/dockmenu_f.css" rel="stylesheet">
+<link href="./css/desktop.css" rel="stylesheet">
+<link href="./css/iphone.css" rel="stylesheet" >
+<link href="./css/tablet.css" rel="stylesheet">
+<link href="./css/style.css" rel="stylesheet">
+<link href="./css/image.css" rel="stylesheet">
+<link href="./css/popup.css" rel="stylesheet">
 
-<script src="/app/js/popup.js"></script>
+<script src="./js/popup.js"></script>
 <script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
 
-<div>
+<div ng-controller="interpretCtrl">
             <div class="header">
-                <div class="left_img" ><a  ng-click="InvesB()"><img src="Mobile-iLab/app/img/back_64x64.png" id="left_img"></a></div>
+                <div class="left_img" ><a  ng-click="InvesB()"><img src="./img/back_64x64.png" id="left_img"></a></div>
                 <div class="heading_lng">Interpret</div>
                 <!--<div class="right_img" ><a ng-click="InvesN()"><img src="../img/next_64x64.png" style="width:100px;height:100px"></a></div>-->
             </div></br>
@@ -95,14 +95,14 @@
 					<span class="textwht sm">What type of relationship exists between radiation and distance?  Is it linear or non-linear, positive or negative?  How do you know?</span></br>
 					<div>
 						<textarea  ng-model="Intertxt1" id="inter1" cols="120" rows="8" placeholder="Please enter your answer here..."></textarea>
-						<a ng-click="clear('inter1')"><img src="Mobile-iLab/app/img/no.png"></a>
+						<a ng-click="clear('inter1')"><img src="./img/no.png"></a>
 					</div></br></br>
             	</div>
             	<div  style="float:left">
 					<span class="textwht sm">Does the data you collected give you a definite answer to your research question?  Why or why not?  If not, how would you change your experimental design to better investigate your research question?</span></br></br>
 					<div>
 						<textarea  ng-model="Intertxt2" id="inter2" cols="120" rows="8" placeholder="Please enter your answer here..."></textarea>
-						<a ng-click="clear('inter2')"><img src="Mobile-iLab/app/img/no.png"></a>
+						<a ng-click="clear('inter2')"><img src="./img/no.png"></a>
 					</div>
 				</div>
 				<div style="padding: 70px 0px 0px 20px">
