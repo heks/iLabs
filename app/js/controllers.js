@@ -226,9 +226,9 @@ mobileApp.controller('designCtrl',
       }
 
       $scope.submitDesign = function(cid, ckey, distances, duration, repeat){
-        //document.getElementById("countdown").style.display = "none";
-        display_timer = "Calculating......";
-        $("#timer").html(display_timer);
+
+        //display = "Calculating......";
+        //$("#timer").html(display);
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("POST", "http://ilabs.sesp.northwestern.edu/iLabServiceBroker/ilabServiceBroker.asmx", true);
 
@@ -260,6 +260,7 @@ mobileApp.controller('designCtrl',
                      '</SOAP-ENV:Body>'+  
                      '</SOAP-ENV:Envelope>'
 //alert(data);
+//$("#testdiv").html("sdfsff");
                    xmlhttp.onreadystatechange = function(){
                         if(xmlhttp.readyState ==4){
                               if (xmlhttp.status == 200){
@@ -270,6 +271,7 @@ mobileApp.controller('designCtrl',
                                   timer = parseInt(runtime) + parseInt(10);
                                   //timer = timer + 5;
                                   if(timer > 0){
+                                  //$("#loading").hide();
                                   display_timer = "Your result will be available in "+timer+"seconds!!!";
                                   $("#timer").html(display_timer);
                                   }else{
@@ -353,6 +355,7 @@ mobileApp.controller('investigateCtrl',
        
         $location.path("webcam/"+path);
       }
+
 
       $scope.retrieveResult = function(div_id){
         var cid = $("#coupon_Id").text();
