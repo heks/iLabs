@@ -108,7 +108,7 @@ mobileApp.controller('groupCtrl',
 
 // research Controller
 mobileApp.controller('researchCtrl',
-  function groupCtrl($scope, $location){
+  function researchCtrl($scope, $location){
       $scope.RB = function(){
         $location.path("partial1");
       }
