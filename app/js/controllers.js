@@ -32,7 +32,6 @@ mobileApp.controller('loginCtrl',
                       console.log(data);
                       $('#coupon_Id').html(data['couponId']);
                       $('#coupon_Key').html(data['passKey']);
-                      //$location.path("#/home").replace();
                       $location.path("home");
                       $scope.foobar = true;
                       sessionStorage.setItem("loggedIn", "true");
@@ -202,6 +201,7 @@ mobileApp.controller('designCtrl',
         var distances = $scope.distances;
         var times = $scope.m_times;
         var trials = $scope.nof_trials;
+        localStorage.setItem('loading','show');
         $scope.submitDesign(cid, ckey, distances, times, trials);
         if($scope.Dtxt == undefined){
           alert("Please fill out the empty fields");
@@ -227,9 +227,11 @@ mobileApp.controller('designCtrl',
       }
 
       $scope.submitDesign = function(cid, ckey, distances, duration, repeat){
-        //document.getElementById("countdown").style.display = "none";
-        display_timer = "Calculating......";
-        $("#timer").html(display_timer);
+
+        //$("#loading").html("Loading..");
+
+        //display = "Calculating......";
+        //$("#timer").html(display);
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("POST", "http://ilabs.sesp.northwestern.edu/iLabServiceBroker/ilabServiceBroker.asmx", true);
 
@@ -261,6 +263,7 @@ mobileApp.controller('designCtrl',
                      '</SOAP-ENV:Body>'+  
                      '</SOAP-ENV:Envelope>'
 //alert(data);
+//$("#testdiv").html("sdfsff");
                    xmlhttp.onreadystatechange = function(){
                         if(xmlhttp.readyState ==4){
                               if (xmlhttp.status == 200){
@@ -271,6 +274,7 @@ mobileApp.controller('designCtrl',
                                   timer = parseInt(runtime) + parseInt(10);
                                   //timer = timer + 5;
                                   if(timer > 0){
+                                  $("#loading").hide();
                                   display_timer = "Your result will be available in "+timer+"seconds!!!";
                                   $("#timer").html(display_timer);
                                   }else{
@@ -339,6 +343,18 @@ mobileApp.controller('investigateCtrl',
           $location.path("analyze");
         }
       }
+var getloading = localStorage.getItem('loading');
+//alert(getloading);
+if(getloading == "hide"){
+  //$("#loading").hide();
+  document.getElementById("loading").style.display = "none";
+}else{
+  //$("#loading").show();
+  document.getElementById("loading").style.display = "block";
+}
+$scope.loading = function(){
+
+}
 
        $scope.simulation = function(path){
         $location.path("simulation/"+path);
@@ -354,6 +370,7 @@ mobileApp.controller('investigateCtrl',
        
         $location.path("webcam/"+path);
       }
+
 
       $scope.retrieveResult = function(div_id){
         var cid = $("#coupon_Id").text();
@@ -404,6 +421,8 @@ mobileApp.controller('analyzeCtrl',
         $('#timer').hide();
         $('#countdown').hide();
         $location.path("investigate");
+
+        localStorage.setItem('loading','hide');
 
       };
 
@@ -708,6 +727,7 @@ mobileApp.controller('interpretCtrl',
         }else if($scope.Intertxt2 == undefined){
           alert("Please fill out the empty fields");
         }else{
+
           sessionStorage.setItem("loggedIn", "false");;
           var url = "http://ilabcentral.org/radioactivity/";    
           $(location).attr('href',url);
@@ -783,5 +803,6 @@ mobileApp.controller('appController',
         }
         
       }
+     
 
 });

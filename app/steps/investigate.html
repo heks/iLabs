@@ -1,4 +1,5 @@
-<div ng-controller="investigateCtrl">
+
+<div ng-controller="investigateCtrl" ng-init="loading()">
     <div class="header">
         <div class="left_img" ><a  ng-click="InvesB()"><img src="./img/back_64x64.png" id="left_img"></a></div>
         <div class="heading_lng">Investigate</div>
@@ -14,12 +15,12 @@
                 <li class="msgs"><a href="" ng-click="messages('investigate')" title="Messages"></a></li>
             </ul>
         </div>
-        
+       <div id="loading"  style="color:Yellow;font-size:25px;display:none"><img src="./img/ajax-loader.gif"></div>
         <div id="timer" style="color:Green;display:block;font-size:25px"></div>
         <div id="countdown" style="color:Orange;display:block;font-size:25px"></div>
 
         <div  style="float:right">
-            <span class="textwht sm">What do you predict will happen in this experiment?  What do you think you will see in your results?</span></br></br>
+            <span class="textwht sm">What do you predict will happen in this experiment?  What do you think you will see in your results?</span></br></br> 
             <div>
                 <textarea  id="invest1" cols="120" ng-model="Investxt1" rows="8"placeholder="Please enter your answer here..."></textarea>
                 <a ng-click="clear('invest1')"><img src="./img/no.png"></a>
@@ -31,6 +32,7 @@
                     <a ng-click="clear('invest2')"><img src="./img/no.png"></a></br>
                 </div>
                 </br>
+
 
                 <div id="result" style="align:center;display:none" class="result">
                     <button ng-click="retrieveResult()" class="topopup">Retrieve Results</button>
