@@ -26,7 +26,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         controller: appController
     });
 
-    $routeProvider.when('/home', {
+    $routeProvider.when('/app/partials/home.html', {
         //templateUrl: '/partials/home.html',
         templateUrl: 'app/partials/home.html',
         controller: appController
@@ -136,7 +136,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     $routeProvider.otherwise({ redirectTo: '' });
 
     $locationProvider.html5Mode(true);
-    
+    //$locationProvider.hashPrefix("");
 }]);
 
 
