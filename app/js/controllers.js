@@ -33,6 +33,7 @@ mobileApp.controller('loginCtrl',
                       $('#coupon_Id').html(data['couponId']);
                       $('#coupon_Key').html(data['passKey']);
                       //$location.path("#/home").replace();
+                      //localStorage.setItem("User","true");
                       $location.path("home");
                       $scope.foobar = true;
                     });
@@ -201,6 +202,7 @@ mobileApp.controller('designCtrl',
         var distances = $scope.distances;
         var times = $scope.m_times;
         var trials = $scope.nof_trials;
+        localStorage.setItem('loading','show');
         $scope.submitDesign(cid, ckey, distances, times, trials);
         if($scope.Dtxt == undefined){
           alert("Please fill out the empty fields");
@@ -226,6 +228,8 @@ mobileApp.controller('designCtrl',
       }
 
       $scope.submitDesign = function(cid, ckey, distances, duration, repeat){
+
+        //$("#loading").html("Loading..");
 
         //display = "Calculating......";
         //$("#timer").html(display);
@@ -271,7 +275,7 @@ mobileApp.controller('designCtrl',
                                   timer = parseInt(runtime) + parseInt(10);
                                   //timer = timer + 5;
                                   if(timer > 0){
-                                  //$("#loading").hide();
+                                  $("#loading").hide();
                                   display_timer = "Your result will be available in "+timer+"seconds!!!";
                                   $("#timer").html(display_timer);
                                   }else{
@@ -340,6 +344,18 @@ mobileApp.controller('investigateCtrl',
           $location.path("analyze");
         }
       }
+var getloading = localStorage.getItem('loading');
+//alert(getloading);
+if(getloading == "hide"){
+  //$("#loading").hide();
+  document.getElementById("loading").style.display = "none";
+}else{
+  //$("#loading").show();
+  document.getElementById("loading").style.display = "block";
+}
+$scope.loading = function(){
+
+}
 
        $scope.simulation = function(path){
         $location.path("simulation/"+path);
@@ -406,6 +422,8 @@ mobileApp.controller('analyzeCtrl',
         $('#timer').hide();
         $('#countdown').hide();
         $location.path("investigate");
+
+        localStorage.setItem('loading','hide');
 
       };
 
@@ -710,6 +728,7 @@ mobileApp.controller('interpretCtrl',
         }else if($scope.Intertxt2 == undefined){
           alert("Please fill out the empty fields");
         }else{
+          localStorage.setItem("User","false");
           var url = "http://ilabcentral.org/radioactivity/";    
           $(location).attr('href',url);
         }
@@ -778,5 +797,9 @@ $scope.sidebar = function(){
                 );
 
       }
+     /* $scope.load = function(){
+      var getvar = localStorage.getItem("User");
+      alert(getvar);
+    }*/
 
 }
