@@ -13,8 +13,8 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
     <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.4.0.js"></script>
     <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"> </script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     <script src="lib/highcharts.js"></script>
     <script src="js/popup.js"></script>
@@ -40,13 +40,13 @@
     </script>
   </head>
   
-  <body id="appController" ng-controller="appController" id="home">
-    <div id="coupon_Id" style="color:white;display:none"></div>  
-    <div id="coupon_Key" style="color:white;display:none"></div>
-    <div id="distances" style="color:white;display:none"></div>
-    <div id="duration" style="color:white;display:none"></div>
-    <div id="repeat" style="color:white;display:none"></div>
-    <div id="exp_Id" style="color:white;display:none"></div>
+  <body  ng-controller="appController" id="home">
+    <div style="display:none" id="coupon_Id"></div>  
+    <div style="display:none" id="coupon_Key"></div>
+    <div style="display:none" id="distances"></div>
+    <div style="display:none" id="duration"></div>
+    <div style="display:none" id="repeat"></div>
+    <div style="display:none" id="exp_Id"></div>
     <span> {{checkSession()}}</span>
     <div ng-view></div>
   </body>
