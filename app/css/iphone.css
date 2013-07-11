@@ -1,15 +1,11 @@
-@media all and (max-width:480px){
+@media all and (max-device-width:480px){
 .rain{
-  width: 700px;
-  height: 900px;
   margin:60px auto;
   padding: 20px;
 }
 .header_lg{
-  font-size: 60px;
-  position:absolute;
-  margin-top: 20px;
-  margin-left: 170px;
+  font-size: 3em;
+	text-align: center;
 }
 .header_sm{
   font-size: 35px;
