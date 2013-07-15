@@ -1,45 +1,45 @@
 <!doctype html>
 <html>
 <head>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-	<script src="./lib/highcharts/highcharts.js"></script>
-	<script type="text/javascript">
-			$(function(){
-							$('#container').highcharts({
-								chart: {
-									type: 'line',
-									backgroundColor: '#FCFFC5'
-								},
-								title: {
-									text: 'Radioactivity'
-								},
-								
-								xAxis: {
-									categories: ['20','25','30'],
-									title: {
-										text: 'Distances( mm)'
-									}
-								},
-								yAxis: {
-									title: {
-										text: 'Radioactivity Intensity( Particle Counts)'
-									}
-								},
-								series: [
-											{
-												name: 'Trial1( prticle counts)',
-												data: [110, 89, 86]
-											},
-											{
-												name: 'Trial2( particle counts)',
-												data: [133, 78, 73]
-											}
-										]
-							});
-			});
-	</script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="./lib/highcharts/highcharts.js"></script>
+  <script type="text/javascript">
+  $(function(){
+    $('#container').highcharts({
+      chart: {
+        type: 'line',
+        backgroundColor: '#FCFFC5'
+      },
+      title: {
+        text: 'Radioactivity'
+      },
+      
+      xAxis: {
+        categories: ['20','25','30'],
+        title: {
+          text: 'Distances( mm)'
+        }
+      },
+      yAxis: {
+        title: {
+          text: 'Radioactivity Intensity( Particle Counts)'
+        }
+      },
+      series: [
+            {
+              name: 'Trial1( prticle counts)',
+              data: [110, 89, 86]
+            },
+            {
+              name: 'Trial2( particle counts)',
+              data: [133, 78, 73]
+            }
+          ]
+    });
+  });
+  </script>
 </head>
 <body>
-	<div id="container" style="height: 300px;width: 450px"></div>
+  <div id="container" style="height: 300px;width: 450px"></div>
 </body>
 </html>

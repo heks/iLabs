@@ -2,6 +2,11 @@ body {
   background-color: black;
 }
 
+#app_envelope {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+}
 .rain {
   border: 1px solid #270644;
   border-radius: 20px;
@@ -39,7 +44,7 @@ form {
 }
 
 .form_element {
-  font-size: 40px;
+  font-size: 1em;
 }
 
 label {
@@ -77,12 +82,14 @@ label {
   background: #1589ff;
   font-size: 15px;
   font-weight: bolder;
+  padding: 1em 0;
 }
 
 .heading_lng {
   font-size: 35px;
   font-weight: bolder;
   color:#fff;
+  text-align: center;
 }
 
 .heading {
@@ -92,9 +99,23 @@ label {
   text-align: center;
 }
 
-.left_img {
+#home_welcome {
+  text-align: center;
+  color: yellow;
 }
-
+#home_intro {
+  color:White;
+  font-size:1em;
+  line-height: 1.1em;
+  border:1px solid #000;
+}
+.left_img, .right_img {
+  position: absolute;
+  top: 0;
+}
+.left_img {
+  left:0;
+}
 .left_img > img {
 }
 
@@ -102,6 +123,7 @@ label {
 }
 
 .right_img {
+  right: 0;
 }
 
 .right_img > img {
@@ -211,12 +233,17 @@ a#btn2{
 }
 
 .content {
+  padding: 0 1em;
+}
+.content textarea {
+  width: 90%;
 }
 
 .textwht {
   color: #fff;
-  font-size: 35px;
-  line-height: 1.2em;
+  font-size: 1em;
+  line-height: 1.1em;
+  margin: 0.25em 0;
 }
 
 .textblk {
@@ -226,8 +253,6 @@ a#btn2{
 }
 
 .textblue {
-  color: Blue;
-  font-size: 30px;
   line-height: 1.2em;
 }
 
@@ -238,7 +263,8 @@ a#btn2{
 
 .sm {
   font-weight: normal;
-  line-height: ;
+  line-height: 1em;
+  font-size:1em;
 }
 
 .smr {
@@ -249,7 +275,6 @@ a#btn2{
 }
 
 .txt_bh {
-  color: Blue;
   font-size: 45px;
   line-height: 1.2em;
   font-weight: bold;
@@ -262,7 +287,6 @@ a {
 }
 
 a:hover {
-  color: #0000ff;
   text-decoration: none;
 }
 

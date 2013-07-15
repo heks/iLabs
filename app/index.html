@@ -41,7 +41,8 @@
     </script>
   </head>
   
-  <body  ng-controller="appController" id="home">
+  <body ng-controller="appController" id="home">
+    <div ng-view id="app_envelope"></div>
     <div style="display:none" id="coupon_Id"></div>  
     <div style="display:none" id="coupon_Key"></div>
     <div style="display:none" id="distances"></div>
@@ -49,6 +50,5 @@
     <div style="display:none" id="repeat"></div>
     <div style="display:none" id="exp_Id"></div>
     <span> {{checkSession()}}</span>
-    <div ng-view></div>
   </body>
 </html>

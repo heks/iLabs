@@ -1,30 +1,14 @@
 <div ng-controller="homeCtrl">
-
-	<div id="home_url" style="color: White;display:none">{{location.absUrl()}}</div> 
-	<div>
-
-		<div class="header">
-			<div class="heading">HOME</div>
-		</div>
-		</br>
-		<div style="margin-top:100px">
-			<h2 align="center" style="color:Yellow">Welcome to iLab !!!</h2>
-
-			<p style="color:White;font-size:20px;width:900px;margin-left:200px;border:1px solid #000">iLab is dedicated to the proposition that online laboratories - real laboratories accessed through the Internet - can enrich science and engineering education by greatly expanding the range of experiments that the students are exposed to in the course of their education. Unlike conventional laboratories, iLabs can be shared across a university or across the world. The iLab vision is to share lab experiments as broadly as possible within higher education and beyond. The ultimate goal of the iLab project is to create a rich set of experiment resources that make it easier for faculty members around the world to share their labs over the Internet.</p>
-
-		</div>
-		<div align="center">
-
-			<a id="btn1" ng-click="">Experiment History</a>
-			<a id="btn2" ng-click="experiments()">New Experiment</a>
-				<!--<div class="squareBase t1" align="center"></br></br></br></br>
-					<div ><span class="txt">Experiment </br></br>History</span></div>
-				</div></br>
-
-				<div class="squareBase t2" align="center"></br></br></br></br>
-					<div  ng-click="experiments()"><span class="txt">New</br></br>Experiment</span></div>
-				</div>-->
-		</div>
-	</div>
+  <div id="home_url" style="color: White;display:none">{{location.absUrl()}}</div> 
+    <div>
+      <div class="header">
+        <div class="heading">HOME</div>
+      </div>
+      <h2 id="home_welcome">Welcome to iLab !!!</h2>
+      <p id="home_intro">iLab is dedicated to the proposition that online laboratories - real laboratories accessed through the Internet - can enrich science and engineering education by greatly expanding the range of experiments that the students are exposed to in the course of their education. Unlike conventional laboratories, iLabs can be shared across a university or across the world. The iLab vision is to share lab experiments as broadly as possible within higher education and beyond. The ultimate goal of the iLab project is to create a rich set of experiment resources that make it easier for faculty members around the world to share their labs over the Internet.</p>
+      </div>
+      <a id="btn1" ng-click="">Experiment History</a>
+      <a id="btn2" ng-click="experiments()">New Experiment</a>
+  </div>
 </div>
 

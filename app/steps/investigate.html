@@ -5,7 +5,6 @@
         <div class="heading_lng">Investigate</div>
         <div class="right_img" ><a ng-click="InvesN()"><img src="./img/next_64x64.png" id="right_img"></a></div>
     </div>
-    </br>
     <div class="content">
         <div id="main2" ng-init="sidebar()">
             <ul id="navigation">
@@ -18,27 +17,22 @@
        <div id="loading"  style="color:Yellow;font-size:25px;display:none"><img src="./img/ajax-loader.gif"></div>
         <div id="timer" style="color:Green;display:block;font-size:25px"></div>
         <div id="countdown" style="color:Orange;display:block;font-size:25px"></div>
-
         <div  style="float:right">
-            <span class="textwht sm">What do you predict will happen in this experiment?  What do you think you will see in your results?</span></br></br> 
+            <span class="textwht sm">What do you predict will happen in this experiment?  What do you think you will see in your results?</span> 
             <div>
                 <textarea  id="invest1" cols="120" ng-model="Investxt1" rows="8"placeholder="Please enter your answer here..."></textarea>
                 <a ng-click="clear('invest1')"><img src="./img/no.png"></a>
-            </div></br></br>
+            </div>
             <div  style="align:center">
-                <span class="textwht sm">What are your initial observations about your result?</span></br></br>
+                <span class="textwht sm">What are your initial observations about your result?</span>
                 <div>
                     <textarea  id="invest2" ng-model="Investxt2" cols="120" rows="8" placeholder="Please enter your answer here..."></textarea>
-                    <a ng-click="clear('invest2')"><img src="./img/no.png"></a></br>
+                    <a ng-click="clear('invest2')"><img src="./img/no.png"></a>
                 </div>
-                </br>
-
-
                 <div id="result" style="align:center;display:none" class="result">
                     <button ng-click="retrieveResult()" class="topopup">Retrieve Results</button>
                 </div>
             </div>
-            </br></br></br>
         </div>
     </div>
 </div>
