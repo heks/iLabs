@@ -1,6 +1,6 @@
 <div ng-controller="groupCtrl">
   <div class="header">
-    <div class="heading_lng">My Groups</div>
+    <div class="page_title">My Groups</div>
   </div>
   <div class="content">
     <p class="textwht lg">Select the group you would like to use for this session.</p>
@@ -17,12 +17,13 @@
   </div>
   <div modal="shouldBeOpen" close="close()" options="opts" style="overflow: auto;height:500px;width:150px;">
     <div class="modal-header">
-      <span class="txt_bh">Radioactivity iLab</span>
+      <span class="modal_title">Radioactivity iLab</span>
     </div>
-    <div class="modal-footer">
-      <button  style="background-color: Green;color:White" ng-click="start()">Start Lab</button>
-      <button  style="background-color: Orange:color:White" ng-click="close()">Cancel</button>
+    <div class="modal_footer">
+      <button  class="modal_btn1" ng-click="start()">Start Lab</button>
+      <button  class="modal_btn2" ng-click="close()">Cancel</button>
     </div>
+    <hr/>
     <div class="modal-body" style="overflow: auto;height:500px;">
       <span class="textblk lg">What is this lab about?</span>
       <p class="textblk sm">In this lab, you can investigate the intensity of radiation over distance using a radioactive strontium-90 sample and a Geiger counter, which is an instrument used to measure radioactive radiation.</p>

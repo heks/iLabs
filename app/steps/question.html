@@ -1,8 +1,8 @@
 <div ng-controller="questionCtrl">
   <div class="header">
-    <div class="left_img" ><a  ng-click="QB()"><img src="./img/back_64x64.png" id="left_img" ></a></div>
-    <div class="heading_lng">Question</div>
-    <div class="right_img" ><a ng-click="QN()"><img src="./img/next_64x64.png" id="right_img"></a></div>
+    <div class="nav_back" ><a  ng-click="QB()"><img src="./img/back_64x64.png" id="nav_back" ></a></div>
+    <div class="page_title">Question</div>
+    <div class="nav_next" ><a ng-click="QN()"><img src="./img/next_64x64.png" id="nav_next"></a></div>
   </div>
   <div class="content">
     <div id="main2" ng-init="sidebar()">
@@ -13,7 +13,7 @@
         <li class="msgs"><a href="" ng-click="messages('question')" title="Messages"></a></li>
       </ul>
     </div>
-    <p class="textwht sm">What are you trying to find out in this lab?  What question are you trying to answer?  This question is called your research question, which guides your experimental design in the next step.</p>
+    <p class="textwht sm">What are you trying to find out in this lab?  What question are you trying to answer?  This question is called your research question, which guides your experimental design in the next step.</p></br>
     <p class="textwht sm">Write your research question below.</p>
     <textarea  ng-model="Qtxt" id="question" placeholder="Please enter your research question here..."></textarea>
     <a ng-click="clear('question')"><img src="./img/no.png"></a>
