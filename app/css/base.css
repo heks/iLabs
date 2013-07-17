@@ -271,10 +271,14 @@ a#home_btn2{
   font-weight: bolder;
   line-height: 1.2em;
 }
+.textorange {
+  color: orange;
+  font-weight: bolder;
+  line-height: 1.2em;
+}
 
 .lg {
-  font-weight: bold;
-  font-style: italic;
+  font-weight: bolder;
 }
 
 .sm {
@@ -374,7 +378,6 @@ input.design {
    background:#008000;
    color: #fff;
    font-weight: bold;
-   font-size: 2em;
    border-radius: 100px
 }
 

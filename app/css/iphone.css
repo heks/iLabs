@@ -7,6 +7,7 @@
   padding: 1em;
   margin-right: 10px;
   margin-left: 10px;
+  margin-bottom: auto;
 }
 .header_lg, .header_sm {
   text-align: center;
@@ -20,8 +21,9 @@
 }
 form {
   /*border: 1px solid #270644;*/
-  border: 1px solid #fff;
+  /*border: 1px solid #fff;*/
   padding: 20px;
+  margin-bottom: 50px;
 }
 .form_element{
 }
@@ -121,24 +123,84 @@ div.exp_div button{
   margin-left:1em;
 }
 a#home_btn1{
+  font: 20px arial,sans-serif;
+  font-weight: bold;
   display: block;
   padding: 4px;
   height: 50px;
   width: 240px;
-  margin-left: 20px;
+  margin-left: 40px;
   margin-bottom: 50px;
 }
 a#home_btn2{
+  font: 20px arial,sans-serif;
+  font-weight: bold;
   display: block;
   padding: 4px;
   height: 50px;
   width: 240px;
-  margin-left: 20px;
+  margin-left: 40px;
   margin-bottom: 50px;
 }
 .squareBase{
   width: 300px;
   height: 300px;
+}
+#wrapper{
+  color:#000000;
+  font-family:tahoma;
+  font-size:14px;
+  margin:0 auto;
+  width:800px;
+  margin-top:50px;
+}
+
+#wrapper a{
+  cursor:pointer;
+  font-size:15px;
+  font-weight:bold;
+  text-decoration:underline;
+}
+.wrapper_btn1{
+background-color: green;
+color: #fff;
+border-radius: 20px;
+border-color: #fff;
+font-weight: bold;
+height: 30px;
+margin-left: 70px;
+}
+
+.box {
+    background-color: #ffffff;
+    color: #888888;
+    height: auto;
+    left: 100%;
+    padding: 20px;
+    position: absolute;
+    right: 30%;
+    top: 25%;
+    width: 280px;
+    z-index: 101;
+  border:5px solid #888888;
+  border-radius:10px;
+  -moz-border-radius:10px;
+}
+
+.overlay {
+    
+}
+
+.boxclose {
+    background: url(../img/no.png);
+    background-repeat:no-repeat;
+    cursor: pointer;
+    float: right;
+    height: 26px;
+    left: 32px;
+    position: relative;
+    top: -33px;
+    width: 26px;
 }
 .txt{
   font-size: 40px;
@@ -152,6 +214,9 @@ a#home_btn2{
   margin-top: 50px;
   margin-right: 100px;
 }
+.content_group{
+  margin-top: 25px;
+}
 .content{
   margin-top: 80px;
 }
@@ -163,9 +228,11 @@ a#home_btn2{
 .textblue{
 }
 .lg{
+  font: 20px arial,sans-serif;
 }
 .sm{
   font-size: 15px;
+  font: 15px arial,sans-serif;
 }
 .smr{
   font-size: 35px;
@@ -260,7 +327,6 @@ border-radius: 15px;
 -moz-border-radius: 15px;
 -webkit-border-radius: 15px;
 -khtml-border-radius:15px;
-
 box-shadow:inset 1px 1px 2px #fff;
 -webkit-box-shadow:inset 1px 1px 2px #999;
 -moz-box-shadow:inset 1px 1px 2px #999;
@@ -280,6 +346,7 @@ box-shadow:inset 1px 1px 2px #fff;
     
 }
 .exit{
+  font-size: 1.2em;
   width:160px;
   height:40px;
   position:absolute;

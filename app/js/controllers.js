@@ -63,6 +63,7 @@ mobileApp.controller('homeCtrl',
 // Group Controller
 mobileApp.controller('groupCtrl',
   function groupCtrl($scope, $location){
+
     $scope.open = function () {
        $scope.shouldBeOpen = true;
       };
@@ -85,6 +86,24 @@ mobileApp.controller('groupCtrl',
        $scope.closeMsg = 'I was closed at: ' + new Date();
        $scope.shouldBeOpenP = false;
       };
+      $scope.openOffersDialog = function(){
+        $('#overlay').fadeIn('fast', function() {
+        $('#boxpopup').css('display','block');
+        $('#boxpopup').animate({'left':'5%'},400);
+        });
+      }
+      $scope.closeOffersDialog = function(prospectElementID){
+            $(function($) {
+            $(document).ready(function() {
+                $('#' + prospectElementID).css('position','absolute');
+                $('#' + prospectElementID).animate({'left':'-100%'}, 500, function() {
+                    $('#' + prospectElementID).css('position','fixed');
+                    $('#' + prospectElementID).css('left','100%');
+                    $('#overlay').fadeOut('fast');
+                });
+            });
+        });
+      }
 
       $scope.opts = {
         backdropFade: true,
@@ -99,9 +118,7 @@ mobileApp.controller('groupCtrl',
        $scope.labs = [{"header": "Radioactivity iLab", "desc": "A lab to investigate the intensity of radiation over distance." }];
        $scope.foos = [{"header": "PowderXRD Lab Client", "desc": "PowderXRD iLabs Client" }];
 
-       $scope.htmlTooltip1 = "The distances from the Strontium-90 source that the Geiger counter will measure radiation. For example, you could enter: 15, 45, 60. The minimum distance is 15mm, and the maximum is 90mm.";
-       $scope.htmlTooltip2 = "The number of seconds that each measurement of radiation will last, at each of the distance you chose above";
-       $scope.htmlTooltip3 = "The number of times you wish for the experiment to repeat, according to the values you set for the previous variables";
+       
 
        
   });
@@ -110,7 +127,7 @@ mobileApp.controller('groupCtrl',
 mobileApp.controller('researchCtrl',
   function researchCtrl($scope, $location){
       $scope.RB = function(){
-        $location.path("partial1");
+        $location.path("mygroups");
       }
 
       $scope.RN = function(){
@@ -190,6 +207,9 @@ mobileApp.controller('questionCtrl',
 // design Controller
 mobileApp.controller('designCtrl',
   function designCtrl($scope, $location){
+    $scope.htmlTooltip1 = "The distances from the Strontium-90 source that the Geiger counter will measure radiation. For example, you could enter: 15, 45, 60. The minimum distance is 15mm, and the maximum is 90mm.";
+       $scope.htmlTooltip2 = "The number of seconds that each measurement of radiation will last, at each of the distance you chose above";
+       $scope.htmlTooltip3 = "The number of times you wish for the experiment to repeat, according to the values you set for the previous variables";
       $scope.DB = function(){
         $location.path("question");
       }
@@ -729,8 +749,9 @@ mobileApp.controller('interpretCtrl',
         }else{
 
           sessionStorage.setItem("loggedIn", "false");;
-          var url = "http://ilabcentral.org/radioactivity/";    
-          $(location).attr('href',url);
+          //var url = "http://ilabcentral.org/radioactivity/";    
+          //$(location).attr('href',url);
+          $location.path("mygroups");
         }
         
       }
@@ -802,6 +823,10 @@ mobileApp.controller('appController',
           $location.path('login');
         }
         
+      }
+
+      $scope.clear = function(textarea_ID){
+        document.getElementById(textarea_ID).value = "";
       }
 
      
