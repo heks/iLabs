@@ -1,11 +1,12 @@
 body {
   background-color: black;
+  padding: 0;
 }
 
 #app_envelope {
-  position: relative;
+  position: absolute;
   width: 100%;
-  margin: 0 auto;
+  /*margin: 0 auto;*/
 
 }
 .login_template {
@@ -85,6 +86,15 @@ label {
   font-weight: bolder;
   padding: 1em 0;
   width: 100%;
+}
+.navigation_bar {
+    /*background-color:#585858;*/
+    background-color:#444444;
+    /*-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.50;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;*/
 }
 
 .heading_lng {
@@ -257,6 +267,8 @@ a#home_btn2{
 }
 
 .textblue {
+  color: #118DED;
+  font-weight: bolder;
   line-height: 1.2em;
 }
 

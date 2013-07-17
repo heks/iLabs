@@ -3,17 +3,23 @@
 		<div class="nav_back" ><a  ng-click="InterB()"><img src="./img/back_64x64.png" id="nav_back"></a></div>
 		<div class="page_title">Interpret</div>
 
-	</div></br>
-	
+	</div>
+	<div class="navigation_bar">
+                <a href=""  ng-click="simulation('interpret')"><img src="./img/sim_48x48.png"></a>
+                <a href=""  ng-click="webcam('interpret')"><img src="./img/wcam_48x48.png"></a>
+                <a href=""   ng-click="account('interpret')" ><img src="./img/profile_48x48.png"></a>
+                <a href="" ng-click="messages('interpret')" ><img src="./img/msg_48x48.png"></a>
+    </div>
+
 	<div class="content">
-		<div id="main2" ng-init="sidebar()">
+		<!--<div id="main2" ng-init="sidebar()">
 			<ul id="navigation">
 				<li class="simulation" ng-click="simulation('interpret')"><a href="" title="Simulation"></a></li>
 				<li class="webcam" ng-click="webcam('interpret')"><a href="" title="Webcam"></a></li>
 				<li class="myacc"><a href=""   ng-click="account('interpret')" title="My Account"></a></li>
 				<li class="msgs"><a href="" ng-click="messages('interpret')" title="Messages"></a></li>
 			</ul>
-		</div>
+		</div>-->
 		
 		<div >
 			<span class="textwht sm">What type of relationship exists between radiation and distance?  Is it linear or non-linear, positive or negative?  How do you know?</span></br>
