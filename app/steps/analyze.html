@@ -22,17 +22,30 @@
         </div>-->
         
         <div  style="float:right">
-            <span class="textwht sm">You can now graph your experimental results to see how radiation changes as a function of distance. Click on the Graph Data button below to graph and analyze your data.</span></br>
+            <span class="textblk sm">You can now graph your experimental results to see how radiation changes as a function of distance. Click on the Graph Data button below to graph and analyze your data.</span></br>
         </div>
         
         <div  style="float:left">
-            <span class="textwht sm">You can also click on the Export Results button in your results table to graph and analyze your data using a spreadsheet analysis program like Microsoft Excel.</span></br></br>
+            <span class="textblk sm">You can also click on the Export Results button in your results table to graph and analyze your data using a spreadsheet analysis program like Microsoft Excel.</span></br></br>
         </div>
-        
+        <!--export graph-->
+                <select id="ExportOption">
+                      <option value="PNG">PNG Image</option>
+                      <option value="JPEG">JPEG Image</option>
+                      <option value="PDF">PDF Document</option>
+                      <option value="SVG">SVG Vector Image</option>
+                </select></br></br>
+                <button id="buttonExport" >Export chart</button>
+                <button id="buttonPrint" >Print chart</button>
+                <!--<button ng-click="Print()">Draw</button>-->
+                <!--end export-->
         <div  style="float:left">
             <div  style="padding: 40px 0px 0px 10px" ng-hide="maingraph" id="duplicater">
                 <div id="graph" ng-init="Graph()" style="height: 300px;width: 450px; "></div></br>
             </div></br>
+
+            <canvas id="canvas" style="display:none"></canvas>     
+
         </div></br>
         
         <div  style="float:left">
@@ -41,6 +54,7 @@
             </div>
         </div>
     </div>
+
 </div>
 
 <div id="toPopup" ng-hide="graphdiv">

@@ -10,18 +10,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!--<base>-->
     <title>iLab Mobile App</title>
+    <script src="http://canvg.googlecode.com/svn/trunk/rgbcolor.js"></script> 
+    <script src="http://canvg.googlecode.com/svn/trunk/canvg.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
     <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.4.0.js"></script>
     <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <!--<script src="http://code.highcharts.com/highcharts.js"></script>-->
+    <!--<script src="http://code.highcharts.com/modules/exporting.js"></script>-->
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-    <script src="lib/highcharts.js"></script>
+    <script src="lib/highchart/highchart1.js"></script>
+    <script src="lib/highchart/exporting.js"></script>
     <script src="js/popup.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/directives.js"></script>
     <script src="js/popupdiv.js"></script>
+    <script src="lib/jsPDF/base64.js"></script>
+    <!--<script src="lib/jsPDF/jspdf.js"></script>-->
+    <script src="lib/jsPDF/jspdf.min.js"></script>
+    <script src="lib/jsPDF/sprintf.js"></script>
+    <script src="lib/jsPDF/downloadify.min.js"></script>
+    <script src="lib/jsPDF/swfobject.js"></script>
+    <script src="js/html2canvas.js"></script>
     
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
     
@@ -51,6 +63,17 @@
     <div style="display:none" id="duration"></div>
     <div style="display:none" id="repeat"></div>
     <div style="display:none" id="exp_Id"></div>
+    <div style="display:none" id="runtime"></div>
+    <div style="display:none" id="trials"></div>
+
+    <div style="display:none" id="Q1"></div>
+    <div style="display:none" id="D1"></div>
+    <div style="display:none" id="I1"></div>
+    <div style="display:none" id="I2"></div>
+    <div style="display:none" id="IF1"></div>
+    <div style="display:none" id="IF2"></div>
+
+    <div style="display:none" id="data_URI"></div>
     <span> {{checkSession()}}</span>
 
   </body>

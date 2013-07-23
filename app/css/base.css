@@ -1,5 +1,5 @@
 body {
-  background-color: black;
+  background-color: white;
   padding: 0;
 }
 
@@ -114,7 +114,7 @@ label {
 
 #home_welcome {
   text-align: center;
-  color: yellow;
+  color: black;
   margin-bottom: 50px;
 }
 #home_intro {
@@ -279,6 +279,7 @@ a#home_btn2{
 
 .lg {
   font-weight: bolder;
+  font-style: normal;
 }
 
 .sm {
@@ -366,6 +367,9 @@ a:visited {
 
 input.design {
 }
+#graph{
+  margin-left: -5px;
+}
   
 .result {
    color: #fff;
@@ -373,7 +377,18 @@ input.design {
    font-size: 20px;
    line-height: 1.3em;
 }
-
+.pdf {
+   background:blue;
+   color: #fff;
+   font-weight: bold;
+   border-radius: 100px
+}
+.downloadify{
+  /*background:red;
+   color: #fff;
+   font-weight: bold;
+   border-radius: 100px*/
+}
 .exit {
    background:#008000;
    color: #fff;

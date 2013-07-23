@@ -1,3 +1,16 @@
+<script type="text/javascript">
+function pdf(){
+var doc = new jsPDF();
+doc.text(20, 20, 'Hello world!');
+doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.');
+doc.addPage();
+doc.text(20, 20, 'Do you like that?');
+
+// Output as Data URI
+doc.output('datauri');
+}
+</script>
+
 <div ng-controller="homeCtrl">
   <div id="home_url" style="color: White;display:none">{{location.absUrl()}}</div> 
     <div>
@@ -9,6 +22,10 @@
       </div>
       <a id="home_btn1" ng-click="">Experiment History</a>
       <a id="home_btn2" ng-click="experiments()">New Experiment</a>
-  </div>
+      </div>
+    
+
+      <!--<div style="background-color:green;border:1px solid #fff;width:300px;height:400px"></div>-->
+      
 </div>
 
