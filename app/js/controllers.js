@@ -379,12 +379,12 @@ mobileApp.controller('investigateCtrl',
       }
 var getloading = localStorage.getItem('loading');
 //alert(getloading);
-if(getloading == "hide"){
+if(getloading == "show"){
   //$("#loading").hide();
-  document.getElementById("loading").style.display = "none";
+  document.getElementById("loading").style.display = "block";
 }else{
   //$("#loading").show();
-  document.getElementById("loading").style.display = "block";
+  document.getElementById("loading").style.display = "none";
 }
 $scope.loading = function(){
 
@@ -607,7 +607,7 @@ mobileApp.controller('analyzeCtrl',
                           type: 'line',
                           backgroundColor: '#FCFFC5',
                           height: 400,
-                          width: 300
+                          width: 290
                         },
                         title: {
                           text: "Radioactivity"

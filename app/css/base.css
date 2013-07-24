@@ -10,14 +10,14 @@ body {
 
 }
 .login_template {
-  border: 1px solid #270644;
+  border: 0px solid #270644;
   border-radius: 20px;
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
   background:  -moz-linear-gradient(19% 75% 90deg,#32b232, #3232ff);
   background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#3232ff), to(#32b232));
-  -moz-box-shadow:0px -5px 300px #270644;
-  -webkit-box-shadow:0px -5px 300px #270644;
+  /*-moz-box-shadow:0px -5px 300px #270644;
+  -webkit-box-shadow:0px -5px 300px #270644;*/
 }
 
 .header_lg {
@@ -78,6 +78,19 @@ label {
   font-weight: bold;
   border-top: 1px solid #ad64e0;
   border-radius: 50px;
+}
+#waiting{
+   background-color: #000000;
+   opacity: 0.5;
+   filter:alpha(opacity=50);
+}
+#loading_img{
+  margin-top: 100px;
+}
+#wait-box{
+  background-color: #000000;
+  opacity: 0.5;
+  filter:alpha(opacity=50);
 }
 
 .header {
@@ -287,6 +300,12 @@ a#home_btn2{
   line-height: 1em;
   font-size:1em;
 }
+.smb {
+  font-weight: bold;
+  line-height: 1em;
+  font-size:.5em;
+}
+
 
 .smr {
   color: White;
@@ -368,7 +387,7 @@ a:visited {
 input.design {
 }
 #graph{
-  margin-left: -5px;
+  margin-left: -10px;
 }
   
 .result {
@@ -378,7 +397,7 @@ input.design {
    line-height: 1.3em;
 }
 .pdf {
-   background:blue;
+   background:red;
    color: #fff;
    font-weight: bold;
    border-radius: 100px
@@ -390,7 +409,8 @@ input.design {
    border-radius: 100px*/
 }
 .exit {
-   background:#008000;
+   /*background:#008000;*/
+   background:blue;
    color: #fff;
    font-weight: bold;
    border-radius: 100px
