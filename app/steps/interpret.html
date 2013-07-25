@@ -1,4 +1,4 @@
-<div ng-controller="interpretCtrl">
+<div ng-controller="interpretCtrl" data-ng-init="onLoad()">
 	<div class="header">
 		<div class="nav_back" ><a  ng-click="InterB()"><img src="./img/back_64x64.png" id="nav_back"></a></div>
 		<div class="page_title">Interpret</div>
@@ -24,22 +24,23 @@
 		<div >
 			<span class="textblk sm">What type of relationship exists between radiation and distance?  Is it linear or non-linear, positive or negative?  How do you know?</span></br>
 			<div>
-				<textarea  ng-model="Intertxt1" id="inter1" cols="120" rows="5" placeholder="Please enter your answer here..."></textarea>
+				<textarea  ng-model="Intertxt1" id="inter1" cols="120" rows="5" visible="true" placeholder="Please enter your answer here..."></textarea>
 				<a ng-click="clear('inter1')"><img src="./img/no.png"></a>
 			</div></br></br>
 		</div>
 		
-		<div  >
+		<div>
 			<span class="textblk sm">Does the data you collected give you a definite answer to your research question?  Why or why not?  If not, how would you change your experimental design to better investigate your research question?</span></br></br>
 			<div>
 				<textarea  ng-model="Intertxt2" id="inter2" cols="120" rows="5" placeholder="Please enter your answer here..."></textarea>
 				<a ng-click="clear('inter2')"><img src="./img/no.png"></a>
 			</div>
 		</div></br>
+
 		
 		<!--<div id="graphpdf" ng-init="localGraph()"></div>
 		<a class="demo" target="_blank" href="steps/pdf.php">PDF</a>-->
-		<button id="pdf" style="display:block;" class="pdf" ng-click="createpdf()">Create PDF</button>
+		<button id="pdf" style="display:block;" class="pdf" ng-click="createpdf()" >Create PDF</button>
 		<!--<div class="downloadify"  id="downloadify"></div>-->
 		<!--<button class="downloadify" id="downloadify" >Download PDF</button>-->
 		<button class="exit" ng-click="Exitlab()">Exit</button>

@@ -483,7 +483,7 @@ iframe{
    width:180px;
    height:45px;
    background:#008000;
-   position:absolute;
+   position:relative;
    left:73%;
    top:89%;
    color: #fff;
