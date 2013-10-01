@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple"
+	<title>iLab Mobile App</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="responsive.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="script.js"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="pagebody">
+			<header id="toolbarnav">
+				<h1>My Groups</h1>
+			</header>
+			<section id="content" class="clearfix">
+				<div class="content_group">
+				    <p class="textblk lg">Select the group you would like to use for this session.</p>
+				    <hr/>
+				    <h1 class="textblk lg">Available Groups and Labs</h1><br/>
+				    <span class="textblk sm">Open Experiment Group - User experiment group for general users of the NU version of the radioactivity lab</span>
+				    <ul class="textblk sm">
+				      <li class="textblk sm" ng-repeat="lab in labs"><a href="" style="color:orange;font-weight:bold" ng-click="openOffersDialog('Radioactivity');">{{lab.header}}</a> - {{lab.desc}}</li>
+				    </ul>
+				    <div id="description" style="display:block">{{details}}</div>
+				    <span class="textblk sm">Powder XRD Test Group - Powder XRD Test Group</span></br></br>
+				    <ul class="textblk sm">
+				      <li class="textblk sm" ng-repeat="foo in foos"><a href="" style="color:orange;font-weight:bold" ng-click="openOffersDialog('PowderXRD');">{{foo.header}}</a> - {{foo.desc}}</li>
+				    </ul>
+				</div>
+			</section>
+		</div>
+	</div>
+</body>
+</html>

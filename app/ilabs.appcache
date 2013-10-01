@@ -1,0 +1,12 @@
+CACHE MANIFEST
+# 2013-09-3 v1.0.1
+
+CACHE:
+index.html
+# http://ilabs.sesp.northwestern.edu/sbapi/login.php
+
+NETWORK:
+
+
+FALLBACK:
+/html/ /offline.html

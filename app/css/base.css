@@ -14,14 +14,14 @@ body {
   border-radius: 20px;
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
-  background:  -moz-linear-gradient(19% 75% 90deg,#32b232, #3232ff);
-  background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#3232ff), to(#32b232));
+  background:  -moz-linear-gradient(19% 75% 90deg,#000000, #000000);
+  background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#000000), to(#000000));
   /*-moz-box-shadow:0px -5px 300px #270644;
   -webkit-box-shadow:0px -5px 300px #270644;*/
 }
 
 .header_lg {
-  color: yellow;
+  color: #1589ff;
   font-size: 30px;
   font-weight: bold;
 }
@@ -38,11 +38,11 @@ form {
   border-radius: 20px;
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
-  background:  -moz-linear-gradient(19% 75% 90deg,#32b232, #3232ff);
-  background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#3232ff), to(#32b232));
-  box-shadow: 0px -5px 300px #270644;
-  -moz-box-shadow:0px -5px 300px #270644;
-  -webkit-box-shadow:0px -5px 300px #270644;
+  background:  -moz-linear-gradient(19% 75% 90deg,#808080, #000000);
+  background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#000000), to(#808080));
+  box-shadow: 0px -5px 300px #808080;
+  -moz-box-shadow:0px -5px 300px #808080;
+  -webkit-box-shadow:0px -5px 300px #808080;
 }
 
 .form_element {
@@ -78,6 +78,23 @@ label {
   font-weight: bold;
   border-top: 1px solid #ad64e0;
   border-radius: 50px;
+}
+.button_register {
+  -webkit-transition-property: -webkit-box-shadow, background;
+  -webkit-transition-duration: 0.25s;
+  width: 200px;
+  height: 40px;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#43bfc7), to(#3b9c9c));
+  background:  -moz-linear-gradient(19% 75% 90deg,#3b9c9c, #43bfc7);
+  font-size: 25px;
+  color: #fff;
+  /*text-shadow: #000 1px 1px;*/
+  font-weight: bold;
+  border-top: 1px solid #ad64e0;
+  -moz-box-shadow: inset 0 0 10px #008080;
+  -webkit-box-shadow: inset 0 0 10px #008080;
+  margin-top: 40px;
+  margin-left: 40px;
 }
 #waiting{
    background-color: #000000;
@@ -280,7 +297,7 @@ a#home_btn2{
 }
 
 .textblue {
-  color: #118DED;
+  color: #0000ff;
   font-weight: bolder;
   line-height: 1.2em;
 }
@@ -388,7 +405,6 @@ a:visited {
   -moz-border-radius: 15px;
   -webkit-border-radius: 15px;
   -khtml-border-radius:15px;
-
   box-shadow:inset 1px 1px 2px #999;
   -webkit-box-shadow:inset 1px 1px 2px #999;
   -moz-box-shadow:inset 1px 1px 2px #999;

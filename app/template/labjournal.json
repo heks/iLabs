@@ -1,0 +1,263 @@
+{
+	"id": 2, 
+	"labjournalsteps": [
+						 {
+							"id": 8, 
+							"journal_parameter_group": null, 
+							"journal_step_content": "Interpret your results", 
+							"journal_step_no": 6, 
+							"journal_step_title": "Interpret", 
+							"number_of_questions": 0, 
+							"questions": [], 
+							"resource_uri": "/api/v1/labjournalstep/8/"
+						}, 
+						{
+							"id": 7, 
+							"journal_parameter_group": 
+														{
+															"id": 3, 
+															"number_of_parameters": 1, 
+															"parameters": [
+																			{
+																				"field_type": 
+																								{
+																									"field_type": "Text Area", 
+																									"resource_uri": "/api/v1/fieldtype/2/"
+																								}, 
+																				"help_text": "graph tool", 
+																				"id": 2, 
+																				"resource_uri": "", 
+																				"title": "Graph"
+																			}
+															], 
+															"resource_uri": "", 
+															"title": "Analysis tool"
+														}, 
+							"journal_step_content": "Analyze the results", 
+							"journal_step_no": 5, 
+							"journal_step_title": "Analyze", 
+							"number_of_questions": 1, 
+							"questions": [
+											{
+												"id": 54, 
+												"question": 
+															{
+																"answer_field_type": 
+																						{
+																							"field_type": "Text Area", 
+																							"resource_uri": "/api/v1/fieldtype/2/"
+																						}, 
+																"question_text": "What is the radius of the Earth?", 
+																"resource_uri": "/api/v1/questionbank/5/"
+															}, 
+												"question_no": 1, 
+												"resource_uri": "/api/v1/labjournalquestion/54/"
+											}
+							], 
+							"resource_uri": "/api/v1/labjournalstep/7/"
+						}, 
+						{
+							"id": 6, 
+							"journal_parameter_group": null, 
+							"journal_step_content": "", 
+							"journal_step_no": 4, 
+							"journal_step_title": "Investigate", 
+							"number_of_questions": 2, 
+							"questions": [
+											{
+												"id": 55, 
+												"question": 
+															{
+																"answer_field_type": 
+																						{
+																							"field_type": "Text Field", 
+																							"resource_uri": "/api/v1/fieldtype/1/"
+																						}, 
+																"question_text": "What is the quadratic formula?", 
+																"resource_uri": "/api/v1/questionbank/3/"
+															}, 
+												"question_no": 1, "resource_uri": "/api/v1/labjournalquestion/55/"
+											}, 
+											{
+												"id": 56, 
+												"question": 
+															{
+																"answer_field_type": 
+																						{
+																							"field_type": "Text Area", 
+																							"resource_uri": "/api/v1/fieldtype/2/"
+																						}, 
+																"question_text": "What is the speed of light?", 
+																"resource_uri": "/api/v1/questionbank/7/"
+															}, 
+															"question_no": 2, 
+															"resource_uri": "/api/v1/labjournalquestion/56/"
+											}
+							], 
+							"resource_uri": "/api/v1/labjournalstep/6/"
+						}, 
+						{
+							"id": 5, 
+							"journal_parameter_group": 
+														{
+															"id": 2, 
+															"number_of_parameters": 3, 
+															"parameters": [
+																			{
+																				"field_type": 
+																								{
+																									"field_type": "Drop Down", 
+																									"resource_uri": "/api/v1/fieldtype/3/"
+																								}, 
+																				"help_text": "number of trials", 
+																				"id": 5, 
+																				"resource_uri": "", 
+																				"title": "Trials"
+																			}, 
+																			{
+																				"field_type": 
+																								{
+																									"field_type": "Slider Bar", 
+																									"resource_uri": "/api/v1/fieldtype/4/"
+																								}, 
+																				"help_text": "time in seconds", 
+																				"id": 4, 
+																				"resource_uri": "", 
+																				"title": "Time"
+																			}, 
+																			{
+																				"field_type": 
+																								{
+																									"field_type": "Text Field", 
+																									"resource_uri": "/api/v1/fieldtype/1/"
+																								 }, 
+																				"help_text": "enter dist separated by comma", 
+																				"id": 3, 
+																				"resource_uri": "", 
+																				"title": "Distance"
+																			}
+															], 
+															"resource_uri": "", 
+															"title": "Experiment form"
+														}, 
+							"journal_step_content": "Design your experiment by choosing values for the variables on the left.  To learn more about each variable, mouse over the question mark icon next to the variable. Then answer the question below.  When you click \"Next: Investigate\", the experiment will run.", 
+							"journal_step_no": 3, 
+							"journal_step_title": "Design", 
+							"number_of_questions": 2,
+						    "questions": [
+											{
+												"id": 57, 
+												"question": 
+																{
+																	"answer_field_type": 
+																							{
+																								"field_type": "Text Area", 
+																								"resource_uri": "/api/v1/fieldtype/2/"
+																						    }, 
+																	"question_text": "What is the decimal value of PI", 
+																	"resource_uri": "/api/v1/questionbank/4/"
+																}, 
+												"question_no": 1, 
+												"resource_uri": "/api/v1/labjournalquestion/57/"
+											}, 
+											{
+												"id": 58, 
+												"question": 
+														    {
+																"answer_field_type": 
+																						{
+																							"field_type": "Text Field", 
+																							"resource_uri": "/api/v1/fieldtype/1/"
+																						}, 
+																"question_text": "What is the gravitational constant", 
+															    "resource_uri": "/api/v1/questionbank/6/"
+															}, 
+												"question_no": 2, 
+												"resource_uri": "/api/v1/labjournalquestion/58/"
+											}
+							], 
+															"resource_uri": "/api/v1/labjournalstep/5/"
+					    }, 
+						{
+							"id": 4, 
+							"journal_parameter_group": null, 
+							"journal_step_content": "What are you trying to find out in this lab?  What question are you trying to answer?  This question is called your research question, which guides your experimental design in the next step. \r\n ", 
+							"journal_step_no": 2, 
+							"journal_step_title": "Question", 
+							"number_of_questions": 1, 
+							"questions": [
+											{
+												"id": 53, 
+												"question": 
+															{
+																"answer_field_type": 
+																					   {
+																							"field_type": "Text Area", 
+																							"resource_uri": "/api/v1/fieldtype/2/"
+																						}, 
+																"question_text": "What is the radius of the Earth?", 
+																"resource_uri": "/api/v1/questionbank/5/"
+															}, 
+												"question_no": 1, 
+												"resource_uri": "/api/v1/labjournalquestion/53/"
+											}
+							], 
+							"resource_uri": "/api/v1/labjournalstep/4/"
+						}, 
+						{
+							"id": 3, 
+							"journal_parameter_group": null, 
+							"journal_step_content": "How does this lab work?\r\n\r\nWhat is radiation?\r\n\r\nWhat is radioactivity and decay?\r\n", 
+							"journal_step_no": 1, 
+							"journal_step_title": "Research", 
+							"number_of_questions": 1, 
+							"questions": [
+											{
+												"id": 59, 
+												"question": 
+															{
+																"answer_field_type": 
+																						{
+																							"field_type": "Text Area", 
+																							"resource_uri": "/api/v1/fieldtype/2/"
+																						}, 
+																"question_text": "What is the speed of light?", 
+																"resource_uri": "/api/v1/questionbank/7/"
+															}, 
+												"question_no": 1, 
+												"resource_uri": "/api/v1/labjournalquestion/59/"
+											}
+							], 
+							"resource_uri": "/api/v1/labjournalstep/3/"
+						}, 
+						{
+							"id": 2, 
+							"journal_parameter_group": null, 
+							"journal_step_content": "What is this lab about?\r\n\r\nIn this lab, you can investigate the intensity of radiation over distance using a radioactive strontium-90 sample and a Geiger counter, which is an instrument used to measure radioactive radiation.\r\n\r\n\r\nHow does the lab equipment work?\r\n\r\nAs the strontium-90 sample decays, it emits radioactive beta particles. The Geiger counter detects the number of radioactive particles that are present at a given distance from the strontium-90 source. This equipment is located at the University of Queensland in Australia. Click on the webcam to see this equipment live in Australia.\r\n\r\n\r\nWhat can I do in this lab?\r\n\r\nFollowing the cycle of steps below, you can investigate how radiation changes over distance by collecting measurements of radiation at different distances from the source of radiation (strontium-90). Mouse over the steps below to find out more about each step of the lab. When you're ready to begin the lab, click Start below.", 
+							"journal_step_no": 0, 
+							"journal_step_title": "Pre Lab", 
+							"number_of_questions": 1, 
+							"questions": [
+											{
+												"id": 60, 
+												"question": 
+															{
+																"answer_field_type": 
+																						{
+																							"field_type": "Text Area", 
+																							"resource_uri": "/api/v1/fieldtype/2/"
+																						}, 
+																"question_text": "What is the decimal value of PI", 
+																"resource_uri": "/api/v1/questionbank/4/"
+															}, 
+												"question_no": 1, 
+												"resource_uri": "/api/v1/labjournalquestion/60/"
+											}
+							], 
+							"resource_uri": "/api/v1/labjournalstep/2/"
+						}
+	], 
+	"number_of_steps": 7, 
+	"resource_uri": "/api/v1/labjournal/2/", 
+	"title": "Radioactivity Lab Journal"
+}

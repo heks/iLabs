@@ -1,0 +1,174 @@
+{
+   "id":11,
+   "labjournalsteps":[
+      {
+         "id":61,
+         "journal_step_content":"Click below to read important background information involved in this lab.\n\n* [How does this lab work?]()\n* [What is Strontium-90?]()\n* [What is radiation?]()\n* [What is radioactivity, or radioactive decay?]()\n* [How is radioactivity measured?]()\n\n",
+         "journal_step_no":0,
+         "journal_step_title":"Research",
+         "number_of_questions":0,
+         "resource_uri":"/api/v1/labjournalstep/61/"
+      },
+      {
+         "id":62,
+         "journal_step_no":1,
+         "journal_step_title":"Question",
+         "number_of_questions":1,
+         "questions":[
+                           {
+                              "id":10,
+                              "question_no":1,
+                              "resource_uri":"/api/v1/labjournalquestion/62/",
+                              "question":{
+                                             "question_text":{
+                                                                     "text":"What are you trying to find out in this lab?  What question are you trying to answer?  This question is called your research question, which guides your experimental design in the next step.\n\nWrite your research question below.\n\n",
+                                                                     "resource_uri":"/api/v1/questionbank/21/"
+                                             },
+                                             "answer_field_type":{
+                                                                     "field_type":"textarea",
+                                                                     "resource_uri":"/api/v1/answerfieldtype/1/"
+                                             }
+                                          }
+                           }
+         ],
+         "resource_uri":"/api/v1/labjournalstep/62/"
+      },
+      {
+         "id":63,
+         "journal_step_content":"Learn more about each variable, mouse over the question mark icon next to the variable. Please answer the question below.  When you click \"Submit Design\", the experiment will run.",
+         "journal_step_no":2,
+         "journal_step_title":"Design",
+         "number_of_questions":1,
+         "device_form":[
+                              {
+                                 "label" : "Distances",
+                                 "input_type" : "text",
+                                 "input_id":100,
+                                 "description" : "The distances from the Strontium-90 source that the Geiger counter will measure radiation. For example, you could enter: 15, 45, 60. The minimum distance is 15mm, and the maximum is 90mm."
+                              },
+                              {
+                                 "label" : "Measurement time( s)",
+                                 "input_type" : "dropdown",
+                                 "input_id":200,
+                                 "input_values" : "1,2,3,4,5,6,7,8,9,10",
+                                 "description" : "The number of seconds that each measurement of radiation will last, at each of the distance you chose above."
+                              },
+                              {
+                                 "label" : "Number of trial( s)",
+                                 "input_type" : "dropdown",
+                                 "input_id":300,
+                                 "input_values" : "1,2,3,4,5,6,7,8,9,10",
+                                 "description" : "The number of times you wish for the experiment to repeat, according to the values you set for the previous variables."
+                              }
+                        ],
+         "questions":[
+                              {
+                                 "id":20,
+                                 "question_no":1,
+                                 "resource_uri":"/api/v1/labjournalquestion/63/",
+                                 "question":{
+                                                "question_text":{
+                                                                        "text":"Why did you choose these distances, measurement time, and number of trials?",
+                                                                        "resource_uri":"/api/v1/questionbank/22/"
+                                                },
+                                                "answer_field_type":{
+                                                                        "field_type":"textarea",
+                                                                        "resource_uri":"/api/v1/answerfieldtype/1/"
+                                                }
+                                 }
+                               }
+         ],
+         "resource_uri":"/api/v1/labjournalstep/63/"
+      },
+      {
+         "id":64,
+         "journal_step_no":3,
+         "journal_step_title":"Investigate",
+         "number_of_questions":2,
+         "questions":[
+                              {
+                                 "id":30,
+                                 "question_no":1,
+                                 "resource_uri":"/api/v1/labjournalquestion/64/",
+                                 "question":{
+                                                "question_text":{
+                                                                        "text":"What do you predict will happen in this experiment?  What do you think you will see in your results?",
+                                                                        "resource_uri":"/api/v1/questionbank/23/"
+                                                },
+                                                "answer_field_type":{
+                                                                        "field_type":"textarea",
+                                                                        "resource_uri":"/api/v1/answerfieldtype/1/"
+                                                }
+                                 }
+                              },
+                              {
+                                 "id":40,
+                                 "question_no":2,
+                                 "resource_uri":"/api/v1/labjournalquestion/64/",
+                                 "question":{
+                                                "question_text":{
+                                                                        "text":"What are your initial observations about your result?",
+                                                                        "resource_uri":"/api/v1/questionbank/24/"
+                                                },
+                                                "answer_field_type":{
+                                                                        "field_type":"textarea",
+                                                                        "resource_uri":"/api/v1/answerfieldtype/1/"
+                                                }
+                                 }
+                              }
+         ],
+         "resource_uri":"/api/v1/labjournalstep/64/"
+      },
+      {
+         "id":65,
+         "journal_step_content":"You can now graph your experimental results to see how radiation changes as a function of distance. Click on the Graph Data button below to graph and analyze your data.\n\nYou can also click on the Export Results button in your results table to graph and analyze your data using a spreadsheet analysis program like Microsoft Excel.",
+         "journal_step_no":4,
+         "journal_step_title":"Analyze",
+         "number_of_questions":0,
+         "resource_uri":"/api/v1/labjournalstep/65/"
+      },
+      {
+         "id":66,
+         "journal_step_no":5,
+         "journal_step_title":"Interpret",
+         "number_of_questions":2,
+         "questions":[
+                              {
+                                 "id":50,
+                                 "question_no":1,
+                                 "resource_uri":"/api/v1/labjournalquestion/66/",
+                                 "question":{
+                                                "question_text":{
+                                                                        "text":"What type of relationship exists between radiation and distance?  Is it linear or non-linear, positive or negative?  How do you know?",
+                                                                        "resource_uri":"/api/v1/questionbank/25/"
+                                                },
+                                                "answer_field_type":{
+                                                                        "field_type":"textarea",
+                                                                        "resource_uri":"/api/v1/answerfieldtype/1/"
+                                                }
+                                 }
+                              },
+                              {
+                                 "id":60,
+                                 "question_no":2,
+                                 "resource_uri":"/api/v1/labjournalquestion/66/",
+                                 "question":{
+                                                "question_text":{
+                                                                        "text":"Does the data you collected give you a definite answer to your research question?  Why or why not?  If not, how would you change your experimental design to better investigate your research question?",
+                                                                        "resource_uri":"/api/v1/questionbank/26/"
+                                                },
+                                                "answer_field_type":{
+                                                                        "field_type":"textarea",
+                                                                        "resource_uri":"/api/v1/answerfieldtype/1/"
+                                                }
+                                 }
+                              }
+         ],
+         "resource_uri":"/api/v1/labjournalstep/66/"
+      }  
+   ],
+   "number_of_steps":6,
+   "resource_uri":"/api/v1/labjournal/11/",
+   "summary":"summary",
+   "title":"Radioactivity"
+}

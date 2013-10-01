@@ -1,0 +1,190 @@
+{
+   "id":22,
+   "labjournalsteps":[
+      {
+         "id":71,
+         "journal_step_content":"Click below to read important background information involved in this lab.\n\n* [What is diffraction and Bragg's law?]()\n* [What is crystallography?]()\n* [How does the instrument work?]()\n\n",
+         "journal_step_no":0,
+         "journal_step_title":"Research",
+         "number_of_questions":0,
+         "resource_uri":"/api/v1/labjournalstep/71/"
+      },
+      {
+         "id":72,
+         "journal_step_no":1,
+         "journal_step_title":"Question",
+         "number_of_questions":1,
+         "questions":[
+                           {
+                              "id":110,
+                              "question_no":1,
+                              "resource_uri":"/api/v1/labjournalquestion/72/",
+                              "question":{
+                                             "question_text":{
+                                                                     "text":"What are you trying to find out in this lab?  What question are you trying to answer?  This question is called your research question, which guides your experimental design in the next step. Write your research question below.\n\n",
+                                                                     "resource_uri":"/api/v1/questionbank/21/"
+                                             },
+                                             "answer_field_type":{
+                                                                     "field_type":"textarea",
+                                                                     "resource_uri":"/api/v1/answerfieldtype/1/"
+                                             }
+                                          }
+                           }
+         ],
+         "resource_uri":"/api/v1/labjournalstep/62/"
+      },
+      {
+         "id":73,
+         "journal_step_content":"Design your experiment by choosing values for the variables on the left.  To learn more about each variable, mouse over the question mark icon next to the variable. Then answer the question below.  When you click \"Submit Design\", the experiment will run.",
+         "journal_step_no":2,
+         "journal_step_title":"Design",
+         "number_of_questions":1,
+         "device_form":[
+                              {
+                                 "label" : "Initial Angle (degrees)",
+                                 "input_type" : "slider",
+                                 "input_id":101,
+                                 "min_value":4,
+                                 "max_value":176,
+                                 "step_value":0,
+                                 "description" : "The measurement angle at which the sample rotates in the path of the collimated x-ray beam while the x-ray detector mounted on an arm to collect the diffracted x-rays. For example, you could enter 4,20,40. The minimum angle is 4 degrees and the maximum angle is 176 degrees."
+                              },
+                              {
+                                 "label" : "Final Angle (degrees)",
+                                 "input_type" : "slider",
+                                 "input_id":202,
+                                 "min_value":4,
+                                 "max_value":176,
+                                 "step_value":0,
+                                 "description" : "see above."
+                              },
+                              {
+                                 "label" : "Width of a step (deg.)",
+                                 "input_type" : "slider",
+                                 "input_id":303,
+                                 "min_value":0.002,
+                                 "max_value":90,
+                                 "step_value":0.002,
+                                 "description" : "The number of times you wish for the experiment to repeat, according to the values you set for the previous variables."
+                              },
+                              {
+                                 "label" : "Time to be spent in each sample (s)",
+                                 "input_type" : "slider",
+                                 "input_id":404,
+                                 "min_value":0.01,
+                                 "max_value":600,
+                                 "step_value":0.01,
+                                 "description" : "The number of times you wish for the experiment to repeat, according to the values you set for the previous variables."
+                              }
+                        ],
+         "questions":[
+                              {
+                                 "id":120,
+                                 "question_no":1,
+                                 "resource_uri":"/api/v1/labjournalquestion/73/",
+                                 "question":{
+                                                "question_text":{
+                                                                        "text":"Why did you choose these angles, step width and time to be spent in each step?",
+                                                                        "resource_uri":"/api/v1/questionbank/22/"
+                                                },
+                                                "answer_field_type":{
+                                                                        "field_type":"textarea",
+                                                                        "resource_uri":"/api/v1/answerfieldtype/1/"
+                                                }
+                                 }
+                               }
+         ],
+         "resource_uri":"/api/v1/labjournalstep/73/"
+      },
+      {
+         "id":74,
+         "journal_step_no":3,
+         "journal_step_title":"Investigate",
+         "number_of_questions":2,
+         "questions":[
+                              {
+                                 "id":130,
+                                 "question_no":1,
+                                 "resource_uri":"/api/v1/labjournalquestion/74/",
+                                 "question":{
+                                                "question_text":{
+                                                                        "text":"What do you predict will happen in this experiment?  What do you think you will see in your results?",
+                                                                        "resource_uri":"/api/v1/questionbank/23/"
+                                                },
+                                                "answer_field_type":{
+                                                                        "field_type":"textarea",
+                                                                        "resource_uri":"/api/v1/answerfieldtype/1/"
+                                                }
+                                 }
+                              },
+                              {
+                                 "id":140,
+                                 "question_no":2,
+                                 "resource_uri":"/api/v1/labjournalquestion/64/",
+                                 "question":{
+                                                "question_text":{
+                                                                        "text":"What are your initial observations about your result?",
+                                                                        "resource_uri":"/api/v1/questionbank/24/"
+                                                },
+                                                "answer_field_type":{
+                                                                        "field_type":"textarea",
+                                                                        "resource_uri":"/api/v1/answerfieldtype/1/"
+                                                }
+                                 }
+                              }
+         ],
+         "resource_uri":"/api/v1/labjournalstep/74/"
+      },
+      {
+         "id":75,
+         "journal_step_content":"You can now graph your experimental results to see how radiation changes as a function of distance. Click on the Graph Data button below to graph and analyze your data.\n\nYou can also click on the Export Results button in your results table to graph and analyze your data using a spreadsheet analysis program like Microsoft Excel.",
+         "journal_step_no":4,
+         "journal_step_title":"Analyze",
+         "number_of_questions":0,
+         "resource_uri":"/api/v1/labjournalstep/75/"
+      },
+      {
+         "id":76,
+         "journal_step_no":5,
+         "journal_step_title":"Interpret",
+         "number_of_questions":2,
+         "questions":[
+                              {
+                                 "id":150,
+                                 "question_no":1,
+                                 "resource_uri":"/api/v1/labjournalquestion/76/",
+                                 "question":{
+                                                "question_text":{
+                                                                        "text":"What type of relationship exists between radiation and distance?  Is it linear or non-linear, positive or negative?  How do you know?",
+                                                                        "resource_uri":"/api/v1/questionbank/25/"
+                                                },
+                                                "answer_field_type":{
+                                                                        "field_type":"textarea",
+                                                                        "resource_uri":"/api/v1/answerfieldtype/1/"
+                                                }
+                                 }
+                              },
+                              {
+                                 "id":160,
+                                 "question_no":2,
+                                 "resource_uri":"/api/v1/labjournalquestion/76/",
+                                 "question":{
+                                                "question_text":{
+                                                                        "text":"Does the data you collected give you a definite answer to your research question?  Why or why not?  If not, how would you change your experimental design to better investigate your research question?",
+                                                                        "resource_uri":"/api/v1/questionbank/26/"
+                                                },
+                                                "answer_field_type":{
+                                                                        "field_type":"textarea",
+                                                                        "resource_uri":"/api/v1/answerfieldtype/1/"
+                                                }
+                                 }
+                              }
+         ],
+         "resource_uri":"/api/v1/labjournalstep/76/"
+      }  
+   ],
+   "number_of_steps":6,
+   "resource_uri":"/api/v1/labjournal/22/",
+   "summary":"summary",
+   "title":"Powder X-ray Diffraction"
+}

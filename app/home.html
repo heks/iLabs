@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Sam's Blink Plugin</title>
+		<meta charset="utf-8">
+		<style>
+			div { background-color:black; width:64px; height:64px; margin:64px; }
+		</style>
+	</head>
+	<body>
+		<div id="a"></div>
+		<div id="b"></div>
+		<div id="c"></div>
+		<input type="button" value="start" onclick="blink()">
+		<input type="button" value="stop" onclick="stop()">
+		<input type="button" value="stop now" onclick="stopnow()">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+		<script src="http://samblink.googlecode.com/files/samblink.js"></script>
+		<script>
+			function blink () {
+				$('#a').blink('fast');
+				$('#b').blink(1000);
+				$('#c').blink(100,500);
+				$('.slow').blink('slow');
+			}
+			function stopnow () {  $('.blink').blink();  }
+			function stop () {  $('.blink').removeClass('blink');  }
+		</script>
+	</body>
+</html>

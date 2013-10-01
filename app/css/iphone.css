@@ -45,6 +45,15 @@ label {
   font-size: 1.5em;
   border-top: 0px solid #ad64e0;
   margin-top: 1em;
+  height: 35px;
+}
+.button_register {
+  width: 100%;
+  font-size: 1.2em;
+  border: 0px solid #ad64e0;
+  margin-top: 1em;
+  height: 35px;
+  margin-left: 0px;
 }
 .header {
   height: 3em;

@@ -1,0 +1,48 @@
+<div id="wrapper" ng-controller="groupCtrl">
+  <div id="pagebody">
+    <header id="toolbarnav">
+      <h1>My Groups</h1>
+      <div id="menu-btn_bg">
+                    <a href="#navmenu"  id="menu-button" ng-click="showMenu()"></a>
+      </div>
+    </header>
+    <section id="content" class="clearfix">
+      <div class="content_group">
+        <p class="textblk lg">Select the group you would like to use for this session.</p>
+        <hr/>
+        <h1 class="textblk lg">Available Groups and Labs</h1>
+        <span class="textblk sm">Open Experiment Group - User experiment group for general users of the NU version of the radioactivity lab</span>
+        <ul class="textblk sm">
+          <!--<li class="textblk sm" ng-repeat="lab in labs"><a href="" class="labshort" ng-click="openOffersDialog('Radioactivity');">{{lab.header}}</a> - {{lab.desc}}</li>-->
+          <li class="textblk sm" ng-repeat="lab in labs"><span class="labshort_header">{{lab.header}}</span> - <span class="labshort_desc">{{lab.desc}}</span></li>
+        </ul>
+        <span class="togglediv">View Lab Description: </span><div class="slider-frame"><span class="slider-button">OFF</span></div>
+        <div id="description" style="display:none">{{details}}</div><br/>
+        <button class="startlab" ng-click="startLab('Radioactivity')">Start Lab</button><br/><br/>
+        <span class="textblk sm">Powder XRD Test Group - Powder XRD Test Group</span></br>
+          <ul class="textblk sm">
+            <!--<li class="textblk sm" ng-repeat="foo in foos"><a href="" class="labshort" ng-click="openOffersDialog('PowderXRD');">{{foo.header}}</a> - {{foo.desc}}</li>-->
+            <li class="textblk sm" ng-repeat="foo in foos"><span class="labshort_header">{{foo.header}}</span> - <span class="labshort_desc">{{foo.desc}}</span></li>
+          </ul>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!--<div id="wrapper">
+      <div id="overlay" class="overlay"></div>
+
+      <div id="boxpopup" class="box" >
+          <a ng-click="closeOffersDialog('boxpopup');" class="boxclose"></a>
+          <div id="popupwrapper" style="height:100%;overflow:auto">
+          <div id="popupcontent" style="color:black">
+            
+               
+          </div>
+          <button  class="wrapper_btn1" style="background:blue" ng-click="startLab()">Start Lab</button>
+        </div>
+      </div>
+  </div>-->
+
+
+

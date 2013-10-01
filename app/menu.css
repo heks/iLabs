@@ -1,0 +1,29 @@
+* { margin: 0; padding: 0; }
+
+body { background: #181c1f; font-family: "Trebuchet MS", Arial, Tahoma, sans-serif; font-size: 62.5%; line-height: 1; }
+
+a { -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-touch-callout: none; }
+
+#wrapper { position: relative; overflow-x: hidden; overflow-y: hidden; margin-top: -10px; height: 100%;}
+
+#wrapper #content { display: block; background: #fff; padding: 5px 12px; margin-top: 10px;  min-height: 950px; height: 100%; position: relative; float: left; margin-left: 300px; width: 100%;}
+
+#wrapper #navmenu { background: #475566; height: 100%; display: block; position: fixed; width: 300px; left: 0px; top: 0px; z-index: 0;  }
+
+#wrapper #navmenu header { display: block; background: #303a44; height: 44px; }
+
+#wrapper #navmenu header h1 { text-align: center; padding-top: 10px; color: #e6e8f2; font-weight: bold; font-size: 2.1em; text-shadow: 1px 1px 0px #313131; }
+
+#wrapper #navmenu ul { list-style: none; background: #475566; height: 100%; }
+
+#wrapper #navmenu ul li { display: block; }
+
+#wrapper #navmenu ul li a { position: relative; display: block; border-bottom: 1px solid #303c4a; padding: 14px 11px; font-weight: bold; color: #f0f0f0; text-shadow: -1px -1px 1px #222; font-size: 1.6em; text-decoration: none; }
+
+#wrapper #navmenu ul li a:hover { color: #cad0e6; text-decoration: none; }
+
+#wrapper #navmenu ul li a::after { content: ''; display: block; width: 6px; height: 6px; border-right: 3px solid #d0d0d8; border-top: 3px solid #d0d0d8;
+  position: absolute; right: 30px; top: 45%; -webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg); }
+
+#wrapper #navmenu ul li a:hover::after { border-color: #cad0e6; }
+

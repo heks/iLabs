@@ -41,35 +41,29 @@ label {
 }
 
 .input {
-  -webkit-transition-property: -webkit-box-shadow, background;
-  -webkit-transition-duration: 0.25s;
-  padding: 6px;
+  padding: 7px;
   border-bottom: 0px;
   border-left: 0px;
   border-right: 0px;
-  border-top: 2px solid #fff;
-  -moz-box-shadow: 0px 0px 2px #000;
-  -webkit-box-shadow: 0px 0px 2px #000;
-  margin-bottom: 25px;
-  background: #fff;
+  border-top: 0px solid #fff;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .button_login {
-  -webkit-transition-property: -webkit-box-shadow, background;
-  -webkit-transition-duration: 0.25s;
-  width: 200px;
-  height: 40px;
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#66FFFF), to(#0000cd));
-  background:  -moz-linear-gradient(19% 75% 90deg,#0000cd, #66FFFF);
-  font-size: 25px;
-  text-transform: uppercase;
-  color: #fff;
-  /*text-shadow: #000 1px 1px;*/
-  font-weight: bold;
-  border-top: 1px solid #ad64e0;
-  border-radius: 50px;
-  margin-top: 40px;
-  margin-left: 40px;
+  width: 100%;
+  font-size: 1.5em;
+  border-top: 0px solid #ad64e0;
+  margin-top: 1em;
+  height: 35px;
+}
+.button_register {
+  width: 100%;
+  font-size: 1.2em;
+  border: 0px solid #ad64e0;
+  margin-top: 1em;
+  height: 35px;
+  margin-left: 0px;
 }
 
 .header {
@@ -180,7 +174,7 @@ a#home_btn1{
   padding: 4px;
   height: 50px;
   width: 260px;
-  margin-left: 500px;
+  margin-left: 750px;
   margin-bottom: 50px;
 }
 a#home_btn2{
@@ -188,7 +182,7 @@ a#home_btn2{
   padding: 4px;
   height: 50px;
   width: 260px;
-  margin-left: 500px;
+  margin-left: 750px;
   margin-bottom: 50px;
 }
 
@@ -429,7 +423,6 @@ a:visited {
   -moz-border-radius: 15px;
   -webkit-border-radius: 15px;
   -khtml-border-radius:15px;
-
   box-shadow:inset 1px 1px 2px #999;
   -webkit-box-shadow:inset 1px 1px 2px #999;
   -moz-box-shadow:inset 1px 1px 2px #999;

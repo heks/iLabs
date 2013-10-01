@@ -1,0 +1,53 @@
+
+<div id="overlay" >
+    <div id="overlaycontent">Calculating the Estimated Runtime</div>
+    <img src="./img/overlay-loader.gif" />
+</div>
+<div id="wrapper" ng-controller="templateCtrl" ng-init="loadTitle()">
+
+        <div id="pagebody">
+
+            <header id="toolbarnav">
+                <h1>{{Labtitle}}</h1>
+                <div ><button id="nav_back" style="display:none" ng-click="navigateBack()">Back</button></div>
+               <!--<div > <button id="nav_next" style="display:none" ng-click="navigateNext()">Next</button></div>-->
+               <div > <button id="nav_next" style="display:none" ng-click="navigateNext()">Next</button></div>
+            </header>
+            <div id="menuoptions">
+                <div id="menu-btn_bg">
+                    <a href="#navmenu" id="menu-button" ng-click="showMenu()"></a>
+                </div>
+                <div id="step_desc">{{Stepdesc}}</div>
+                <div id="home_nav_bg">
+                    <!--<a href="" id="home_nav" ng-click=""></a>-->
+                    <button id="home_nav_bg" ng-click="navigatePage('home')"></button>
+                </div>
+                <div id="timercount" style="display:none"></div>
+                <div id="viewresult" style="display:none">View Result</div>
+            </div>
+            <section id="content" class="clearfix">
+                <div style="display:none">{{runtimeInfotext}}</div>
+                <div my-callback callback-fn="loadContent(content)"><div>{{Labtitle}}</div></div>
+                <div class="compile_content" ></div>
+                <!--<a href="" class="a_next">Next</a>
+                <a href="" class="a_back">Back</a>
+                <a href="" class="a_home"></a>-->
+                
+                <div id="graph" ></div>
+            </section>
+
+        </div>
+
+        <div id="navmenu">
+            <header>
+                
+            </header>
+            <ul>
+                <li><a href="#simulation.html" class="navlink">Simulation</a></li>
+                <li><a href="#webcam.html" class="navlink">Webcam</a></li>
+                <li><a href="#logout.html" class="navlink">Logout</a></li>
+            </ul>   
+        </div>
+</div>
+
+

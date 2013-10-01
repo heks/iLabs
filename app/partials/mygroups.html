@@ -1,58 +1,26 @@
-
-<div ng-controller="groupCtrl">
-  <div class="header">
-    <div class="page_title">My Groups</div>
-  </div>
-  <div class="content_group">
-    <p class="textblk lg">Select the group you would like to use for this session.</p>
-    <hr/>
-    <h1 class="textblk lg">Available Groups and Labs</h1>
-    <span class="textblk sm">Open Experiment Group - User experiment group for general users of the NU version of the radioactivity lab</span>
-    <ul class="textblk sm">
-      <li class="textblk sm" ng-repeat="lab in labs"><a href="" style="color:orange;font-weight:bold" ng-click="openOffersDialog();">{{lab.header}}</a> - {{lab.desc}}</li>
-    </ul>
-    <span class="textblk sm">Powder XRD Test Group - Powder XRD Test Group</span></br></br>
-    <ul class="textblk sm">
-      <li class="textblk sm" ng-repeat="foo in foos"><a href="" style="color:orange;font-weight:bold" ng-click="openP()">{{foo.header}}</a> - {{foo.desc}}</li>
-    </ul>
-  </div>
-
-  <div id="wrapper">
-      <div id="overlay" class="overlay"></div>
-      <!--<a ng-click="openOffersDialog();">Click Here To See The PopUp</a>-->
-      <div id="boxpopup" class="box">
-          <a ng-click="closeOffersDialog('boxpopup');" class="boxclose"></a>
-          <div id="content">
-                <span class="textblk lg">What is this lab about?</span>
-                <p class="textblk sm">In this lab, you can investigate the intensity of radiation over distance using a radioactive strontium-90 sample and a Geiger counter, which is an instrument used to measure radioactive radiation.</p>
-                <span class="textblk lg">How does the lab equipment work?</span>
-                <p class="textblk sm">As the strontium-90 sample decays, it emits radioactive beta particles. The Geiger counter detects the number of radioactive particles that are present at a given distance from the strontium-90 source. This equipment is located at the University of Queensland in Australia. Click on the webcam to see this equipment live in Australia.</p>
-                <span class="textblk lg">What can I do in this lab?</span>
-                <p class="textblk sm">Following the cycle of steps below, you can investigate how radiation changes over distance by collecting measurements of radiation at different distances from the source of radiation (strontium-90). Mouse over the steps below to find out more about each step of the lab. When you're ready to begin the lab, click Start below.</p>
-                <button  class="wrapper_btn1" ng-click="start()">Start Lab</button>
-          </div>
+<div id="wrapper" ng-controller="groupCtrl">
+  <div id="pagebody">
+    <header id="toolbarnav">
+      <h1>My Groups</h1>
+      <div id="menu-btn_bg">
+                    <a id="home_nav_bg" ng-click="navigatePage('home')"></a>
       </div>
-  </div>
-
- <!-- <div modal="shouldBeOpen" close="close()" options="opts" >
-    <div class="modal-header">
-      <span class="modal_title">Radioactivity iLab</span>
-      
-    </div>
-    <div class="modal_footer">
-      <button  class="modal_btn1" ng-click="start()">Start Lab</button>
-      <button  class="modal_btn2" ng-click="close()">Cancel</button>
-    </div><hr/>
-    
-    <div class="modal-body" style="overflow:auto">
-      <span class="textblk lg">What is this lab about?</span>
-      <p class="textblk sm">In this lab, you can investigate the intensity of radiation over distance using a radioactive strontium-90 sample and a Geiger counter, which is an instrument used to measure radioactive radiation.</p>
-      <span class="textblk lg">How does the lab equipment work?</span>
-      <p class="textblk sm">As the strontium-90 sample decays, it emits radioactive beta particles. The Geiger counter detects the number of radioactive particles that are present at a given distance from the strontium-90 source. This equipment is located at the University of Queensland in Australia. Click on the webcam to see this equipment live in Australia.</p>
-      <span class="textblk lg">What can I do in this lab?</span>
-      <p class="textblk sm">Following the cycle of steps below, you can investigate how radiation changes over distance by collecting measurements of radiation at different distances from the source of radiation (strontium-90). Mouse over the steps below to find out more about each step of the lab. When you're ready to begin the lab, click Start below.</p>
-    
-    </div>-->
-    
+    </header>
+    <section id="content" class="clearfix">
+      <div id="groups_content">
+        <div class="containerDiv">
+          <div class="rowDivHeader">
+            <div class="cellDivHeader">Group Name</div>
+            <div class="cellDivHeader">Owner</div>
+          </div>
+          
+            <div class="rowDiv" ng-repeat="group in groups">
+              <div class="cellDiv" >{{group.title}}</div>
+              <div class="cellDiv">{{group.owner}}</div>
+            </div>
+          
+        </div>
+      </div>
+    </section>
   </div>
 </div>

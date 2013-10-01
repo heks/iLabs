@@ -1,24 +1,38 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en" ng-app="mobileApp"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="en" ng-app="mobileApp"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en" ng-app="mobileApp"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" ng-app="mobileApp"> <!--<![endif]-->
+<html class="no-js" lang="en" ng-app="mobileApp" >
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <!--<base>-->
     <title>iLab Mobile App</title>
-    <script src="http://canvg.googlecode.com/svn/trunk/rgbcolor.js"></script> 
-    <script src="http://canvg.googlecode.com/svn/trunk/canvg.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
-    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.4.0.js"></script>
-    <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <!--<script src="http://code.highcharts.com/highcharts.js"></script>-->
-    <!--<script src="http://code.highcharts.com/modules/exporting.js"></script>-->
+
+    <link rel="stylesheet" href="css/bootstrap-combined_2.3.1.min.css">
+    <link rel="stylesheet" href="css/jquery-ui_1.10.3.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/base1.css">
+    <link rel="stylesheet" href="css/popup.css">
+    <link rel="stylesheet" href="css/dockmenu.css">
+    <link rel="stylesheet" href="css/dockmenu_f.css">
+    <link rel="stylesheet" href="css/desktop1.css">
+    <link rel="stylesheet" href="css/iphone1.css">
+    <link rel="stylesheet" href="css/ipad1.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/image.css">
+    <link rel="stylesheet" href="css/toggle.css">
+    <link rel="stylesheet" href="responsive.css">
+
+
+    <script src="js/rgbcolor.js"></script>
+    <script src="js/canvg.js"></script>
+    <script src="js/angularjs_1.0.5.js"></script>
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/angular-translate.js"></script>
+    <script src="js/ui-bootstrap_0.4.0.js"></script>
+    <script src="js/underscore-min.js"></script>
+    <script src="js/jquery.i18n.min.js"></script>
+    <script src="js/jquery-ui_1.10.3.js"></script>
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     <script src="lib/highchart/highchart1.js"></script>
     <script src="lib/highchart/exporting.js"></script>
@@ -26,55 +40,24 @@
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/directives.js"></script>
+    <script src="js/services.js"></script>
     <script src="js/popupdiv.js"></script>
     <script src="lib/jsPDF/base64.js"></script>
-    <!--<script src="lib/jsPDF/jspdf.js"></script>-->
+    <script src="lib/hash/hashmd5.js"></script>
     <script src="lib/jsPDF/jspdf.min.js"></script>
     <script src="lib/jsPDF/sprintf.js"></script>
     <script src="lib/jsPDF/downloadify.min.js"></script>
     <script src="lib/jsPDF/swfobject.js"></script>
+    <script src="lib/markdown/markdown.converter.js"></script>
+    <script src="lib/showdown/showdown.js"></script>
     <script src="js/html2canvas.js"></script>
-    
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-    
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/base.css">
-    
-    <link rel="stylesheet" href="css/popup.css">
-    <link rel="stylesheet" href="css/dockmenu.css">
-    <link rel="stylesheet" href="css/dockmenu_f.css">
-    <link rel="stylesheet" href="css/desktop.css">
-    <link rel="stylesheet" href="css/iphone.css">
-    <link rel="stylesheet" href="css/tablet.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/image.css">
-    
-    <script>
-      document.write('<base href="' + document.location + '" />');
-    </script>
+    <script src="js/spanish.js"></script>
+    <script src="js/menuscript.js"></script>
+   
   </head>
   
-  <body ng-controller="appController" id="home">
+  <body ng-controller="appController" id="appbody" ng-init="translatePage()">
     <div ng-view id="app_envelope"></div>
-    <div style="display:none" id="coupon_Id"></div>  
-    <div style="display:none" id="coupon_Key"></div>
-    <div style="display:none" id="distances"></div>
-    <div style="display:none" id="duration"></div>
-    <div style="display:none" id="repeat"></div>
-    <div style="display:none" id="exp_Id"></div>
-    <div style="display:none" id="runtime"></div>
-    <div style="display:none" id="trials"></div>
-
-    <div style="display:none" id="Q1"></div>
-    <div style="display:none" id="D1"></div>
-    <div style="display:none" id="I1"></div>
-    <div style="display:none" id="I2"></div>
-    <div style="display:none" id="IF1"></div>
-    <div style="display:none" id="IF2"></div>
-
-    <div style="display:none" id="data_URI"></div>
     <span> {{checkSession()}}</span>
-
   </body>
 </html>
