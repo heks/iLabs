@@ -84,7 +84,7 @@ body{ background: #ffffff; padding: 0px; margin: 0px; }
 
   #wrapper #pagebody #menuoptions #viewresult{ border:1px solid #616261; background-color: #28a828; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px; font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;position: absolute;}
 
-#wrapper #pagebody #homecontent { display: block; background: #fff; padding: 5px 12px; margin-top: 0px;  z-index: 9999; color: #000000; }
+#wrapper #pagebody #homecontent { display: block; background: #fff; padding: 5px 12px; margin-top: 0px;  min-height: 550px; z-index: 9999; color: #000000; }
 
 #wrapper #pagebody #homecontent h2 { border-bottom: 1px solid #ddd; border-top: 1px solid #ddd; color: #181818; text-align: center; z-index: 9999;}
 
@@ -113,13 +113,12 @@ body{ background: #ffffff; padding: 0px; margin: 0px; }
 
 #wrapper #pagebody #content .containerDiv {
   /*border: 1px solid #3697f6;*/
-  width: 90%; display:table; margin-left:-12px;
+  display:table; 
 }
 #wrapper #pagebody #content .rowDivHeader {
   border: 1px solid #668db6;
   background-color: #336799;
   color: white;
-  font-size: 1em;
   font-weight: bold; display:table-row
 }
 #wrapper #pagebody #content .rowDiv {
@@ -130,21 +129,16 @@ body{ background: #ffffff; padding: 0px; margin: 0px; }
 #wrapper #pagebody #content .cellDivHeader {
   border-right: 1px solid white;
   display: table-cell;
-  width:12%;
-  padding: 1px;
-  font-size: .8em;
   text-align: center; 
 }
 #wrapper #pagebody #content .cellDiv {
   border-right: 2px solid white;
   display: table-cell;
-  width:10%;
-  padding-right: 4px;
   text-align: center;
   border-bottom: 2px solid white;
 }
 #wrapper #pagebody #content .cellDiv button{ background-color: #1589ff; color:#ffffff; 
-	margin-top: 20px;border-radius: 15px; border: 1px solid #1589ff; }
+	border: 1px solid #1589ff; }
 #wrapper #pagebody #content .lastCell {
   border-right: none;
 }
@@ -153,11 +147,11 @@ body{ background: #ffffff; padding: 0px; margin: 0px; }
 
 #wrapper #pagebody #content .thumbnails h4{ color: #000; }
 
-#wrapper #pagebody #content .thumbnails .caption span.checktext{ font-size: .8em; color: #1589ff;}
+#wrapper #pagebody #content .thumbnails .caption span.checktext{ color: #1589ff;}
 
-#wrapper #pagebody #content .thumbnails .caption span.textlg{ font-size: .1em; }
+#wrapper #pagebody #content .thumbnails .caption span.textlg{  }
 
-#wrapper #pagebody #content .thumbnails .caption span.textsm{ font-size: .8em; }
+#wrapper #pagebody #content .thumbnails .caption span.textsm{ }
 
 #wrapper #pagebody #content .thumbnails .caption span.bold{ font-weight: bold; }
 

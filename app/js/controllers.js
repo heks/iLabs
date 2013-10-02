@@ -63,8 +63,8 @@ mobileApp.controller('loginCtrl',
                 return;
               }
               console.log(data);
-              localStorage.setItem('CouponID', data['couponId']);
-              localStorage.setItem('PassKey', data['passKey']);
+              //localStorage.setItem('CouponID', data['couponId']);
+              //localStorage.setItem('PassKey', data['passKey']);
               localStorage.setItem('Username', username);
               localStorage.setItem('API_KEY', data['api_key']);
               // If the authentication is successfull, then it redirects to the Homepage
@@ -104,6 +104,8 @@ mobileApp.controller('homeCtrl',
     var username = localStorage.getItem('Username');
     var api_key = localStorage.getItem('API_KEY');
     var parameters = 'username='+username+'&api_key='+api_key;
+
+    
 
     /**
     * @function loadDynamicContents
@@ -249,98 +251,7 @@ mobileApp.controller('homeCtrl',
       });  
     }
 
-    /**
-    * @function startLab
-    * @description
-    * When the user attempt to start the Lab, then it will download the appropriate labjournal through the API and 
-    * begin to start the experiment flow
-    * @param labjounal_uri {String} - The resource of the labjournal
-    */
-
-    $scope.startLab = function(labjournal_uri){
-      var labjournal_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com'+labjournal_uri;
-      $.ajax({
-        url: labjournal_url,
-        crossDomain: 'false',
-        type: 'GET',
-        data: {
-                format: 'jsonp'
-        },
-        cache: false,
-        dataType: 'jsonp',
-        async: false,
-        success: function(json){
-          var dataToStore = JSON.stringify(json);
-          localStorage.setItem('LABJOURNAL_JSON_DATA', dataToStore);
-        },
-        error: function(XMLHttpRequest, textStatus, errorThrown){
-          alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
-          alert('Error Message: '+textStatus);
-          alert('HTTP Error: '+errorThrown);
-        }
-      }).done(function () {
-          $scope.sendLabjournalinstance(); 
-        }); 
-    }
-
-    /**
-    * @function sendLabjournalinstance
-    * @description
-    * Whenever a the experiment begins, then it will send the some data regarding that particula instance
-    * to the REST API 
-    * 1.{GUID} - A unique id generated, which is a combination of (username+hash(timestamp+labjournalid)),
-    * 2.{labjournal} - Labjournal resource of that particular instance and
-    * 3.{user} - Username resource of that particular instance
-    */
-
-    $scope.sendLabjournalinstance = function(){
-      var getLabjournal = JSON.parse(localStorage.getItem('LABJOURNAL_JSON_DATA'));
-      var labjournalID = getLabjournal.id;
-      localStorage.setItem('LABJOURNAL_ID', labjournalID);
-      var timestamp = new Date().getTime();
-      localStorage.setItem('TIMESTAMP', timestamp);
-      var getTimestamp = localStorage.getItem('TIMESTAMP');
-      var uniqueID = '' + timestamp + labjournalID;
-      var hashValue = hex_md5(uniqueID);
-      localStorage.setItem('HASH_VALUE', hashValue);
-      var getHash = localStorage.getItem('HASH_VALUE');
-      var username = localStorage.getItem('Username');
-      var GUID = username+'_'+getHash;
-      localStorage.setItem('GUID', GUID);
-      var instance_jsonObject = {"GUID": GUID, "lab_journal": "/api/v1/labjournal/"+labjournalID+"/", "user": "/api/v1/user/"+username+"/"};
-      console.log(instance_jsonObject)
-      var instance_data = JSON.stringify(instance_jsonObject);
-          
-      $.ajax({
-        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalinstance/',
-        crossDomain: 'false',
-        type: 'POST',
-        data: instance_data,
-        contentType: 'application/json',
-        cache: false,
-        dataType: 'json',
-        async: false,
-        processData: false,
-        success: function(data){
-          $scope.$apply(function(){
-            var getLabjournal = JSON.parse(localStorage.getItem('LABJOURNAL_JSON_DATA'));
-            console.log(getLabjournal)
-            var labjournalID = getLabjournal.id;
-            if (getLabjournal.labjournalsteps[1] != undefined){
-              var step_name = 'step1';
-              var step_title = getLabjournal.labjournalsteps[1].journal_step_title.toLowerCase();
-            }
-            //Launch the experiment
-            $location.path('template/'+step_title+'/'+step_name);
-          });
-        },
-        error: function(XMLHttpRequest, textStatus, errorThrown){
-          alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
-          alert('Error Message: '+textStatus);
-          alert('HTTP Error: '+errorThrown);
-        }
-      });
-    }
+    
 });
 
 /******************************************************/
@@ -404,8 +315,10 @@ mobileApp.controller('assignmentCtrl',
 /******************************************************/
 mobileApp.controller('subscriptionCtrl',
   function subscriptionCtrl($scope, $location, $http){
-    var get_subscriptionjson = JSON.parse(localStorage.getItem('LABJOURNAL_SUBSCRIPTION'));
-          var total_count = get_subscriptionjson.meta.total_count;
+    $scope.loadContent = function(){
+      var get_subscriptionjson = JSON.parse(localStorage.getItem('LABJOURNAL_SUBSCRIPTION'));
+      //console.log(get_subscriptionjson)
+      var total_count = get_subscriptionjson.meta.total_count;
           if (total_count != 0){
             var subscription_data = '[';
             for (var subscription_count = 0; subscription_count < total_count; subscription_count++){
@@ -418,27 +331,41 @@ mobileApp.controller('subscriptionCtrl',
               subscription_data = subscription_data.slice(0, -1);
               subscription_data += ']';
                 
-              //$scope.$apply(function(){
+             // $scope.$apply(function(){
                 $scope.subscriptions = JSON.parse(subscription_data);
               //});
           }else{
-              var subscriptions_content = 'No more subscriptions available';
-              $('#subscriptions_content').replaceWith('<div>'+subscriptions_content+'</div>');
+              //var subscriptions_content = 'No more subscriptions available';
+              //$('#subscriptions_content').text(subscriptions_content);
+              $("#subscriptions_content").hide();
+              $("#default_content").show();
+             //document.getElementById('subscriptions_content').innerHTML = subscriptions_content;
           }
+    }
+  
 });
 /******************************************************/
 /************* LABJOURNAL PAGE CONTROLLER ***************/
 /******************************************************/
 mobileApp.controller('labjournalCtrl',
   function labjournalCtrl($scope, $location, $http){
+    var username = localStorage.getItem('Username');
+    var api_key = localStorage.getItem('API_KEY');
+    var parameters = 'username='+username+'&api_key='+api_key;
+
+    $scope.loadContent = function(){
     var get_labjournaljson = JSON.parse(localStorage.getItem('LABJOURNALS_BROWSE'));
           var total_count = get_labjournaljson.meta.total_count;
+
           if (total_count != 0){
+           
             var labjournal_data = '[';
             for (var labjournal_count = 0; labjournal_count < total_count; labjournal_count++){
               labjournal_data += '{';
               labjournal_data += '"title" : "'+get_labjournaljson.objects[labjournal_count].title+'",';
               labjournal_data += '"subject" : "'+get_labjournaljson.objects[labjournal_count].subject+'",';
+              labjournal_data += '"author" : "'+get_labjournaljson.objects[labjournal_count].author+'",';
+              labjournal_data += '"modified_date" : "'+get_labjournaljson.objects[labjournal_count].modified_date+'",';
               labjournal_data += '"resource_uri" : "'+get_labjournaljson.objects[labjournal_count].resource_uri+'"';
               labjournal_data += '},'
             }
@@ -449,9 +376,38 @@ mobileApp.controller('labjournalCtrl',
                 $scope.labjournals = JSON.parse(labjournal_data);
               //});
           }else{
-              var labjournals_content = 'No more labjournals available';
-              $('#labjournals_content').replaceWith('<div>'+labjournals_content+'</div>');
+              $("#labjournals_content").hide();
+              $("#default_content").show();
+              //document.getElementById('default_labjournalcontent').style.display = "block";
+              //var labjournals_content = 'No more labjournals available';
+              //$('#labjournals_content').replaceWith('<div>'+labjournals_content+'</div>');
+              
           }
+        }
+
+    $scope.subscribeLabjournal = function(labjournal_uri){
+
+      var subscribe_data = JSON.stringify({"lab_journal": labjournal_uri});
+        $.ajax({
+        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalsubscription/?'+parameters,
+        crossDomain: 'false',
+        type: 'POST',
+        data: subscribe_data,
+        contentType: 'application/json',
+        cache: false,
+        dataType: 'json',
+        async: false,
+        processData: false,
+        success: function(data){
+         
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+          alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
+          alert('Error Message: '+textStatus);
+          alert('HTTP Error: '+errorThrown);
+        }
+      });
+    }
 });
 
 /******************************************************/
@@ -525,6 +481,10 @@ mobileApp.controller('templateCtrl',
       //alert($scope.isTextboxempty());
       //alert($scope.isDropdownempty());
       //alert($scope.isTextareaempty());
+
+      var username = localStorage.getItem('Username');
+      var api_key = localStorage.getItem('API_KEY');
+      var parameters = 'username='+username+'&api_key='+api_key;
 
       var textbox_len = document.getElementsByTagName('input').length;
       var dropdown_len = document.getElementsByTagName('select').length;
@@ -741,7 +701,7 @@ mobileApp.controller('templateCtrl',
                         parameter_update.push(1);
                         var JSONobj = {"instance" : "/api/v1/labjournalinstance/"+getGUID+"/", "parameter" : "/api/v1/deviceparameter/"+getPID+"/", "response" : fResponse};
                         var param_data = JSON.stringify(JSONobj);
-                        var update_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalparameterresponse/';
+                        var update_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalparameterresponse/?'+parameters;
                         $.ajax({
                             url: update_url,
                             crossDomain: 'false',
@@ -771,7 +731,7 @@ mobileApp.controller('templateCtrl',
                   var parameter_group_id = localStorage.getItem('PARAMETER_GROUP_ID');
                   var submit_data = {"instance": "/api/v1/labjournalinstance/"+instance_GUID+"/", "parameter_group": "/api/v1/deviceparametergroup/"+parameter_group_id+"/", "experiment_id": 26};
                   var stringify_submit_data = JSON.stringify(submit_data);
-                  var designsubmit_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/experiment/?username='+username+'&password='+password;
+                  var designsubmit_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/experiment/?'+parameters;
                   
                   if(jsoncomb['parameters'] != undefined){
                     console.log("step1")
@@ -811,7 +771,7 @@ mobileApp.controller('templateCtrl',
                       if(lsResponse != fResponse){
                         var JSONobj = {"instance" : "/api/v1/labjournalinstance/"+getGUID+"/", "question" : "/api/v1/labjournalquestion/"+getQID+"/", "response" : fResponse};
                         var ques_data = JSON.stringify(JSONobj);
-                        var update_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalquestionresponse/';
+                        var update_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalquestionresponse/?'+parameters;
                         $.ajax({
                             url: update_url,
                             crossDomain: 'false',
@@ -842,7 +802,7 @@ mobileApp.controller('templateCtrl',
                       var param_data = JSON.stringify(jsoncomb['parameters'][param_loop]);
                       $.ajax({
                         //url: 'http://129.105.107.216/api/v1/labjournalparameterresponse/',
-                        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalparameterresponse/',
+                        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalparameterresponse/?'+parameters,
                         crossDomain: 'false',
                         type: 'POST',
                         data: param_data,
@@ -867,7 +827,7 @@ mobileApp.controller('templateCtrl',
                     for(var ques_loop=0; ques_loop<jsoncomb['questions'].length; ques_loop++){
                       var ques_data = JSON.stringify(jsoncomb['questions'][ques_loop]);
                       $.ajax({
-                        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalquestionresponse/',
+                        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalquestionresponse/?'+parameters,
                         crossDomain: 'false',
                         type: 'POST',
                         data: ques_data,
@@ -891,7 +851,7 @@ mobileApp.controller('templateCtrl',
                   var parameter_group_id = localStorage.getItem('PARAMETER_GROUP_ID');
                   var submit_data = {"instance": "/api/v1/labjournalinstance/"+instance_GUID+"/", "parameter_group": "/api/v1/deviceparametergroup/"+parameter_group_id+"/", "experiment_id": 26};
                   var stringify_submit_data = JSON.stringify(submit_data);
-                  var designsubmit_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/experiment/?username='+username+'&password='+password;
+                  var designsubmit_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/experiment/?'+parameters;
                   
                   if(jsoncomb['parameters'] != undefined){
                     console.log("step2")
@@ -923,7 +883,7 @@ mobileApp.controller('templateCtrl',
                       var param_data = JSON.stringify(jsoncomb['parameters'][param_loop]);
                       $.ajax({
                         //url: 'http://129.105.107.216/api/v1/labjournalparameterresponse/',
-                        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalparameterresponse/',
+                        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalparameterresponse/?'+parameters,
                         crossDomain: 'false',
                         type: 'POST',
                         data: param_data,
@@ -948,7 +908,7 @@ mobileApp.controller('templateCtrl',
                     for(var ques_loop=0; ques_loop<jsoncomb['questions'].length; ques_loop++){
                       var ques_data = JSON.stringify(jsoncomb['questions'][ques_loop]);
                       $.ajax({
-                        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalquestionresponse/',
+                        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalquestionresponse/?'+parameters,
                         crossDomain: 'false',
                         type: 'POST',
                         data: ques_data,
@@ -972,7 +932,7 @@ mobileApp.controller('templateCtrl',
                   var parameter_group_id = localStorage.getItem('PARAMETER_GROUP_ID');
                   var submit_data = {"instance": "/api/v1/labjournalinstance/"+instance_GUID+"/", "parameter_group": "/api/v1/deviceparametergroup/"+parameter_group_id+"/", "experiment_id": 26};
                   var stringify_submit_data = JSON.stringify(submit_data);
-                  var designsubmit_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/experiment/?username='+username+'&password='+password;
+                  var designsubmit_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/experiment/?'+parameters;
                   
                   if(jsoncomb['parameters'] != undefined){
                     console.log("step3")
@@ -1086,16 +1046,16 @@ mobileApp.controller('templateCtrl',
     }
 
     $scope.renderGraph = function(){
-      
       var username = localStorage.getItem('Username');
-      var password = localStorage.getItem('Password');
-      var params = 'username='+username+'&password='+password;
+      var api_key = localStorage.getItem('API_KEY');
+      var parameters = 'username='+username+'&api_key='+api_key;
+      var empty_data = JSON.stringify({});
       //Retrieve results through the API call
         $.ajax({
-              url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/experiment/test/result/6/',
+              url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/experiment/test/result/6/?'+parameters,
               crossDomain: 'false',
               type: 'GET',
-              data: params,
+              data: empty_data,
               contentType: 'application/json',
               cache: false,
               dataType: 'json',
@@ -1380,7 +1340,7 @@ mobileApp.controller('msgCtrl',
 
 //account Controller
 mobileApp.controller('accCtrl',
-  function simCtrl($scope, $location){
+  function accCtrl($scope, $location){
 
     $scope.navigate_back = function(div_id){
       var url = $('#'+div_id).text();
@@ -1392,6 +1352,102 @@ mobileApp.controller('accCtrl',
 //Main Controller
 mobileApp.controller('appController',
   function appController($scope, $location, $http){
+    var username = localStorage.getItem('Username');
+    var api_key = localStorage.getItem('API_KEY');
+    var parameters = 'username='+username+'&api_key='+api_key;
+    /**
+    * @function startLab
+    * @description
+    * When the user attempt to start the Lab, then it will download the appropriate labjournal through the API and 
+    * begin to start the experiment flow
+    * @param labjounal_uri {String} - The resource of the labjournal
+    */
+
+    $scope.startLab = function(labjournal_uri){
+      //alert(labjournal_uri)
+      var labjournal_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com'+labjournal_uri+'?'+parameters;
+      $.ajax({
+        url: labjournal_url,
+        crossDomain: 'false',
+        type: 'GET',
+        data: {
+                format: 'jsonp'
+        },
+        cache: false,
+        dataType: 'jsonp',
+        async: false,
+        success: function(json){
+          var dataToStore = JSON.stringify(json);
+          localStorage.setItem('LABJOURNAL_JSON_DATA', dataToStore);
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+          alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
+          alert('Error Message: '+textStatus);
+          alert('HTTP Error: '+errorThrown);
+        }
+      }).done(function () {
+          $scope.sendLabjournalinstance(); 
+        }); 
+    }
+
+    /**
+    * @function sendLabjournalinstance
+    * @description
+    * Whenever a the experiment begins, then it will send the some data regarding that particula instance
+    * to the REST API 
+    * 1.{GUID} - A unique id generated, which is a combination of (username+hash(timestamp+labjournalid)),
+    * 2.{labjournal} - Labjournal resource of that particular instance and
+    * 3.{user} - Username resource of that particular instance
+    */
+
+    $scope.sendLabjournalinstance = function(){
+      var getLabjournal = JSON.parse(localStorage.getItem('LABJOURNAL_JSON_DATA'));
+      var labjournalID = getLabjournal.id;
+      localStorage.setItem('LABJOURNAL_ID', labjournalID);
+      var timestamp = new Date().getTime();
+      localStorage.setItem('TIMESTAMP', timestamp);
+      var getTimestamp = localStorage.getItem('TIMESTAMP');
+      var uniqueID = '' + timestamp + labjournalID;
+      var hashValue = hex_md5(uniqueID);
+      localStorage.setItem('HASH_VALUE', hashValue);
+      var getHash = localStorage.getItem('HASH_VALUE');
+      var username = localStorage.getItem('Username');
+      var GUID = username+'_'+getHash;
+      localStorage.setItem('GUID', GUID);
+      var instance_jsonObject = {"GUID": GUID, "lab_journal": "/api/v1/labjournal/"+labjournalID+"/"};
+      console.log(instance_jsonObject)
+      var instance_data = JSON.stringify(instance_jsonObject);
+          
+      $.ajax({
+        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalinstance/?'+parameters,
+        crossDomain: 'false',
+        type: 'POST',
+        data: instance_data,
+        contentType: 'application/json',
+        cache: false,
+        dataType: 'json',
+        async: false,
+        processData: false,
+        success: function(data){
+          $scope.$apply(function(){
+            var getLabjournal = JSON.parse(localStorage.getItem('LABJOURNAL_JSON_DATA'));
+            console.log(getLabjournal)
+            var labjournalID = getLabjournal.id;
+            if (getLabjournal.labjournalsteps[1] != undefined){
+              var step_name = 'step1';
+              var step_title = getLabjournal.labjournalsteps[1].journal_step_title.toLowerCase();
+            }
+            //Launch the experiment
+            $location.path('template/'+step_title+'/'+step_name);
+          });
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+          alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
+          alert('Error Message: '+textStatus);
+          alert('HTTP Error: '+errorThrown);
+        }
+      });
+    }
 
     $scope.showMenu1 = function(){
        $(document).ready(function(){
@@ -1404,7 +1460,7 @@ mobileApp.controller('appController',
           height : $(window).height()
       };
 
-       $("a.navlink").live("click", function(e){
+       /*$("a.navlink").live("click", function(e){
         e.preventDefault();
         var linkurl     = $(this).attr("href");
         var linkhtmlurl = linkurl.substring(1, linkurl.length);
@@ -1421,7 +1477,7 @@ mobileApp.controller('appController',
         content.html(imgloader);
         content.load(linkhtmlurl);
         //setTimeout(function() { content.load(linkhtmlurl, function() {  }) }, 1200);
-      });
+      });*/
 
        function closeme() {
         var closeme = $(function() {
@@ -1541,7 +1597,7 @@ mobileApp.controller('appController',
 }
 
 $scope.navigatePage = function(pagename){
-      $location.path(pagename);
+      $location.path(pagename)
     }
 
     $scope.checkSession = function(){

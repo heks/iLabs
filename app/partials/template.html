@@ -32,6 +32,20 @@
                 <!--<a href="" class="a_next">Next</a>
                 <a href="" class="a_back">Back</a>
                 <a href="" class="a_home"></a>-->
+                <!--<div id="experiment_result" style="display:block;">
+                    <div class="containerDiv">
+                        <div class="rowDivHeader">
+                        <div class="cellDivHeader">Title</div>
+                        <div class="cellDivHeader">Assigned Date</div>
+                        <div class="cellDivHeader">Action</div>
+                    </div>
+        
+                    <div class="rowDiv" ng-repeat="subscription in subscriptions">
+                        <div class="cellDiv" >{{subscription.lab_journal_title}}</div>
+                        <div class="cellDiv">{{subscription.subscribed_date}}</div>
+                        <div class="cellDiv"><button class="action" ng-click="startLab(subscription.lab_journal)">Start</button></div>
+                    </div>
+                </div>-->
                 
                 <div id="graph" ></div>
             </section>
@@ -39,9 +53,6 @@
         </div>
 
         <div id="navmenu">
-            <header>
-                
-            </header>
             <ul>
                 <li><a href="#simulation.html" class="navlink">Simulation</a></li>
                 <li><a href="#webcam.html" class="navlink">Webcam</a></li>

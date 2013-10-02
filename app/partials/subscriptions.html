@@ -1,4 +1,4 @@
-<div id="wrapper" ng-controller="subscriptionCtrl">
+<div id="wrapper" ng-controller="subscriptionCtrl" data-ng-init="loadContent()">
   <div id="pagebody">
     <header id="toolbarnav">
       <h1>My Subscriptions</h1>
@@ -7,22 +7,22 @@
       </div>
     </header>
     <section id="content" class="clearfix">
-      <div id="subscriptions_content">
-      <div class="containerDiv">
-        <div class="rowDivHeader">
-          <div class="cellDivHeader">Title</div>
-          <div class="cellDivHeader">Assigned Date</div>
-          <div class="cellDivHeader">Action</div>
-        </div>
+      <div id="default_content" style="display:none">No more subscriptions available</div>
+      <div id="subscriptions_content" style="display:block;">
+        <div class="containerDiv">
+          <div class="rowDivHeader">
+            <div class="cellDivHeader">Title</div>
+            <div class="cellDivHeader">Assigned Date</div>
+            <div class="cellDivHeader">Action</div>
+          </div>
         
           <div class="rowDiv" ng-repeat="subscription in subscriptions">
             <div class="cellDiv" >{{subscription.lab_journal_title}}</div>
             <div class="cellDiv">{{subscription.subscribed_date}}</div>
             <div class="cellDiv"><button class="action" ng-click="startLab(subscription.lab_journal)">Start</button></div>
           </div>
-        
+        </div>
       </div>
-    </div>
     </section>
   </div>
 </div>

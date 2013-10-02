@@ -299,6 +299,10 @@ mobileApp.directive('myCallback', function($compile, $location, $http){
         var step = path.substring(path.lastIndexOf('/') + 1);
         var index = parseInt(step.charAt(step.length-1));
 
+        var username = localStorage.getItem('Username');
+        var api_key = localStorage.getItem('API_KEY');
+        var parameters = 'username='+username+'&api_key='+api_key;
+
         var textbox_len = document.getElementsByTagName('input').length;
         var dropdown_len = document.getElementsByTagName('select').length;
         var textarea_len = document.getElementsByTagName('textarea').length;
@@ -484,7 +488,7 @@ mobileApp.directive('myCallback', function($compile, $location, $http){
                   if(lsResponse != fResponse){
                     var JSONobj = {"instance" : "/api/v1/labjournalinstance/"+getGUID+"/", "parameter" : "/api/v1/deviceparameter/"+getPID+"/", "response" : fResponse};
                     var param_data = JSON.stringify(JSONobj);
-                    var update_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalparameterresponse/';
+                    var update_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalparameterresponse/?'+parameters;
                     $.ajax({
                         //url: 'http://129.105.107.216/api/v1/labjournalparameterresponse/',
                         url: update_url,
@@ -519,7 +523,7 @@ mobileApp.directive('myCallback', function($compile, $location, $http){
                   if(lsResponse != fResponse){
                     var JSONobj = {"instance" : "/api/v1/labjournalinstance/"+getGUID+"/", "question" : "/api/v1/labjournalquestion/"+getQID+"/", "response" : fResponse};
                     var ques_data = JSON.stringify(JSONobj);
-                    var update_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalquestionresponse/';
+                    var update_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalquestionresponse/?'+parameters;
                     $.ajax({
                         url: update_url,
                         crossDomain: 'false',
@@ -547,7 +551,7 @@ mobileApp.directive('myCallback', function($compile, $location, $http){
                       var param_data = JSON.stringify(jsoncomb['parameters'][param_loop]);
                       $.ajax({
                         //url: 'http://129.105.107.216/api/v1/labjournalparameterresponse/',
-                        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalparameterresponse/',
+                        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalparameterresponse/?'+parameters,
                         crossDomain: 'false',
                         type: 'POST',
                         data: param_data,
@@ -570,7 +574,7 @@ mobileApp.directive('myCallback', function($compile, $location, $http){
                     for(var ques_loop=0; ques_loop<jsoncomb['questions'].length; ques_loop++){
                       var ques_data = JSON.stringify(jsoncomb['questions'][ques_loop]);
                       $.ajax({
-                        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalquestionresponse/',
+                        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalquestionresponse/?'+parameters,
                         crossDomain: 'false',
                         type: 'POST',
                         data: ques_data,
@@ -599,14 +603,18 @@ mobileApp.directive('myCallback', function($compile, $location, $http){
             var GUID = localStorage.getItem('GUID');
             var labjournalID = localStorage.getItem('LABJOURNAL_ID');
             var username = localStorage.getItem('Username');
-            var jsonObject = {"GUID" : GUID,  "status" : "C"};
+            var getlabjournal = JSON.parse(localStorage.getItem('LABJOURNAL_JSON_DATA'));
+            var labjournal_stepid = getlabjournal.labjournalsteps[index].id;
+            var labjournal_uri = getlabjournal.resource_uri;
+            var jsonObject = {"GUID" : GUID,  "last_step_completed" : labjournal_stepid, "lab_journal": labjournal_uri};
             //var jsonObject = {"status" : "C"};
             console.log(jsonObject)
             var data = JSON.stringify(jsonObject);
 
+
             // POST data to REST API
             $.ajax({
-              url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalinstance/',
+              url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalinstance/?'+parameters,
               crossDomain: 'false',
               type: 'POST',
               //type: 'PATCH',
