@@ -172,7 +172,7 @@ mobileApp.directive('myCallback', function($compile, $location, $http){
         // Submit Design //
         var step_title = getJSON.labjournalsteps[index].journal_step_title;
         if(deviceform != undefined && step_title != 'Analyze'){
-          body_content += "<button id=\"submit_design\"  ng-click=\"submitDesign()\">Submit Design</button>";
+          //body_content += "<button id=\"submit_design\"  ng-click=\"submitDesign()\">Submit Design</button>";
         }
       }
 

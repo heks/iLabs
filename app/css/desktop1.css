@@ -56,7 +56,7 @@
 
 	#wrapper #pagebody #menuoptions{ margin-top:68px; height: 48px; width: 100%;}
 
-	#wrapper #pagebody header#toolbarnav #menuoptions{ width: 100%; height: 45px; margin-top: -15px; position: absolute;}
+	#wrapper #pagebody header#toolbarnav #menuoptions{ width: 100%; height: 45px; margin-top: -15px; position: fixed;}
 
 	#wrapper #pagebody header#toolbarnav #menuoptions #menu-btn_bg{ width: 40px; height: 33px; margin-top: -6px; margin-left: 0px; position: absolute;}
 
@@ -254,7 +254,7 @@
 
 	#wrapper #pagebody header#toolbarnav button#nav_next::before{ right:15px; top:50%; margin-top:-11px; margin-right: -10px; }
 
-	#wrapper #pagebody header#toolbarnav #menuoptions{ width: 100%; height: 45px; margin-top: -15px; position: absolute;}
+	#wrapper #pagebody header#toolbarnav #menuoptions{ width: 100%; height: 45px; margin-top: -15px; position: fixed;}
 
 	#wrapper #pagebody header#toolbarnav #menuoptions #menu-btn_bg{ width: 40px; height: 33px; margin-top: -6px; margin-left: 0px; position: absolute;}
 

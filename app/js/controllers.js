@@ -428,15 +428,32 @@ mobileApp.controller('labjournalCtrl',
 
 mobileApp.controller('templateCtrl',
   function templateCtrl($scope, $location, $http){
-   /*  var jsons= JSON.stringify({ "coupon_id": 145966, "experiment_id": 6, "instance": "/api/v1/labjournalinstance/student1_3821b43303bde356d8e3fa141d8e7588/","parameter_group": "/api/v1/deviceparametergroup/1/",
+     var jsons= JSON.stringify({ "coupon_id": 145966, "experiment_id": 6, "instance": "/api/v1/labjournalinstance/student1_3821b43303bde356d8e3fa141d8e7588/","parameter_group": "/api/v1/deviceparametergroup/1/",
     "pass_key": "1219483457", "resource_uri": "/api/v1/experiment/test/result/6/", "results": [{  "distance": "20", "result": "176,154,185" }, {  "distance": "30", "result": "118,129,110"
         }, { "distance": "40", "result": "77,75,83" } ],"submitted_date": "2013-09-25T11:17:06.950438"});
 var jsonsp = JSON.parse(jsons);
-var jsonplength = jsonsp.results.length; 
+var jsonplength = jsonsp.results.length;
+var keynames = []; var values = [];
+for (var key in jsonsp.results[0]){
+  keynames.push(key)
+  values.push(jsonsp.results[0][key])
+}
+var header = new Array(keynames[0]);
+var cellvalues = new Array(values);
+var cellvalues_a = new Array(cellvalues.join())
+console.log(cellvalues_a)
+//console.log(header)
+var no_of_trials = jsonsp.results[0].result;
+no_of_trials = no_of_trials.split(',');
+console.log(no_of_trials.length);
+for (var trial = 1; trial <= no_of_trials.length; trial++){
+  header.push("Trial"+trial)
+}
+console.log(header)
      var container = '<div class="containerDiv">';
     container += '<div class="rowDivHeader" >';
-    for(var i=0;i<2;i++){
-      container += '<div class="cellDivHeader" >head</div>';
+    for(var i=0;i<header.length;i++){
+      container += '<div class="cellDivHeader" >'+header[i]+'</div>';
    }
    container += '</div>';
    for(var k=0;k<2;k++){
@@ -447,7 +464,7 @@ var jsonplength = jsonsp.results.length;
    container += '</div>';
  }
  container += '</div>';
-   $("#experiment_result").html(container)*/
+  // $("#experiment_result").html(container)
     
    
 
