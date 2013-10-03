@@ -428,6 +428,28 @@ mobileApp.controller('labjournalCtrl',
 
 mobileApp.controller('templateCtrl',
   function templateCtrl($scope, $location, $http){
+   /*  var jsons= JSON.stringify({ "coupon_id": 145966, "experiment_id": 6, "instance": "/api/v1/labjournalinstance/student1_3821b43303bde356d8e3fa141d8e7588/","parameter_group": "/api/v1/deviceparametergroup/1/",
+    "pass_key": "1219483457", "resource_uri": "/api/v1/experiment/test/result/6/", "results": [{  "distance": "20", "result": "176,154,185" }, {  "distance": "30", "result": "118,129,110"
+        }, { "distance": "40", "result": "77,75,83" } ],"submitted_date": "2013-09-25T11:17:06.950438"});
+var jsonsp = JSON.parse(jsons);
+var jsonplength = jsonsp.results.length; 
+     var container = '<div class="containerDiv">';
+    container += '<div class="rowDivHeader" >';
+    for(var i=0;i<2;i++){
+      container += '<div class="cellDivHeader" >head</div>';
+   }
+   container += '</div>';
+   for(var k=0;k<2;k++){
+   container += '<div class="rowDiv" >';
+    for(var j=0;j<2;j++){
+      container += '<div class="cellDiv">cell</div>';
+   }
+   container += '</div>';
+ }
+ container += '</div>';
+   $("#experiment_result").html(container)*/
+    
+   
 
     /**
     * @function navigatePage
@@ -1045,6 +1067,8 @@ mobileApp.controller('templateCtrl',
       }
     }
 
+
+
     $scope.renderGraph = function(){
       var username = localStorage.getItem('Username');
       var api_key = localStorage.getItem('API_KEY');
@@ -1083,8 +1107,6 @@ mobileApp.controller('templateCtrl',
       "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
         chart: {
                   type: 'line',
-                  height: 400,
-                  width: 300,
                   backgroundColor: {
                                       linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
                                       stops: [[0, 'rgb(96, 96, 96)'],[1, 'rgb(16, 16, 16)']]

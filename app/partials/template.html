@@ -12,8 +12,7 @@
                 <div ><button id="nav_back" style="display:none" ng-click="navigateBack()">Back</button></div>
                <!--<div > <button id="nav_next" style="display:none" ng-click="navigateNext()">Next</button></div>-->
                <div > <button id="nav_next" style="display:none" ng-click="navigateNext()">Next</button></div>
-            </header>
-            <div id="menuoptions">
+               <div id="menuoptions">
                 <div id="menu-btn_bg">
                     <a href="#navmenu" id="menu-button" ng-click="showMenu()"></a>
                 </div>
@@ -25,6 +24,19 @@
                 <div id="timercount" style="display:none"></div>
                 <div id="viewresult" style="display:none">View Result</div>
             </div>
+            </header>
+           <!-- <div id="menuoptions">
+                <div id="menu-btn_bg">
+                    <a href="#navmenu" id="menu-button" ng-click="showMenu()"></a>
+                </div>
+                <div id="step_desc">{{Stepdesc}}</div>
+                <div id="home_nav_bg">
+                    
+                    <button id="home_nav_bg" ng-click="navigatePage('home')"></button>
+                </div>
+                <div id="timercount" style="display:none"></div>
+                <div id="viewresult" style="display:none">View Result</div>
+            </div>-->
             <section id="content" class="clearfix">
                 <div style="display:none">{{runtimeInfotext}}</div>
                 <div my-callback callback-fn="loadContent(content)"><div>{{Labtitle}}</div></div>
@@ -32,20 +44,9 @@
                 <!--<a href="" class="a_next">Next</a>
                 <a href="" class="a_back">Back</a>
                 <a href="" class="a_home"></a>-->
-                <!--<div id="experiment_result" style="display:block;">
-                    <div class="containerDiv">
-                        <div class="rowDivHeader">
-                        <div class="cellDivHeader">Title</div>
-                        <div class="cellDivHeader">Assigned Date</div>
-                        <div class="cellDivHeader">Action</div>
-                    </div>
-        
-                    <div class="rowDiv" ng-repeat="subscription in subscriptions">
-                        <div class="cellDiv" >{{subscription.lab_journal_title}}</div>
-                        <div class="cellDiv">{{subscription.subscribed_date}}</div>
-                        <div class="cellDiv"><button class="action" ng-click="startLab(subscription.lab_journal)">Start</button></div>
-                    </div>
-                </div>-->
+               <div id="experiment_result" style="display:block;">
+                    
+                </div>
                 
                 <div id="graph" ></div>
             </section>

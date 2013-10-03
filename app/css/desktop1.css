@@ -56,17 +56,19 @@
 
 	#wrapper #pagebody #menuoptions{ margin-top:68px; height: 48px; width: 100%;}
 
-	#wrapper #pagebody #menuoptions #menu-btn_bg{ width: 60px; height: 38px; margin-top: -6px; margin-left: 10px; }
+	#wrapper #pagebody header#toolbarnav #menuoptions{ width: 100%; height: 45px; margin-top: -15px; position: absolute;}
 
-	#wrapper #pagebody #menuoptions a#menu-button{ border-bottom: 12px double #d0d0d0; border-top: 4px solid #d0d0d0; content: ""; height: 20px; width: 34px; margin-top: 0px; margin-left: 3px;  }
+	#wrapper #pagebody header#toolbarnav #menuoptions #menu-btn_bg{ width: 40px; height: 33px; margin-top: -6px; margin-left: 0px; position: absolute;}
 
-	#wrapper #pagebody #menuoptions #step_desc{ margin-top: -40px; margin-left: 47%; margin-right: 38%; }
+	#wrapper #pagebody header#toolbarnav #menuoptions a#menu-button{ border-bottom: 10px double #d0d0d0; border-top: 3px solid #d0d0d0; content: ""; height: 16px; width: 30px; margin-top: -2px; margin-left: -5px; margin-bottom: 0px; }
 
-	#wrapper #pagebody #menuoptions button#home_nav_bg{ font-size:1em; margin-right: 0px; margin-top: -30px;  float: right;  height: 37px; width: 52px; position: relative; }
+	#wrapper #pagebody header#toolbarnav #menuoptions #step_desc{ margin-top: -3px; margin-left: 46%; margin-right: 30%; font-size: 1em; }
 
-	#wrapper #pagebody #menuoptions button#home_nav_bg::before{ right:15px; top:50%; margin-top:-12px; margin-right: -2px; }
+	#wrapper #pagebody header#toolbarnav #menuoptions button#home_nav_bg{ font-size:1.2em; margin-left: 1610px; margin-top: -30px;  height: 33px; width: 40px; position:absolute; }
 
-	#wrapper #pagebody #menuoptions a#home_nav { font-size:1em; margin-left: 10px; margin-top: -40px; position: absolute; }
+	#wrapper #pagebody header#toolbarnav #menuoptions button#home_nav_bg::before{ right:15px; top:50%; margin-top:-12px; margin-right: -5px; }
+
+	#wrapper #pagebody header#toolbarnav #menuoptions a#home_nav { font-size:1em; margin-right: 0px; margin-top: -40px; position: static; }
 
 	#wrapper #pagebody #homecontent { margin-top: 18px; height: 100%; }
 
@@ -95,6 +97,35 @@
 	#wrapper #pagebody #content a#home_btn2{ padding: 12px 0; height: 50px; width: 240px;  margin-bottom: 50px; margin-left: 43%; margin-right: 50%;}
 
 	#wrapper #pagebody #content h3 { font-weight: 700; font-size: 1.8em; line-height: 1.75em; margin-bottom: 25px; }
+	#wrapper #pagebody #content .containerDiv {
+  /*border: 1px solid #3697f6;*/
+  width: 100%;  margin-left:0px;
+}
+#wrapper #pagebody #content .rowDivHeader {
+  
+  font-size: 1em;
+  
+}
+#wrapper #pagebody #content .rowDiv {
+  
+}
+#wrapper #pagebody #content .cellDivHeader {
+  width:12%;
+  padding: 1px;
+  font-size: .8em;
+  
+}
+#wrapper #pagebody #content .cellDiv {
+  
+  width:10%;
+  padding-right: 4px;
+  
+}
+#wrapper #pagebody #content .cellDiv button{
+	margin-top: 20px;border-radius: 15px;  }
+#wrapper #pagebody #content .lastCell {
+  border-right: none;
+}
 
 	#wrapper #pagebody #content .content_group{ margin-top: -10px; }
 
@@ -207,7 +238,9 @@
 
 	#wrapper #pagebody header#toolbarnav { left: 0px; top: 0px; padding-top:2em; height: 68px; width: 100%;  }
 
-	#wrapper #pagebody header#toolbarnav #menu-btn_bg{ width: 40px; height: 33px; margin-top: -65px; margin-left: 10px; position: absolute;}
+	#wrapper #pagebody header#toolbarnav #menu-btn_bg{ width: 50px; height: 43px; margin-top: -68px; margin-left: 20px; position: absolute;}
+
+	 #wrapper #pagebody header#toolbarnav  #menu-btn_bg a#home_nav_bg::before { margin-left: 3px; margin-top: 0px; }
 
 	#wrapper #pagebody header#toolbarnav #menu-btn_bg a#menu-button{ border-bottom: 12px double #d0d0d0; border-top: 4px solid #d0d0d0; content: ""; height: 20px; width: 30px; margin-top: -2px; margin-left: -5px; margin-bottom: 0px; }
 
@@ -221,19 +254,19 @@
 
 	#wrapper #pagebody header#toolbarnav button#nav_next::before{ right:15px; top:50%; margin-top:-11px; margin-right: -10px; }
 
-	#wrapper #pagebody #menuoptions{ margin-top:68px; height: 48px; width: 100%;}
+	#wrapper #pagebody header#toolbarnav #menuoptions{ width: 100%; height: 45px; margin-top: -15px; position: absolute;}
 
-	#wrapper #pagebody #menuoptions #menu-btn_bg{ width: 60px; height: 38px; margin-top: -6px; margin-left: 10px; }
+	#wrapper #pagebody header#toolbarnav #menuoptions #menu-btn_bg{ width: 40px; height: 33px; margin-top: -6px; margin-left: 0px; position: absolute;}
 
-	#wrapper #pagebody #menuoptions a#menu-button{ border-bottom: 12px double #d0d0d0; border-top: 4px solid #d0d0d0; content: ""; height: 20px; width: 34px; margin-top: 0px; margin-left: 3px;  }
+	#wrapper #pagebody header#toolbarnav #menuoptions a#menu-button{ border-bottom: 10px double #d0d0d0; border-top: 3px solid #d0d0d0; content: ""; height: 16px; width: 30px; margin-top: -2px; margin-left: -5px; margin-bottom: 0px; }
 
-	#wrapper #pagebody #menuoptions #step_desc{ margin-top: -40px; margin-left: 47%; margin-right: 38%; }
+	#wrapper #pagebody header#toolbarnav #menuoptions #step_desc{ margin-top: -3px; margin-left: 46%; margin-right: 30%; font-size: 1em; }
 
-	#wrapper #pagebody #menuoptions button#home_nav_bg{ font-size:1em; margin-right: 0px; margin-top: -30px;  float: right;  height: 37px; width: 52px; position: relative; }
+	#wrapper #pagebody header#toolbarnav #menuoptions button#home_nav_bg{ font-size:1.2em; margin-left: 1610px; margin-top: -30px;  height: 33px; width: 40px; position:absolute; }
 
-	#wrapper #pagebody #menuoptions button#home_nav_bg::before{ right:15px; top:50%; margin-top:-12px; margin-right: -2px; }
+	#wrapper #pagebody header#toolbarnav #menuoptions button#home_nav_bg::before{ right:15px; top:50%; margin-top:-12px; margin-right: -5px; }
 
-	#wrapper #pagebody #menuoptions a#home_nav { font-size:1em; margin-left: 10px; margin-top: -40px; position: absolute; }
+	#wrapper #pagebody header#toolbarnav #menuoptions a#home_nav { font-size:1em; margin-right: 0px; margin-top: -40px; position: static; }
 
 	#wrapper #pagebody #homecontent { margin-top: 18px; height: 100%; }
 
@@ -251,7 +284,7 @@
 
 	#wrapper #pagebody #content { margin-top: 110px; color: #000000; height:100%;}
 
-	#wrapper #content #menu-btn_bg{ width: 60px; height: 38px; margin-top: -5px; margin-left: 750px; }
+	#wrapper #content #menu-btn_bg{ width: 70px; height: 48px; margin-top: -5px; margin-left: 750px; }
 
 	#wrapper #content a#menu-btn{ width: 53px; height: 30px; height: 5px; width: 40px; margin-top: -3px; margin-left: 0px; }
 
@@ -262,6 +295,36 @@
 	#wrapper #pagebody #content a#home_btn2{ padding: 12px 0; height: 50px; width: 240px;  margin-bottom: 50px; margin-left: 43%; margin-right: 50%;}
 
 	#wrapper #pagebody #content h3 { font-weight: 700; font-size: 1.8em; line-height: 1.75em; margin-bottom: 25px; }
+
+	#wrapper #pagebody #content .containerDiv {
+  /*border: 1px solid #3697f6;*/
+  width: 100%;  margin-left:0px;
+}
+#wrapper #pagebody #content .rowDivHeader {
+  
+  font-size: 1em;
+  
+}
+#wrapper #pagebody #content .rowDiv {
+  
+}
+#wrapper #pagebody #content .cellDivHeader {
+  width:12%;
+  padding: 1px;
+  font-size: .8em;
+  
+}
+#wrapper #pagebody #content .cellDiv {
+  
+  width:10%;
+  padding-right: 4px;
+  
+}
+#wrapper #pagebody #content .cellDiv button{
+	margin-top: 20px;border-radius: 15px;  }
+#wrapper #pagebody #content .lastCell {
+  border-right: none;
+}
 
 	#wrapper #pagebody #content .content_group{ margin-top: -10px; }
 
