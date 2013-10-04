@@ -428,45 +428,6 @@ mobileApp.controller('labjournalCtrl',
 
 mobileApp.controller('templateCtrl',
   function templateCtrl($scope, $location, $http){
-     var jsons= JSON.stringify({ "coupon_id": 145966, "experiment_id": 6, "instance": "/api/v1/labjournalinstance/student1_3821b43303bde356d8e3fa141d8e7588/","parameter_group": "/api/v1/deviceparametergroup/1/",
-    "pass_key": "1219483457", "resource_uri": "/api/v1/experiment/test/result/6/", "results": [{  "distance": "20", "result": "176,154,185" }, {  "distance": "30", "result": "118,129,110"
-        }, { "distance": "40", "result": "77,75,83" } ],"submitted_date": "2013-09-25T11:17:06.950438"});
-var jsonsp = JSON.parse(jsons);
-var jsonplength = jsonsp.results.length;
-var keynames = []; var values = [];
-for (var key in jsonsp.results[0]){
-  keynames.push(key)
-  values.push(jsonsp.results[0][key])
-}
-var header = new Array(keynames[0]);
-var cellvalues = new Array(values);
-var cellvalues_a = new Array(cellvalues.join())
-console.log(cellvalues_a)
-//console.log(header)
-var no_of_trials = jsonsp.results[0].result;
-no_of_trials = no_of_trials.split(',');
-console.log(no_of_trials.length);
-for (var trial = 1; trial <= no_of_trials.length; trial++){
-  header.push("Trial"+trial)
-}
-console.log(header)
-     var container = '<div class="containerDiv">';
-    container += '<div class="rowDivHeader" >';
-    for(var i=0;i<header.length;i++){
-      container += '<div class="cellDivHeader" >'+header[i]+'</div>';
-   }
-   container += '</div>';
-   for(var k=0;k<2;k++){
-   container += '<div class="rowDiv" >';
-    for(var j=0;j<2;j++){
-      container += '<div class="cellDiv">cell</div>';
-   }
-   container += '</div>';
- }
- container += '</div>';
-  // $("#experiment_result").html(container)
-    
-   
 
     /**
     * @function navigatePage
@@ -1084,9 +1045,73 @@ console.log(header)
       }
     }
 
+    $scope.renderResult = function(){
+     /* var jsons= JSON.stringify({ "coupon_id": 145966, "experiment_id": 6, "instance": "/api/v1/labjournalinstance/student1_3821b43303bde356d8e3fa141d8e7588/","parameter_group": "/api/v1/deviceparametergroup/1/",
+    "pass_key": "1219483457", "resource_uri": "/api/v1/experiment/test/result/6/", "results": [{  "distance": "20", "result": "176,154,185" }, {  "distance": "30", "result": "118,129,110"
+        }, { "distance": "40", "result": "77,75,83" } ],"submitted_date": "2013-09-25T11:17:06.950438"});*/
+      $scope.stopBlink();
+      $scope.retrieveExperimentresult();
 
+      var getresult = localStorage.getItem('EXPERIMENT_RESULT');
+      var resultparse = JSON.parse(getresult);
+      var resultlength = resultparse.results.length;
+      var keynames = []; 
+      for (var key in resultparse.results[0]){
+        keynames.push(key);
+      }
+      var header = new Array(keynames[0]);
+      var distance_array = []; var result_array = [];
+      for (var t1 = 0;t1 < resultlength; t1++){
+       distance_array.push(resultparse.results[t1].distance);
+       result_array.push(resultparse.results[t1].result);
+      }
 
-    $scope.renderGraph = function(){
+      var combined_array = new Array();
+      for (var t2=0; t2 < resultlength; t2++){
+      combined_array.push(distance_array[t2]+','+result_array[t2]);
+      }
+
+      var no_of_trials = resultparse.results[0].result;
+      no_of_trials = no_of_trials.split(',');
+
+      for (var trial = 1; trial <= no_of_trials.length; trial++){
+        header.push('Trial'+trial)
+      }
+
+      var container = '<div class=\'containerDiv\'>';
+      container += '<div class=\'rowDivHeader\'>';
+      for (var i = 0;i < header.length; i++){
+            container += '<div class=\'cellDivHeader\'>'+header[i]+'</div>';
+      }
+      container += '</div>';
+      for (var j = 0; j < combined_array.length; j++){
+        container += '<div class=\'rowDiv\'>';
+          for(var k = 0; k < header.length; k++){
+            var split_combined_array = combined_array[j].split(',');
+            container += '<div class=\'cellDiv\'>'+split_combined_array[k]+'</div>';
+          }
+        container += '</div>';
+      }
+      container += '</div>';
+      $('#experiment_result').html(container);
+      $('#graph_button').show();
+
+      $(document).ready(function(){
+        $('.slider-button').toggle(function(){
+          $(this).addClass('on').html('ON');
+          //document.getElementById('description').style.display = "block";
+          $('#graph').show();
+          $scope.renderGraph();
+        },function(){
+        $(this).removeClass('on').html('OFF');
+          //document.getElementById('description').style.display = "none";
+          $('#graph').hide();
+        });
+      });
+
+    }
+
+    $scope.retrieveExperimentresult = function(){
       var username = localStorage.getItem('Username');
       var api_key = localStorage.getItem('API_KEY');
       var parameters = 'username='+username+'&api_key='+api_key;
@@ -1114,11 +1139,11 @@ console.log(header)
               }
         });
 
-      /*var jsons= JSON.stringify({ "coupon_id": 145966, "experiment_id": 6, "instance": "/api/v1/labjournalinstance/student1_3821b43303bde356d8e3fa141d8e7588/","parameter_group": "/api/v1/deviceparametergroup/1/",
-    "pass_key": "1219483457", "resource_uri": "/api/v1/experiment/test/result/6/", "results": [{  "distance": "20", "result": "176,154,185" }, {  "distance": "30", "result": "118,129,110"
-        }, { "distance": "40", "result": "77,75,83" } ],"submitted_date": "2013-09-25T11:17:06.950438"});*/
+    }
 
-      // properties of Highchart
+    $scope.highchartsGraph = function(distance){
+      $scope.retrieveExperimentresult();
+
       var chart = $("#graph").highcharts({
         colors: ["#DDDF0D", "#7798BF", "#55BF3B", "#DF5353", "#aaeeee", "#ff0066", "#eeaaee",
       "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
@@ -1166,7 +1191,8 @@ console.log(header)
                     },
                     lineColor: '#A0A0A0',
                     tickColor: '#A0A0A0',
-                    categories: [],
+                    //categories: [],
+                    categories: distance,
                     title: {
                             style: {
                                       color: '#1589ff',
@@ -1197,6 +1223,12 @@ console.log(header)
         series: []
       });
 
+    }
+
+
+    $scope.renderGraph = function(){
+      
+      $scope.highchartsGraph();
       var jsons = localStorage.getItem('EXPERIMENT_RESULT');
       var length = JSON.parse(jsons).results.length;
      
@@ -1207,6 +1239,7 @@ console.log(header)
       }
 
       var chart = $("#graph").highcharts();
+      //var chart = $scope.highchartsGraph();
       chart.xAxis[0].update({categories: distance_arr});
       //var trial_l = JSON.parse(jsons).results[0].result.split(",").length;
       var Trial1 =new Array(); var Trial2 =new Array(); var Trial3 =new Array(); var Trial4 =new Array(); var Trial5 =new Array(); 
@@ -1247,6 +1280,7 @@ console.log(header)
           
         }
       }
+ 
 
     }
 
@@ -1281,14 +1315,50 @@ console.log(header)
       $scope.Labtitle = step_title;
 
       if(step_title == 'Analyze'){
-        $scope.renderGraph();
+        //$scope.renderGraph();
+        //$scope.renderResult();
+        var runTime = 10;
+        $scope.runtimeInfotext = 'Your result will be available in '+runTime+' seconds!!!';
+        
+        $scope.countDown(runTime);
+
       }
 
     }
 
-    $scope.stopblink = function(){
-      $scope.blink(0);
-    }
+     $scope.countDown = function(timer){
+          if(timer > 0){
+            var count = timer;
+            $scope.startBlink('timercount');
+            countdown = setInterval(function(){
+                  
+                  $('#timercount').html(count);
+                  $('#timercount').show();
+                  
+                  if(count == 0){
+                        //window.location = "http://google.com";
+                        //$('#timer').hide();
+                        //$('#countdown').hide();
+                        $scope.stopBlink();
+                        $('#timercount').hide();
+
+                        clearInterval(countdown);
+                        
+                        alert("Result is ready to view");
+                        $('#runtimemsg').hide();
+                        $('#viewresult').show();
+                        //$scope.blink = function() { $('#viewresult').blink(100,900); }
+                        $scope.startBlink('viewresult')
+                  }
+                  count--;
+            },1000);
+          }
+      }
+
+
+
+    $scope.startBlink = function(id) { $('#'+id).blink(100,900); }
+    $scope.stopBlink = function () {  $('.blink').blink();  }
 
     $scope.loadContent = function(content){
       $(".compile_content").append(content);

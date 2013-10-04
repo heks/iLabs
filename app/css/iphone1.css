@@ -72,6 +72,8 @@
 
 	#wrapper #pagebody header#toolbarnav #menuoptions a#home_nav { font-size:1em; margin-right: 0px; margin-top: -40px; position: static; }
 
+	#wrapper #pagebody header#toolbarnav #menuoptions #timercount{ font-size:1.2em; margin-left: 210px; margin-top: -30px;  height: 33px; width: 40px; position:absolute; }
+
 	#wrapper #pagebody header#toolbarnav #homecontent { margin-top: 0px; }
 
 	#wrapper #pagebody #homecontent h2 { font-size: 1.5em; line-height: 1.5em; font-weight: bold; margin-top: 60px; margin-bottom: 25px; padding: 12px 0; }
@@ -111,6 +113,8 @@
 	#wrapper #content a#menu-btn{ width: 53px; height: 30px; height: 5px; width: 40px; margin-top: -3px; margin-left: 0px; }
 
 	#wrapper #pagebody #content h2 { font-size: 1.5em; line-height: 1.5em; font-weight: bold; margin-top: 60px; margin-bottom: 25px; padding: 12px 0; }
+
+	#wrapper #pagebody #content button#viewresult{ height: 40px;width: 150px; padding-bottom: 10px;}
 
 	#wrapper #pagebody #content a#home_btn1{ font-weight: 700; font-size: 1.3em; padding: 4px; height: 50px; width: 240px; margin-left: 25px; margin-bottom: 50px; }
 
@@ -306,6 +310,8 @@
 
 	#wrapper #pagebody header#toolbarnav #menuoptions a#home_nav { font-size:1em; margin-right: 0px; margin-top: -40px; position: static; }
 
+	#wrapper #pagebody header#toolbarnav #menuoptions #timercount{ font-size:1.2em; margin-left: 370px; margin-top: -30px;  height: 33px; width: 40px; position:absolute; }
+
 	#wrapper #pagebody #homecontent { margin-top: 18px; overflow: auto;}
 
 	#wrapper #pagebody #homecontent h2 { font-size: 1.5em; line-height: 1.5em; font-weight: bold; margin-top: 60px; margin-bottom: 25px; padding: 12px 0; }
@@ -345,6 +351,8 @@
 	#wrapper #content a#menu-btn{ width: 53px; height: 30px; height: 5px; width: 40px; margin-top: -3px; margin-left: 0px; }
 
 	#wrapper #pagebody #content h2 { font-size: 1.5em; line-height: 1.5em; font-weight: bold; margin-top: 60px; margin-bottom: 25px; padding: 12px 0; }
+
+	#wrapper #pagebody #content button#viewresult{ height: 40px;width: 150px; padding-bottom: 10px;}
 
 	#wrapper #pagebody #content a#home_btn1{ font-weight: 700; font-size: 1.3em; padding: 4px; height: 50px; width: 240px; margin-left: 25px; margin-bottom: 50px; }
 
