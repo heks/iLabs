@@ -1,5 +1,5 @@
 #stage { }
- .slider-frame {
+.slider-frame {
   position: relative;
   display: block;
   margin: 0;
@@ -36,7 +36,6 @@
   height: 27px;
   line-height: 27px;
   background:#d37a16;
-  /*background: #FF0000;*/
   -moz-border-radius: 10px;
   border-radius: 10px;
   border: 1px solid #70430e;
@@ -51,7 +50,7 @@
   text-align: center;
   cursor: pointer;
 }
- .slider-frame .slider-button.on {
+.slider-frame .slider-button.on {
   margin-left: 40px;
   background: #2372c6;
   border: 1px solid #0f3f74;
