@@ -1,6 +1,0 @@
-#login-box {
-  background-color: red;
-  /* mobile */
-  @media all and (max-device-width:480px) {
-  }
-}
