@@ -9,7 +9,8 @@
 /**************************************************/
 
 /**
-* @function loginCtrl
+* @ngdoc function 
+* @name loginCtrl
 * @description
 * Define all the functionalities have to be performed in the login template
 * @param $scope {ngService} An angular service - This service let the controller give objects and functions to the views
@@ -21,7 +22,8 @@
 mobileApp.controller('loginCtrl',
   function loginCtrl ($scope, $location) {
     /**
-    * @function submit
+    * @ngdoc function 
+    * @name submit
     * @description 
     * Get the username and password and inject into the 'login' function
     */
@@ -35,7 +37,8 @@ mobileApp.controller('loginCtrl',
     }
 
     /**
-    * @function login
+    * @ngdoc function 
+    * @name login
     * @description 
     * Authenticate the user and let them to login to the application by making an ajax call to the REST API
     * @param username {String | Number | Special charcters} Username of the user
@@ -56,22 +59,17 @@ mobileApp.controller('loginCtrl',
         async: false,
         processData: false,
         success: function(data) {
-          //$scope.$apply(function(){
             $scope.result=data.message;
               if (data['error']) {
                 alert('Credentials Invalid');
                 return;
               }
               console.log(data);
-              //localStorage.setItem('CouponID', data['couponId']);
-              //localStorage.setItem('PassKey', data['passKey']);
               localStorage.setItem('Username', username);
               localStorage.setItem('API_KEY', data['api_key']);
               // If the authentication is successfull, then it redirects to the Homepage
               $location.path('home');
-              //$scope.foobar = true;
               sessionStorage.setItem('loggedIn', 'true');
-          //});
         },
         error: function() { 
           alert('Error');
@@ -87,7 +85,8 @@ mobileApp.controller('loginCtrl',
 /**************************************************/
 
 /**
-* @function homeCtrl
+* @ngdoc function 
+* @name homeCtrl
 * @description
 * Define all the functionalities have to be performed in the home template
 * @param $scope {ngService} An angular service - This service let the controller give objects and functions to the views
@@ -108,7 +107,8 @@ mobileApp.controller('homeCtrl',
     
 
     /**
-    * @function loadDynamicContents
+    * @ngdoc function 
+    * @name loadDynamicContents
     * @description
     * Render the Groups (the group which the student belongs), Labjournal Assignments (assignments assigned to the student by the teacher) and 
     * Labjournal Subscription (subscriptions owned by the student) via REST API 
@@ -122,7 +122,8 @@ mobileApp.controller('homeCtrl',
     }
     
     /**
-    * @function retrieveGroups
+    * @ngdoc function 
+    * @name retrieveGroups
     * @description
     * Retrieve the groups, the student belongs to
     * @returns {jsonObject} contains a list of groups
@@ -153,7 +154,8 @@ mobileApp.controller('homeCtrl',
     }
 
     /**
-    * @function retrieveAssignments
+    * @ngdoc function 
+    * @name retrieveAssignments
     * @description
     * Retrieve the assignments assigned to the student by the teacher
     * @returns {jsonObject} contains a list of assignments
@@ -186,7 +188,8 @@ mobileApp.controller('homeCtrl',
     }
 
     /**
-    * @function retrieveSubscriptions
+    * @ngdoc function 
+    * @name retrieveSubscriptions
     * @description
     * Retrieve the lab journal subscriptions owned by the student
     * @returns {jsonObject} contains a list of subscriptions
@@ -218,7 +221,8 @@ mobileApp.controller('homeCtrl',
     }
 
     /**
-    * @function retrievelabjournals
+    * @ngdoc function 
+    * @name retrievelabjournals
     * @description
     * Retrieve the lab journals, those are not assigned and not subscribed
     * @returns {jsonObject} contains a list of labjournals
@@ -235,7 +239,6 @@ mobileApp.controller('homeCtrl',
                 format: 'jsonp'
 
         },
-        //data: parameters,
         cache: false,
         dataType: 'jsonp',
         async: false,
@@ -250,145 +253,224 @@ mobileApp.controller('homeCtrl',
         }
       });  
     }
-
-    
 });
 
 /******************************************************/
-/************* MYGROUP PAGE CONTROLLER ***************/
+/************* MYGROUP PAGE CONTROLLER ****************/
 /******************************************************/
+
+/**
+* @ngdoc function 
+* @name groupCtrl
+* @description
+* Define all the functionalities have to be performed in the mygroup template
+* @param $scope {ngService} An angular service - This service let the controller give objects and functions to the views
+* that can later be manipulated with expressions and directives.
+* @param $location {ngService} An angular service - It parses the URL in the browser adddress bar and makes the URL
+* available to the application. Changes to the URL in the address bar reflected into $location service and viceversa.
+* @param $http {ngService} - It takes a single argument that is used to generate an HTTP request and 
+* returns response with two $http methods: success and error
+*/
+
 mobileApp.controller('groupCtrl',
   function groupCtrl($scope, $location, $http){
-          var get_groupjson = JSON.parse(localStorage.getItem('LABJOURNAL_GROUPS'));
-          var total_count = get_groupjson.meta.total_count;
-          if (total_count != 0){
-            var group_data = '[';
-            for (var group_count = 0; group_count < total_count; group_count++){
-              group_data += '{';
-              group_data += '"title" : "'+get_groupjson.objects[group_count].title+'",';
-              var splitowner = get_groupjson.objects[group_count].owner.split("/");
-              var owner = splitowner[splitowner.length - 2];
-              group_data += '"owner" : "'+owner+'"';
-              group_data += '},'
-            }
-              group_data = group_data.slice(0, -1);
-              group_data += ']';
-                 
-              //$scope.$apply(function(){
-                $scope.groups = JSON.parse(group_data);
-             // });
-          }else{
-                  var groups_content = 'No more groups available';
-                  $('#groups_content').replaceWith('<div>'+groups_content+'</div>');
-          }
+
+    /**
+    * @ngdoc function 
+    * @name loadgroupContent
+    * @description
+    * Retrieve the groups, in which the student belongs to, through the API and dynamically render those data
+    * in the mobile app interface
+    */
+
+    $scope.loadgroupContent = function(){
+      var get_groupjson = JSON.parse(localStorage.getItem('LABJOURNAL_GROUPS'));
+      var total_count = get_groupjson.meta.total_count;
+      if (total_count != 0){
+        var group_data = '[';
+        for (var group_count = 0; group_count < total_count; group_count++){
+          group_data += '{';
+          group_data += '"title" : "'+get_groupjson.objects[group_count].title+'",';
+          var splitowner = get_groupjson.objects[group_count].owner.split("/");
+          var owner = splitowner[splitowner.length - 2];
+          group_data += '"owner" : "'+owner+'"';
+          group_data += '},'
+        }
+          group_data = group_data.slice(0, -1);
+          group_data += ']';
+          $scope.groups = JSON.parse(group_data);
+      }else{
+          var groups_content = 'No more groups available';
+          $('#groups_content').replaceWith('<div>'+groups_content+'</div>');
+      }
+  }
 });
 
-/******************************************************/
+/********************************************************/
 /************* ASSIGNMENT PAGE CONTROLLER ***************/
-/******************************************************/
+/********************************************************/
+
+/**
+* @ngdoc function 
+* @name assignmentCtrl
+* @description
+* Define all the functionalities have to be performed in the assignment template
+* @param $scope {ngService} An angular service - This service let the controller give objects and functions to the views
+* that can later be manipulated with expressions and directives.
+* @param $location {ngService} An angular service - It parses the URL in the browser adddress bar and makes the URL
+* available to the application. Changes to the URL in the address bar reflected into $location service and viceversa.
+* @param $http {ngService} - It takes a single argument that is used to generate an HTTP request and 
+* returns response with two $http methods: success and error
+*/
+
 mobileApp.controller('assignmentCtrl',
   function assignmentCtrl($scope, $location, $http){
-    var get_assignmentjson = JSON.parse(localStorage.getItem('LABJOURNAL_ASSIGNMENT'));
-          var total_count = get_assignmentjson.meta.total_count;
-          if (total_count != 0){
-            var assignment_data = '[';
-            for (var assignment_count = 0; assignment_count < total_count; assignment_count++){
-              assignment_data += '{';
-              assignment_data += '"lab_journal_title" : "'+get_assignmentjson.objects[assignment_count].lab_journal_title+'",';
-              assignment_data += '"assigned_date" : "'+get_assignmentjson.objects[assignment_count].assigned_date+'",';
-              assignment_data += '"lab_journal" : "'+get_assignmentjson.objects[assignment_count].lab_journal+'"';
-              assignment_data += '},'
-            }
-              assignment_data = assignment_data.slice(0, -1);
-              assignment_data += ']';
-                  
-              //$scope.$apply(function(){
-                $scope.assignments = JSON.parse(assignment_data);
-              //});
-          }else{
-              var assignments_content = 'No more assignments available';
-              $('#assignments_content').replaceWith('<div>'+assignments_content+'</div>');
-          }
+
+    /**
+    * @ngdoc function 
+    * @name loadassignmentContent
+    * @description
+    * Retrieve the assignments, those have been assigned to the student by the teacher, through the API and dynamically render those data
+    * in the mobile app interface
+    */
+
+    $scope.loadassignmentContent = function(){
+      var get_assignmentjson = JSON.parse(localStorage.getItem('LABJOURNAL_ASSIGNMENT'));
+      var total_count = get_assignmentjson.meta.total_count;
+      if (total_count != 0){
+        var assignment_data = '[';
+        for (var assignment_count = 0; assignment_count < total_count; assignment_count++){
+          assignment_data += '{';
+          assignment_data += '"lab_journal_title" : "'+get_assignmentjson.objects[assignment_count].lab_journal_title+'",';
+          assignment_data += '"assigned_date" : "'+get_assignmentjson.objects[assignment_count].assigned_date+'",';
+          assignment_data += '"lab_journal" : "'+get_assignmentjson.objects[assignment_count].lab_journal+'"';
+          assignment_data += '},'
+        }
+          assignment_data = assignment_data.slice(0, -1);
+          assignment_data += ']';
+          $scope.assignments = JSON.parse(assignment_data);
+      }else{
+          var assignments_content = 'No more assignments available';
+          $('#assignments_content').replaceWith('<div>'+assignments_content+'</div>');
+      }
+  }
 });
-/******************************************************/
+
+/**********************************************************/
 /************* SUBSCRIPTION PAGE CONTROLLER ***************/
-/******************************************************/
+/**********************************************************/
+
+/**
+* @ngdoc function 
+* @name subscriptionCtrl
+* @description
+* Define all the functionalities have to be performed in the subscription template
+* @param $scope {ngService} An angular service - This service let the controller give objects and functions to the views
+* that can later be manipulated with expressions and directives.
+* @param $location {ngService} An angular service - It parses the URL in the browser adddress bar and makes the URL
+* available to the application. Changes to the URL in the address bar reflected into $location service and viceversa.
+* @param $http {ngService} - It takes a single argument that is used to generate an HTTP request and 
+* returns response with two $http methods: success and error
+*/
+
 mobileApp.controller('subscriptionCtrl',
   function subscriptionCtrl($scope, $location, $http){
-    $scope.loadContent = function(){
+
+    /**
+    * @ngdoc function 
+    * @name loadsubscriptionContent
+    * @description
+    * Retrieve the subscriptions, those have been subscribed by the student, through the API and dynamically render those data
+    * in the mobile app interface
+    */
+
+    $scope.loadsubscriptionContent = function(){
       var get_subscriptionjson = JSON.parse(localStorage.getItem('LABJOURNAL_SUBSCRIPTION'));
-      //console.log(get_subscriptionjson)
       var total_count = get_subscriptionjson.meta.total_count;
-          if (total_count != 0){
-            var subscription_data = '[';
-            for (var subscription_count = 0; subscription_count < total_count; subscription_count++){
-              subscription_data += '{';
-              subscription_data += '"lab_journal_title" : "'+get_subscriptionjson.objects[subscription_count].lab_journal_title+'",';
-              subscription_data += '"subscribed_date" : "'+get_subscriptionjson.objects[subscription_count].subscribed_date+'",';
-              subscription_data += '"lab_journal" : "'+get_subscriptionjson.objects[subscription_count].lab_journal+'"';
-              subscription_data += '},'
-            }
-              subscription_data = subscription_data.slice(0, -1);
-              subscription_data += ']';
-                
-             // $scope.$apply(function(){
-                $scope.subscriptions = JSON.parse(subscription_data);
-              //});
-          }else{
-              //var subscriptions_content = 'No more subscriptions available';
-              //$('#subscriptions_content').text(subscriptions_content);
-              $("#subscriptions_content").hide();
-              $("#default_content").show();
-             //document.getElementById('subscriptions_content').innerHTML = subscriptions_content;
-          }
+      if (total_count != 0){
+        var subscription_data = '[';
+        for (var subscription_count = 0; subscription_count < total_count; subscription_count++){
+          subscription_data += '{';
+          subscription_data += '"lab_journal_title" : "'+get_subscriptionjson.objects[subscription_count].lab_journal_title+'",';
+          subscription_data += '"subscribed_date" : "'+get_subscriptionjson.objects[subscription_count].subscribed_date+'",';
+          subscription_data += '"lab_journal" : "'+get_subscriptionjson.objects[subscription_count].lab_journal+'"';
+          subscription_data += '},'
+        }
+          subscription_data = subscription_data.slice(0, -1);
+          subscription_data += ']';
+          $scope.subscriptions = JSON.parse(subscription_data);
+      }else{
+          $("#subscriptions_content").hide();
+          $("#default_content").show();
+      }
     }
-  
 });
-/******************************************************/
+
+/********************************************************/
 /************* LABJOURNAL PAGE CONTROLLER ***************/
-/******************************************************/
+/********************************************************/
+
+/**
+* @ngdoc function 
+* @name labjournalCtrl
+* @description
+* Define all the functionalities have to be performed in the labjournal template
+* @param $scope {ngService} An angular service - This service let the controller give objects and functions to the views
+* that can later be manipulated with expressions and directives.
+* @param $location {ngService} An angular service - It parses the URL in the browser adddress bar and makes the URL
+* available to the application. Changes to the URL in the address bar reflected into $location service and viceversa.
+* @param $http {ngService} - It takes a single argument that is used to generate an HTTP request and 
+* returns response with two $http methods: success and error
+*/
+
 mobileApp.controller('labjournalCtrl',
   function labjournalCtrl($scope, $location, $http){
     var username = localStorage.getItem('Username');
     var api_key = localStorage.getItem('API_KEY');
     var parameters = 'username='+username+'&api_key='+api_key;
 
-    $scope.loadContent = function(){
-    var get_labjournaljson = JSON.parse(localStorage.getItem('LABJOURNALS_BROWSE'));
-          var total_count = get_labjournaljson.meta.total_count;
+    /**
+    * @ngdoc function 
+    * @name loadjournalContent
+    * @description
+    * Retrieve the labjournals, those haven't been assigned and subscribed, through the API and dynamically render those data
+    * in the mobile app interface
+    */
 
-          if (total_count != 0){
-           
-            var labjournal_data = '[';
-            for (var labjournal_count = 0; labjournal_count < total_count; labjournal_count++){
-              labjournal_data += '{';
-              labjournal_data += '"title" : "'+get_labjournaljson.objects[labjournal_count].title+'",';
-              labjournal_data += '"subject" : "'+get_labjournaljson.objects[labjournal_count].subject+'",';
-              labjournal_data += '"author" : "'+get_labjournaljson.objects[labjournal_count].author+'",';
-              labjournal_data += '"modified_date" : "'+get_labjournaljson.objects[labjournal_count].modified_date+'",';
-              labjournal_data += '"resource_uri" : "'+get_labjournaljson.objects[labjournal_count].resource_uri+'"';
-              labjournal_data += '},'
-            }
-              labjournal_data = labjournal_data.slice(0, -1);
-              labjournal_data += ']';
-                
-              //$scope.$apply(function(){
-                $scope.labjournals = JSON.parse(labjournal_data);
-              //});
-          }else{
-              $("#labjournals_content").hide();
-              $("#default_content").show();
-              //document.getElementById('default_labjournalcontent').style.display = "block";
-              //var labjournals_content = 'No more labjournals available';
-              //$('#labjournals_content').replaceWith('<div>'+labjournals_content+'</div>');
-              
-          }
+    $scope.loadlabjournalContent = function(){
+      var get_labjournaljson = JSON.parse(localStorage.getItem('LABJOURNALS_BROWSE'));
+      var total_count = get_labjournaljson.meta.total_count;
+      if (total_count != 0){
+        var labjournal_data = '[';
+        for (var labjournal_count = 0; labjournal_count < total_count; labjournal_count++){
+          labjournal_data += '{';
+          labjournal_data += '"title" : "'+get_labjournaljson.objects[labjournal_count].title+'",';
+          labjournal_data += '"subject" : "'+get_labjournaljson.objects[labjournal_count].subject+'",';
+          labjournal_data += '"author" : "'+get_labjournaljson.objects[labjournal_count].author+'",';
+          labjournal_data += '"modified_date" : "'+get_labjournaljson.objects[labjournal_count].modified_date+'",';
+          labjournal_data += '"resource_uri" : "'+get_labjournaljson.objects[labjournal_count].resource_uri+'"';
+          labjournal_data += '},'
         }
+          labjournal_data = labjournal_data.slice(0, -1);
+          labjournal_data += ']';
+          $scope.labjournals = JSON.parse(labjournal_data);
+      }else{
+          $("#labjournals_content").hide();
+          $("#default_content").show();
+      }
+    }
+
+    /**
+    * @ngdoc function 
+    * @name subscribeLabjournal
+    * @description
+    * Can be able to subscribe the labjournals, those haven't been assigned and subscribed
+    * @param labjournal_uri {String} - The resource of the labjournal
+    */
 
     $scope.subscribeLabjournal = function(labjournal_uri){
-
       var subscribe_data = JSON.stringify({"lab_journal": labjournal_uri});
-        $.ajax({
+      $.ajax({
         url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalsubscription/?'+parameters,
         crossDomain: 'false',
         type: 'POST',
@@ -398,9 +480,7 @@ mobileApp.controller('labjournalCtrl',
         dataType: 'json',
         async: false,
         processData: false,
-        success: function(data){
-         
-        },
+        success: function(data){ },
         error: function(XMLHttpRequest, textStatus, errorThrown){
           alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
           alert('Error Message: '+textStatus);
@@ -415,7 +495,8 @@ mobileApp.controller('labjournalCtrl',
 /******************************************************/
 
 /**
-* @function templateCtrl
+* @ngdoc function 
+* @name templateCtrl
 * @description
 * Define all the functionalities have to be performed in the lab interface template
 * @param $scope {ngService} An angular service - This service let the controller give objects and functions to the views
@@ -430,7 +511,8 @@ mobileApp.controller('templateCtrl',
   function templateCtrl($scope, $location, $http){
 
     /**
-    * @function navigatePage
+    * @ngdoc function 
+    * @name navigatePage
     * @description
     * Navigate to the specified page
     * @param pagename {String} - The name of the page to be navigate
@@ -439,21 +521,21 @@ mobileApp.controller('templateCtrl',
     $scope.navigatePage = function(pagename){
       $location.path(pagename);
     }
-   
+
     /**
-    * @function navigateBack
+    * @ngdoc function 
+    * @name navigateBack
     * @description
     * Navigate to the previous step of the current experiment instance
     */
 
     $scope.navigateBack = function(){
-      // get the resource path (ex: template/{step_title}/{step_name})
-      var path = $location.path(); 
-      // get the last index of the url path (ex: {step_name} - step1)
+      var path = $location.path(); // Get the resource path (ex: template/{step_title}/{step_name})
+      // Get the last index of the url path (ex: {step_name} - step1)
       var step_name = path.substring(path.lastIndexOf('/') + 1); 
-      // get the index for the previous step data in the labjournal JSONobject. (ex: 1 - 1 = 0 => index)
+      // Get the index for the previous step data in the labjournal JSONobject. (ex: 1 - 1 = 0 => index)
       var index = parseInt(step_name.charAt(step_name.length-1)) - 1; 
-
+      localStorage.setItem('SUBMIT_DESIGN', 0);
       var getlabjournal = JSON.parse(localStorage.getItem('LABJOURNAL_JSON_DATA'));
       if(index != 0){
         var labtitle_upper = getlabjournal.labjournalsteps[index].journal_step_title;
@@ -463,512 +545,62 @@ mobileApp.controller('templateCtrl',
     }
 
     /**
-    * @function navigateNext
+    * @ngdoc function 
+    * @name navigateNext
     * @description
     * Navigate to the next step of the current experiment instance
     */
     
     $scope.navigateNext = function(){
-      // get the resource path (ex: template/{step_title}/{step_name})
-      var path = $location.path();
-      // get the last index of the url path (ex: {step_name} - step1)
-      var step_name = path.substring(path.lastIndexOf('/') + 1);
-      // get the index for the next step data in the labjournal JSONobject. (ex: 1 + 1 = 2 => index)
-      var index = parseInt(step_name.charAt(step_name.length-1)) + 1;
-
-      // Check the inputfields are empty or not
-
-      //alert($scope.isTextboxempty());
-      //alert($scope.isDropdownempty());
-      //alert($scope.isTextareaempty());
-
+      var path = $location.path(); // Get the resource path (ex: template/{step_title}/{step_name})
+      // Get the last index of the url path (ex: {step_name} - step1)
+      var step_name = path.substring(path.lastIndexOf('/') + 1); 
+      // Get the index for the next step data in the labjournal JSONobject. (ex: 1 + 1 = 2 => index)
+      var index = parseInt(step_name.charAt(step_name.length-1)) + 1; 
       var username = localStorage.getItem('Username');
       var api_key = localStorage.getItem('API_KEY');
       var parameters = 'username='+username+'&api_key='+api_key;
 
-      var textbox_len = document.getElementsByTagName('input').length;
-      var dropdown_len = document.getElementsByTagName('select').length;
-      var textarea_len = document.getElementsByTagName('textarea').length;
-       
-      var textbox_arr = new Array();var dropdown_arr = new Array();var textarea_arr = new Array();
+      // Check the inputfields are empty or not
+      var textbox = $scope.isTextboxempty();
+      var dropdown = $scope.isDropdownempty();
+      var textarea = $scope.isTextareaempty();
 
-      if(textbox_len != 0){
-        for(var i=0; i<textbox_len; i++){
-          textbox_arr[i] = document.getElementsByTagName('input')[i].value;
-        }
-      }
-      if(dropdown_len != 0){
-        for(var j=0; j<dropdown_len; j++){
-          dropdown_arr[j] = document.getElementsByTagName('select')[j].value;
-        }
-      }
-      if(textarea_len != 0){
-        for(var k=0; k<textarea_len; k++){
-          textarea_arr[k] = document.getElementsByTagName('textarea')[k].value;
-        }
-      }
-
-      if(textbox_arr.length > 1){
-        var empty = jQuery.inArray("",textbox_arr); 
-        if(empty != -1){ 
-            var textbox = false;
-        }else{
-          textbox = true;
-        }
-      }else{
-        if(textbox_arr[0] === ""){
-          textbox = false;
-        }else{
-          textbox = true;
-        }
-      }
-
-      if(dropdown_arr.length > 1){
-        var empty = jQuery.inArray("",dropdown_arr);
-        if(empty != -1){
-          var dropdown = false;
-        }else{
-          dropdown = true;
-        }
-      }else{
-        if(dropdown_arr[0] === ""){
-          dropdown = false;
-        }else{
-          dropdown = true;
-        }
-      }
-
-      if(textarea_arr.length > 1){
-        var empty = jQuery.inArray("",textarea_arr);
-        if(empty != -1){
-          var textarea = false;
-        }else{
-          textarea = true;
-        }
-      }else{
-        if(textarea_arr[0] === ""){
-          textarea = false;
-        }else{
-          textarea = true;
-        }
-      }
-
-      var getJSON = JSON.parse(localStorage.getItem('LABJOURNAL_JSON_DATA'));
-      var total_steps = getJSON.number_of_steps;
-      
-      if(index < total_steps){
-          var step_no = index;
-      }
-
-      if(step_no < total_steps){
-        var title = getJSON.labjournalsteps[index].journal_step_title;
+      var getLabjournal = JSON.parse(localStorage.getItem('LABJOURNAL_JSON_DATA'));
+      var total_steps = getLabjournal.number_of_steps;
+      if (index < total_steps){ var step_no = index; }
+      if (step_no < total_steps){
+        var title = getLabjournal.labjournalsteps[index].journal_step_title;
         var labtitle = title.toLowerCase();
-          if(textbox == true && dropdown == true && textarea == true){
-            // experiment design form
-            if(document.getElementById("device_form") != null){
-              var id_array = [];var param_array = new Array();
-              var childNodes_len = document.getElementById("device_form").childNodes.length;
-              for(var i=0; i<childNodes_len; i++){
-                var childNodes_type = document.getElementById("device_form").childNodes[i].type;
-                var childNodes_value = document.getElementById("device_form").childNodes[i].value;
-                var childNodes_id = document.getElementById("device_form").childNodes[i].id;
-                  if(childNodes_type != undefined && childNodes_type != "range"){
-                    id_array.push(childNodes_id);
-                    param_array[childNodes_id] = childNodes_value;
-                  }
-              }
-            }
-            // question textbox
-            var textbox_length = document.getElementsByTagName('input').length;
-            var textboxvalue_array = []; var boxid_array = [];var textbox_array = new Array();
-            for(var textbox=0; textbox<textbox_length; textbox++){
-              var parentNodeID = document.getElementsByTagName('input')[textbox].parentNode.id;
-              if(parentNodeID != 'device_form'){
-                var key  = document.getElementsByTagName('input')[textbox].id;
-                var value = document.getElementsByTagName('input')[textbox].value;
-                  boxid_array.push(key);
-                  textbox_array[key] = value;
-              }
-            }
-            // question textarea
-            var textarea_length = document.getElementsByTagName('textarea').length;
-            var textareavalue_array = []; var areaid_array = []; var textarea_array = new Array();
-            for(var textarea=0; textarea<textarea_length; textarea++){
-              var parentNodeID = document.getElementsByTagName('textarea')[textarea].parentNode.id;
-              if(parentNodeID != 'device_form'){
-                var key  = document.getElementsByTagName('textarea')[textarea].id;
-                var value = document.getElementsByTagName('textarea')[textarea].value;
-                  textarea_array[key] = value;
-              }
-            }
-            
-            // final parameter & question array
-            var parameter_array = param_array; 
-            var question_array = $.extend(textbox_array, textarea_array);
-            console.log(parameter_array)
-            console.log(question_array)
-             
-            // length of parameter & question array   
-            var param_array_len = 0;
-            for(index in parameter_array){
-              param_array_len++;
-            }
-            var ques_array_len = 0;
-            for(index in question_array){
-              ques_array_len++;
-            }
 
+        if (textbox == true && dropdown == true && textarea == true){
+          var parameter_array = $scope.getParametervalues(); // grab the parameter values from the appropriate inputfields
+          var question_array = $scope.getQuestionvalues(); // grab the question values from the appropriate inputfields
+          console.log(parameter_array); console.log(question_array);
+          // Create a JSON object containing parameter and question data using the parameter and question arrays
+          var JSONcombined_data  = $scope.parameterquestion_JSON(parameter_array, question_array);
+          console.log(JSONcombined_data);
 
+          // POST and UPDATE the experiment data on each step
+          $scope.postupdateExperimentdata(JSONcombined_data, parameters, step_name);
+          var JSONcombined_data_string = JSON.stringify(JSONcombined_data);
+          localStorage.setItem(step_name, JSONcombined_data_string);
 
-            // creating JSON object containing parameters & questions
-            var GUID = localStorage.getItem('GUID');
-            if(param_array_len > 0){
-              var paramJSON = "{";
-              paramJSON += '"parameters" : [';
-              for(var param in parameter_array){
-                var split_param = param.split("_");
-                var PID = split_param[1];
-                var response = parameter_array[param];
-                paramJSON += "{";
-                paramJSON += '"instance" : "/api/v1/labjournalinstance/'+GUID+'/",';
-                paramJSON += '"parameter" : "/api/v1/deviceparameter/'+PID+'/",';
-                paramJSON += '"response" : "'+response+'"'
-                paramJSON += "},";
-              }
-                paramJSON = paramJSON.slice(0, -1);
-                paramJSON += "]";
-                paramJSON += "}";
-                var parameter = JSON.parse(paramJSON);
-            }
-            if(ques_array_len > 0){
-              var quesJSON = "{";
-              quesJSON += '"questions" : [';
-              for(var ques in question_array){
-                var split_ques = ques.split("_");
-                var QID = split_ques[1];
-                var response = question_array[ques];
-                quesJSON += "{";
-                quesJSON += '"instance" : "/api/v1/labjournalinstance/'+GUID+'/",';
-                quesJSON += '"question" : "/api/v1/labjournalquestion/'+QID+'/",';
-                quesJSON += '"response" : "'+response+'"'
-                quesJSON += "},";
-              }
-                quesJSON = quesJSON.slice(0, -1);
-                quesJSON += "]";
-                quesJSON += "}";
-                var question = JSON.parse(quesJSON);
-            }
-
-            var jsoncomb  = $.extend(parameter, question);
-            console.log(jsoncomb)
-            //console.log(  jsoncomb['parameters'].length);          
-
-            var username = localStorage.getItem('Username');
-            var password = localStorage.getItem('Password');
-
-
-            if(JSON.parse(localStorage.getItem(step_name))){
-              var get = JSON.parse(localStorage.getItem(step_name));
-              if(jsoncomb['parameters'] != undefined){
-                var splitinstance = get.parameters[0].instance.split("/");
-                var lsinstance_GUID = splitinstance[splitinstance.length - 2];
-              }else if(jsoncomb['questions'] != undefined){
-                var splitinstance = get.questions[0].instance.split("/");
-                var lsinstance_GUID = splitinstance[splitinstance.length - 2];
-              }else{
-                var lsinstance_GUID = 0;
-              }
-              //var lsinstance_GUID = splitinstance[splitinstance.length - 2];
-              var currentinstance_GUID = localStorage.getItem('GUID');
-              //console.log("inst:"+instance_GUID)
-              if(currentinstance_GUID == lsinstance_GUID){
-                // UPDATE parameters
-                if(jsoncomb['parameters'] != undefined){
-                  var parameter_update = new Array();
-                  //if(currentinstance_GUID == lsinstance_GUID){
-                    for(var param_loop=0; param_loop<jsoncomb['parameters'].length; param_loop++){
-                      
-                      var lsResponse = get.parameters[param_loop].response;
-                      var fResponse = jsoncomb['parameters'][param_loop].response;
-                      var splitGUID = jsoncomb['parameters'][param_loop].instance.split('/');
-                      var getGUID = splitGUID[splitGUID.length -2];
-                      var splitPID = jsoncomb['parameters'][param_loop].parameter.split('/');
-                      var getPID = splitPID[splitPID.length -2];
-                      console.log("lsfvalue: "+lsResponse+" = fvalue: "+fResponse);
-                      
-
-                      if(lsResponse != fResponse){
-                        parameter_update.push(1);
-                        var JSONobj = {"instance" : "/api/v1/labjournalinstance/"+getGUID+"/", "parameter" : "/api/v1/deviceparameter/"+getPID+"/", "response" : fResponse};
-                        var param_data = JSON.stringify(JSONobj);
-                        var update_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalparameterresponse/?'+parameters;
-                        $.ajax({
-                            url: update_url,
-                            crossDomain: 'false',
-                            type: 'POST',
-                            data: param_data,
-                            contentType: 'application/json',
-                            cache: false,
-                            dataType: 'json',
-                            async: false,
-                            processData: false,
-                            success: function(data){},
-                            error: function(XMLHttpRequest, textStatus, errorThrown){
-                              alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
-                              alert('Error Message: '+textStatus);
-                              alert('HTTP Error: '+errorThrown);
-                            }
-                        });
-                      }else{
-                        parameter_update.push(0);
-                      }
-                    }
-
-                if($.inArray(1, parameter_update) != -1){
- 
-                    //submit experiment design to API
-                  /*var instance_GUID = localStorage.getItem('GUID');
-                  var parameter_group_id = localStorage.getItem('PARAMETER_GROUP_ID');
-                  var submit_data = {"instance": "/api/v1/labjournalinstance/"+instance_GUID+"/", "parameter_group": "/api/v1/deviceparametergroup/"+parameter_group_id+"/", "experiment_id": 26};
-                  var stringify_submit_data = JSON.stringify(submit_data);
-                  var designsubmit_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/experiment/?'+parameters;
-                  
-                  if(jsoncomb['parameters'] != undefined){
-                    console.log("step1")
-                    console.log(submit_data);console.log(designsubmit_url)
-                    $.ajax({
-                      url: designsubmit_url,
-                      crossDomain: 'false',
-                      type: 'POST',
-                      data: stringify_submit_data,
-                      contentType: 'application/json',
-                      cache: false,
-                      dataType: 'json',
-                      async:  false,
-                      processData: false,
-                      success: function(data){console.log("Submit: "+data)},
-                      error: function(XMLHttpRequest, textStatus, errorThrown){
-                          alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
-                          alert('Error Message: '+textStatus);
-                          alert('HTTP Error: '+errorThrown);
-                      }
-                    });
-                  }*/
-                }
-                  //}
-                }
-                // UPDATE questions
-                if(jsoncomb['questions'] != undefined){
-                  //if(currentinstance_GUID == lsinstance_GUID){
-                    for(var ques_loop=0; ques_loop<jsoncomb['questions'].length; ques_loop++){
-                      var lsResponse = get.questions[ques_loop].response;
-                      var fResponse = jsoncomb['questions'][ques_loop].response;
-                      var splitGUID = jsoncomb['questions'][ques_loop].instance.split('/');
-                      var getGUID = splitGUID[splitGUID.length -2];
-                      var splitQID = jsoncomb['questions'][ques_loop].question.split('/');
-                      var getQID = splitQID[splitQID.length -2];
-                      //console.log("lsfvalue: "+lsResponse+" = fvalue: "+fResponse);
-                      if(lsResponse != fResponse){
-                        var JSONobj = {"instance" : "/api/v1/labjournalinstance/"+getGUID+"/", "question" : "/api/v1/labjournalquestion/"+getQID+"/", "response" : fResponse};
-                        var ques_data = JSON.stringify(JSONobj);
-                        var update_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalquestionresponse/?'+parameters;
-                        $.ajax({
-                            url: update_url,
-                            crossDomain: 'false',
-                            type: 'POST',
-                            data: ques_data,
-                            contentType: 'application/json',
-                            cache: false,
-                            dataType: 'json',
-                            async: false,
-                            processData: false,
-                            success: function(data){},
-                            error: function(XMLHttpRequest, textStatus, errorThrown){
-                              alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
-                              alert('Error Message: '+textStatus);
-                              alert('HTTP Error: '+errorThrown);
-                            }
-                        });
-                      }
-                    }
-                 // }
-                }
-
-                
-              }else{
-                  // if the parameters exist, then send to the REST API
-                  if(jsoncomb['parameters'] != undefined){
-                    for(var param_loop=0; param_loop<jsoncomb['parameters'].length; param_loop++){
-                      var param_data = JSON.stringify(jsoncomb['parameters'][param_loop]);
-                      $.ajax({
-                        //url: 'http://129.105.107.216/api/v1/labjournalparameterresponse/',
-                        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalparameterresponse/?'+parameters,
-                        crossDomain: 'false',
-                        type: 'POST',
-                        data: param_data,
-                        contentType: 'application/json',
-                        cache: false,
-                        dataType: 'json',
-                        async: false,
-                        processData: false,
-                        success: function(data){},
-                        error: function(XMLHttpRequest, textStatus, errorThrown){
-                          alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
-                          alert('Error Message: '+textStatus);
-                          alert('HTTP Error: '+errorThrown);
-                        }
-                      });
-                    }
-                    
-                    
-                  }
-                  // if the questions exist, then send to the REST API
-                  if(jsoncomb['questions'] != undefined){
-                    for(var ques_loop=0; ques_loop<jsoncomb['questions'].length; ques_loop++){
-                      var ques_data = JSON.stringify(jsoncomb['questions'][ques_loop]);
-                      $.ajax({
-                        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalquestionresponse/?'+parameters,
-                        crossDomain: 'false',
-                        type: 'POST',
-                        data: ques_data,
-                        contentType: 'application/json',
-                        cache: false,
-                        dataType: 'json',
-                        async: false,
-                        processData: false,
-                        success: function(data){},
-                        error: function(XMLHttpRequest, textStatus, errorThrown){
-                          alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
-                          alert('Error Message: '+textStatus);
-                          alert('HTTP Error: '+errorThrown);
-                        }
-                      });
-                    }
-                  }
-
-                  //submit experiment design to API
-                  /*var instance_GUID = localStorage.getItem('GUID');
-                  var parameter_group_id = localStorage.getItem('PARAMETER_GROUP_ID');
-                  var submit_data = {"instance": "/api/v1/labjournalinstance/"+instance_GUID+"/", "parameter_group": "/api/v1/deviceparametergroup/"+parameter_group_id+"/", "experiment_id": 26};
-                  var stringify_submit_data = JSON.stringify(submit_data);
-                  var designsubmit_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/experiment/?'+parameters;
-                  
-                  if(jsoncomb['parameters'] != undefined){
-                    console.log("step2")
-                    console.log(submit_data);console.log(designsubmit_url)
-                    $.ajax({
-                      url: designsubmit_url,
-                      crossDomain: 'false',
-                      type: 'POST',
-                      data: stringify_submit_data,
-                      contentType: 'application/json',
-                      cache: false,
-                      dataType: 'json',
-                      async:  false,
-                      processData: false,
-                      success: function(data){console.log("Submit: "+data)},
-                      error: function(XMLHttpRequest, textStatus, errorThrown){
-                          alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
-                          alert('Error Message: '+textStatus);
-                          alert('HTTP Error: '+errorThrown);
-                      }
-                    });
-                  }*/
-
-              }
-            }else{
-                 // if the parameters exist, then send to the REST API
-                  if(jsoncomb['parameters'] != undefined){
-                    for(var param_loop=0; param_loop<jsoncomb['parameters'].length; param_loop++){
-                      var param_data = JSON.stringify(jsoncomb['parameters'][param_loop]);
-                      $.ajax({
-                        //url: 'http://129.105.107.216/api/v1/labjournalparameterresponse/',
-                        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalparameterresponse/?'+parameters,
-                        crossDomain: 'false',
-                        type: 'POST',
-                        data: param_data,
-                        contentType: 'application/json',
-                        cache: false,
-                        dataType: 'json',
-                        async: false,
-                        processData: false,
-                        success: function(data){},
-                        error: function(XMLHttpRequest, textStatus, errorThrown){
-                          alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
-                          alert('Error Message: '+textStatus);
-                          alert('HTTP Error: '+errorThrown);
-                        }
-                      });
-                    }
-                    
-                    
-                  }
-                  // if the questions exist, then send to the REST API
-                  if(jsoncomb['questions'] != undefined){
-                    for(var ques_loop=0; ques_loop<jsoncomb['questions'].length; ques_loop++){
-                      var ques_data = JSON.stringify(jsoncomb['questions'][ques_loop]);
-                      $.ajax({
-                        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalquestionresponse/?'+parameters,
-                        crossDomain: 'false',
-                        type: 'POST',
-                        data: ques_data,
-                        contentType: 'application/json',
-                        cache: false,
-                        dataType: 'json',
-                        async: false,
-                        processData: false,
-                        success: function(data){},
-                        error: function(XMLHttpRequest, textStatus, errorThrown){
-                          alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
-                          alert('Error Message: '+textStatus);
-                          alert('HTTP Error: '+errorThrown);
-                        }
-                      });
-                    }
-                  }
-
-                  //submit experiment design to API
-                  /*var instance_GUID = localStorage.getItem('GUID');
-                  var parameter_group_id = localStorage.getItem('PARAMETER_GROUP_ID');
-                  var submit_data = {"instance": "/api/v1/labjournalinstance/"+instance_GUID+"/", "parameter_group": "/api/v1/deviceparametergroup/"+parameter_group_id+"/", "experiment_id": 26};
-                  var stringify_submit_data = JSON.stringify(submit_data);
-                  var designsubmit_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/experiment/?'+parameters;
-                  
-                  if(jsoncomb['parameters'] != undefined){
-                    console.log("step3")
-                    console.log(submit_data);console.log(designsubmit_url)
-                    $.ajax({
-                      url: designsubmit_url,
-                      crossDomain: 'false',
-                      type: 'POST',
-                      data: stringify_submit_data,
-                      contentType: 'application/json',
-                      cache: false,
-                      dataType: 'json',
-                      async:  false,
-                      processData: false,
-                      success: function(data){console.log("Submit: "+data)},
-                      error: function(XMLHttpRequest, textStatus, errorThrown){
-                          alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
-                          alert('Error Message: '+textStatus);
-                          alert('HTTP Error: '+errorThrown);
-                      }
-                    });
-                  }*/
-            }
-                  
-
-            var jsoncomb_string = JSON.stringify(jsoncomb);
-            localStorage.setItem(step_name, jsoncomb_string);
-            console.log(jsoncomb)
-
-            // navigate to next step
-            $location.path("template/"+labtitle+"/step"+step_no);
-          }else{
-                 alert("Please fill out the empty field( s)");
-          }
+          // After performing all the above operations, then navigate to the next step
+          $location.path('template/'+labtitle+'/step'+step_no);
+        }else{
+          alert('Please fill out the empty field( s)');
+        }
       }
     }
+
+    /**
+    * @ngdoc function 
+    * @name isTextboxempty
+    * @description
+    * Iterate through all the textboxes in the current step and check if they're empty or not
+    * @returns {Boolean}
+    */
 
     $scope.isTextboxempty = function(){
       var textbox_length = document.getElementsByTagName('input').length;
@@ -995,6 +627,14 @@ mobileApp.controller('templateCtrl',
       }
     }
 
+    /**
+    * @ngdoc function 
+    * @name isDropdownempty
+    * @description
+    * Iterate through all the dropdowns in the current step and check if they're empty or not
+    * @returns {Boolean}
+    */
+
     $scope.isDropdownempty = function(){
       var dropdown_length = document.getElementsByTagName('select').length;
       var dropdown_array = new Array();
@@ -1019,6 +659,14 @@ mobileApp.controller('templateCtrl',
         }
       }
     }
+
+    /**
+    * @ngdoc function 
+    * @name isTextareaempty
+    * @description
+    * Iterate through all the textareas in the current step and check if they're empty or not
+    * @returns {Boolean}
+    */
 
     $scope.isTextareaempty = function(){
       var textarea_length = document.getElementsByTagName('textarea').length;
@@ -1045,13 +693,397 @@ mobileApp.controller('templateCtrl',
       }
     }
 
+    /**
+    * @ngdoc function 
+    * @name getParametervalues
+    * @description
+    * Grab all the parameter values from the experiment design form
+    * Returns all the parameter values
+    * @returns {Array}
+    */
+
+    $scope.getParametervalues = function(){
+      if (document.getElementById('device_form') != null){
+        var parameter_array = new Array();
+        var childNodes_length = document.getElementById('device_form').childNodes.length;
+        for (var i = 0; i < childNodes_length; i++){
+          var childNodes_type = document.getElementById('device_form').childNodes[i].type;
+          var childNodes_value = document.getElementById('device_form').childNodes[i].value;
+          var childNodes_id = document.getElementById('device_form').childNodes[i].id;
+          if (childNodes_type != undefined && childNodes_type != 'range'){
+            parameter_array[childNodes_id] = childNodes_value;
+          }
+        }
+      }
+      return parameter_array;
+    }
+
+    /**
+    * @ngdoc function 
+    * @name getQuestionvalues
+    * @description
+    * Grab all the question values in the current step
+    * Returns all the question values
+    * @returns {Array}
+    */
+
+    $scope.getQuestionvalues = function(){
+      var textbox_length = document.getElementsByTagName('input').length;
+      var textbox_array = new Array();
+      for (var textbox = 0; textbox < textbox_length; textbox++){
+        var parentNodeID = document.getElementsByTagName('input')[textbox].parentNode.id;
+        if (parentNodeID != 'device_form'){
+          var key  = document.getElementsByTagName('input')[textbox].id;
+          var value = document.getElementsByTagName('input')[textbox].value;
+          textbox_array[key] = value;
+        }
+      }
+            
+      var textarea_length = document.getElementsByTagName('textarea').length;
+      var textarea_array = new Array();
+      for (var textarea = 0; textarea < textarea_length; textarea++){
+        var parentNodeID = document.getElementsByTagName('textarea')[textarea].parentNode.id;
+        if (parentNodeID != 'device_form'){
+          var key  = document.getElementsByTagName('textarea')[textarea].id;
+          var value = document.getElementsByTagName('textarea')[textarea].value;
+          textarea_array[key] = value;
+        }
+      }
+      var question_array = $.extend(textbox_array, textarea_array);
+      return question_array;  
+    }
+
+    /**
+    * @ngdoc function 
+    * @name parameterquestion_JSON
+    * @description
+    * Creates a JSON object containing all the parameters and questions values inorder to send to the API
+    * @param parameter_array {Array} An array, which contains all the relevant information regarding the parameters
+    * @param question_array {Array} An array, which contains all the relevant information regarding the questions
+    * @returns {jsonObject}
+    */
+
+    $scope.parameterquestion_JSON = function(parameter_array, question_array){
+      var GUID = localStorage.getItem('GUID');
+      var parameter_array_length = 0;
+      for (index in parameter_array){
+        parameter_array_length++;
+      }
+      var question_array_length = 0;
+      for (index in question_array){
+        question_array_length++;
+      }
+      if (parameter_array_length > 0){
+        var parameterJSON = "{";
+        parameterJSON += '"parameters" : [';
+        for (var param in parameter_array){
+          var split_param = param.split("_");
+          var PID = split_param[1];
+          var response = parameter_array[param];
+          parameterJSON += "{";
+          parameterJSON += '"instance" : "/api/v1/labjournalinstance/'+GUID+'/",';
+          parameterJSON += '"parameter" : "/api/v1/deviceparameter/'+PID+'/",';
+          parameterJSON += '"response" : "'+response+'"'
+          parameterJSON += "},";
+        }
+          parameterJSON = parameterJSON.slice(0, -1);
+          parameterJSON += "]";
+          parameterJSON += "}";
+          var parameter = JSON.parse(parameterJSON);
+      }
+      if (question_array_length > 0){
+        var questionJSON = "{";
+        questionJSON += '"questions" : [';
+        for (var ques in question_array){
+          var split_ques = ques.split("_");
+          var QID = split_ques[1];
+          var response = question_array[ques];
+          questionJSON += "{";
+          questionJSON += '"instance" : "/api/v1/labjournalinstance/'+GUID+'/",';
+          questionJSON += '"question" : "/api/v1/labjournalquestion/'+QID+'/",';
+          questionJSON += '"response" : "'+response+'"'
+          questionJSON += "},";
+        }
+          questionJSON = questionJSON.slice(0, -1);
+          questionJSON += "]";
+          questionJSON += "}";
+          var question = JSON.parse(questionJSON);
+      }
+        var jsoncombined  = $.extend(parameter, question);
+        return jsoncombined;
+    }
+
+    /**
+    * @ngdoc function 
+    * @name postupdateExperimentdata
+    * @description
+    * Manipulate all the POST and UPDATE operations on each data in each steps of the experiment
+    * based on several conditions
+    * @param JSONcombined_data {jsonObject} - Containing parameters and questions input values
+    * @param parameters {String} - Additional data to pass to the query string
+    * @param step_name {String} - The name of the current step( eg: step1)
+    */
+
+    $scope.postupdateExperimentdata = function(JSONcombined_data, parameters,step_name){
+      if (JSON.parse(localStorage.getItem(step_name))){
+        var get_stepdata = JSON.parse(localStorage.getItem(step_name));
+        if (JSONcombined_data['parameters'] != undefined){
+          var splitinstance = get_stepdata.parameters[0].instance.split('/');
+          var lsinstance_GUID = splitinstance[splitinstance.length - 2];
+        }else if(JSONcombined_data['questions'] != undefined){
+          var splitinstance = get_stepdata.questions[0].instance.split('/');
+          var lsinstance_GUID = splitinstance[splitinstance.length - 2];
+        }else{
+          var lsinstance_GUID = 0;
+        }
+              
+        var currentinstance_GUID = localStorage.getItem('GUID');
+        if(currentinstance_GUID == lsinstance_GUID){
+          // if the current instance GUID and localstorage instance GUID are equal, 
+          // then update the parameters & questions values via API
+          $scope.updateParametervalues(JSONcombined_data, parameters, step_name);
+          //$scope.submitExperimentdesign(JSONcombined_data, parameters);
+          $scope.updateQuestionvalues(JSONcombined_data, parameters, step_name);
+        }else{
+          // if the current instance GUID and localstorage instance GUID are not equal, 
+          // then post the parameters & questions values via API
+          $scope.postParametervalues(JSONcombined_data, parameters);
+          localStorage.setItem('SUBMIT_DESIGN',1);
+          //$scope.submitExperimentdesign(JSONcombined_data, parameters);
+          $scope.postQuestionvalues(JSONcombined_data, parameters);
+        }
+      }else{
+          // if there is no step data regarding the current instance stored in the localstorage, 
+          // then post the parameters & questions values via API
+          $scope.postParametervalues(JSONcombined_data, parameters);
+          localStorage.setItem('SUBMIT_DESIGN',1);
+          //$scope.submitExperimentdesign(JSONcombined_data, parameters);
+          $scope.postQuestionvalues(JSONcombined_data, parameters); 
+      }
+    }
+
+    /**
+    * @ngdoc function 
+    * @name sumbitExperimentdesign
+    * @description
+    * Submit the experiment design values to the API
+    * @param parameters {String} - Additional data to pass to the query string(submit url)
+    */
+
+    $scope.submitExperimentdesign = function(JSONcombined_data, parameters){
+      var instance_GUID = localStorage.getItem('GUID');
+      var parameter_group_id = localStorage.getItem('PARAMETER_GROUP_ID');
+      var submit_data = {"instance": "/api/v1/labjournalinstance/"+instance_GUID+"/", "parameter_group": "/api/v1/deviceparametergroup/"+parameter_group_id+"/", "experiment_id": 26};
+      var stringify_submit_data = JSON.stringify(submit_data);
+      var designsubmit_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/experiment/?'+parameters;
+                  
+      if (JSONcombined_data['parameters'] != undefined){
+        console.log("step1")
+        console.log(submit_data);console.log(designsubmit_url)
+        $.ajax({
+          url: designsubmit_url,
+          crossDomain: 'false',
+          type: 'POST',
+          data: stringify_submit_data,
+          contentType: 'application/json',
+          cache: false,
+          dataType: 'json',
+          async:  false,
+          processData: false,
+          success: function(data){console.log('Submit: '+data); localStorage.setItem('SUBMIT_DESIGN',1); },
+          error: function(XMLHttpRequest, textStatus, errorThrown){
+            alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
+            alert('Error Message: '+textStatus);
+            alert('HTTP Error: '+errorThrown);
+          }
+        });
+      }
+    }
+
+    /**
+    * @ngdoc function 
+    * @name updateParametervalues
+    * @description
+    * Update the parameter value, if we change the parameter value of the same experiment instance
+    * @param JSONcombined_data {jsonObject} - Containing parameters and questions input values
+    * @param parameters {String} - Additional data to pass to the query string(API update url)
+    * @param step_name {String} - The name of the current step( eg: step1)
+    */
+
+    $scope.updateParametervalues = function(JSONcombined_data, parameters, step_name){
+      if (JSONcombined_data['parameters'] != undefined){
+        var get = JSON.parse(localStorage.getItem(step_name));
+        var parameter_update = new Array();
+        for (var param_loop = 0; param_loop < JSONcombined_data['parameters'].length; param_loop++){
+          var lsResponse = get.parameters[param_loop].response;
+          var fResponse = JSONcombined_data['parameters'][param_loop].response;
+          var splitGUID = JSONcombined_data['parameters'][param_loop].instance.split('/');
+          var getGUID = splitGUID[splitGUID.length -2];
+          var splitPID = JSONcombined_data['parameters'][param_loop].parameter.split('/');
+          var getPID = splitPID[splitPID.length -2];
+          console.log("lsfvalue: "+lsResponse+" = fvalue: "+fResponse);
+                      
+          if (lsResponse != fResponse){
+            parameter_update.push(1);
+            var JSONobj = {"instance" : "/api/v1/labjournalinstance/"+getGUID+"/", "parameter" : "/api/v1/deviceparameter/"+getPID+"/", "response" : fResponse};
+            var param_data = JSON.stringify(JSONobj);
+            var update_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalparameterresponse/?'+parameters;
+            $.ajax({
+              url: update_url,
+              crossDomain: 'false',
+              type: 'POST',
+              data: param_data,
+              contentType: 'application/json',
+              cache: false,
+              dataType: 'json',
+              async: false,
+              processData: false,
+              success: function(data){},
+              error: function(XMLHttpRequest, textStatus, errorThrown){
+                alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
+                alert('Error Message: '+textStatus);
+                alert('HTTP Error: '+errorThrown);
+              }
+            });
+          }else{
+            parameter_update.push(0);
+          }
+        }
+        // Check if the parameter values are updated or not
+        if($.inArray(1, parameter_update) != -1){
+          //submit the experiment design to the API
+          localStorage.setItem('SUBMIT_DESIGN',1);
+          //$scope.submitExperimentdesign(JSONcombined_data, parameters);
+        }
+      }
+    }
+
+    /**
+    * @ngdoc function 
+    * @name updateQuestionvalues
+    * @description
+    * Update the question value, if we change the question value of the same experiment instance
+    * @param JSONcombined_data {jsonObject} - Containing parameters and questions input values
+    * @param parameters {String} - Additional data to pass to the query string(API update url)
+    * @param step_name {String} - The name of the current step( eg: step1)
+    */
+
+    $scope.updateQuestionvalues = function(JSONcombined_data, parameters, step_name){
+      if (JSONcombined_data['questions'] != undefined){
+        var get = JSON.parse(localStorage.getItem(step_name));
+        for (var ques_loop = 0; ques_loop < JSONcombined_data['questions'].length; ques_loop++){
+          var lsResponse = get.questions[ques_loop].response;
+          var fResponse = JSONcombined_data['questions'][ques_loop].response;
+          var splitGUID = JSONcombined_data['questions'][ques_loop].instance.split('/');
+          var getGUID = splitGUID[splitGUID.length -2];
+          var splitQID = JSONcombined_data['questions'][ques_loop].question.split('/');
+          var getQID = splitQID[splitQID.length -2];
+
+          if (lsResponse != fResponse){
+            var JSONobj = {"instance" : "/api/v1/labjournalinstance/"+getGUID+"/", "question" : "/api/v1/labjournalquestion/"+getQID+"/", "response" : fResponse};
+            var ques_data = JSON.stringify(JSONobj);
+            var update_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalquestionresponse/?'+parameters;
+            $.ajax({
+              url: update_url,
+              crossDomain: 'false',
+              type: 'POST',
+              data: ques_data,
+              contentType: 'application/json',
+              cache: false,
+              dataType: 'json',
+              async: false,
+              processData: false,
+              success: function(data){},
+              error: function(XMLHttpRequest, textStatus, errorThrown){
+               alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
+               alert('Error Message: '+textStatus);
+               alert('HTTP Error: '+errorThrown);
+              }
+            });
+          }
+        }
+      }
+    }
+
+    /**
+    * @ngdoc function 
+    * @name postParametervalues
+    * @description
+    * Post the parameter value to the API
+    * @param JSONcombined_data {jsonObject} - Containing parameters and questions input values
+    * @param parameters {String} - Additional data to pass to the query string(API post url)
+    */
+
+    $scope.postParametervalues = function(JSONcombined_data, parameters){
+      if (JSONcombined_data['parameters'] != undefined){
+        for (var param_loop = 0; param_loop < JSONcombined_data['parameters'].length; param_loop++){
+          var param_data = JSON.stringify(JSONcombined_data['parameters'][param_loop]);
+          $.ajax({
+            url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalparameterresponse/?'+parameters,
+            crossDomain: 'false',
+            type: 'POST',
+            data: param_data,
+            contentType: 'application/json',
+            cache: false,
+            dataType: 'json',
+            async: false,
+            processData: false,
+            success: function(data){},
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+              alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
+              alert('Error Message: '+textStatus);
+              alert('HTTP Error: '+errorThrown);
+            }
+          });
+        }
+      }
+    }
+
+   /**
+    * @ngdoc function 
+    * @name postQuestionvalues
+    * @description
+    * Post the question value to the API
+    * @param JSONcombined_data {jsonObject} - Containing parameters and questions input values
+    * @param parameters {String} - Additional data to pass to the query string(API post url)
+    */
+
+    $scope.postQuestionvalues = function(JSONcombined_data, parameters){
+      if (JSONcombined_data['questions'] != undefined){
+        for (var ques_loop = 0; ques_loop < JSONcombined_data['questions'].length; ques_loop++){
+          var ques_data = JSON.stringify(JSONcombined_data['questions'][ques_loop]);
+          $.ajax({
+            url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalquestionresponse/?'+parameters,
+            crossDomain: 'false',
+            type: 'POST',
+            data: ques_data,
+            contentType: 'application/json',
+            cache: false,
+            dataType: 'json',
+            async: false,
+            processData: false,
+            success: function(data){},
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+              alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
+              alert('Error Message: '+textStatus);
+              alert('HTTP Error: '+errorThrown);
+            }
+          });
+        }
+      }
+    }
+
+    /**
+    * @ngdoc function 
+    * @name renderResults
+    * @description
+    * Get the experiment result from the local storage, which is retrieved from the API
+    * and deployed the values inside the HTMl grid
+    */
+
     $scope.renderResult = function(){
-     /* var jsons= JSON.stringify({ "coupon_id": 145966, "experiment_id": 6, "instance": "/api/v1/labjournalinstance/student1_3821b43303bde356d8e3fa141d8e7588/","parameter_group": "/api/v1/deviceparametergroup/1/",
-    "pass_key": "1219483457", "resource_uri": "/api/v1/experiment/test/result/6/", "results": [{  "distance": "20", "result": "176,154,185" }, {  "distance": "30", "result": "118,129,110"
-        }, { "distance": "40", "result": "77,75,83" } ],"submitted_date": "2013-09-25T11:17:06.950438"});*/
       $scope.stopBlink();
       $scope.retrieveExperimentresult();
-
       var getresult = localStorage.getItem('EXPERIMENT_RESULT');
       var resultparse = JSON.parse(getresult);
       var resultlength = resultparse.results.length;
@@ -1065,19 +1097,16 @@ mobileApp.controller('templateCtrl',
        distance_array.push(resultparse.results[t1].distance);
        result_array.push(resultparse.results[t1].result);
       }
-
       var combined_array = new Array();
       for (var t2=0; t2 < resultlength; t2++){
       combined_array.push(distance_array[t2]+','+result_array[t2]);
       }
-
       var no_of_trials = resultparse.results[0].result;
       no_of_trials = no_of_trials.split(',');
 
       for (var trial = 1; trial <= no_of_trials.length; trial++){
         header.push('Trial'+trial)
       }
-
       var container = '<div class=\'containerDiv\'>';
       container += '<div class=\'rowDivHeader\'>';
       for (var i = 0;i < header.length; i++){
@@ -1099,51 +1128,59 @@ mobileApp.controller('templateCtrl',
       $(document).ready(function(){
         $('.slider-button').toggle(function(){
           $(this).addClass('on').html('ON');
-          //document.getElementById('description').style.display = "block";
           $('#graph').show();
           $scope.renderGraph();
         },function(){
         $(this).removeClass('on').html('OFF');
-          //document.getElementById('description').style.display = "none";
           $('#graph').hide();
         });
       });
-
     }
+
+    /**
+    * @ngdoc function 
+    * @name retrieveExperimentresult
+    * @description
+    * Get the experiment result from the API and stored in the local storage
+    */
 
     $scope.retrieveExperimentresult = function(){
       var username = localStorage.getItem('Username');
       var api_key = localStorage.getItem('API_KEY');
       var parameters = 'username='+username+'&api_key='+api_key;
       var empty_data = JSON.stringify({});
-      //Retrieve results through the API call
-        $.ajax({
-              url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/experiment/test/result/6/?'+parameters,
-              crossDomain: 'false',
-              type: 'GET',
-              data: empty_data,
-              contentType: 'application/json',
-              cache: false,
-              dataType: 'json',
-              async: false,
-              processData: false,
-              success: function(data){
-                console.log(data);
-                var stringify_result = JSON.stringify(data);
-                localStorage.setItem('EXPERIMENT_RESULT', stringify_result);
-              },
-              error: function(XMLHttpRequest, textStatus, errorThrown){
-                alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
-                alert('Error Message: '+textStatus);
-                alert('HTTP Error: '+errorThrown);
-              }
-        });
-
+      $.ajax({
+        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/experiment/test/result/6/?'+parameters,
+        crossDomain: 'false',
+        type: 'GET',
+        data: empty_data,
+        contentType: 'application/json',
+        cache: false,
+        dataType: 'json',
+        async: false,
+        processData: false,
+        success: function(data){
+          console.log(data);
+          var stringify_result = JSON.stringify(data);
+          localStorage.setItem('EXPERIMENT_RESULT', stringify_result);
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+          alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
+          alert('Error Message: '+textStatus);
+          alert('HTTP Error: '+errorThrown);
+        }
+      });
     }
+
+    /**
+    * @ngdoc function 
+    * @name highchartsGraph
+    * @description
+    * Define the properties of the highgraph thrid party library to deploy the graph
+    */
 
     $scope.highchartsGraph = function(distance){
       $scope.retrieveExperimentresult();
-
       var chart = $("#graph").highcharts({
         colors: ["#DDDF0D", "#7798BF", "#55BF3B", "#DF5353", "#aaeeee", "#ff0066", "#eeaaee",
       "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
@@ -1191,7 +1228,6 @@ mobileApp.controller('templateCtrl',
                     },
                     lineColor: '#A0A0A0',
                     tickColor: '#A0A0A0',
-                    //categories: [],
                     categories: distance,
                     title: {
                             style: {
@@ -1222,250 +1258,244 @@ mobileApp.controller('templateCtrl',
                 },
         series: []
       });
-
     }
 
+    /**
+    * @ngdoc function 
+    * @name renderGraph
+    * @description
+    * Define the properties of the highgraph thrid party library to deploy the graph
+    */
 
     $scope.renderGraph = function(){
-      
       $scope.highchartsGraph();
-      var jsons = localStorage.getItem('EXPERIMENT_RESULT');
-      var length = JSON.parse(jsons).results.length;
+      var getresult = localStorage.getItem('EXPERIMENT_RESULT');
+      var resultlength = JSON.parse(getresult).results.length;
      
-      var distance_arr = new Array();var series_arr = new Array();
-      for(var loop=0;loop<length;loop++){
-        distance_arr[loop] = JSON.parse(jsons).results[loop].distance;
-        series_arr[loop] = JSON.parse(jsons).results[loop].result;
+      var distance_array = new Array();var series_array = new Array();
+      for (var loop = 0; loop < resultlength; loop++){
+        distance_array[loop] = JSON.parse(getresult).results[loop].distance;
+        series_array[loop] = JSON.parse(getresult).results[loop].result;
       }
 
-      var chart = $("#graph").highcharts();
-      //var chart = $scope.highchartsGraph();
-      chart.xAxis[0].update({categories: distance_arr});
-      //var trial_l = JSON.parse(jsons).results[0].result.split(",").length;
+      var chart = $('#graph').highcharts();
+      // Dynamically assign the array of xAxis values into the highchart graph object
+      chart.xAxis[0].update({categories: distance_array}); 
       var Trial1 =new Array(); var Trial2 =new Array(); var Trial3 =new Array(); var Trial4 =new Array(); var Trial5 =new Array(); 
       var Trial6 =new Array(); var Trial7 =new Array(); var Trial8 =new Array(); var Trial9 =new Array(); var Trial10 =new Array();
-      for(var sl=0; sl<series_arr.length;sl++){
-        var trial_l = series_arr[sl].split(",").length;
-       
-        for(var tl=1; tl<=trial_l;tl++){
-          var trial_s = series_arr[sl].split(",")
-           
-            switch(tl){
-              case 1: Trial1.push(parseInt(trial_s[tl-1])); break;
-              case 2: Trial2.push(parseInt(trial_s[tl-1])); break;
-              case 3: Trial3.push(parseInt(trial_s[tl-1])); break;
-              case 4: Trial4.push(parseInt(trial_s[tl-1])); break;
-              case 5: Trial5.push(parseInt(trial_s[tl-1])); break;
-              case 6: Trial6.push(parseInt(trial_s[tl-1])); break;
-              case 7: Trial7.push(parseInt(trial_s[tl-1])); break;
-              case 8: Trial8.push(parseInt(trial_s[tl-1])); break;
-              case 9: Trial9.push(parseInt(trial_s[tl-1])); break;
-              case 10: Trial10.push(parseInt(trial_s[tl-1])); break;
-                  
-            }
+      for (var sl = 0; sl < series_array.length; sl++){
+        var trial_l = series_array[sl].split(',').length;
+        for (var tl = 1; tl <= trial_l; tl++){
+          var trial_s = series_array[sl].split(',');
+          switch (tl){
+            case 1: Trial1.push(parseInt(trial_s[tl-1])); break;
+            case 2: Trial2.push(parseInt(trial_s[tl-1])); break;
+            case 3: Trial3.push(parseInt(trial_s[tl-1])); break;
+            case 4: Trial4.push(parseInt(trial_s[tl-1])); break;
+            case 5: Trial5.push(parseInt(trial_s[tl-1])); break;
+            case 6: Trial6.push(parseInt(trial_s[tl-1])); break;
+            case 7: Trial7.push(parseInt(trial_s[tl-1])); break;
+            case 8: Trial8.push(parseInt(trial_s[tl-1])); break;
+            case 9: Trial9.push(parseInt(trial_s[tl-1])); break;
+            case 10: Trial10.push(parseInt(trial_s[tl-1])); break;
+          }
         }
-     
       }
-      
       var combine = new Array();
-      combine.push(Trial1,Trial2,Trial3,Trial4,Trial5);
-      //console.log(combine)
+      combine.push(Trial1,Trial2,Trial3,Trial4,Trial5,Trial6,Trial7,Trial8,Trial9,Trial10);
       for(key in combine){
-        if(combine[key] != ""){
-          var trial_name = "Trial"+(parseInt(key)+1);
+        if(combine[key] != ''){
+          var trial_name = 'Trial'+(parseInt(key)+1);
+          // Dynamically assign the array of yAxis values along with the trial name into the highchart graph object
           chart.addSeries({
               name: trial_name,
               data: combine[key]
           });
-          
         }
       }
- 
-
     }
 
-    $scope.loadTitle = function(){
+    /**
+    * @ngdoc function 
+    * @name loadAdditionaldata
+    * @description
+    * Load additional data on page load in each step of the experiment
+    */
+
+    $scope.loadAdditionaldata = function(){
       var path = $location.path();
       var value = path.substring(path.lastIndexOf('/') + 1);
       var index = parseInt(value.charAt(value.length-1));
-      var getJSON = JSON.parse(localStorage.getItem('LABJOURNAL_JSON_DATA'));
-      var total_steps = getJSON.number_of_steps;
+      var getlabjournal = JSON.parse(localStorage.getItem('LABJOURNAL_JSON_DATA'));
+      var total_steps = getlabjournal.number_of_steps;
       var difference = Math.abs(index - total_steps);
       var last_step = total_steps - 1;
 
-      $scope.Stepdesc = "Step "+index+" of "+last_step;
+      $scope.Stepdesc = 'Step '+index+' of '+last_step;
   
-      if(getJSON.labjournalsteps[index] != undefined){
-        if(index < total_steps && index == 1){
-          if(getJSON.labjournalsteps[index+1] != undefined){
-                  document.getElementById("nav_next").style.display = "block";
+      if (getlabjournal.labjournalsteps[index] != undefined){
+        if (index < total_steps && index == 1){
+          if(getlabjournal.labjournalsteps[index+1] != undefined){
+            document.getElementById('nav_next').style.display = 'block';
+            document.getElementById('home').style.display = 'block';
           }else{
-                  document.getElementById("nav_back").style.display = "none";
-                  document.getElementById("nav_next").style.display = "none";
+            document.getElementById('nav_back').style.display = 'none';
+            document.getElementById('nav_next').style.display = 'none';
+            document.getElementById('home').style.display = 'none';
           }
-        }else if(index < total_steps && difference == 1){
-                  document.getElementById("nav_back").style.display = "block";
+        }else if (index < total_steps && difference == 1){
+            document.getElementById('nav_back').style.display = 'block';
         }else{
-                  document.getElementById("nav_back").style.display = "block";
-                  document.getElementById("nav_next").style.display = "block";
+            document.getElementById('nav_back').style.display = 'block';
+            document.getElementById('nav_next').style.display = 'block';
+            document.getElementById('home').style.display = 'block';
         }         
       }
-
-      var step_title = getJSON.labjournalsteps[index].journal_step_title;
+      var step_title = getlabjournal.labjournalsteps[index].journal_step_title;
       $scope.Labtitle = step_title;
-
-      if(step_title == 'Analyze'){
-        //$scope.renderGraph();
-        //$scope.renderResult();
-        var runTime = 10;
-        $scope.runtimeInfotext = 'Your result will be available in '+runTime+' seconds!!!';
-        
-        $scope.countDown(runTime);
-
+      if (step_title == 'Analyze'){
+        if (localStorage.getItem('SUBMIT_DESIGN') == 1){
+          var runTime = 10;
+          $scope.runtimeInfotext = 'Your result will be available in '+runTime+' seconds!!!';
+          $scope.countDownTimer(runTime);
+        }
+        if (localStorage.getItem('SUBMIT_DESIGN') == 0){
+          $('#viewresult').show();
+        }
       }
-
     }
 
-     $scope.countDown = function(timer){
-          if(timer > 0){
-            var count = timer;
-            $scope.startBlink('timercount');
-            countdown = setInterval(function(){
-                  
-                  $('#timercount').html(count);
-                  $('#timercount').show();
-                  
-                  if(count == 0){
-                        //window.location = "http://google.com";
-                        //$('#timer').hide();
-                        //$('#countdown').hide();
-                        $scope.stopBlink();
-                        $('#timercount').hide();
+    /**
+    * @ngdoc function 
+    * @name countDownTimer
+    * @description
+    * Count down the estimated runtime to get the result back after the submission 
+    * of the experiment design to the API
+    * @param timer {Number} - The estimated runtime 
+    */
 
-                        clearInterval(countdown);
-                        
-                        alert("Result is ready to view");
-                        $('#runtimemsg').hide();
-                        $('#viewresult').show();
-                        //$scope.blink = function() { $('#viewresult').blink(100,900); }
-                        $scope.startBlink('viewresult')
-                  }
-                  count--;
-            },1000);
+    $scope.countDownTimer = function(timer){
+      if (timer > 0){
+        var count = timer;
+        $scope.startBlink('timercount');
+        countdown = setInterval(function(){
+          $('#timercountspan').html(count);
+          $('#timercount').show();
+          if (count == 0){
+            $scope.stopBlink();
+            $('#timercount').hide();
+            clearInterval(countdown);
+            $('#runtimemsg').hide();
+            $('#viewresult').show();
+            alert("Result is ready to view");
+            $scope.startBlink('viewresult')
           }
+          count--;
+        },1000);
       }
+    }
 
+    /**
+    * @ngdoc function 
+    * @name startBlink
+    * @description
+    * Activate the blinking functionality to the specified HTML element
+    * @param identity {String} - The identity of the specified HTML element
+    */
 
+    $scope.startBlink = function(identity) { 
+      $('#'+identity).blink(100,900); 
+    }
 
-    $scope.startBlink = function(id) { $('#'+id).blink(100,900); }
-    $scope.stopBlink = function () {  $('.blink').blink();  }
+    /**
+    * @ngdoc function 
+    * @name stopBlink
+    * @description
+    * Deactivate the blinking functionality to the HTML element
+    */
+
+    $scope.stopBlink = function () {  
+      $('.blink').blink();  
+    }
+
+    /**
+    * @ngdoc function 
+    * @name loadContent
+    * @description
+    * Compile the HTML markup content and render inside the custom directive DOM element
+    * @param content {HTML} - Compiled HTML DOM
+    */
 
     $scope.loadContent = function(content){
-      $(".compile_content").append(content);
+      $('.compile_content').append(content);
     }
 
-    $scope.createPDF = function(){
-      var can = document.getElementById('canvas');
-      //var image = canvas.toDataURL("image/png");
-      var img = "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\"><rect width=\"300\" height=\"100\" style=\"fill:rgb(0,0,255);stroke-width:1;stroke:rgb(0,0,0)\" /></svg>";
-      //alert(image)
-      canvg(can, img);
+    /**
+    * @ngdoc function
+    * @name updateInstance
+    * @description
+    * Update the instance data in the API on exit once the user completed the experiment 
+    */
 
-      //document.write("<img src=\""+image+"\"/>");
-     //var img = "<img src=\"http://localhost:8000/Mobile-iLab/apptest/img/no.png\">"
-     //var img = "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\"><rect width=\"300\" height=\"100\" style=\"fill:rgb(0,0,255);stroke-width:1;stroke:rgb(0,0,0)\" /></svg>";
-     //document.location="mailto:rasmiroy@yahoo.com?"+
-    //"subject=This%20is%20the%20subject&body=This%20is%20the%20body</br>"+img;
-    }
-    $scope.getcan = function(){
-      var can = document.getElementById('canvas');
-      var image = new Image();
-      image = can.toDataURL("image/png");
-      //alert(image);
-      var send = "<img src=\""+image+"\"/>";
-      //document.getElementById("dimage").appendChild(image);
-      document.location="mailto:rasmiroy@yahoo.com?"+
-    "subject=This%20is%20the%20subject&body=This%20is%20the%20body</br>"+send;
-    }
+    $scope.updateInstance = function(parameters, index){
+      var GUID = localStorage.getItem('GUID');
+      var labjournalID = localStorage.getItem('LABJOURNAL_ID');
+      var username = localStorage.getItem('Username');
+      var getlabjournal = JSON.parse(localStorage.getItem('LABJOURNAL_JSON_DATA'));
+      var labjournal_stepid = getlabjournal.labjournalsteps[index].id;
+      var labjournal_uri = getlabjournal.resource_uri;
+      var jsonObject = {"GUID" : GUID,  "last_step_completed" : labjournal_stepid, "lab_journal": labjournal_uri};
+      console.log(jsonObject)
+      var data = JSON.stringify(jsonObject);
 
-    $scope.downloadPdf = function(){
-      
-          var doc = new jsPDF();
-          doc.setFontSize(22);
-          doc.text(20, 20, "My First PDF");
-          doc.addPage();
-          doc.setFontSize(16);
-          doc.text(20, 30, "This is some normal sized text underneath."); 
-         // Making Data URI
-var out = doc.output();
-//alert(out)
-//doc.save('js.pdf');
-$http.post('alert.php', {content: out}).success(function(data, status, headers, config){
-  alert("success : "+ data)
-}).error(function(data, status, headers, config){
-  alert("error : "+status)
-});
-//document.location="mailto:rasmiroy@yahoo.com?"+
-//    "subject=This%20is%20the%20subject&body=This%20is%20the%20body</br>"+out;
- //doc.output('save', 'pdf/js.pdf');
-//var url = 'data:application/pdf;base64,' + Base64.encode(out);
-//document.location.href = url;
-
+      $.ajax({
+        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournalinstance/?'+parameters,
+        crossDomain: 'false',
+        type: 'POST',
+        data: data,
+        contentType: 'application/json',
+        cache: false,
+        dataType: 'json',
+        async: false,
+        processData: false,
+        success: function(data){
+          $location.path("home");
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+          alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
+          alert('Error Message: '+textStatus);
+          alert('HTTP Error: '+errorThrown);
+        }
+      });
     }
 });
 
-//simulation Controller
-mobileApp.controller('simCtrl',
-  function simCtrl($scope, $location){
+/*********************************************/
+/************* MAIN CONTROLLER ***************/
+/*********************************************/
 
-    $scope.navigate_back = function(div_id){
-      var url = $('#'+div_id).text();
-      var value = url.substring(url.lastIndexOf('/') + 1);
-      $location.path(value);
-    }
-});
+/**
+* @ngdoc function 
+* @name appController
+* @description
+* Define all the common functionalities have to be performed in the mobile interface
+* @param $scope {ngService} An angular service - This service let the controller 
+* give objects and functions to the views that can later be manipulated with expressions and directives.
+* @param $location {ngService} An angular service - It parses the URL in the browser adddress bar and makes the URL
+* available to the application. Changes to the URL in the address bar reflected into $location service and viceversa.
+* @param $http {ngService} - It takes a single argument that is used to generate an HTTP request and 
+* returns response with two $http methods: success and error
+*/
 
-//wecam Controller
-mobileApp.controller('webCtrl',
-  function simCtrl($scope, $location){
-
-    $scope.navigate_back = function(div_id){
-      var url = $('#'+div_id).text();
-      var value = url.substring(url.lastIndexOf('/') + 1);
-      $location.path(value);
-    }
-});
-
-//message Controller
-mobileApp.controller('msgCtrl',
-  function simCtrl($scope, $location){
-
-    $scope.navigate_back = function(div_id){
-      var url = $('#'+div_id).text();
-      var value = url.substring(url.lastIndexOf('/') + 1);
-      $location.path(value);
-    }
-});
-
-//account Controller
-mobileApp.controller('accCtrl',
-  function accCtrl($scope, $location){
-
-    $scope.navigate_back = function(div_id){
-      var url = $('#'+div_id).text();
-      var value = url.substring(url.lastIndexOf('/') + 1);
-      $location.path(value);
-    }
-});
-
-//Main Controller
 mobileApp.controller('appController',
   function appController($scope, $location, $http){
     var username = localStorage.getItem('Username');
     var api_key = localStorage.getItem('API_KEY');
     var parameters = 'username='+username+'&api_key='+api_key;
+
     /**
-    * @function startLab
+    * @ngdoc function 
+    * @name startLab
     * @description
     * When the user attempt to start the Lab, then it will download the appropriate labjournal through the API and 
     * begin to start the experiment flow
@@ -1473,7 +1503,6 @@ mobileApp.controller('appController',
     */
 
     $scope.startLab = function(labjournal_uri){
-      //alert(labjournal_uri)
       var labjournal_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com'+labjournal_uri+'?'+parameters;
       $.ajax({
         url: labjournal_url,
@@ -1500,9 +1529,10 @@ mobileApp.controller('appController',
     }
 
     /**
-    * @function sendLabjournalinstance
+    * @ngdoc function 
+    * @name sendLabjournalinstance
     * @description
-    * Whenever a the experiment begins, then it will send the some data regarding that particula instance
+    * Whenever a the experiment begins, then it will send the instance data regarding that particula instance
     * to the REST API 
     * 1.{GUID} - A unique id generated, which is a combination of (username+hash(timestamp+labjournalid)),
     * 2.{labjournal} - Labjournal resource of that particular instance and
@@ -1546,7 +1576,7 @@ mobileApp.controller('appController',
               var step_name = 'step1';
               var step_title = getLabjournal.labjournalsteps[1].journal_step_title.toLowerCase();
             }
-            //Launch the experiment
+            // Launch the experiment
             $location.path('template/'+step_title+'/'+step_name);
           });
         },
@@ -1558,165 +1588,137 @@ mobileApp.controller('appController',
       });
     }
 
-    $scope.showMenu1 = function(){
-       $(document).ready(function(){
-      var pagebody = $("#pagebody");
-      var themenu  = $("#navmenu");
-      var topbar   = $("#toolbarnav");
-      var content  = $("#homecontent");
-      var viewport = {
+    /**
+    * @ngdoc function 
+    * @name showMainmenu
+    * @description
+    * It displays the main navigation menu in the home page
+    */
+
+    $scope.showMainmenu = function(){
+      $(document).ready(function(){
+        var pagebody = $('#pagebody');
+        var themenu  = $('#navmenu');
+        var topbar   = $('#toolbarnav');
+        var content  = $('#homecontent');
+        var viewport = {
           width  : $(window).width(),
           height : $(window).height()
-      };
-
-       /*$("a.navlink").live("click", function(e){
-        e.preventDefault();
-        var linkurl     = $(this).attr("href");
-        var linkhtmlurl = linkurl.substring(1, linkurl.length);
-        
-        var imgloader   = '<center style="margin-top: 60px;"><img src="img/preloader.gif" alt="loading..." /></center>';
-        
-        closeme();
-        
-        $(function() {
-          topbar.css("top", "0px");
-          window.scrollTo(0, 1);
-        });
-        
-        content.html(imgloader);
-        content.load(linkhtmlurl);
-        //setTimeout(function() { content.load(linkhtmlurl, function() {  }) }, 1200);
-      });*/
-
-       function closeme() {
-        var closeme = $(function() {
+        };
+        function closeme() {
+          var closeme = $(function() {
             topbar.animate({
-                  left: "0px"
-            }, { duration: 180, queue: false });
+              left: '0px'
+            }, 
+            { duration: 180, queue: false });
             pagebody.animate({
-                  left: "0px"
-            }, { duration: 180, queue: false });
-        });
-      }
-      
-     /* function openme() { 
-        $(function () {
-            topbar.animate({
-               left: "290px"
-            }, { duration: 300, queue: false });
-            pagebody.animate({
-               left: "290px"
-            }, { duration: 300, queue: false });
-        });
-      }
-      
-      function closeme() {
-        var closeme = $(function() {
-            topbar.animate({
-                  left: "0px"
-            }, { duration: 180, queue: false });
-            pagebody.animate({
-                  left: "0px"
-            }, { duration: 180, queue: false });
-        });
-      }
-      var leftval = pagebody.css('left');
-        //alert(leftval)
-        if(leftval == "0px") {
-          alert(leftval)
-          openme();
+              left: '0px'
+            },
+            { duration: 180, queue: false });
+          });
         }
-        else { 
-          alert(leftval)
-          closeme(); 
-        }*/
       });
     }
 
-    $scope.showMenu = function(){
-        $(document).ready(function(){
-      var pagebody = $("#pagebody");
-      var themenu  = $("#navmenu");
-      var topbar   = $("#toolbarnav");
-      var content  = $("#homecontent");
-      var viewport = {
+    /**
+    * @ngdoc function 
+    * @name showTemplatemenu
+    * @description
+    * It displays the template navigation menu in the template page
+    */
+
+    $scope.showTemplatemenu = function(){
+      $(document).ready(function(){
+        var pagebody = $('#pagebody');
+        var themenu  = $('#navmenu');
+        var topbar   = $('#toolbarnav');
+        var content  = $('#homecontent');
+        var viewport = {
           width  : $(window).width(),
           height : $(window).height()
-      };
-      
-      function openme() { 
-        $(function () {
+        };
+        function openme() { 
+          $(function () {
             topbar.animate({
-               left: "290px"
-            }, { duration: 300, queue: false });
+              left: '290px'
+            }, 
+            { duration: 300, queue: false });
             pagebody.animate({
-               left: "290px"
+              left: '290px'
             }, { duration: 300, queue: false });
-        });
-      }
-      
-      function closeme() {
-        var closeme = $(function() {
+          });
+        }
+        function closeme() {
+          var closeme = $(function() {
             topbar.animate({
-                  left: "0px"
+              left: '0px'
             }, { duration: 180, queue: false });
             pagebody.animate({
-                  left: "0px"
-            }, { duration: 180, queue: false });
-        });
-      }
-
-      // checking whether to open or close nav menu
-      $("#menu-button").live("click", function(e){
-        e.preventDefault();
-        var leftval = pagebody.css('left');
-        //alert(leftval)
-        if(leftval == "0px") {
-          openme();
+                  left: '0px'
+            }, 
+            { duration: 180, queue: false });
+          });
         }
-        else { 
-          closeme(); 
-        }
-      });
-
-      $("#pagebody").click(function(){
-        closeme();
-      });
-      
-      // loading page content for navigation
-      $("a.navlink").live("click", function(e){
-        e.preventDefault();
-        var linkurl     = $(this).attr("href");
-        var linkhtmlurl = linkurl.substring(1, linkurl.length);
-        
-        var imgloader   = '<center style="margin-top: 30px;"><img src="img/preloader.gif" alt="loading..." /></center>';
-        
-        closeme();
-        
-        $(function() {
-          topbar.css("top", "0px");
-          window.scrollTo(0, 1);
+        // Checking whether to open or close nav menu
+        $('#menu-button').live('click', function(e){
+          e.preventDefault();
+          var leftval = pagebody.css('left');
+          if(leftval == '0px') { openme(); }
+          else { closeme(); }
         });
-        
-        content.html(imgloader);
-        
-        setTimeout(function() { content.load(linkhtmlurl, function() {  }) }, 1200);
+        $('#pagebody').click(function(){ closeme(); });
+        // Loading page content for navigation
+        $('a.navlink').live('click', function(e){
+          e.preventDefault();
+          var linkurl  = $(this).attr('href');
+          var linkhtmlurl = linkurl.substring(1, linkurl.length);
+          var imgloader  = '<center style=\'margin-top: 30px;\'>';
+          imgloader += '<img src=\'img/preloader.gif\' alt=\'loading...\'/></center>';
+          closeme();
+          $(function() { topbar.css('top', '0px'); window.scrollTo(0, 1); });
+          content.html(imgloader);
+          setTimeout(function() { content.load(linkhtmlurl, function() {  }) }, 1200);
+        });
       });
-    });
-}
-
-$scope.navigatePage = function(pagename){
-      $location.path(pagename)
     }
+
+    /**
+    * @ngdoc function 
+    * @name navigatePage
+    * @description
+    * Navigate to the specified page
+    * @param pagename {String} - The name of the page to be navigate
+    */
+
+    $scope.navigatePage = function(pagename){
+      $location.path(pagename);
+    }
+
+    /**
+    * @ngdoc function 
+    * @name checkSession
+    * @description
+    * Checks whether the session variable is set to true or false
+    * If it sets to true, then it stays in the specified page template. 
+    * Otherwise it redirects the user to the login page
+    */
 
     $scope.checkSession = function(){
-      var session = sessionStorage.getItem("loggedIn");
-      if(session == null || session == "false"){
+      var session = sessionStorage.getItem('loggedIn');
+      if(session == null || session == 'false'){
         $location.path('login');
       }
     }
 
-    $scope.clear = function(textarea_ID){
-      document.getElementById(textarea_ID).value = "";
+    /**
+    * @ngdoc function 
+    * @name clearTextarea
+    * @description
+    * It displays the template navigation menu in the template page
+    * @param textarea_ID {Number|String} - The identity of the specified textarea
+    */
+
+    $scope.clearTextarea = function(textarea_ID){
+      document.getElementById(textarea_ID).value = '';
     }
 });

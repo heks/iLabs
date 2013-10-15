@@ -1,22 +1,4 @@
-#stage {
- /* border:1px solid red;
-  display: block;
-  margin: 0;
-  padding: 0;
-  margin: 0 auto;
-  padding-top: 207px;
-  width: 85px;
-  height: 29px;
-  background-color: #383839;
-  background-repeat: no-repeat;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#5c5f62), to(#383839));
-  background-image: -webkit-linear-gradient(#5c5f62, #383839);
-  background-image: -moz-linear-gradient(#5c5f62, #383839);
-  background-image: -o-linear-gradient(top, #5c5f62, #383839);
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#5c5f62), to(#383839));
-  filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#5c5f62', EndColorStr='#383839', GradientType=0);
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#5c5f62', EndColorStr='#383839', GradientType=0))";*/
-}
+#stage { }
  .slider-frame {
   position: relative;
   display: block;

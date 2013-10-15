@@ -1,27 +1,23 @@
-<div id="wrapper" ng-controller="assignmentCtrl">
+<div id="wrapper" ng-controller="assignmentCtrl" data-ng-init="loadassignmentContent()">
   <div id="pagebody">
     <header id="toolbarnav">
       <h1>My Assignments</h1>
-      <div id="menu-btn_bg">
-                    <a id="home_nav_bg" ng-click="navigatePage('home')"></a>
-      </div>
+      <button id="home" ng-click="navigatePage('home')"></button>
     </header>
     <section id="content" class="clearfix">
       <div id="assignments_content">
-      <div class="containerDiv">
-        <div class="rowDivHeader">
-          <div class="cellDivHeader">Title</div>
-          <div class="cellDivHeader">Assigned Date</div>
-          <div class="cellDivHeader">Action</div>
-        </div>
-        
+        <div class="containerDiv">
+          <div class="rowDivHeader">
+            <div class="cellDivHeader">Title</div>
+            <div class="cellDivHeader">Assigned Date</div>
+            <div class="cellDivHeader">Action</div>
+          </div>
           <div class="rowDiv" ng-repeat="assignment in assignments">
             <div class="cellDiv" >{{assignment.lab_journal_title}}</div>
             <div class="cellDiv">{{assignment.assigned_date}}</div>
             <div class="cellDiv"><button class="action" ng-click="startLab(assignment.lab_journal)">Start</button></div>
           </div>
-        
-      </div>
+        </div>
       </div>
     </section>
   </div>

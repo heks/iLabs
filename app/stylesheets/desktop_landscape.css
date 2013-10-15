@@ -1,0 +1,503 @@
+@media all and (orientation: landscape) {
+  /* line 3, ../sass/desktop_landscape.scss */
+  #app_envelope {
+    height: 100%;
+  }
+
+  /* line 4, ../sass/desktop_landscape.scss */
+  #wrapper {
+    height: 100%;
+  }
+
+  /* line 5, ../sass/desktop_landscape.scss */
+  .login_template {
+    margin: 1em auto;
+    padding: 2em;
+    margin: 60px auto;
+    margin-bottom: auto;
+    width: 390px;
+    height: 500px;
+  }
+  /* line 12, ../sass/desktop_landscape.scss */
+  .login_template .header_sm {
+    text-align: center;
+    font-size: 1em;
+    margin: 0.5em 0;
+  }
+  /* line 19, ../sass/desktop_landscape.scss */
+  .login_template .header_lg {
+    font-size: 2em;
+    text-align: center;
+  }
+
+  /* line 27, ../sass/desktop_landscape.scss */
+  form {
+    padding: 20px;
+    margin-bottom: 50px;
+  }
+  /* line 31, ../sass/desktop_landscape.scss */
+  form label {
+    font-size: 1em;
+    font-weight: bold;
+  }
+  /* line 37, ../sass/desktop_landscape.scss */
+  form .input {
+    padding: 7px;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 0px solid white;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  /* line 46, ../sass/desktop_landscape.scss */
+  form .button_login {
+    width: 100%;
+    font-size: 1.5em;
+    border-top: 0px solid #ad64e0;
+    margin-top: 1em;
+    height: 35px;
+  }
+  /* line 57, ../sass/desktop_landscape.scss */
+  form .button_register {
+    width: 100%;
+    font-size: 1.2em;
+    border: 0px solid #ad64e0;
+    margin-top: 1em;
+    height: 35px;
+    margin-left: 0px;
+  }
+
+  /* line 71, ../sass/desktop_landscape.scss */
+  #pagebody {
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 99999;
+  }
+
+  /* line 78, ../sass/desktop_landscape.scss */
+  header#toolbarnav {
+    left: 0px;
+    top: 0px;
+    padding-top: 2em;
+    height: 68px;
+    width: 100%;
+  }
+  /* line 84, ../sass/desktop_landscape.scss */
+  header#toolbarnav button#home {
+    font-size: .8em;
+    padding: 5px 5px 5px 30px;
+    margin-left: 20px;
+    margin-top: -70px;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+  }
+  /* line 95, ../sass/desktop_landscape.scss */
+  header#toolbarnav button#home::before {
+    width: 20px;
+    height: 20px;
+    left: 15px;
+    top: 50%;
+    margin-top: -11px;
+    margin-left: -7px;
+  }
+  /* line 103, ../sass/desktop_landscape.scss */
+  header#toolbarnav h1 {
+    padding-top: 2px;
+    padding-right: 8px;
+    font-size: 2em;
+    margin-top: -15px;
+  }
+  /* line 111, ../sass/desktop_landscape.scss */
+  header#toolbarnav a#menu-button {
+    border-bottom: 12px double white;
+    border-top: 4px solid white;
+    content: "";
+    height: 20px;
+    width: 30px;
+    margin-top: -2px;
+    margin-left: -5px;
+    margin-bottom: 0px;
+  }
+  /* line 122, ../sass/desktop_landscape.scss */
+  header#toolbarnav #menuoptions button#home {
+    font-size: .8em;
+    padding: 5px 5px 5px 30px;
+    margin-left: 1620px;
+    margin-top: -32px;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+  }
+  /* line 133, ../sass/desktop_landscape.scss */
+  header#toolbarnav #menuoptions button#home::before {
+    width: 20px;
+    height: 20px;
+    left: 15px;
+    top: 50%;
+    margin-top: -11px;
+    margin-left: -7px;
+  }
+
+  /* line 143, ../sass/desktop_landscape.scss */
+  button#nav_back {
+    font-size: .8em;
+    padding: 5px 5px 5px 30px;
+    margin-left: 7px;
+    margin-top: -60px;
+    height: 30px;
+    position: absolute;
+  }
+
+  /* line 153, ../sass/desktop_landscape.scss */
+  button#nav_back::before {
+    width: 20px;
+    height: 20px;
+    left: 15px;
+    top: 50%;
+    margin-top: -11px;
+    margin-left: -10px;
+  }
+
+  /* line 161, ../sass/desktop_landscape.scss */
+  button#nav_next {
+    font-size: .8em;
+    padding: 5px 30px 10px 10px;
+    margin-left: 1600px;
+    margin-top: -62px;
+    height: 29px;
+    position: absolute;
+  }
+
+  /* line 171, ../sass/desktop_landscape.scss */
+  button#nav_next::before {
+    right: 15px;
+    top: 50%;
+    margin-top: -11px;
+    margin-right: -10px;
+  }
+
+  /* line 177, ../sass/desktop_landscape.scss */
+  #menuoptions {
+    width: 100%;
+    height: 45px;
+    margin-top: -15px;
+    position: fixed;
+  }
+  /* line 182, ../sass/desktop_landscape.scss */
+  #menuoptions #menu-btn_bg {
+    width: 40px;
+    height: 33px;
+    margin-top: -6px;
+    margin-left: 0px;
+    position: absolute;
+  }
+  /* line 189, ../sass/desktop_landscape.scss */
+  #menuoptions a#menu-button {
+    border-bottom: 10px double white;
+    border-top: 3px solid white;
+    content: "";
+    height: 16px;
+    width: 30px;
+    margin-top: -2px;
+    margin-left: -5px;
+    margin-bottom: 0px;
+  }
+  /* line 199, ../sass/desktop_landscape.scss */
+  #menuoptions #step_desc {
+    margin-top: -3px;
+    margin-left: 46%;
+    margin-right: 30%;
+    font-size: .8em;
+  }
+
+  /* line 208, ../sass/desktop_landscape.scss */
+  #timercount {
+    font-size: 1.2em;
+    margin-left: 1560px;
+    margin-top: -30px;
+    height: 38px;
+    width: 40px;
+    position: absolute;
+  }
+  /* line 217, ../sass/desktop_landscape.scss */
+  #timercount #timercountspan {
+    margin-top: -5px;
+    margin-left: -9px;
+  }
+
+  /* line 222, ../sass/desktop_landscape.scss */
+  #homecontent {
+    margin-top: 18px;
+    height: 100%;
+  }
+  /* line 225, ../sass/desktop_landscape.scss */
+  #homecontent h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.5em;
+    margin-top: 60px;
+    margin-bottom: 25px;
+    padding: 12px 0;
+  }
+  /* line 235, ../sass/desktop_landscape.scss */
+  #homecontent h4 {
+    font-size: 1.2em;
+    line-height: 1em;
+    margin-bottom: 5px;
+  }
+  /* line 242, ../sass/desktop_landscape.scss */
+  #homecontent span.group_subtitle {
+    font-size: 1em;
+    line-height: 1em;
+    margin-bottom: 10px;
+  }
+  /* line 249, ../sass/desktop_landscape.scss */
+  #homecontent .thumbnails {
+    margin-left: -40px;
+  }
+  /* line 251, ../sass/desktop_landscape.scss */
+  #homecontent .thumbnails h4 {
+    font-size: 1em;
+  }
+
+  /* line 259, ../sass/desktop_landscape.scss */
+  #content {
+    margin-top: 110px;
+    color: black;
+    height: 100%;
+  }
+  /* line 263, ../sass/desktop_landscape.scss */
+  #content #menu-btn_bg {
+    width: 70px;
+    height: 48px;
+    margin-top: -5px;
+    margin-left: 750px;
+  }
+  /* line 269, ../sass/desktop_landscape.scss */
+  #content a#menu-btn {
+    width: 53px;
+    height: 30px;
+    height: 5px;
+    width: 40px;
+    margin-top: -3px;
+    margin-left: 0px;
+  }
+  /* line 277, ../sass/desktop_landscape.scss */
+  #content h2 {
+    font-size: 1.8em;
+    font-weight: 500;
+    line-height: 1.8em;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    padding: 12px 0;
+  }
+  /* line 287, ../sass/desktop_landscape.scss */
+  #content h3 {
+    font-size: 1.5em;
+    font-weight: 700;
+    line-height: 1.75em;
+    margin-bottom: 25px;
+  }
+
+  /* line 296, ../sass/desktop_landscape.scss */
+  button#viewresult {
+    height: 40px;
+    width: 150px;
+    padding-bottom: 10px;
+  }
+
+  /* line 301, ../sass/desktop_landscape.scss */
+  .containerDiv {
+    width: 100%;
+    margin-left: 0px;
+  }
+
+  /* line 305, ../sass/desktop_landscape.scss */
+  .rowDivHeader {
+    font-size: 1em;
+  }
+
+  /* line 311, ../sass/desktop_landscape.scss */
+  .cellDivHeader {
+    width: 12%;
+    padding: 1px;
+    font-size: .8em;
+  }
+
+  /* line 318, ../sass/desktop_landscape.scss */
+  .cellDiv {
+    width: 10%;
+    padding-right: 4px;
+  }
+
+  /* line 322, ../sass/desktop_landscape.scss */
+  .cellDiv button {
+    margin-top: 20px;
+    border-radius: 15px;
+  }
+
+  /* line 326, ../sass/desktop_landscape.scss */
+  .lastCell {
+    border-right: none;
+  }
+
+  /* line 327, ../sass/desktop_landscape.scss */
+  .slider-frame {
+    margin: 0;
+    padding: 0;
+    margin: 0 auto;
+    width: 85px;
+    height: 29px;
+    margin-left: 210px;
+    margin-top: -30px;
+  }
+
+  /* line 336, ../sass/desktop_landscape.scss */
+  .slider-button {
+    margin: 0;
+    padding: 0;
+    width: 43px;
+    height: 27px;
+    line-height: 27px;
+    font-size: 11px;
+  }
+
+  /* line 346, ../sass/desktop_landscape.scss */
+  .slider-button.on {
+    margin-left: 40px;
+  }
+
+  /* line 347, ../sass/desktop_landscape.scss */
+  .slider-button:before {
+    margin: 0;
+    padding: 0;
+    width: 40px;
+    height: 12px;
+  }
+
+  /* line 353, ../sass/desktop_landscape.scss */
+  .designform {
+    padding: 30px;
+    width: 500px;
+  }
+  /* line 356, ../sass/desktop_landscape.scss */
+  .designform .designform_header {
+    margin-top: -30px;
+    margin-left: -30px;
+    width: 499px;
+  }
+  /* line 361, ../sass/desktop_landscape.scss */
+  .designform h1.designform_title {
+    font-size: .8em;
+    margin-top: 3px;
+    width: 100%;
+  }
+  /* line 368, ../sass/desktop_landscape.scss */
+  .designform label {
+    font-size: .6em;
+    margin-top: 20px;
+  }
+  /* line 373, ../sass/desktop_landscape.scss */
+  .designform label a {
+    margin-left: 10px;
+    font-size: 1.2em;
+  }
+  /* line 380, ../sass/desktop_landscape.scss */
+  .designform input, .designform select {
+    font-size: .6em;
+  }
+
+  /* line 387, ../sass/desktop_landscape.scss */
+  #exitLab {
+    width: 150px;
+    height: 35px;
+    margin-left: 45%;
+    margin-right: 50%;
+  }
+
+  /* line 393, ../sass/desktop_landscape.scss */
+  #wrapper #navmenu {
+    width: 300px;
+    left: 0px;
+    top: 0px;
+    margin-top: 0px;
+  }
+
+  /* line 399, ../sass/desktop_landscape.scss */
+  #pagebody #navmenu {
+    width: 300px;
+    left: 0px;
+    top: 0px;
+    margin-top: 70px;
+  }
+
+  /* line 406, ../sass/desktop_landscape.scss */
+  #navmenu header {
+    display: block;
+    background: #303a44;
+    height: 52px;
+    margin-top: -18px;
+  }
+  /* line 411, ../sass/desktop_landscape.scss */
+  #navmenu header h1 {
+    padding-top: 10px;
+    font-size: 1.5em;
+  }
+  /* line 418, ../sass/desktop_landscape.scss */
+  #navmenu ul {
+    margin-top: 0px;
+  }
+  /* line 421, ../sass/desktop_landscape.scss */
+  #navmenu ul li a.navlink {
+    padding: 14px 11px;
+    font-size: 1em;
+  }
+  /* line 428, ../sass/desktop_landscape.scss */
+  #navmenu ul li a.navlink::after {
+    width: 6px;
+    height: 6px;
+    right: 30px;
+    top: 45%;
+  }
+  /* line 435, ../sass/desktop_landscape.scss */
+  #navmenu ul li a.arrow {
+    padding: 14px 11px;
+    font-size: 1em;
+  }
+  /* line 442, ../sass/desktop_landscape.scss */
+  #navmenu ul li a.arrow::after {
+    width: 6px;
+    height: 6px;
+    right: 30px;
+    top: 45%;
+  }
+
+  /* line 452, ../sass/desktop_landscape.scss */
+  .clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+  }
+
+  /* line 460, ../sass/desktop_landscape.scss */
+  .clearfix {
+    display: inline-block;
+  }
+
+  /* line 461, ../sass/desktop_landscape.scss */
+  html[xmlns] .clearfix {
+    display: block;
+  }
+
+  /* line 462, ../sass/desktop_landscape.scss */
+  * html .clearfix {
+    height: 1%;
+  }
+}

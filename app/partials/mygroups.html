@@ -1,12 +1,8 @@
-<div id="wrapper" ng-controller="groupCtrl">
+<div id="wrapper" ng-controller="groupCtrl" data-ng-init="loadgroupContent()">
   <div id="pagebody">
     <header id="toolbarnav">
       <h1>My Groups</h1>
-      <div id="menu-btn_bg">
-                    <a id="home_nav_bg" ng-click="navigatePage('home')"></a>
-      </div>
-
-      <!--<div ><button id="nav_back" style="display:none" ng-click="navigatePage('home')">Back</button></div>-->
+      <button id="home" ng-click="navigatePage('home')"></button>
     </header>
     <section id="content" class="clearfix">
       <div id="groups_content">
@@ -15,12 +11,10 @@
             <div class="cellDivHeader">Group Name</div>
             <div class="cellDivHeader">Owner</div>
           </div>
-          
-            <div class="rowDiv" ng-repeat="group in groups">
-              <div class="cellDiv" >{{group.title}}</div>
-              <div class="cellDiv">{{group.owner}}</div>
-            </div>
-          
+          <div class="rowDiv" ng-repeat="group in groups">
+            <div class="cellDiv" >{{group.title}}</div>
+            <div class="cellDiv">{{group.owner}}</div>
+          </div>
         </div>
       </div>
     </section>

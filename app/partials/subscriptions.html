@@ -1,10 +1,8 @@
-<div id="wrapper" ng-controller="subscriptionCtrl" data-ng-init="loadContent()">
+<div id="wrapper" ng-controller="subscriptionCtrl" data-ng-init="loadsubscriptionContent()">
   <div id="pagebody">
     <header id="toolbarnav">
       <h1>My Subscriptions</h1>
-      <div id="menu-btn_bg">
-                    <a id="home_nav_bg" ng-click="navigatePage('home')"></a>
-      </div>
+      <button id="home" ng-click="navigatePage('home')"></button>
     </header>
     <section id="content" class="clearfix">
       <div id="default_content" style="display:none">No more subscriptions available</div>
@@ -15,7 +13,6 @@
             <div class="cellDivHeader">Assigned Date</div>
             <div class="cellDivHeader">Action</div>
           </div>
-        
           <div class="rowDiv" ng-repeat="subscription in subscriptions">
             <div class="cellDiv" >{{subscription.lab_journal_title}}</div>
             <div class="cellDiv">{{subscription.subscribed_date}}</div>
