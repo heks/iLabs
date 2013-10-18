@@ -7,19 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>iLab Mobile App</title>
 
-    <link rel="stylesheet" href="css/bootstrap-combined_2.3.1.min.css">
-    <link rel="stylesheet" href="css/jquery-ui_1.10.3.css">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="stylesheets/base.css">
-    <link rel="stylesheet" href="stylesheets/desktop_landscape.css">
-    <link rel="stylesheet" href="stylesheets/desktop_portrait.css">
-    <link rel="stylesheet" href="stylesheets/iphone_portrait.css">
-    <link rel="stylesheet" href="stylesheets/iphone_landscape.css">
-    <link rel="stylesheet" href="stylesheets/ipad_portrait.css">
-    <link rel="stylesheet" href="stylesheets/ipad_landscape.css">
-    <link rel="stylesheet" href="css/popup.css">
-    <link rel="stylesheet" href="css/toggle.css">
+    <link rel="stylesheet" href="css/commons/bootstrap-combined_2.3.1.min.css">
+    <link rel="stylesheet" href="css/commons/jquery-ui_1.10.3.css">
+    <link rel="stylesheet" href="css/commons/normalize.css">
+    <link rel="stylesheet" href="css/commons/main.css">
+    <link rel="stylesheet" href="stylesheets/base/combined.css">
+    <link rel="stylesheet" href="stylesheets/desktop/combined.css">
+    <link rel="stylesheet" href="stylesheets/iphone/combined.css">
+    <link rel="stylesheet" href="stylesheets/ipad/combined.css">
+    <link rel="stylesheet" href="css/commons/popup.css">
+    <link rel="stylesheet" href="css/commons/toggle.css">
 
     <script src="lib/angular/angularjs_1.0.5.js"></script>
     <script src="lib/jquery/jquery-1.7.2.min.js"></script>
@@ -28,15 +25,22 @@
     <script src="lib/jquery/jquery-ui_1.10.3.js"></script>
     <script src="lib/highchart/highchart.js"></script>
     <script src="lib/highchart/exporting.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/directives.js"></script>
+    <script src="js/commons/app.js"></script>
+    <script src="js/controllers/loginController.js"></script>
+    <script src="js/controllers/homeController.js"></script>
+    <script src="js/controllers/groupController.js"></script>
+    <script src="js/controllers/assignmentController.js"></script>
+    <script src="js/controllers/subscriptionController.js"></script>
+    <script src="js/controllers/labjournalController.js"></script>
+    <script src="js/controllers/experimentController.js"></script>
+    <script src="js/controllers/mainController.js"></script>
+    <script src="js/commons/directives.js"></script>
     <script src="lib/hash/hashmd5.js"></script>
     <script src="lib/markdown/markdown.converter.js"></script>
     <script src="lib/jquery/jqueryblink.js"></script>
   </head>
   
-  <body ng-controller="appController" id="appbody" ng-init="translatePage()">
+  <body ng-controller="appController">
     <div ng-view id="app_envelope"></div>
     <span> {{checkSession()}}</span>
   </body>

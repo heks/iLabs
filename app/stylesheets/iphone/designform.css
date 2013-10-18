@@ -1,0 +1,60 @@
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape) {
+  /* line 4, ../../sass/iphone/designform.scss */
+  .designform {
+    padding: 30px;
+    width: 393px;
+  }
+  /* line 7, ../../sass/iphone/designform.scss */
+  .designform h1.designform_title {
+    font-size: .8em;
+    margin-top: -5px;
+    width: 100%;
+  }
+  /* line 14, ../../sass/iphone/designform.scss */
+  .designform label {
+    font-size: .6em;
+    margin-top: 10px;
+  }
+  /* line 19, ../../sass/iphone/designform.scss */
+  .designform label a {
+    margin-left: 10px;
+  }
+  /* line 21, ../../sass/iphone/designform.scss */
+  .designform input {
+    font-size: .6em;
+  }
+  /* line 26, ../../sass/iphone/designform.scss */
+  .designform select {
+    font-size: .6em;
+  }
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait) {
+  /* line 34, ../../sass/iphone/designform.scss */
+  .designform {
+    padding: 30px;
+    width: 293px;
+  }
+  /* line 37, ../../sass/iphone/designform.scss */
+  .designform h1.designform_title {
+    font-size: .8em;
+    margin-top: -5px;
+    width: 100%;
+  }
+  /* line 44, ../../sass/iphone/designform.scss */
+  .designform label {
+    font-size: .6em;
+    margin-top: 10px;
+  }
+  /* line 49, ../../sass/iphone/designform.scss */
+  .designform label a {
+    margin-left: 10px;
+  }
+  /* line 51, ../../sass/iphone/designform.scss */
+  .designform input {
+    font-size: .6em;
+  }
+  /* line 56, ../../sass/iphone/designform.scss */
+  .designform select {
+    font-size: .6em;
+  }
+}

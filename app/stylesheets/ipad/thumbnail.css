@@ -1,0 +1,20 @@
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  /* line 4, ../../sass/ipad/thumbnail.scss */
+  .thumbnails {
+    margin-left: -40px;
+  }
+  /* line 6, ../../sass/ipad/thumbnail.scss */
+  .thumbnails h4 {
+    font-size: 1em;
+  }
+}
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  /* line 15, ../../sass/ipad/thumbnail.scss */
+  .thumbnails {
+    margin-left: -40px;
+  }
+  /* line 17, ../../sass/ipad/thumbnail.scss */
+  .thumbnails h4 {
+    font-size: 1em;
+  }
+}

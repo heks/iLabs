@@ -1,0 +1,35 @@
+@import 'commons/mixins';
+@import 'commons/variables';
+
+.containerDiv { display: table; }
+.rowDivHeader {
+    border: 1px solid $desat_blue;
+    background-color: $moderate_blue;
+    color: $white;
+    font:{
+        weight: bold;
+    }
+    display: table-row;
+}
+.rowDiv {
+    border: 1px solid $desat_blue;
+    background-color: $grayish_blue;
+    display: table-row;
+}
+.cellDivHeader {
+    border-right: 1px solid $white;
+    display: table-cell;
+    text-align: center;
+}
+.cellDiv {
+    border-right: 2px solid $white;
+    display: table-cell;
+    text-align: center;
+    border-bottom: 2px solid $white;
+}
+.cellDiv button {
+    background-color: $dodger_blue;
+    color: $white;
+    border: 1px solid $dodger_blue;
+}
+.lastCell { border-right: none }

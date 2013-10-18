@@ -1,0 +1,62 @@
+@import 'commons/variables';
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation:landscape){
+	.designform {
+	    padding: 30px;
+	    width: 393px;
+	    h1.designform_title {
+	        font:{
+	            size: .8em;
+	        }
+	        margin-top: -5px;
+	        width: 100%;
+	    }
+	    label {
+	        font:{
+	            size: .6em;
+	        }
+	        margin-top: 10px;
+	        a { margin-left: 10px; }
+	    }
+	    input {
+	        font:{
+	            size: .6em;
+	        }
+	    }
+	    select {
+	    	font:{
+	            size: .6em;
+	        }
+	    }
+	}
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation:portrait){
+	.designform {
+	    padding: 30px;
+	    width: 293px;
+	    h1.designform_title {
+	        font:{
+	            size: .8em;
+	        }
+	        margin-top: -5px;
+	        width: 100%;
+	    }
+	    label {
+	        font:{
+	            size: .6em;
+	        }
+	        margin-top: 10px;
+	        a { margin-left: 10px; }
+	    }
+	    input {
+	        font:{
+	            size: .6em;
+	        }
+	    }
+	    select { 
+	    	font:{
+	            size: .6em;
+	        }
+	    }
+	}
+}

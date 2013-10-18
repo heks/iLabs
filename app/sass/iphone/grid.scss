@@ -1,0 +1,58 @@
+@import 'commons/variables';
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation:landscape){
+	.containerDiv {
+	    width: 100%;
+	    margin-left: 0px;
+	}
+	.rowDivHeader {
+	    font:{
+	        size: 1em;
+	    }
+	}
+	.rowDiv { }
+	.cellDivHeader {
+	    width: 12%;
+	    padding: 1px;
+	    font:{
+	        size: .8em;
+	    }
+	}
+	.cellDiv {
+	    width: 10%;
+	    padding-right: 4px;
+	}
+	.cellDiv button {
+	    margin-top: 20px;
+	    border-radius: 15px;
+	}
+	.lastCell { border-right: none; }
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation:portrait){
+	.containerDiv {
+	    width: 90%;
+	    margin-left: -10px;
+	}
+	.rowDivHeader { 
+	    font:{
+	        size: 1em;
+	    }
+	}
+	.rowDiv { }
+	.cellDivHeader {
+	    width: 12%;
+	    padding: 1px;
+	    font:{
+	        size: .8em;
+	    }
+	}
+	.cellDiv {
+	    width: 10%;
+	    padding-right: 4px;
+	}
+	.cellDiv button {
+	    margin-top: 20px;
+	    border-radius: 15px;
+	}
+	.lastCell { border-right: none; }
+}

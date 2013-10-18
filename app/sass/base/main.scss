@@ -1,0 +1,71 @@
+@import 'commons/mixins';
+@import 'commons/variables';
+
+body {
+    background: $white;
+    padding: 0px;
+    margin: 0px;
+}
+#app_envelope {
+    position: absolute;
+    width: 100%;
+}
+#overlay {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    background: $black;
+    @include opacity(70);
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+	#overlaycontent {
+	    display: block;
+	    color: $white;
+	    top: 0px;
+	    left: 0px;
+	    margin-top: 20%;
+	    text-align: center;
+	}
+}
+#wrapper {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+#pagebody {
+    position: absolute;
+    z-index: 2;
+    overflow: auto;
+}
+#homecontent {
+    display: block;
+    background: $white;
+    padding: 5px 12px;
+    margin-top: 0px;
+    min-height: 550px;
+    z-index: 9999;
+    color: $black;
+}
+#content {
+    display: block;
+    background: $white;
+    padding: 5px 12px;
+    margin-top: 0px;
+    min-height: 550px;
+    z-index: 9999;
+}
+.space { margin-bottom: 10px; }
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+.clearfix { display: inline-block; }
+html[xmlns] .clearfix { display: block; }
+* html .clearfix { height: 1%; }

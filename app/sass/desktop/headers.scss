@@ -1,0 +1,135 @@
+@import 'commons/variables';
+
+@media all and (orientation:landscape) {
+	.login_template {
+		.header_sm { 
+		       text-align: center;
+		       font:{
+		            size: 1em;
+		        }
+		        margin: 0.5em 0;
+		    }
+		    .header_lg { 
+		        font:{
+		            size: 2em;
+		        }
+		         text-align: center;
+		    }
+		    .header_lgsm { }
+	}
+	header#toolbarnav {
+	    left: 0px;
+	    top: 0px;
+	    padding-top: 2em;
+	    height: 68px;
+	    width: 100%;
+	    h1 {
+	        padding-top: 2px;
+	        padding-right: 8px;
+	        font:{
+	            size: 2em;
+	        }
+	        margin-top: -15px;
+	    }
+	}
+	#menuoptions {
+	    width: 100%;
+	    height: 45px;
+	    margin-top: -15px;
+	    position: fixed;
+	    #step_desc {
+	        margin-top: -2px;
+	        margin-left: 47%;
+	        margin-right: 30%;
+	        font:{
+	            size: .8em;
+	        }
+	    }
+	}
+	.designform_header {
+        margin-top: -30px;
+        margin-left: -30px;
+        width: 499px;
+    }
+    #navmenu {
+	    header {
+	        display: block;
+	        background: $gray_blue;
+	        height: 52px;
+	        margin-top: -18px;
+	        h1 {
+	            padding-top: 10px;
+	            font:{
+	                size: 1.5em;
+	            }
+	        }
+	    }
+	}
+}
+
+@media all and (orientation:portrait){
+	.login_template {
+		.header_sm { 
+	       text-align: center;
+	       font:{
+	            size: 1em;
+	        }
+	        margin: 0.5em 0;
+	    }
+	    .header_lg { 
+	        font:{
+	            size: 2em;
+	        }
+	         text-align: center;
+	    }
+	    .header_lgsm { }
+	}
+	header#toolbarnav {
+	    left: 0px;
+	    top: 0px;
+	    padding-top: 2em;
+	    height: 68px;
+	    width: 100%;
+	    h1 {
+		    padding-top: 2px;
+		    padding-right: 8px;
+		    font:{
+		        size: 2em;
+		    }
+		    margin-top: -15px;
+		}
+	}
+	#menuoptions {
+	    width: 100%;
+	    height: 45px;
+	    margin-top: -15px;
+	    position: fixed;
+	    #step_desc {
+	        margin-top: -2px;
+	        margin-left: 47%;
+	        margin-right: 30%;
+	        font:{
+	            size: 1em;
+	        }
+	    }
+	}
+	.designform_header {
+        margin-top: -30px;
+        margin-left: -30px;
+        width: 498px;
+    }
+    #navmenu{
+	    header {
+	        display: block;
+	        background: $gray_blue;
+	        height: 52px;
+	        margin-top: -18px;
+	        h1 {
+	            padding-top: 10px;
+	            font:{
+	                size: 1.5em;
+	            }
+	        }
+	    }
+	}
+}

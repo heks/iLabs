@@ -1,0 +1,99 @@
+@import 'commons/variables';
+
+@media all and (orientation:landscape) {
+	#wrapper #navmenu {
+	    width: 300px;
+	    left: 0px;
+	    top: 0px;
+	    margin-top: 0px;
+	}
+	#pagebody #navmenu {
+	    width: 300px;
+	    left: 0px;
+	    top: 0px;
+	    margin-top: 70px;
+	}
+	#navmenu {
+	    ul { 
+	        margin-top: 0px; 
+	        li { 
+	            a.navlink {
+	                padding: 14px 11px;
+	                font:{
+	                    size: 1em;
+	                }
+	            }
+	            a.navlink:hover { }
+	            a.navlink::after {
+	                width: 6px;
+	                height: 6px;
+	                right: 30px;
+	                top: 45%;
+	            }
+	            a.navlink:hover::after { }
+	            a.arrow {
+	                padding: 14px 11px;
+	                font:{
+	                    size: 1em;
+	                }
+	            }
+	            a.arrow:hover { }
+	            a.arrow::after {
+	                width: 6px;
+	                height: 6px;
+	                right: 30px;
+	                top: 45%;
+	            }
+	            a.arrow:hover::after { }
+	        }
+	    }
+	}
+}
+
+@media all and (orientation:portrait){
+	#wrapper #navmenu {
+	    width: 300px;
+	    left: 0px;
+	    top: 0px;
+	}
+	#pagebody #navmenu {
+		width: 300px;
+	    left: 0px;
+	    top: 70px;
+	}
+	#navmenu{
+	    ul { 
+	        margin-top: 0px;
+	        li { 
+	            a.navlink {
+	                padding: 14px 11px;
+	                font:{
+	                    size: 1em;
+	                }
+	            }
+	            a.navlink:hover { }
+	            a.navlink::after {
+	                width: 6px;
+	                height: 6px;
+	                right: 30px;
+	                top: 45%;
+	            }
+	            a.navlink:hover::after { }
+	            a.arrow {
+	                padding: 14px 11px;
+	                font:{
+	                    size: 1em;
+	                }
+	            }
+	            a.arrow:hover { }
+	            a.arrow::after {
+	                width: 6px;
+	                height: 6px;
+	                right: 30px;
+	                top: 45%;
+	            }
+	            a.arrow:hover::after { }
+	        }
+	    }
+	}
+}

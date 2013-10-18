@@ -1,0 +1,20 @@
+@media all and (orientation: landscape) {
+  /* line 4, ../../sass/desktop/thumbnail.scss */
+  .thumbnails {
+    margin-left: -40px;
+  }
+  /* line 6, ../../sass/desktop/thumbnail.scss */
+  .thumbnails h4 {
+    font-size: 1em;
+  }
+}
+@media all and (orientation: portrait) {
+  /* line 16, ../../sass/desktop/thumbnail.scss */
+  .thumbnails {
+    margin-left: -40px;
+  }
+  /* line 18, ../../sass/desktop/thumbnail.scss */
+  .thumbnails h4 {
+    font-size: 1em;
+  }
+}

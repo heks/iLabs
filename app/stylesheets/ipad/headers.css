@@ -1,0 +1,134 @@
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  /* line 5, ../../sass/ipad/headers.scss */
+  .login_template .header_sm {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1em;
+    margin: 0.5em 0;
+  }
+  /* line 13, ../../sass/ipad/headers.scss */
+  .login_template .header_lg {
+    text-align: center;
+    font-size: 2em;
+  }
+
+  /* line 20, ../../sass/ipad/headers.scss */
+  header#toolbarnav {
+    left: 0px;
+    top: 0px;
+    padding-top: 2em;
+    height: 68px;
+    width: 100%;
+    max-width: 1024px;
+  }
+  /* line 27, ../../sass/ipad/headers.scss */
+  header#toolbarnav h1 {
+    padding-top: 2px;
+    padding-right: 8px;
+    font-size: 1.5em;
+    margin-top: -20px;
+    margin-right: 45%;
+    margin-left: 38%;
+    position: static;
+    width: 250px;
+  }
+
+  /* line 40, ../../sass/ipad/headers.scss */
+  #menuoptions {
+    width: 100%;
+    height: 48px;
+  }
+  /* line 43, ../../sass/ipad/headers.scss */
+  #menuoptions #step_desc {
+    margin-top: 0px;
+    margin-left: 45%;
+    margin-right: 40%;
+  }
+
+  /* line 49, ../../sass/ipad/headers.scss */
+  .designform_header {
+    margin-top: -30px;
+    margin-left: -30px;
+    width: 498px;
+  }
+
+  /* line 55, ../../sass/ipad/headers.scss */
+  #navmenu header {
+    display: block;
+    background: #303a44;
+    height: 52px;
+    margin-top: -18px;
+  }
+  /* line 60, ../../sass/ipad/headers.scss */
+  #navmenu header h1 {
+    padding-top: 10px;
+    font-size: 1.5em;
+  }
+}
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  /* line 71, ../../sass/ipad/headers.scss */
+  .login_template .header_sm {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1em;
+    margin: 0.5em 0;
+  }
+  /* line 79, ../../sass/ipad/headers.scss */
+  .login_template .header_lg {
+    text-align: center;
+    font-size: 2em;
+  }
+
+  /* line 86, ../../sass/ipad/headers.scss */
+  header#toolbarnav {
+    left: 0px;
+    top: 0px;
+    padding-top: 2em;
+    height: 68px;
+    width: 100%;
+    max-width: 1024px;
+  }
+  /* line 93, ../../sass/ipad/headers.scss */
+  header#toolbarnav h1 {
+    padding-top: 2px;
+    padding-right: 10px;
+    font-size: 1.5em;
+    margin-top: -20px;
+    margin-right: 50%;
+    margin-left: 34%;
+    position: static;
+    width: 250px;
+  }
+
+  /* line 106, ../../sass/ipad/headers.scss */
+  #menuoptions {
+    width: 100%;
+    height: 48px;
+  }
+  /* line 109, ../../sass/ipad/headers.scss */
+  #menuoptions #step_desc {
+    margin-top: 0px;
+    margin-left: 45%;
+    margin-right: 40%;
+  }
+
+  /* line 115, ../../sass/ipad/headers.scss */
+  .designform_header {
+    margin-top: -30px;
+    margin-left: -30px;
+    width: 498px;
+  }
+
+  /* line 121, ../../sass/ipad/headers.scss */
+  #navmenu header {
+    display: block;
+    background: #303a44;
+    height: 52px;
+    margin-top: -18px;
+  }
+  /* line 126, ../../sass/ipad/headers.scss */
+  #navmenu header h1 {
+    padding-top: 10px;
+    font-size: 1.5em;
+  }
+}

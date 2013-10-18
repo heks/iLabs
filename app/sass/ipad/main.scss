@@ -1,0 +1,132 @@
+@import 'commons/variables';
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation : landscape){
+	#app_envelope { }
+	#wrapper {
+	    margin: auto;
+	    width: 100%;
+	    height: 100%;
+	}
+	#pagebody {
+	    left: 0;
+	    max-width: 1024px;
+	    min-width: 768px;
+	}
+	#homecontent {
+	    margin-top: 18px;
+	    overflow: auto;
+	    h2 {
+	        font:{
+	            size: 1.5em;
+	            weight: bold;
+	        }
+	        line-height: 1.5em;
+	        margin-top: 60px;
+	        margin-bottom: 25px;
+	        padding: 12px 0;
+	    }
+	    h4 {
+	        font:{
+	            size: 1.2em;
+	        }
+	        line-height: 1em;
+	        margin-bottom: 5px;
+	    }
+	    span.group_subtitle {
+	        font:{
+	            size: 1em;
+	        }
+	        line-height: 1em;
+	        margin-bottom: 10px;
+	    }
+	}
+	#content {
+	    margin-top: 100px;
+	    color: $black;
+	    height: auto;
+	    padding-bottom: 30px;
+	    min-height: 700px;
+	    h2 {
+	        font:{
+	            size: 1.8em;
+	            font-weight: 500;
+	        }
+	        line-height: 1.8em;
+	        margin-top: 10px;
+	        margin-bottom: 25px;
+	        padding: 12px 0;
+	    }
+	    h3 {
+	        font:{
+	            size: 1.8em;
+	            font-weight: 700;
+	        }
+	        line-height: 1.75em;
+	        margin-bottom: 25px;
+	    }
+	}
+}
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation : portrait){
+	#app_envelope { }
+	#wrapper {
+	    margin: auto;
+	    width: 100%;
+	    height: 100%;
+	}
+	#pagebody {
+	    left: 0;
+	    max-width: 1024px;
+	    min-width: 768px;
+	}
+	#homecontent {
+	    margin-top: 18px;
+	    overflow: auto;
+	    h2 {
+	        font:{
+	            size: 1.5em;
+	            weight: bold;
+	        }
+	        line-height: 1.5em;
+	        margin-top: 60px;
+	        margin-bottom: 25px;
+	        padding: 12px 0;
+	    }
+	    h4 {
+	        font:{
+	            size: 1.2em;
+	        }
+	        line-height: 1em;
+	        margin-bottom: 5px;
+	    }
+	    span.group_subtitle {
+	        font:{
+	            size: 1em;
+	        }
+	        line-height: 1em;
+	        margin-bottom: 10px;
+	    }
+	}
+	#content {
+	    margin-top: 100px;
+	    color: $black;
+	    padding-bottom: 10px;
+	    h2 {
+	        font:{
+	            size: 1.8em;
+	            weight: 500;
+	        }
+	        line-height: 1.8em;
+	        margin-top: 10px;
+	        margin-bottom: 25px;
+	        padding: 12px 0;
+	    }
+	    h3 {
+	        font:{
+	            size: .8em;
+	            weight: 700;
+	        }
+	        line-height: 1.75em;
+	        margin-bottom: 25px;
+	    }
+	}
+}

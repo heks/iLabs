@@ -1,0 +1,62 @@
+@media all and (orientation: landscape) {
+  /* line 4, ../../sass/desktop/designform.scss */
+  .designform {
+    padding: 30px;
+    width: 500px;
+  }
+  /* line 7, ../../sass/desktop/designform.scss */
+  .designform h1.designform_title {
+    font-size: .8em;
+    margin-top: 3px;
+    width: 100%;
+  }
+  /* line 14, ../../sass/desktop/designform.scss */
+  .designform label {
+    font-size: .6em;
+    margin-top: 20px;
+  }
+  /* line 19, ../../sass/desktop/designform.scss */
+  .designform label a {
+    margin-left: 10px;
+    font-size: 1.2em;
+  }
+  /* line 26, ../../sass/desktop/designform.scss */
+  .designform input {
+    font-size: .6em;
+  }
+  /* line 31, ../../sass/desktop/designform.scss */
+  .designform select {
+    font-size: .6em;
+  }
+}
+@media all and (orientation: portrait) {
+  /* line 40, ../../sass/desktop/designform.scss */
+  .designform {
+    padding: 30px;
+    width: 500px;
+  }
+  /* line 43, ../../sass/desktop/designform.scss */
+  .designform h1.designform_title {
+    font-size: .8em;
+    margin-top: -10px;
+    width: 100%;
+  }
+  /* line 50, ../../sass/desktop/designform.scss */
+  .designform label {
+    font-size: .6em;
+    margin-top: 20px;
+  }
+  /* line 55, ../../sass/desktop/designform.scss */
+  .designform label a {
+    margin-left: 10px;
+    font-size: 1.2em;
+  }
+  /* line 62, ../../sass/desktop/designform.scss */
+  .designform input {
+    font-size: .6em;
+  }
+  /* line 67, ../../sass/desktop/designform.scss */
+  .designform select {
+    font-size: .6em;
+  }
+}

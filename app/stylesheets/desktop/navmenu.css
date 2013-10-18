@@ -1,0 +1,90 @@
+@media all and (orientation: landscape) {
+  /* line 4, ../../sass/desktop/navmenu.scss */
+  #wrapper #navmenu {
+    width: 300px;
+    left: 0px;
+    top: 0px;
+    margin-top: 0px;
+  }
+
+  /* line 10, ../../sass/desktop/navmenu.scss */
+  #pagebody #navmenu {
+    width: 300px;
+    left: 0px;
+    top: 0px;
+    margin-top: 70px;
+  }
+
+  /* line 17, ../../sass/desktop/navmenu.scss */
+  #navmenu ul {
+    margin-top: 0px;
+  }
+  /* line 20, ../../sass/desktop/navmenu.scss */
+  #navmenu ul li a.navlink {
+    padding: 14px 11px;
+    font-size: 1em;
+  }
+  /* line 27, ../../sass/desktop/navmenu.scss */
+  #navmenu ul li a.navlink::after {
+    width: 6px;
+    height: 6px;
+    right: 30px;
+    top: 45%;
+  }
+  /* line 34, ../../sass/desktop/navmenu.scss */
+  #navmenu ul li a.arrow {
+    padding: 14px 11px;
+    font-size: 1em;
+  }
+  /* line 41, ../../sass/desktop/navmenu.scss */
+  #navmenu ul li a.arrow::after {
+    width: 6px;
+    height: 6px;
+    right: 30px;
+    top: 45%;
+  }
+}
+@media all and (orientation: portrait) {
+  /* line 54, ../../sass/desktop/navmenu.scss */
+  #wrapper #navmenu {
+    width: 300px;
+    left: 0px;
+    top: 0px;
+  }
+
+  /* line 59, ../../sass/desktop/navmenu.scss */
+  #pagebody #navmenu {
+    width: 300px;
+    left: 0px;
+    top: 70px;
+  }
+
+  /* line 65, ../../sass/desktop/navmenu.scss */
+  #navmenu ul {
+    margin-top: 0px;
+  }
+  /* line 68, ../../sass/desktop/navmenu.scss */
+  #navmenu ul li a.navlink {
+    padding: 14px 11px;
+    font-size: 1em;
+  }
+  /* line 75, ../../sass/desktop/navmenu.scss */
+  #navmenu ul li a.navlink::after {
+    width: 6px;
+    height: 6px;
+    right: 30px;
+    top: 45%;
+  }
+  /* line 82, ../../sass/desktop/navmenu.scss */
+  #navmenu ul li a.arrow {
+    padding: 14px 11px;
+    font-size: 1em;
+  }
+  /* line 89, ../../sass/desktop/navmenu.scss */
+  #navmenu ul li a.arrow::after {
+    width: 6px;
+    height: 6px;
+    right: 30px;
+    top: 45%;
+  }
+}

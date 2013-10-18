@@ -1,0 +1,73 @@
+@import 'commons/variables';
+
+@media all and (orientation:landscape) {
+	.designform {
+	    padding: 30px;
+	    width: 500px;
+	    h1.designform_title {
+	        font:{
+	            size: .8em;
+	        }
+	        margin-top: 3px;
+	        width: 100%;
+	    }
+	    label {
+	        font:{
+	            size: .6em;
+	        }
+	        margin-top: 20px;
+	        a {
+	            margin-left: 10px;
+	            font:{
+	            size: 1.2em;
+	        }
+	        }
+	    }
+	    input { 
+	        font:{
+	            size: .6em;
+	        } 
+	    }
+	    select { 
+	    	font:{
+	            size: .6em;
+	        }
+	    }
+	}
+}
+
+@media all and (orientation:portrait){
+	.designform {
+	    padding: 30px;
+	    width: 500px;
+	    h1.designform_title {
+	        font:{
+	            size: .8em;
+	        }
+	        margin-top: -10px;
+	        width: 100%;
+	    }
+	    label {
+	        font:{
+	            size: .6em;
+	        }
+	        margin-top: 20px;
+	        a {
+	            margin-left: 10px;
+	            font:{
+	                size: 1.2em;
+	            }
+	        }
+	    }
+	    input { 
+	        font:{
+	            size: .6em;
+	        }  
+	    }
+	    select { 
+	    	font:{
+	            size: .6em;
+	        }
+	    }
+	}
+}

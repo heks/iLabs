@@ -1,0 +1,63 @@
+@import 'commons/mixins';
+@import 'commons/variables';
+@import 'designform';
+
+.login_template {
+	.header_lg {
+		color: $dodger_blue;
+    	font: {
+    		size: 30px;
+    		weight: bold;
+    		
+    	}
+    	margin-bottom: 10px;
+	}
+    .header_lgsm {
+    	color: $white;
+    	font: {
+    		size: .5em;
+    		style: italic;
+    	}
+	}
+	.subheader_sm {
+		color: $white;
+    	font: {
+    		size: 10px;
+    		weight: bold;
+    		style: italic;
+    	}
+	}
+}
+header#toolbarnav {
+    display: block;
+    z-index: 9999;
+    position: fixed;
+    background-color: $dodger_blue;
+    margin-top: 0px;
+    @include box-shadow-inset(0px, 0px, 15px, $pure_blue);
+     h1 {
+        text-align: center;
+        color: $light_gray_blue;
+        font:{
+            weight: bold;
+        }
+        text-shadow: 1px 1px 0px $darker_gray;
+    }
+}
+#menuoptions {
+    display: block;
+    z-index: 9999;
+    position: fixed;
+    @include menuoptions();
+    #step_desc { }
+    #timercountspan{
+        position: absolute;
+    }
+}
+.designform {
+	.designform_header {
+	    @extend .designform;
+	    height: 40px;
+	    text-align: center;
+	}
+}

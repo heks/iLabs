@@ -1,0 +1,72 @@
+@import 'commons/variables';
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation:landscape){
+	.login_template {
+	    margin: 1em auto;
+	    padding: 1em;
+	    margin-right: 10px;
+	    margin-left: 10px;
+	    margin-bottom: auto;
+	    width: 460px;
+	}
+	form {
+	    padding: 20px;
+	    margin-bottom: 50px;
+	    .form_element { }
+	    label {
+	        font:{
+	            size: 1em;
+	            weight: bold;
+	        }
+	    }
+	    .input {
+	        padding: 7px;
+	        border-bottom: 0px;
+	        border-left: 0px;
+	        border-right: 0px;
+	        border-top: 0px solid $white;
+	        width: 100%;
+	        margin-bottom: 10px;
+	    }
+	    a.forgotpassword { }
+	    span { }
+	    #waiting { }
+	    #loading_img { }
+	    #wait-box { }
+	}
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation:portrait){
+	.login_template {
+	    margin: 1em auto;
+	    padding: 1em;
+	    margin-right: 10px;
+	    margin-left: 10px;
+	    margin-bottom: auto;
+	    width: 300px;
+	}
+	form {
+	    padding: 20px;
+	    margin-bottom: 50px;
+	    .form_element { }
+	    label {
+	        font:{
+	            size: 1em;
+	            weight: bold;
+	        }
+	    }
+	    .input {
+	        padding: 7px;
+	        border-bottom: 0px;
+	        border-left: 0px;
+	        border-right: 0px;
+	        border-top: 0px solid $white;
+	        width: 100%;
+	        margin-bottom: 10px;
+	    }
+	    a.forgotpassword { }
+	    span { }
+	    #waiting { }
+	    #loading_img { }
+	    #wait-box { }
+	}
+}

@@ -1,0 +1,62 @@
+@import 'commons/variables';
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation : landscape){
+	.containerDiv {
+	    width: 100%;
+	    margin-left: 0px;
+	    margin-top: 100px;
+	}
+	.rowDivHeader { 
+	    font:{
+	        size: 1em;
+	    }
+	}
+	.rowDiv { }
+	.cellDivHeader {
+	    width: 12%;
+	    padding: 1px;
+	    font:{
+	        size: .8em;
+	    }
+	}
+	.cellDiv {
+	    width: 10%;
+	    padding-right: 4px;
+	    color: $black;
+	}
+	.cellDiv button {
+	    margin-top: 20px;
+	    border-radius: 15px;
+	}
+	.lastCell { border-right: none; }
+}
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation : portrait){
+	.containerDiv {
+	    width: 100%;
+	    margin-left: 0px;
+	    margin-top: 100px;
+	}
+	.rowDivHeader { 
+	    font:{
+	        size: 1em;
+	    }
+	}
+	.rowDiv { }
+	.cellDivHeader {
+	    width: 12%;
+	    padding: 1px;
+	    font:{
+	        size: .8em;
+	    }
+	}
+	.cellDiv {
+	    width: 10%;
+	    padding-right: 4px;
+	    color: $black;
+	}
+	.cellDiv button {
+	    margin-top: 20px;
+	    border-radius: 15px;
+	}
+	.lastCell { border-right: none; }
+}

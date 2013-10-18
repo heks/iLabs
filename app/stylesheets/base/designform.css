@@ -1,0 +1,27 @@
+/* line 4, ../../sass/base/designform.scss */
+.designform {
+  -webkit-transition-property: -webkit-box-shadow, background;
+  -webkit-transition-duration: 0.25s;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#43bfc7), to(#3b9c9c));
+  background: -moz-linear-gradient(19% 75% 90deg, #3b9c9c, #43bfc7);
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  border-top: 1px solid #ad64e0;
+  box-shadow: 0px 0px 10px teal inset;
+  -moz-box-shadow: 0px 0px 10px teal inset;
+  -webkit-box-shadow: 0px 0px 10px teal inset;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border: 1px solid teal;
+}
+/* line 16, ../../sass/base/designform.scss */
+.designform h1.designform_title {
+  color: white;
+  text-align: center;
+}
+/* line 20, ../../sass/base/designform.scss */
+.designform label {
+  font-weight: bold;
+}

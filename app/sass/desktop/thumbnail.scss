@@ -1,0 +1,25 @@
+@import 'commons/variables';
+
+@media all and (orientation:landscape) {
+	.thumbnails { 
+        margin-left: -40px;
+        h4 { 
+            font:{
+                size: 1em;
+            }
+        }
+        .btn { }
+     }
+}
+
+@media all and (orientation:portrait){
+	.thumbnails { 
+        margin-left: -40px;
+        h4 { 
+            font:{
+                size: 1em;
+            }
+        }
+        .btn { }
+     }
+}

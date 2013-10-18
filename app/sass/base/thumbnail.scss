@@ -1,0 +1,22 @@
+@import 'commons/mixins';
+@import 'commons/variables';
+
+.thumbnails { 
+    h4 { color: $black; }
+    span.checktext { color: $dodger_blue; }
+    span.textlg { }
+    span.textsm { }
+    span.bold { 
+        font:{
+            weight: bold;
+        }
+    }
+    span.normal { 
+        font:{
+            weight: normal;
+        }
+    }
+    .btn { 
+        @extend span.bold;
+    }
+}

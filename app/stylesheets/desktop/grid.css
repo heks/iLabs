@@ -1,0 +1,72 @@
+@media all and (orientation: landscape) {
+  /* line 4, ../../sass/desktop/grid.scss */
+  .containerDiv {
+    width: 100%;
+    margin-left: 0px;
+  }
+
+  /* line 8, ../../sass/desktop/grid.scss */
+  .rowDivHeader {
+    font-size: 1em;
+  }
+
+  /* line 14, ../../sass/desktop/grid.scss */
+  .cellDivHeader {
+    width: 12%;
+    padding: 1px;
+    font-size: .8em;
+  }
+
+  /* line 21, ../../sass/desktop/grid.scss */
+  .cellDiv {
+    width: 10%;
+    padding-right: 4px;
+  }
+
+  /* line 25, ../../sass/desktop/grid.scss */
+  .cellDiv button {
+    margin-top: 20px;
+    border-radius: 15px;
+  }
+
+  /* line 29, ../../sass/desktop/grid.scss */
+  .lastCell {
+    border-right: none;
+  }
+}
+@media all and (orientation: portrait) {
+  /* line 33, ../../sass/desktop/grid.scss */
+  .containerDiv {
+    width: 100%;
+    margin-left: 0px;
+  }
+
+  /* line 37, ../../sass/desktop/grid.scss */
+  .rowDivHeader {
+    font-size: 1em;
+  }
+
+  /* line 43, ../../sass/desktop/grid.scss */
+  .cellDivHeader {
+    width: 12%;
+    padding: 1px;
+    font-size: .8em;
+  }
+
+  /* line 50, ../../sass/desktop/grid.scss */
+  .cellDiv {
+    width: 10%;
+    padding-right: 4px;
+  }
+
+  /* line 54, ../../sass/desktop/grid.scss */
+  .cellDiv button {
+    margin-top: 20px;
+    border-radius: 15px;
+  }
+
+  /* line 58, ../../sass/desktop/grid.scss */
+  .lastCell {
+    border-right: none;
+  }
+}

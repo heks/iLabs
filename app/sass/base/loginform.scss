@@ -1,0 +1,57 @@
+@import 'commons/mixins';
+@import 'commons/variables';
+
+.login_template {
+    border: 0px solid $violet;
+    @include border-radius(20px);
+    @include background-gradient($black, $black);
+}
+form {
+    border: 0px solid $violet;
+    @include border-radius(20px);
+    @include background-gradient($black, $grey);
+    @include box-shadow(0px, -5px, 300px, $grey);
+	.form_element { 
+		font: {
+			size: 1em;
+			}
+	}
+	label {
+		color: $white;
+		font: {
+			size: 18px;
+			family: arial, sans-serif;
+			weight: normal;
+		}
+    	list-style-type: none;
+    	letter-spacing: 1px;
+    	display: block;
+	}
+	.input {
+	    @include transition-property(0.25s);
+	    @include box-shadow(0px, 0px, 2px, $black);
+	    background: $white;
+	}
+	a.forgotpassword {
+		color: $white;
+		font: {
+	    	 size: .8em;
+		}
+	    cursor: pointer;
+	}
+	span {
+		color: $white;
+	    font: {
+		    size: .8em;
+		}
+	}
+	#waiting {
+	    background-color: $black;
+	    @include opacity(50);
+	}
+	#loading_img { margin-top: 100px }
+	#wait-box {
+	    background-color: $black;
+	    @include opacity(50);
+	}
+}

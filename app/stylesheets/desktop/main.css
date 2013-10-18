@@ -1,0 +1,140 @@
+@media all and (orientation: landscape) {
+  /* line 4, ../../sass/desktop/main.scss */
+  #app_envelope {
+    height: 100%;
+  }
+
+  /* line 5, ../../sass/desktop/main.scss */
+  #wrapper {
+    height: 100%;
+  }
+
+  /* line 6, ../../sass/desktop/main.scss */
+  #pagebody {
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 99999;
+  }
+
+  /* line 13, ../../sass/desktop/main.scss */
+  #homecontent {
+    margin-top: 18px;
+    height: 100%;
+  }
+  /* line 16, ../../sass/desktop/main.scss */
+  #homecontent h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.5em;
+    margin-top: 60px;
+    margin-bottom: 25px;
+    padding: 12px 0;
+  }
+  /* line 26, ../../sass/desktop/main.scss */
+  #homecontent h4 {
+    font-size: 1.2em;
+    line-height: 1em;
+    margin-bottom: 5px;
+  }
+  /* line 33, ../../sass/desktop/main.scss */
+  #homecontent span.group_subtitle {
+    font-size: 1em;
+    line-height: 1em;
+    margin-bottom: 10px;
+  }
+
+  /* line 41, ../../sass/desktop/main.scss */
+  #content {
+    margin-top: 110px;
+    color: black;
+    height: 100%;
+  }
+  /* line 45, ../../sass/desktop/main.scss */
+  #content h2 {
+    font-size: 1.8em;
+    font-weight: 500;
+    line-height: 1.8em;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    padding: 12px 0;
+  }
+  /* line 55, ../../sass/desktop/main.scss */
+  #content h3 {
+    font-size: 1.5em;
+    font-weight: 700;
+    line-height: 1.75em;
+    margin-bottom: 25px;
+  }
+}
+@media all and (orientation: portrait) {
+  /* line 67, ../../sass/desktop/main.scss */
+  #app_envelope {
+    height: 100%;
+  }
+
+  /* line 68, ../../sass/desktop/main.scss */
+  #wrapper {
+    height: 100%;
+  }
+
+  /* line 69, ../../sass/desktop/main.scss */
+  #pagebody {
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 99999;
+  }
+
+  /* line 76, ../../sass/desktop/main.scss */
+  #homecontent {
+    margin-top: 18px;
+    height: 100%;
+  }
+  /* line 79, ../../sass/desktop/main.scss */
+  #homecontent h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.5em;
+    margin-top: 60px;
+    margin-bottom: 25px;
+    padding: 12px 0;
+  }
+  /* line 89, ../../sass/desktop/main.scss */
+  #homecontent h4 {
+    font-size: 1.2em;
+    line-height: 1em;
+    margin-bottom: 5px;
+  }
+  /* line 96, ../../sass/desktop/main.scss */
+  #homecontent span.group_subtitle {
+    font-size: 1em;
+    line-height: 1em;
+    margin-bottom: 10px;
+  }
+
+  /* line 104, ../../sass/desktop/main.scss */
+  #content {
+    margin-top: 110px;
+    color: #000000;
+    height: 100%;
+  }
+  /* line 108, ../../sass/desktop/main.scss */
+  #content h2 {
+    font-size: 1.8em;
+    font-weight: 500;
+    line-height: 1.8em;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    padding: 12px 0;
+  }
+  /* line 118, ../../sass/desktop/main.scss */
+  #content h3 {
+    font-size: 1.5em;
+    font-weight: 700;
+    line-height: 1.75em;
+    margin-bottom: 25px;
+  }
+}

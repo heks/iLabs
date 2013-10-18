@@ -1,0 +1,28 @@
+@import 'commons/mixins';
+@import 'commons/variables';
+
+.designform {
+    @include transition-property(0.25s);
+    @include background-gradient($moderate_cyan, $dark_moderate_cyan);
+    color: $white;
+    font:{
+        size: 25px;
+        weight: bold;
+    }
+    border-top: 1px solid $soft_violet;
+    @include box-shadow-inset(0px, 0px, 10px, $dark_cyan);
+    @include border-radius(15px);
+    border: 1px solid $dark_cyan;
+    h1.designform_title {
+        color: $white;
+        text-align: center;
+    }
+    label { 
+        font:{
+            weight: bold;
+        }
+    }
+    label a { }
+    input { }
+    select { }
+}

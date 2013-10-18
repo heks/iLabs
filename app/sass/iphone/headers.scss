@@ -1,0 +1,134 @@
+@import 'commons/variables';
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation:landscape){
+	.login_template {
+		.header_sm { 
+	        text-align: center;
+	        font:{
+	            size: 1em;
+	        }
+	        margin: 0.5em 0;
+	    }
+	    .header_lg { 
+	        font:{
+	            size: 2em;
+	        }
+	        text-align: center;
+	    }
+	    .header_lgsm { }
+	}
+	header#toolbarnav {
+	    left: 0px;
+	    top: 0px;
+	    padding-top: 2em;
+	    height: 48px;
+	    width: 100%;
+	    max-width: 640px;
+	    h1 {
+	        padding-top: 2px;
+	        padding-right: 8px;
+	        font-size: 1.3em;
+	        margin-top: -34px;
+	        position: relative;
+	    }
+	}
+	#menuoptions {
+	    width: 100%;
+	    height: 45px;
+	    margin-top: -5px;
+	    position: fixed;
+	    #step_desc {
+	        margin-top: -3px;
+	        margin-left: 40%;
+	        margin-right: 35%;
+	        font:{
+	            size: .8em;
+	        }
+	    }
+	}
+	.designform_header {
+        margin-top: -30px;
+        margin-left: -30px;
+        width: 392px;
+    }
+    #navmenu{
+	    header {
+	        display: block;
+	        background: $gray_blue;
+	        height: 52px;
+	        margin-top: -18px;
+	        h1 {
+	            padding-top: 10px;
+	            font:{
+	                size: 1.5em;
+	            }
+	        }
+	    }
+	}
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation:portrait){
+	.login_template {
+		.header_sm { 
+	        text-align: center; 
+	        font:{
+	            size: 1em;
+	        }
+	        margin: 0.5em 0;
+	    }
+	    .header_lg { 
+	        font:{
+	            size: 2em;
+	        }
+	        text-align: center;
+	    }
+	    .header_lgsm { }
+	}
+	header#toolbarnav {
+	    left: 0px;
+	    top: 0px;
+	    padding-top: 2em;
+	    height: 48px;
+	    width: 100%;
+	    max-width: 640px;
+	    h1 {
+	        padding-top: 2px;
+	        padding-right: 8px;
+	        font-size: 1.3em;
+	        margin-top: -34px;
+	        position: relative;
+	    }
+	}
+	#menuoptions {
+	    width: 100%;
+	    height: 45px;
+	    margin-top: -5px;
+	    position: fixed;
+	    #step_desc {
+	        margin-top: -3px;
+	        margin-left: 36%;
+	        margin-right: 35%;
+	        font:{
+	            size: .8em;
+	        }
+	    }
+	}
+	.designform_header {
+        margin-top: -30px;
+        margin-left: -30px;
+        width: 292px;
+    }
+    #navmenu{
+	    header {
+	        display: block;
+	        background: $gray_blue;
+	        height: 52px;
+	        margin-top: -18px;
+	        h1 {
+	            padding-top: 10px;
+	            font:{
+	                size: 1.5em;
+	            }
+	        }
+	    }
+	}
+}

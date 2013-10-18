@@ -1,0 +1,73 @@
+@import 'commons/variables';
+
+@media all and (orientation:landscape) {
+	.login_template {
+	    margin: 1em auto;
+	    padding: 2em;
+	    margin: 60px auto;
+	    margin-bottom: auto;
+	    width: 390px;
+	    height: 500px;
+	}
+	form {
+	    padding: 20px;
+	    margin-bottom: 50px;
+	    .form_element { }
+	    label {
+	        font:{
+	            size: 1em;
+	            weight: bold;
+	        }
+	    }
+	    .input {
+	        padding: 7px;
+	        border-bottom: 0px;
+	        border-left: 0px;
+	        border-right: 0px;
+	        border-top: 0px solid $white;
+	        width: 100%;
+	        margin-bottom: 10px;
+	    }
+	    a.forgotpassword { }
+	    span { }
+	    #waiting { }
+	    #loading_img { }
+	    #wait-box { }
+	}
+}
+
+@media all and (orientation:portrait){
+	.login_template {
+	    margin: 1em auto;
+	    padding: 2em;
+	    margin: 60px auto;
+	    margin-bottom: auto;
+	    width: 390px;
+	    height: 500px;
+	}
+	form {
+	    padding: 20px;
+	    margin-bottom: 50px;
+	    .form_element { }
+	    label {
+	        font:{
+	            size: 1em;
+	            weight: bold;
+	        }
+	    }
+	    .input {
+	        padding: 7px;
+	        border-bottom: 0px;
+	        border-left: 0px;
+	        border-right: 0px;
+	        border-top: 0px solid $white;
+	        width: 100%;
+	        margin-bottom: 10px;
+	    }
+	    a.forgotpassword { }
+	    span { }
+	    #waiting { }
+	    #loading_img { }
+	    #wait-box { }
+	}
+}

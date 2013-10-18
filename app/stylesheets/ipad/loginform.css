@@ -1,0 +1,62 @@
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  /* line 4, ../../sass/ipad/loginform.scss */
+  .login_template {
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+  }
+
+  /* line 9, ../../sass/ipad/loginform.scss */
+  form {
+    padding: 20px;
+  }
+  /* line 12, ../../sass/ipad/loginform.scss */
+  form label {
+    font-size: 1em;
+    font-weight: bold;
+  }
+  /* line 18, ../../sass/ipad/loginform.scss */
+  form .input {
+    padding: 7px;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 0px solid white;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  /* line 35, ../../sass/ipad/loginform.scss */
+  .login_template {
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    height: auto;
+    margin-top: 20%;
+    margin-bottom: 10px;
+  }
+
+  /* line 43, ../../sass/ipad/loginform.scss */
+  form {
+    padding: 20px;
+    margin-bottom: 50px;
+    width: 300px;
+    margin-left: 20px;
+  }
+  /* line 49, ../../sass/ipad/loginform.scss */
+  form label {
+    font-size: 1em;
+    font-weight: bold;
+  }
+  /* line 55, ../../sass/ipad/loginform.scss */
+  form .input {
+    padding: 7px;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 0px solid white;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

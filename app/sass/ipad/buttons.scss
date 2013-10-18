@@ -1,0 +1,276 @@
+@import 'commons/variables';
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation : landscape){
+	.button_login {
+        width: 100%;
+        font:{
+            size: 1.5em;
+        }
+        border-top: 0px solid $soft_violet;
+        margin-top: 1em;
+        height: 35px;
+    }
+    .button_register {
+        width: 100%;
+        font:{
+            size: 1.2em;
+        }
+        border: 0px solid $soft_violet;
+        margin-top: 1em;
+        height: 35px;
+        margin-left: 0px;
+    }
+    header#toolbarnav {
+    	#menu-btn_bg {
+	        width: 45px;
+	        height: 35px;
+	        margin-top: -6px;
+	        margin-left: 10px;
+	        a#menu-button {
+	            border-bottom: 12px double $white;
+	            border-top: 4px solid $white;
+	            content: "";
+	            height: 20px;
+	            width: 34px;
+	            margin-top: -2px;
+	            margin-left: -5px;
+	        }
+	    }
+	    button#home {
+	        font:{
+	            size: .8em;
+	        }
+	        padding: 5px 5px 5px 30px;
+	        margin-left: 10px;
+	        margin-top: -50px;
+	        height: 40px;
+	        width: 40px;
+	        position: absolute;
+	    }
+	    button#home::before {
+	        width: 20px;
+	        height: 20px;
+	        left: 15px;
+	        top: 50%;
+	        margin-top: -11px;
+	        margin-left: -7px;
+	    }
+	    #menuoptions {
+		    button#home {
+	            font:{
+	                size: .8em;
+	            }
+	            padding: 5px 5px 5px 30px;
+	            margin-left: 950px;
+	            margin-top: -32px;
+	            height: 40px;
+	            width: 40px;
+	            position: absolute;
+	        }
+	        button#home::before {
+	            width: 20px;
+	            height: 20px;
+	            left: 15px;
+	            top: 50%;
+	            margin-top: -11px;
+	            margin-left: -7px;
+	        }
+		}
+    }
+    button#nav_back {
+	    font:{
+	        size: .8em;
+	    }
+	    padding: 5px 5px 5px 30px;
+	    margin-left: 15px;
+	    margin-top: -56px;
+	    height: 30px;
+	    position: fixed;
+	}
+	button#nav_back::before {
+	    width: 20px;
+	    height: 20px;
+	    left: 15px;
+	    top: 50%;
+	    margin-top: -11px;
+	    margin-left: -10px;
+	}
+	button#nav_next {
+	    font:{
+	        size: .8em;
+	    }
+	    padding: 5px 30px 10px 10px;
+	    margin-left: 930px;
+	    margin-top: -55px;
+	    height: 29px;
+	    position: absolute;
+	}
+	button#nav_next::before {
+	    right: 15px;
+	    top: 50%;
+	    margin-top: -11px;
+	    margin-right: -10px;
+	}
+	#timercount {
+	    font:{
+	        size: 1.2em;
+	    }
+	    margin-left: 890px;
+	    margin-top: -30px;
+	    height: 38px;
+	    width: 40px;
+	    position: absolute;
+	    #timercountspan{
+	        margin-top: -5px;
+	        margin-left: 2px;
+	    }
+	}
+	button#viewresult {
+	    height: 40px;
+	    width: 150px;
+	    padding-bottom: -50px;
+	}
+	#exitLab {
+	    width: 150px;
+	    height: 35px;
+	    margin-left: 45%;
+	    margin-right: 50%;
+	}
+}
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation : portrait){
+	.button_login {
+        width: 100%;
+        font:{
+            size: 1.5em;
+        }
+        border-top: 0px solid $soft_violet;
+        margin-top: 1em;
+        height: 35px;
+    }
+    .button_register {
+        width: 100%;
+        font:{
+            size: 1.2em;
+        }
+        border: 0px solid $soft_violet;
+        margin-top: 1em;
+        height: 35px;
+        margin-left: 0px;
+    }
+    header#toolbarnav {
+    	#menu-btn_bg {
+	        width: 45px;
+	        height: 35px;
+	        margin-top: -6px;
+	        margin-left: 10px;
+	        a#menu-button {
+	            border-bottom: 12px double $white;
+	            border-top: 4px solid $white;
+	            content: "";
+	            height: 20px;
+	            width: 34px;
+	            margin-top: -3px;
+	            margin-left: -5px;
+	        }
+	    }
+	    button#home {
+	        font:{
+	            size: .8em;
+	        }
+	        padding: 5px 5px 5px 30px;
+	        margin-left: 10px;
+	        margin-top: -50px;
+	        height: 40px;
+	        width: 40px;
+	        position: absolute;
+	    }
+	    button#home::before {
+	        width: 20px;
+	        height: 20px;
+	        left: 15px;
+	        top: 50%;
+	        margin-top: -11px;
+	        margin-left: -7px;
+	    }
+	    #menuoptions {
+		    button#home {
+	            font:{
+	                size: .8em;
+	            }
+	            padding: 5px 5px 5px 30px;
+	            margin-left: 700px;
+	            margin-top: -32px;
+	            height: 40px;
+	            width: 40px;
+	            position: absolute;
+	        }
+	        button#home::before {
+	            width: 20px;
+	            height: 20px;
+	            left: 15px;
+	            top: 50%;
+	            margin-top: -11px;
+	            margin-left: -7px;
+	        }
+		}
+    }
+    button#nav_back {
+	    font:{
+	        size: .8em;
+	    }
+	    padding: 5px 5px 5px 30px;
+	    margin-left: 15px;
+	    margin-top: -56px;
+	    height: 30px;
+	    position: fixed;
+	}
+	button#nav_back::before {
+	    width: 20px;
+	    height: 20px;
+	    left: 15px;
+	    top: 50%;
+	    margin-top: -11px;
+	    margin-left: -10px;
+	}
+	button#nav_next {
+	    font:{
+	        size: .8em;
+	    }
+	    padding: 5px 30px 10px 10px;
+	    margin-left: 680px;
+	    margin-top: -55px;
+	    height: 29px;
+	    position: absolute;
+	}
+	button#nav_next::before {
+	    right: 15px;
+	    top: 50%;
+	    margin-top: -11px;
+	    margin-right: -10px;
+	}
+	#timercount {
+	    font:{
+	        size: 1.2em;
+	    }
+	    margin-left: 640px;
+	    margin-top: -30px;
+	    height: 38px;
+	    width: 40px;
+	    position: absolute;
+	    #timercountspan{
+	        margin-top: -5px;
+	        margin-left: 2px;
+	    }
+	}
+	button#viewresult {
+	    height: 40px;
+	    width: 150px;
+	    padding-bottom: -50px;
+	}
+	#exitLab {
+	    width: 150px;
+	    height: 35px;
+	    margin-left: 45%;
+	    margin-right: 50%;
+	}
+}

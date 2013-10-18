@@ -1,0 +1,22 @@
+<div id="wrapper" ng-controller="groupCtrl" data-ng-init="loadgroupContent()">
+  <div id="pagebody">
+    <header id="toolbarnav">
+      <h1>My Groups</h1>
+      <button id="home" ng-click="navigatePage('home')"></button>
+    </header>
+    <section id="content" class="clearfix">
+      <div id="groups_content">
+        <div class="containerDiv">
+          <div class="rowDivHeader">
+            <div class="cellDivHeader">Group Name</div>
+            <div class="cellDivHeader">Owner</div>
+          </div>
+          <div class="rowDiv" ng-repeat="group in groups">
+            <div class="cellDiv" >{{group.title}}</div>
+            <div class="cellDiv">{{group.owner}}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
