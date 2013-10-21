@@ -31,6 +31,7 @@ mobileApp.controller('appController',
     */
 
     $scope.startLab = function(labjournal_uri){
+      console.log(parameters)
       var labjournal_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com'+labjournal_uri+'?'+parameters;
       $.ajax({
         url: labjournal_url,

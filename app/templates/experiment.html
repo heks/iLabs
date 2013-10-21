@@ -19,7 +19,7 @@
     </header>
     <section id="content" class="clearfix">
       <div id="runtimemsg" style="display:block;color:#d37a16">{{runtimeInfotext}}</div>
-      <div my-callback callback-fn="loadContent(content)"><div>{{Labtitle}}</div></div>
+      <div compile-content callback-fn="loadContent(content)"><div>{{Labtitle}}</div></div>
       <div prepopulate-questionfields></div>
       <div prepopulate-parameterfields></div>
       <div class="compile_content" ></div>
@@ -30,6 +30,7 @@
         <div class="slider-frame"><span class="slider-button">OFF</span></div>
       </div></br>
       <div id="graph"></div>
+      <div id="textdisplay">{{txt}}</div>
     </section>
   </div>
   <div id="navmenu">

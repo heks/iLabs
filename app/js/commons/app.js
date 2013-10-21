@@ -2,7 +2,10 @@
 * Instantiate the mobileApp module. Module declaratively specify 
 * how an application should be bootstrapped
 */
-var mobileApp = angular.module('mobileApp', ['ui.bootstrap', 'mobileApp.directives']);
+var mobileApp = angular.module('mobileApp', ['ui.bootstrap', 'directives.compileContent', 'directives.prepopulateFields',
+  'services.checkInputfields', 'services.parameterquestionValues', 'services.postupdateParameters', 
+  'services.postupdateQuestions', 'services.submitExperimentdesign', 'services.retrieveExperimentresult', 
+  'services.renderGraph', 'services.updateInstance']);
 /**
 * All the angular page routing takes place here...
 * Configuring existing services inside initialization blocks.
