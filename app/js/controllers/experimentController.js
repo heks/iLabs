@@ -40,9 +40,8 @@ mobileApp.controller('experimentCtrl',
     */
 
     $scope.navigateBack = function(){
-      var path = $location.path(); // Get the resource path (ex: experiment/{step_title}/{step_name})
       // Get the last index of the url path (ex: {step_name} - step1)
-      var step_name = path.substring(path.lastIndexOf('/') + 1); 
+      var step_name = $location.path().substring($location.path().lastIndexOf('/') + 1); 
       // Get the index for the previous step data in the labjournal JSONobject. (ex: 1 - 1 = 0 => index)
       var index = parseInt(step_name.charAt(step_name.length-1)) - 1; 
       localStorage.setItem('SUBMIT_DESIGN', 0);
@@ -62,9 +61,8 @@ mobileApp.controller('experimentCtrl',
     */
     
     $scope.navigateNext = function(){
-      var path = $location.path(); // Get the resource path (ex: experiment/{step_title}/{step_name})
       // Get the last index of the url path (ex: {step_name} - step1)
-      var step_name = path.substring(path.lastIndexOf('/') + 1); 
+      var step_name = $location.path().substring($location.path().lastIndexOf('/') + 1); 
       // Get the index for the next step data in the labjournal JSONobject. (ex: 1 + 1 = 2 => index)
       var index = parseInt(step_name.charAt(step_name.length-1)) + 1; 
       var username = localStorage.getItem('Username');
@@ -80,9 +78,7 @@ mobileApp.controller('experimentCtrl',
       var total_steps = getLabjournal.number_of_steps;
       if (index < total_steps){ var step_no = index; }
       if (step_no < total_steps){
-        var title = getLabjournal.labjournalsteps[index].journal_step_title;
-        var labtitle = title.toLowerCase();
-
+        var labtitle = getLabjournal.labjournalsteps[index].journal_step_title.toLowerCase();
         if (textbox == true && dropdown == true && textarea == true){
           var parameter_array = parameterquestionValues.getParametervalues(); // grab the parameter values from the appropriate inputfields
           var question_array = parameterquestionValues.getQuestionvalues(); // grab the question values from the appropriate inputfields
@@ -163,17 +159,14 @@ mobileApp.controller('experimentCtrl',
 
     $scope.renderResult = function(){
       $scope.stopBlink();
-      //$scope.retrieveExperimentresult();
       retrieveExperimentresult.retrieveExperimentresult();
-      var getresult = localStorage.getItem('EXPERIMENT_RESULT');
-      var resultparse = JSON.parse(getresult);
+      var resultparse = JSON.parse(localStorage.getItem('EXPERIMENT_RESULT'));
       var resultlength = resultparse.results.length;
       var keynames = []; 
       for (var key in resultparse.results[0]){
         keynames.push(key);
       }
-      var header = new Array(keynames[0]);
-      var distance_array = []; var result_array = [];
+      var header = new Array(keynames[0]); var distance_array = []; var result_array = [];
       for (var t1 = 0;t1 < resultlength; t1++){
        distance_array.push(resultparse.results[t1].distance);
        result_array.push(resultparse.results[t1].result);
@@ -184,7 +177,6 @@ mobileApp.controller('experimentCtrl',
       }
       var no_of_trials = resultparse.results[0].result;
       no_of_trials = no_of_trials.split(',');
-
       for (var trial = 1; trial <= no_of_trials.length; trial++){
         header.push('Trial'+trial)
       }
@@ -226,8 +218,7 @@ mobileApp.controller('experimentCtrl',
     */
 
     $scope.loadAdditionaldata = function(){
-      var path = $location.path();
-      var value = path.substring(path.lastIndexOf('/') + 1);
+      var value = $location.path().substring($location.path().lastIndexOf('/') + 1);
       var index = parseInt(value.charAt(value.length-1));
       var getlabjournal = JSON.parse(localStorage.getItem('LABJOURNAL_JSON_DATA'));
       var total_steps = getlabjournal.number_of_steps;

@@ -14,28 +14,23 @@ directives.directive('prepopulateQuestionfields', function($compile, $location, 
     scope: {},
     link: function(scope, element, attrs){
       var total_steps = localStorage.getItem('Totalsteps');
-      var labtitle = scope.Labtitle;
-      var path = $location.path();
-      var step_name = path.substring(path.lastIndexOf('/') + 1);
+      var step_name = $location.path().substring($location.path().lastIndexOf('/') + 1);
       var index = step_name.charAt(step_name.length-1); //eg: step_no = 1
       var getstep_inputs = JSON.parse(localStorage.getItem(step_name));
       var GUID = localStorage.getItem('GUID');
       if (getstep_inputs){
         if (getstep_inputs.questions){
-          var instance = getstep_inputs.questions[0].instance;
-          var instance_split = instance.split('/');
+          var instance_split = getstep_inputs.questions[0].instance.split('/');
           var instance_GUID = instance_split[instance_split.length - 2];
           if (GUID == instance_GUID){
             var getquestion_length = getstep_inputs.questions.length;
             for (var ques = 0; ques < getquestion_length; ques++){
-              var d1 = getstep_inputs.questions[ques].instance;
-              var d2 = d1.split('/');
-              var s1 = d2[d2.length - 2];
-              var s2 = s1.split('_');
-              var instance_GUID = s2[1];
-              var d3 = getstep_inputs.questions[ques].question;
-              var d4 = d3.split('/');
-              var question_ID = d4[d4.length -2];
+              var instance = getstep_inputs.questions[ques].instance.split('/');
+              var getGUID = instance[instance.length - 2];
+              var splitGUID = getGUID.split('_');
+              var instance_GUID = splitGUID[1];
+              var question_uri = getstep_inputs.questions[ques].question.split('/');
+              var question_ID = question_uri[question_uri.length -2];
               var field_ID = instance_GUID+'_'+question_ID;
               var field_value = getstep_inputs.questions[ques].response;
               if (document.getElementById(field_ID) != null){
@@ -62,28 +57,23 @@ directives.directive('prepopulateParameterfields', function($compile, $location,
     scope: {},
     link: function(scope, element, attrs){
       var total_steps = localStorage.getItem('Totalsteps');
-      var labtitle = scope.Labtitle;
-      var path = $location.path();
-      var step_name = path.substring(path.lastIndexOf('/') + 1);
+      var step_name = $location.path().substring($location.path().lastIndexOf('/') + 1);
       var index = step_name.charAt(step_name.length-1); //eg: step_no = 1
       var getstep_inputs = JSON.parse(localStorage.getItem(step_name));
       var GUID = localStorage.getItem('GUID');
       if (getstep_inputs){
         if (getstep_inputs.parameters){
-          var instance = getstep_inputs.parameters[0].instance;
-          var instance_split = instance.split('/');
+          var instance_split = getstep_inputs.parameters[0].instance.split('/');
           var instance_GUID = instance_split[instance_split.length - 2];
           if (GUID == instance_GUID){
             var getparameter_length = getstep_inputs.parameters.length;
             for (var param = 0; param < getparameter_length; param++){
-              var d1 = getstep_inputs.parameters[param].instance;
-              var d2 = d1.split('/');
-              var s1 = d2[d2.length - 2];
-              var s2 = s1.split('_');
-              var instance_GUID = s2[1];
-              var d3 = getstep_inputs.parameters[param].parameter;
-              var d4 = d3.split('/');
-              var question_ID = d4[d4.length -2];
+              var instance = getstep_inputs.parameters[param].instance.split('/');
+              var getGUID = instance[instance.length - 2];
+              var splitGUID = getGUID.split('_');
+              var instance_GUID = splitGUID[1];
+              var parameter_uri = getstep_inputs.parameters[param].parameter.split('/');
+              var question_ID = parameter_uri[parameter_uri.length -2];
               var field_ID = instance_GUID+'_'+question_ID;
               var field_value = getstep_inputs.parameters[param].response;
               if(document.getElementById(field_ID) != null){

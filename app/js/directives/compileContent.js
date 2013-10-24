@@ -43,23 +43,20 @@ directives.directive('compileContent', function($compile, $location, $http, chec
     controller: 'experimentCtrl',
     link: function(scope, element, attrs){
       var total_steps = localStorage.getItem('Totalsteps');
-      var labtitle = scope.Labtitle;
-      var path = $location.path();
-      var step_name = path.substring(path.lastIndexOf('/') + 1);
+      var step_name = $location.path().substring($location.path().lastIndexOf('/') + 1);
       var index = step_name.charAt(step_name.length-1); //eg: step_no = 1
+
       var getlabjournal = JSON.parse(localStorage.getItem('LABJOURNAL_JSON_DATA'));
       var labjournalID = getlabjournal.id;
       var total_steps = getlabjournal.number_of_steps;
 
       // Parse through the labjournal jsonobject and convert the markdown content to HTML
       var body_content = '';
-      var content = getlabjournal.labjournalsteps[index].journal_step_content;
       if (content != undefined){
         var converter  = new Markdown.Converter(),
         markdownToHtml = converter.makeHtml;
-        var markdowndata = content;
-        var htmlcontent = markdownToHtml(markdowndata);
-        body_content += htmlcontent;
+        var markdowndata = getlabjournal.labjournalsteps[index].journal_step_content;
+        body_content += markdownToHtml(markdowndata);
       }
 
       // Dynamically creating the experiment design form elements
@@ -151,8 +148,7 @@ directives.directive('compileContent', function($compile, $location, $http, chec
 
       // Exit the lab at the end of the experiment
       scope.exitLab = function(){
-	      var path = $location.path();
-        var step = path.substring(path.lastIndexOf('/') + 1);
+        var step = $location.path().substring($location.path().lastIndexOf('/') + 1);
         var index = parseInt(step.charAt(step.length-1));
 	      var username = localStorage.getItem('Username');
 	      var api_key = localStorage.getItem('API_KEY');
