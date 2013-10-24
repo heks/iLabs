@@ -3,14 +3,14 @@
   color: black;
 }
 /* line 6, ../../sass/base/thumbnail.scss */
-.thumbnails span.checktext {
+.thumbnails .checktext {
   color: #1589ff;
 }
 /* line 9, ../../sass/base/thumbnail.scss */
-.thumbnails span.bold, .thumbnails .btn {
+.thumbnails .bold, .thumbnails .btn {
   font-weight: bold;
 }
 /* line 14, ../../sass/base/thumbnail.scss */
-.thumbnails span.normal {
+.thumbnails .normal {
   font-weight: normal;
 }

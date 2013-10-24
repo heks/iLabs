@@ -3,20 +3,20 @@
 
 .thumbnails { 
     h4 { color: $black; }
-    span.checktext { color: $dodger_blue; }
-    span.textlg { }
-    span.textsm { }
-    span.bold { 
+    .checktext { color: $dodger_blue; }
+    .textlg { }
+    .textsm { }
+    .bold { 
         font:{
             weight: bold;
         }
     }
-    span.normal { 
+    .normal { 
         font:{
             weight: normal;
         }
     }
     .btn { 
-        @extend span.bold;
+        @extend .bold;
     }
 }

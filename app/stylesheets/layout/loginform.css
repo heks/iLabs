@@ -1,0 +1,61 @@
+/* line 3, ../../sass/layout/loginform.scss */
+.login_template {
+  margin: 1em auto;
+  padding: 2em;
+  margin: 60px auto;
+  margin-bottom: auto;
+  width: auto;
+  margin-left: 680px;
+  margin-right: 680px;
+}
+
+/* iPhone media query */
+@media screen and (device-aspect-ratio: 2 / 3) {
+  /* line 14, ../../sass/layout/loginform.scss */
+  .login_template {
+    width: auto;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+/* iPad media query */
+@media screen and (device-aspect-ratio: 3 / 4) {
+  /* line 23, ../../sass/layout/loginform.scss */
+  .login_template {
+    width: auto;
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+}
+/* line 29, ../../sass/layout/loginform.scss */
+form {
+  padding: 20px;
+  margin-bottom: 50px;
+  /* iPhone media query */
+}
+/* line 33, ../../sass/layout/loginform.scss */
+form label {
+  font-size: 1em;
+  font-weight: bold;
+}
+@media screen and (device-aspect-ratio: 2 / 3) {
+  /* line 29, ../../sass/layout/loginform.scss */
+  form {
+    margin-bottom: 20px;
+  }
+  /* line 42, ../../sass/layout/loginform.scss */
+  form label {
+    font-size: .8em;
+  }
+}
+/* line 48, ../../sass/layout/loginform.scss */
+form .input {
+  padding: 7px;
+  border-bottom: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px solid white;
+  width: 100%;
+  margin-bottom: 10px;
+}

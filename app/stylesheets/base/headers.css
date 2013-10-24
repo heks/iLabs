@@ -17,7 +17,7 @@
   border: 1px solid teal;
 }
 /* line 16, ../../sass/base/designform.scss */
-.designform h1.designform_title {
+.designform .designform_title {
   color: white;
   text-align: center;
 }
@@ -48,7 +48,7 @@
 }
 
 /* line 31, ../../sass/base/headers.scss */
-header#toolbarnav {
+#toolbarnav {
   display: block;
   z-index: 9999;
   position: fixed;
@@ -59,7 +59,7 @@ header#toolbarnav {
   -webkit-box-shadow: 0px 0px 15px blue inset;
 }
 /* line 38, ../../sass/base/headers.scss */
-header#toolbarnav h1 {
+#toolbarnav h1 {
   text-align: center;
   color: #e6e8f2;
   font-weight: bold;

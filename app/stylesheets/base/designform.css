@@ -17,7 +17,7 @@
   border: 1px solid teal;
 }
 /* line 16, ../../sass/base/designform.scss */
-.designform h1.designform_title {
+.designform .designform_title {
   color: white;
   text-align: center;
 }

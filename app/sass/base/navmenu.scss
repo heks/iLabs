@@ -35,11 +35,11 @@
                 text-shadow: -1px -1px 1px $darkest_gray;
                 text-decoration: none;
             }
-            a.navlink:hover {
+            .navlink:hover {
                 color: #cad0e6;
                 text-decoration: none;
             }
-            a.navlink::after {
+            .navlink::after {
                 content: '';
                 display: block;
                 border-right: 3px solid $grayish_blue;
@@ -47,8 +47,8 @@
                 position: absolute;
                 @include transform(45deg);
             }
-            a.arrow::after { content: ''; }
-            a.navlink:hover::after { border-color: $light_gray_blue; }
+            .arrow::after { content: ''; }
+            .navlink:hover::after { border-color: $light_gray_blue; }
         }
     }
 }

@@ -1,0 +1,51 @@
+/* line 3, ../../sass/layout/designform.scss */
+.designform {
+  padding: 30px;
+  width: 500px;
+  /* iPhone media query */
+}
+@media screen and (device-aspect-ratio: 2 / 3) {
+  /* line 3, ../../sass/layout/designform.scss */
+  .designform {
+    width: auto;
+  }
+}
+/* line 10, ../../sass/layout/designform.scss */
+.designform .designform_title {
+  font-size: .8em;
+  margin-top: 3px;
+  width: 100%;
+  /* iPhone media query */
+  /* iPad media query */
+}
+@media screen and (device-aspect-ratio: 2 / 3) {
+  /* line 10, ../../sass/layout/designform.scss */
+  .designform .designform_title {
+    margin-top: -1px;
+    font-size: .7em;
+  }
+}
+@media screen and (device-aspect-ratio: 3 / 4) {
+  /* line 10, ../../sass/layout/designform.scss */
+  .designform .designform_title {
+    margin-top: -3px;
+  }
+}
+/* line 28, ../../sass/layout/designform.scss */
+.designform label {
+  font-size: .6em;
+  margin-top: 20px;
+}
+/* line 33, ../../sass/layout/designform.scss */
+.designform label a {
+  margin-left: 10px;
+  font-size: 1.2em;
+}
+/* line 40, ../../sass/layout/designform.scss */
+.designform input {
+  font-size: .6em;
+}
+/* line 45, ../../sass/layout/designform.scss */
+.designform select {
+  font-size: .6em;
+}

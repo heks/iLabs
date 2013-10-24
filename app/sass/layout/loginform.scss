@@ -1,0 +1,58 @@
+@import 'commons/variables';
+
+.login_template {
+    margin: 1em auto;
+    padding: 2em;
+    margin: 60px auto;
+    margin-bottom: auto;
+    width: auto;
+	margin-left: 680px;
+	margin-right: 680px;
+}
+/* iPhone media query */
+@media screen and (device-aspect-ratio: 2/3){
+	.login_template {
+		width: auto;
+		margin-top: 10px;
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+}
+/* iPad media query */
+@media screen and (device-aspect-ratio: 3/4){
+    .login_template {
+        width: auto;
+        margin-left: 200px;
+        margin-right: 200px;
+    }
+}
+form {
+    padding: 20px;
+    margin-bottom: 50px;
+    .form_element { }
+    label {
+        font: {
+            size: 1em;
+            weight: bold;
+        }
+    }
+    /* iPhone media query */
+    @media screen and (device-aspect-ratio: 2/3){
+    	margin-bottom: 20px;
+    	label {
+	    	font: {
+	            size: .8em;
+	        }
+	    }
+    }
+    .input {
+        padding: 7px;
+        border-bottom: 0px;
+        border-left: 0px;
+        border-right: 0px;
+        border-top: 0px solid $white;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+

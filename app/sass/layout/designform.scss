@@ -1,0 +1,50 @@
+@import 'commons/variables';
+
+.designform {
+    padding: 30px;
+    width: 500px;
+    /* iPhone media query */
+    @media screen and (device-aspect-ratio: 2/3){
+        width: auto;
+    }
+    .designform_title {
+        font: {
+            size: .8em;
+        }
+        margin-top: 3px;
+        width: 100%;
+        /* iPhone media query */
+        @media screen and (device-aspect-ratio: 2/3){
+            margin-top: -1px;
+            font: {
+                size: .7em;
+            }
+        }
+        /* iPad media query */
+        @media screen and (device-aspect-ratio: 3/4){
+            margin-top: -3px;
+        }
+    }
+    label {
+        font:{
+            size: .6em;
+        }
+        margin-top: 20px;
+        a {
+            margin-left: 10px;
+            font:{
+            size: 1.2em;
+        }
+        }
+    }
+    input { 
+        font:{
+            size: .6em;
+        } 
+    }
+    select { 
+    	font:{
+            size: .6em;
+        }
+    }
+}

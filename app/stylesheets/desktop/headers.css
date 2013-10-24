@@ -12,7 +12,7 @@
   }
 
   /* line 20, ../../sass/desktop/headers.scss */
-  header#toolbarnav {
+  #toolbarnav {
     left: 0px;
     top: 0px;
     padding-top: 2em;
@@ -20,7 +20,7 @@
     width: 100%;
   }
   /* line 26, ../../sass/desktop/headers.scss */
-  header#toolbarnav h1 {
+  #toolbarnav h1 {
     padding-top: 2px;
     padding-right: 8px;
     font-size: 2em;
@@ -76,7 +76,7 @@
   }
 
   /* line 87, ../../sass/desktop/headers.scss */
-  header#toolbarnav {
+  #toolbarnav {
     left: 0px;
     top: 0px;
     padding-top: 2em;
@@ -84,7 +84,7 @@
     width: 100%;
   }
   /* line 93, ../../sass/desktop/headers.scss */
-  header#toolbarnav h1 {
+  #toolbarnav h1 {
     padding-top: 2px;
     padding-right: 8px;
     font-size: 2em;

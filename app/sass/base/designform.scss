@@ -13,7 +13,7 @@
     @include box-shadow-inset(0px, 0px, 10px, $dark_cyan);
     @include border-radius(15px);
     border: 1px solid $dark_cyan;
-    h1.designform_title {
+    .designform_title {
         color: $white;
         text-align: center;
     }

@@ -1,0 +1,67 @@
+/* line 3, ../../sass/layout/grid.scss */
+.containerDiv {
+  width: 100%;
+  margin-left: 0px;
+}
+
+/* line 7, ../../sass/layout/grid.scss */
+.rowDivHeader {
+  font-size: 1em;
+}
+
+/* line 13, ../../sass/layout/grid.scss */
+.cellDivHeader {
+  width: 12%;
+  padding: 1px;
+  font-size: 1em;
+  /* iPhone media query */
+  /* iPad media query */
+}
+@media screen and (device-aspect-ratio: 2 / 3) {
+  /* line 13, ../../sass/layout/grid.scss */
+  .cellDivHeader {
+    font-size: .8em;
+  }
+}
+@media screen and (device-aspect-ratio: 3 / 4) {
+  /* line 13, ../../sass/layout/grid.scss */
+  .cellDivHeader {
+    font-size: 1em;
+  }
+}
+
+/* line 32, ../../sass/layout/grid.scss */
+.cellDiv {
+  font-size: 1em;
+  width: 10%;
+  padding-right: 4px;
+  /* iPhone media query */
+  /* iPad media query */
+}
+@media screen and (device-aspect-ratio: 2 / 3) {
+  /* line 32, ../../sass/layout/grid.scss */
+  .cellDiv {
+    font-size: 1em;
+  }
+}
+@media screen and (device-aspect-ratio: 3 / 4) {
+  /* line 32, ../../sass/layout/grid.scss */
+  .cellDiv {
+    font-size: 1em;
+  }
+}
+
+/* line 51, ../../sass/layout/grid.scss */
+.cellDiv button {
+  font-weight: bold;
+  width: 80px;
+  height: 25px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+}
+
+/* line 61, ../../sass/layout/grid.scss */
+.lastCell {
+  border-right: none;
+}

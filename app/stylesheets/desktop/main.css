@@ -39,7 +39,7 @@
     margin-bottom: 5px;
   }
   /* line 33, ../../sass/desktop/main.scss */
-  #homecontent span.group_subtitle {
+  #homecontent .group_subtitle {
     font-size: 1em;
     line-height: 1em;
     margin-bottom: 10px;
@@ -109,7 +109,7 @@
     margin-bottom: 5px;
   }
   /* line 96, ../../sass/desktop/main.scss */
-  #homecontent span.group_subtitle {
+  #homecontent .group_subtitle {
     font-size: 1em;
     line-height: 1em;
     margin-bottom: 10px;

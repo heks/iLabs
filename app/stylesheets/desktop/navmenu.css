@@ -20,24 +20,24 @@
     margin-top: 0px;
   }
   /* line 20, ../../sass/desktop/navmenu.scss */
-  #navmenu ul li a.navlink {
+  #navmenu ul li .navlink {
     padding: 14px 11px;
     font-size: 1em;
   }
   /* line 27, ../../sass/desktop/navmenu.scss */
-  #navmenu ul li a.navlink::after {
+  #navmenu ul li .navlink::after {
     width: 6px;
     height: 6px;
     right: 30px;
     top: 45%;
   }
   /* line 34, ../../sass/desktop/navmenu.scss */
-  #navmenu ul li a.arrow {
+  #navmenu ul li .arrow {
     padding: 14px 11px;
     font-size: 1em;
   }
   /* line 41, ../../sass/desktop/navmenu.scss */
-  #navmenu ul li a.arrow::after {
+  #navmenu ul li .arrow::after {
     width: 6px;
     height: 6px;
     right: 30px;
@@ -64,24 +64,24 @@
     margin-top: 0px;
   }
   /* line 68, ../../sass/desktop/navmenu.scss */
-  #navmenu ul li a.navlink {
+  #navmenu ul li .navlink {
     padding: 14px 11px;
     font-size: 1em;
   }
   /* line 75, ../../sass/desktop/navmenu.scss */
-  #navmenu ul li a.navlink::after {
+  #navmenu ul li .navlink::after {
     width: 6px;
     height: 6px;
     right: 30px;
     top: 45%;
   }
   /* line 82, ../../sass/desktop/navmenu.scss */
-  #navmenu ul li a.arrow {
+  #navmenu ul li .arrow {
     padding: 14px 11px;
     font-size: 1em;
   }
   /* line 89, ../../sass/desktop/navmenu.scss */
-  #navmenu ul li a.arrow::after {
+  #navmenu ul li .arrow::after {
     width: 6px;
     height: 6px;
     right: 30px;

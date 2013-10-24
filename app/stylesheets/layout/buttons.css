@@ -1,0 +1,271 @@
+/* line 3, ../../sass/layout/buttons.scss */
+.button_login {
+  width: 100%;
+  font-size: 1.5em;
+  border-top: 0px solid #ad64e0;
+  margin-top: 1em;
+  height: 35px;
+}
+
+/* iPhone media query */
+@media screen and (device-aspect-ratio: 2 / 3) {
+  /* line 14, ../../sass/layout/buttons.scss */
+  .button_login {
+    font-size: 1.2em;
+  }
+}
+/* line 20, ../../sass/layout/buttons.scss */
+.button_register {
+  width: 100%;
+  font-size: 1.2em;
+  border: 0px solid #ad64e0;
+  margin-top: 1em;
+  height: 35px;
+  margin-left: 0px;
+}
+
+/* line 31, ../../sass/layout/buttons.scss */
+#toolbarnav #menu-btn_bg {
+  width: 40px;
+  height: 33px;
+  margin-top: -6px;
+  margin-left: 0px;
+  position: absolute;
+  /* iPhone media query */
+}
+@media screen and (device-aspect-ratio: 2 / 3) {
+  /* line 31, ../../sass/layout/buttons.scss */
+  #toolbarnav #menu-btn_bg {
+    width: 38px;
+    height: 31px;
+  }
+}
+/* line 42, ../../sass/layout/buttons.scss */
+#toolbarnav #menu-btn_bg #menu-button {
+  border-bottom: 10px double white;
+  border-top: 3px solid white;
+  content: "";
+  height: 16px;
+  width: 25px;
+  margin-top: -2px;
+  margin-left: -3px;
+  margin-bottom: 0px;
+  /* iPhone media query */
+}
+@media screen and (device-aspect-ratio: 2 / 3) {
+  /* line 42, ../../sass/layout/buttons.scss */
+  #toolbarnav #menu-btn_bg #menu-button {
+    border-bottom: 10px double white;
+    border-top: 3px solid white;
+    height: 17px;
+    width: 24px;
+    margin-top: -3px;
+  }
+}
+/* line 61, ../../sass/layout/buttons.scss */
+#toolbarnav #home_back {
+  font-size: .8em;
+  padding: 5px 5px 5px 30px;
+  margin-left: 7px;
+  margin-top: -60px;
+  height: 30px;
+  position: absolute;
+  /* iPhone media query */
+}
+@media screen and (device-aspect-ratio: 2 / 3) {
+  /* line 61, ../../sass/layout/buttons.scss */
+  #toolbarnav #home_back {
+    margin-top: -50px;
+  }
+}
+@media screen and (device-aspect-ratio: 3 / 4) {
+  /* line 61, ../../sass/layout/buttons.scss */
+  #toolbarnav #home_back {
+    margin-top: -55px;
+  }
+}
+/* line 78, ../../sass/layout/buttons.scss */
+#toolbarnav #home_back::before {
+  width: 20px;
+  height: 20px;
+  left: 15px;
+  top: 50%;
+  margin-top: -11px;
+  margin-left: -10px;
+}
+/* line 87, ../../sass/layout/buttons.scss */
+#toolbarnav #menuoptions #home {
+  font-size: .8em;
+  padding: 5px 5px 5px 30px;
+  margin-top: -32px;
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  right: 20px;
+  /* iPhone media query */
+}
+@media screen and (device-aspect-ratio: 2 / 3) {
+  /* line 87, ../../sass/layout/buttons.scss */
+  #toolbarnav #menuoptions #home {
+    right: 10px;
+    height: 35px;
+    width: 35px;
+  }
+}
+@media screen and (device-aspect-ratio: 3 / 4) {
+  /* line 87, ../../sass/layout/buttons.scss */
+  #toolbarnav #menuoptions #home {
+    right: 10px;
+  }
+}
+/* line 107, ../../sass/layout/buttons.scss */
+#toolbarnav #menuoptions #home::before {
+  width: 20px;
+  height: 20px;
+  left: 15px;
+  top: 50%;
+  margin-top: -11px;
+  margin-left: -7px;
+  /* iPhone media query */
+}
+@media screen and (device-aspect-ratio: 2 / 3) {
+  /* line 107, ../../sass/layout/buttons.scss */
+  #toolbarnav #menuoptions #home::before {
+    left: 14px;
+  }
+}
+
+/* line 121, ../../sass/layout/buttons.scss */
+#nav_back {
+  font-size: .8em;
+  padding: 5px 5px 5px 30px;
+  margin-left: 7px;
+  margin-top: -60px;
+  height: 30px;
+  position: absolute;
+  /* iPhone media query */
+}
+@media screen and (device-aspect-ratio: 2 / 3) {
+  /* line 121, ../../sass/layout/buttons.scss */
+  #nav_back {
+    margin-top: -50px;
+  }
+}
+
+/* line 135, ../../sass/layout/buttons.scss */
+#nav_back::before {
+  width: 20px;
+  height: 20px;
+  left: 15px;
+  top: 50%;
+  margin-top: -11px;
+  margin-left: -10px;
+}
+
+/* line 143, ../../sass/layout/buttons.scss */
+#nav_next {
+  font-size: .8em;
+  padding: 5px 30px 10px 10px;
+  margin-top: -62px;
+  height: 29px;
+  position: absolute;
+  right: 20px;
+  /* iPhone media query */
+}
+@media screen and (device-aspect-ratio: 2 / 3) {
+  /* line 143, ../../sass/layout/buttons.scss */
+  #nav_next {
+    margin-top: -49px;
+    right: 10px;
+  }
+}
+@media screen and (device-aspect-ratio: 3 / 4) {
+  /* line 143, ../../sass/layout/buttons.scss */
+  #nav_next {
+    margin-top: -59px;
+    right: 10px;
+  }
+}
+
+/* line 162, ../../sass/layout/buttons.scss */
+#nav_next::before {
+  right: 15px;
+  top: 50%;
+  margin-top: -11px;
+  margin-right: -10px;
+}
+
+/* line 168, ../../sass/layout/buttons.scss */
+#timercount {
+  font-size: 1.2em;
+  margin-top: -30px;
+  height: 38px;
+  width: 40px;
+  position: absolute;
+  right: 30px;
+  /* iPhone media query */
+  /* iPad media query */
+}
+/* line 177, ../../sass/layout/buttons.scss */
+#timercount #timercountspan {
+  margin-top: -5px;
+  margin-left: -7px;
+}
+@media screen and (device-aspect-ratio: 2 / 3) {
+  /* line 168, ../../sass/layout/buttons.scss */
+  #timercount {
+    right: 50px;
+    height: 34px;
+    width: 38px;
+    margin-top: -31px;
+  }
+  /* line 187, ../../sass/layout/buttons.scss */
+  #timercount #timercountspan {
+    margin-top: -5px;
+    margin-left: 2px;
+  }
+}
+@media screen and (device-aspect-ratio: 3 / 4) {
+  /* line 168, ../../sass/layout/buttons.scss */
+  #timercount {
+    right: 60px;
+    margin-top: -31px;
+  }
+  /* line 196, ../../sass/layout/buttons.scss */
+  #timercount #timercountspan {
+    margin-top: -5px;
+    margin-left: 4px;
+  }
+}
+
+/* line 202, ../../sass/layout/buttons.scss */
+#viewresult {
+  height: 40px;
+  width: 150px;
+  padding-bottom: 10px;
+}
+
+/* line 207, ../../sass/layout/buttons.scss */
+#exitLab {
+  width: 150px;
+  height: 35px;
+  margin-left: 45%;
+  margin-right: 50%;
+  /* iPhone media query */
+  /* iPad media query */
+}
+@media screen and (device-aspect-ratio: 2 / 3) {
+  /* line 207, ../../sass/layout/buttons.scss */
+  #exitLab {
+    margin-left: 25%;
+    margin-right: 50%;
+    width: 140px;
+  }
+}
+@media screen and (device-aspect-ratio: 3 / 4) {
+  /* line 207, ../../sass/layout/buttons.scss */
+  #exitLab {
+    margin-left: 40%;
+    margin-right: 55%;
+  }
+}

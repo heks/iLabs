@@ -29,22 +29,22 @@
 	margin-top: 40px;
 	margin-left: 40px;
 }
-button#nav_back {
+#nav_back {
     @include navigation-button();
     position: absolute;
 }
-button#nav_back::before {
+#nav_back::before {
     background-color: $dark_brown;
     @include background-image('../../img/back_16x16.png');
     box-shadow: inset 0px 1px 0px $dark_brown, 0px 1px 0px $gray_orange;
     position: absolute;
     @include border-radius(50%);
 }
-button#nav_next {
+#nav_next {
     @include navigation-button();
     position: relative;
 }
-button#nav_next::before {
+#nav_next::before {
     background-color: $dark_brown;
     @include background-image('../../img/next_16x16.png');
     width: 20px;
@@ -56,7 +56,7 @@ button#nav_next::before {
 #menu-btn_bg {
     @include menuoptions();
 }
-a#menu-button {
+#menu-button {
     display: block;
     background-color: $gray_blue;
 }
@@ -67,8 +67,20 @@ a#menu-button {
 #viewresult {
     @include create-button($darker_gray, $dark_lime_green, 3px);
     padding: 10px 10px 10px 10px;
+    color: $white;
 }
-button#home {
+#home_back {
+    @include navigation-button();
+    position: absolute;
+}
+#home_back::before {
+    background-color: $dark_brown;
+    @include background-image('../../img/home_blue16x16.png');
+    box-shadow: inset 0px 1px 0px $dark_brown, 0px 1px 0px $gray_orange;
+    position: absolute;
+    @include border-radius(50%);
+}
+#home {
     border: 1px solid $dark_gray;
     @include border-radius(100px);
     font:{
@@ -79,19 +91,19 @@ button#home {
     display: inline-block;
     text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
     color: $light_gray;
-    background-color: $black;
-    @include background-image-gradient($dark_gray, $darkest_gray);
-    background-color: $gray_blue;
+    background-color: $dodger_blue;
+    @include background-image-gradient(#38acec, #38acec);
     @include box-shadow-inset(0px, 0px, 15px, $black);
     position: relative;
 }
-button#home::before {
+#home::before {
     background-color: $dodger_blue;
     @include background-image('../../img/home_blue16x16.png');
     box-shadow: inset 0px 1px 0px $dark_brown, 0px 1px 0px $gray_orange;
     position: absolute;
     @include border-radius(80%);
 }
+
 #exitLab {
     color: $white;
     background-color: $vivid_blue;

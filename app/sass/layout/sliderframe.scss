@@ -1,0 +1,28 @@
+@import 'commons/variables';
+
+.slider-frame {
+    margin: 0;
+    padding: 0;
+    margin: 0 auto;
+    width: 85px;
+    height: 29px;
+    margin-left: 210px;
+    margin-top: -30px;
+}
+.slider-button {
+    margin: 0;
+    padding: 0;
+    width: 43px;
+    height: 27px;
+    line-height: 27px;
+    font:{
+        size: 11px;
+    }
+}
+.slider-button.on { margin-left: 40px; }
+.slider-button:before {
+    margin: 0;
+    padding: 0;
+    width: 40px;
+    height: 12px;
+}

@@ -32,9 +32,10 @@ mobileApp.controller('subscriptionCtrl',
       if (total_count != 0){
         var subscription_data = '[';
         for (var subscription_count = 0; subscription_count < total_count; subscription_count++){
+          var subscribed_date = get_subscriptionjson.objects[subscription_count].subscribed_date.split('T');
           subscription_data += '{';
           subscription_data += '"lab_journal_title" : "'+get_subscriptionjson.objects[subscription_count].lab_journal_title+'",';
-          subscription_data += '"subscribed_date" : "'+get_subscriptionjson.objects[subscription_count].subscribed_date+'",';
+          subscription_data += '"subscribed_date" : "'+subscribed_date[0]+'",';
           subscription_data += '"lab_journal" : "'+get_subscriptionjson.objects[subscription_count].lab_journal+'"';
           subscription_data += '},'
         }

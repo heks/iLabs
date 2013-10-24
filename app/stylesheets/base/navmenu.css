@@ -39,12 +39,12 @@
   text-decoration: none;
 }
 /* line 38, ../../sass/base/navmenu.scss */
-#navmenu ul li a.navlink:hover {
+#navmenu ul li .navlink:hover {
   color: #cad0e6;
   text-decoration: none;
 }
 /* line 42, ../../sass/base/navmenu.scss */
-#navmenu ul li a.navlink::after {
+#navmenu ul li .navlink::after {
   content: '';
   display: block;
   border-right: 3px solid #cee6fe;
@@ -56,10 +56,10 @@
   transform: rotate(45deg);
 }
 /* line 50, ../../sass/base/navmenu.scss */
-#navmenu ul li a.arrow::after {
+#navmenu ul li .arrow::after {
   content: '';
 }
 /* line 51, ../../sass/base/navmenu.scss */
-#navmenu ul li a.navlink:hover::after {
+#navmenu ul li .navlink:hover::after {
   border-color: #e6e8f2;
 }

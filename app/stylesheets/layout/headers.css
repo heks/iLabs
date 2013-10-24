@@ -1,0 +1,136 @@
+/* line 3, ../../sass/layout/headers.scss */
+.login_template {
+  /* iPhone media query */
+}
+/* line 4, ../../sass/layout/headers.scss */
+.login_template .header_sm {
+  text-align: center;
+  font-size: 1em;
+  margin: 0.5em 0;
+}
+/* line 11, ../../sass/layout/headers.scss */
+.login_template .header_lg {
+  font-size: 2em;
+  text-align: center;
+}
+@media screen and (device-aspect-ratio: 2 / 3) {
+  /* line 19, ../../sass/layout/headers.scss */
+  .login_template .header_lg {
+    font-size: 1.8em;
+  }
+}
+
+/* line 26, ../../sass/layout/headers.scss */
+#toolbarnav {
+  left: 0px;
+  top: 0px;
+  padding-top: 2em;
+  height: 58px;
+  width: 100%;
+  /* iPhone media query */
+  /* iPad media query */
+}
+/* line 32, ../../sass/layout/headers.scss */
+#toolbarnav h1 {
+  padding-top: 2px;
+  padding-right: 8px;
+  font-size: 1.8em;
+  margin-top: -20px;
+}
+@media screen and (device-aspect-ratio: 2 / 3) {
+  /* line 26, ../../sass/layout/headers.scss */
+  #toolbarnav {
+    height: 48px;
+  }
+  /* line 43, ../../sass/layout/headers.scss */
+  #toolbarnav h1 {
+    font-size: 1.3em;
+    margin-top: -30px;
+  }
+}
+@media screen and (device-aspect-ratio: 3 / 4) {
+  /* line 52, ../../sass/layout/headers.scss */
+  #toolbarnav h1 {
+    font-size: 1.5em;
+  }
+}
+
+/* line 59, ../../sass/layout/headers.scss */
+#menuoptions {
+  width: 100%;
+  height: 45px;
+  margin-top: -18px;
+  position: fixed;
+  /* iPhone media query */
+  /* iPad media query */
+}
+/* line 64, ../../sass/layout/headers.scss */
+#menuoptions #step_desc {
+  margin-top: -2px;
+  margin-left: 47%;
+  margin-right: 30%;
+  font-size: .8em;
+}
+@media screen and (device-aspect-ratio: 2 / 3) {
+  /* line 59, ../../sass/layout/headers.scss */
+  #menuoptions {
+    height: 40px;
+    margin-top: -13px;
+  }
+  /* line 76, ../../sass/layout/headers.scss */
+  #menuoptions #step_desc {
+    margin-left: 38%;
+    margin-right: 35%;
+    font-size: .8em;
+  }
+}
+@media screen and (device-aspect-ratio: 3 / 4) {
+  /* line 86, ../../sass/layout/headers.scss */
+  #menuoptions #step_desc {
+    margin-left: 45%;
+    margin-right: 45%;
+    font-size: .8em;
+  }
+}
+
+/* line 95, ../../sass/layout/headers.scss */
+.designform_header {
+  margin-top: -30px;
+  margin-left: -30px;
+  width: 499px;
+  /* iPhone media query */
+}
+@media screen and (device-aspect-ratio: 2 / 3) {
+  /* line 95, ../../sass/layout/headers.scss */
+  .designform_header {
+    width: auto;
+    margin-right: -30px;
+  }
+}
+
+/* line 106, ../../sass/layout/headers.scss */
+#navmenu header {
+  display: block;
+  background: #303a44;
+  height: 52px;
+  margin-top: -10px;
+}
+/* line 111, ../../sass/layout/headers.scss */
+#navmenu header h1 {
+  padding-top: 10px;
+  font-size: 1.5em;
+  /* iPhone media query */
+  /* iPad media query */
+}
+@media screen and (device-aspect-ratio: 2 / 3) {
+  /* line 111, ../../sass/layout/headers.scss */
+  #navmenu header h1 {
+    font-size: 1.2em;
+  }
+}
+@media screen and (device-aspect-ratio: 3 / 4) {
+  /* line 111, ../../sass/layout/headers.scss */
+  #navmenu header h1 {
+    font-size: 1.2em;
+  }
+}

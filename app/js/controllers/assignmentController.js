@@ -32,9 +32,10 @@ mobileApp.controller('assignmentCtrl',
       if (total_count != 0){
         var assignment_data = '[';
         for (var assignment_count = 0; assignment_count < total_count; assignment_count++){
+          var assigned_date = get_assignmentjson.objects[assignment_count].assigned_date.split('T');
           assignment_data += '{';
           assignment_data += '"lab_journal_title" : "'+get_assignmentjson.objects[assignment_count].lab_journal_title+'",';
-          assignment_data += '"assigned_date" : "'+get_assignmentjson.objects[assignment_count].assigned_date+'",';
+          assignment_data += '"assigned_date" : "'+assigned_date[0]+'",';
           assignment_data += '"lab_journal" : "'+get_assignmentjson.objects[assignment_count].lab_journal+'"';
           assignment_data += '},'
         }

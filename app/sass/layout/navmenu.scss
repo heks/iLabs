@@ -1,0 +1,55 @@
+@import 'commons/variables';
+
+#wrapper #navmenu {
+    width: 300px;
+    left: 0px;
+    top: 0px;
+    margin-top: 0px;
+}
+#pagebody #navmenu {
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    margin-top: 55px;
+    overflow: auto;
+    @media screen and (device-aspect-ratio: 2/3){
+    	margin-top: 40px;
+	}
+}
+
+#navmenu {
+    ul { 
+        margin-top: 0px; 
+        li { 
+            .navlink {
+                padding: 14px 11px;
+                font:{
+                    size: 1em;
+                }
+            }
+            .navlink:hover { }
+            .navlink::after {
+                width: 6px;
+                height: 6px;
+                right: 30px;
+                top: 45%;
+            }
+            .navlink:hover::after { }
+            .arrow {
+                padding: 14px 11px;
+                font:{
+                    size: 1em;
+                }
+            }
+            .arrow:hover { }
+            .arrow::after {
+                width: 6px;
+                height: 6px;
+                right: 30px;
+                top: 45%;
+            }
+            .arrow:hover::after { }
+        }
+    }
+}
+     

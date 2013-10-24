@@ -5,6 +5,7 @@
     border: 0px solid $violet;
     @include border-radius(20px);
     @include background-gradient($black, $black);
+    margin-bottom: auto;
 }
 form {
     border: 0px solid $violet;
@@ -32,7 +33,7 @@ form {
 	    @include box-shadow(0px, 0px, 2px, $black);
 	    background: $white;
 	}
-	a.forgotpassword {
+	.forgotpassword {
 		color: $white;
 		font: {
 	    	 size: .8em;
