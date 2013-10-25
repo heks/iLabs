@@ -15,7 +15,7 @@
 	         text-align: center;
 	    }
         /* iPhone media query */
-	    @media screen and (device-aspect-ratio: 2/3){
+	    @media only screen and (max-device-width: 480px){
 	    	.header_lg { 
 		        font: {
 		            size: 1.8em;
@@ -38,7 +38,7 @@
         margin-top: -20px;
     }
     /* iPhone media query */
-    @media screen and (device-aspect-ratio: 2/3){
+    @media only screen and (max-device-width: 480px){
     	height: 48px;
     	h1 {
     		font: {
@@ -48,7 +48,7 @@
     	}
     }
     /* iPad media query */
-    @media screen and (device-aspect-ratio: 3/4){
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px){
         h1 {
             font: {
                 size: 1.5em;
@@ -70,7 +70,7 @@
         }
     }
     /* iPhone media query */
-    @media screen and (device-aspect-ratio: 2/3){
+    @media only screen and (max-device-width: 480px){
         height: 40px;
         margin-top: -13px;
         #step_desc {
@@ -82,7 +82,7 @@
         }
     }
     /* iPad media query */
-    @media screen and (device-aspect-ratio: 3/4){
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px){
         #step_desc {
             margin-left: 45%;
             margin-right: 45%;
@@ -97,7 +97,7 @@
     margin-left: -30px;
     width: 499px;
     /* iPhone media query */
-    @media screen and (device-aspect-ratio: 2/3){
+    @media only screen and (max-device-width: 480px){
         width: auto;
         margin-right: -30px;
     }
@@ -114,13 +114,13 @@
                 size: 1.5em;
             }
             /* iPhone media query */
-            @media screen and (device-aspect-ratio: 2/3){
+            @media only screen and (max-device-width: 480px){
             	font: {
 	                size: 1.2em;
 	            }
             }
             /* iPad media query */
-            @media screen and (device-aspect-ratio: 3/4){
+            @media only screen and (min-device-width: 768px) and (max-device-width: 1024px){
                 font: {
                     size: 1.2em;
                 }

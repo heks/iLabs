@@ -12,7 +12,7 @@
     top: 0px;
     margin-top: 55px;
     overflow: auto;
-    @media screen and (device-aspect-ratio: 2/3){
+    @media only screen and (max-device-width: 480px){
     	margin-top: 40px;
 	}
 }

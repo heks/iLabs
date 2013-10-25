@@ -3,7 +3,7 @@
 #app_envelope { height: 100%; }
 #wrapper { height: 100%; }
 /* iPhone media query */
-@media screen and (device-aspect-ratio: 2/3){
+@media only screen and (max-device-width: 480px){
     #wrapper { height: auto;}
 }
 #pagebody {
@@ -64,11 +64,11 @@
         margin-bottom: 25px;
     }
     /* iPhone media query */
-    @media screen and (device-aspect-ratio: 2/3){
+    @media only screen and (max-device-width: 480px){
         margin-top: 80px;
     }
     /* iPad media query */
-    @media screen and (device-aspect-ratio: 3/4){
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px){
         margin-top: 90px;
     }
 }

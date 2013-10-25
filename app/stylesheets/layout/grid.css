@@ -17,13 +17,13 @@
   /* iPhone media query */
   /* iPad media query */
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 13, ../../sass/layout/grid.scss */
   .cellDivHeader {
     font-size: .8em;
   }
 }
-@media screen and (device-aspect-ratio: 3 / 4) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* line 13, ../../sass/layout/grid.scss */
   .cellDivHeader {
     font-size: 1em;
@@ -38,13 +38,13 @@
   /* iPhone media query */
   /* iPad media query */
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 32, ../../sass/layout/grid.scss */
   .cellDiv {
-    font-size: 1em;
+    font-size: .8em;
   }
 }
-@media screen and (device-aspect-ratio: 3 / 4) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* line 32, ../../sass/layout/grid.scss */
   .cellDiv {
     font-size: 1em;

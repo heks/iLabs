@@ -10,7 +10,7 @@
     height: 35px;
 }
 /* iPhone media query */
-@media screen and (device-aspect-ratio: 2/3){
+@media only screen and (max-device-width: 480px){
 	.button_login {
 		font: {
 	        size: 1.2em;
@@ -35,7 +35,7 @@
         margin-left: 0px;
         position: absolute;
         /* iPhone media query */
-        @media screen and (device-aspect-ratio: 2/3){
+        @media only screen and (max-device-width: 480px){
             width: 38px;
             height: 31px;
         }
@@ -49,7 +49,7 @@
 	        margin-left: -3px;
 	        margin-bottom: 0px;
             /* iPhone media query */
-            @media screen and (device-aspect-ratio: 2/3){
+            @media only screen and (max-device-width: 480px){
                 border-bottom: 10px double $white;
                 border-top: 3px solid $white;
                 height: 17px;
@@ -64,23 +64,25 @@
         }
         padding: 5px 5px 5px 30px;
         margin-left: 7px;
-        margin-top: -60px;
-        height: 30px;
+        margin-top: -50px;
+        height: 25px;
+        width: 72px;
         position: absolute;
         /* iPhone media query */
-        @media screen and (device-aspect-ratio: 2/3){
-            margin-top: -50px;
+        @media only screen and (max-device-width: 480px){
+            margin-top: -45px;
         }
-        @media screen and (device-aspect-ratio: 3/4){
+        /* iPad media query */
+        @media only screen and (min-device-width: 768px) and (max-device-width: 1024px){
             margin-top: -55px;
         }
     }
     #home_back::before {
         width: 20px;
         height: 20px;
-        left: 15px;
+        left: 14px;
         top: 50%;
-        margin-top: -11px;
+        margin-top: -10px;
         margin-left: -10px;
     }
 	#menuoptions {
@@ -95,12 +97,13 @@
 	        position: absolute;
             right: 20px;
             /* iPhone media query */
-            @media screen and (device-aspect-ratio: 2/3){
+            @media only screen and (max-device-width: 480px){
                 right: 10px;
                 height: 35px;
                 width: 35px;
             }
-            @media screen and (device-aspect-ratio: 3/4){
+            /* iPad media query */
+            @media only screen and (min-device-width: 768px) and (max-device-width: 1024px){
                 right: 10px;
             }
 	    }
@@ -112,7 +115,7 @@
 	        margin-top: -11px;
 	        margin-left: -7px;
             /* iPhone media query */
-            @media screen and (device-aspect-ratio: 2/3){
+            @media only screen and (max-device-width: 480px){
                 left: 14px;
             }
 	    }
@@ -128,7 +131,7 @@
     height: 30px;
     position: absolute;
     /* iPhone media query */
-    @media screen and (device-aspect-ratio: 2/3){
+    @media only screen and (max-device-width: 480px){
         margin-top: -50px;
     }
 }
@@ -150,11 +153,12 @@
     position: absolute;
     right: 20px;
     /* iPhone media query */
-    @media screen and (device-aspect-ratio: 2/3){
+    @media only screen and (max-device-width: 480px){
         margin-top: -49px;
         right: 10px;
     }
-    @media screen and (device-aspect-ratio: 3/4){
+    /* iPad media query */
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px){
         margin-top: -59px;
         right: 10px;
     }
@@ -179,7 +183,7 @@
         margin-left: -7px;
     }
     /* iPhone media query */
-    @media screen and (device-aspect-ratio: 2/3){
+    @media only screen and (max-device-width: 480px){
         right: 50px;
         height: 34px;
         width: 38px;
@@ -190,7 +194,7 @@
         }
     }
     /* iPad media query */
-    @media screen and (device-aspect-ratio: 3/4){
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px){
         right: 60px;
         margin-top: -31px;
         #timercountspan{
@@ -210,13 +214,13 @@
     margin-left: 45%;
     margin-right: 50%;
     /* iPhone media query */
-    @media screen and (device-aspect-ratio: 2/3){
+    @media only screen and (max-device-width: 480px){
         margin-left: 25%;
         margin-right: 50%;
         width: 140px;
     }
     /* iPad media query */
-    @media screen and (device-aspect-ratio: 3/4){
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px){
         margin-left: 40%;
         margin-right: 55%;
     }

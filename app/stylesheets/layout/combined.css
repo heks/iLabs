@@ -9,7 +9,7 @@
 }
 
 /* iPhone media query */
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 7, ../../sass/layout/main.scss */
   #wrapper {
     height: auto;
@@ -75,13 +75,13 @@
   line-height: 1.75em;
   margin-bottom: 25px;
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 44, ../../sass/layout/main.scss */
   #content {
     margin-top: 80px;
   }
 }
-@media screen and (device-aspect-ratio: 3 / 4) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* line 44, ../../sass/layout/main.scss */
   #content {
     margin-top: 90px;
@@ -95,12 +95,12 @@
   margin: 60px auto;
   margin-bottom: auto;
   width: auto;
-  margin-left: 680px;
-  margin-right: 680px;
+  width: 390px;
+  height: 500px;
 }
 
 /* iPhone media query */
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 14, ../../sass/layout/loginform.scss */
   .login_template {
     width: auto;
@@ -110,7 +110,7 @@
   }
 }
 /* iPad media query */
-@media screen and (device-aspect-ratio: 3 / 4) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* line 23, ../../sass/layout/loginform.scss */
   .login_template {
     width: auto;
@@ -129,7 +129,7 @@ form label {
   font-size: 1em;
   font-weight: bold;
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 29, ../../sass/layout/loginform.scss */
   form {
     margin-bottom: 20px;
@@ -165,7 +165,7 @@ form .input {
   font-size: 2em;
   text-align: center;
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 19, ../../sass/layout/headers.scss */
   .login_template .header_lg {
     font-size: 1.8em;
@@ -189,7 +189,7 @@ form .input {
   font-size: 1.8em;
   margin-top: -20px;
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 26, ../../sass/layout/headers.scss */
   #toolbarnav {
     height: 48px;
@@ -200,7 +200,7 @@ form .input {
     margin-top: -30px;
   }
 }
-@media screen and (device-aspect-ratio: 3 / 4) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* line 52, ../../sass/layout/headers.scss */
   #toolbarnav h1 {
     font-size: 1.5em;
@@ -223,7 +223,7 @@ form .input {
   margin-right: 30%;
   font-size: .8em;
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 59, ../../sass/layout/headers.scss */
   #menuoptions {
     height: 40px;
@@ -236,7 +236,7 @@ form .input {
     font-size: .8em;
   }
 }
-@media screen and (device-aspect-ratio: 3 / 4) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* line 86, ../../sass/layout/headers.scss */
   #menuoptions #step_desc {
     margin-left: 45%;
@@ -252,7 +252,7 @@ form .input {
   width: 499px;
   /* iPhone media query */
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 95, ../../sass/layout/headers.scss */
   .designform_header {
     width: auto;
@@ -274,13 +274,13 @@ form .input {
   /* iPhone media query */
   /* iPad media query */
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 111, ../../sass/layout/headers.scss */
   #navmenu header h1 {
     font-size: 1.2em;
   }
 }
-@media screen and (device-aspect-ratio: 3 / 4) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* line 111, ../../sass/layout/headers.scss */
   #navmenu header h1 {
     font-size: 1.2em;
@@ -306,13 +306,13 @@ form .input {
   /* iPhone media query */
   /* iPad media query */
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 13, ../../sass/layout/grid.scss */
   .cellDivHeader {
     font-size: .8em;
   }
 }
-@media screen and (device-aspect-ratio: 3 / 4) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* line 13, ../../sass/layout/grid.scss */
   .cellDivHeader {
     font-size: 1em;
@@ -327,13 +327,13 @@ form .input {
   /* iPhone media query */
   /* iPad media query */
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 32, ../../sass/layout/grid.scss */
   .cellDiv {
-    font-size: 1em;
+    font-size: .8em;
   }
 }
-@media screen and (device-aspect-ratio: 3 / 4) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* line 32, ../../sass/layout/grid.scss */
   .cellDiv {
     font-size: 1em;
@@ -404,7 +404,7 @@ form .input {
   width: 500px;
   /* iPhone media query */
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 3, ../../sass/layout/designform.scss */
   .designform {
     width: auto;
@@ -418,14 +418,14 @@ form .input {
   /* iPhone media query */
   /* iPad media query */
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 10, ../../sass/layout/designform.scss */
   .designform .designform_title {
     margin-top: -1px;
     font-size: .7em;
   }
 }
-@media screen and (device-aspect-ratio: 3 / 4) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* line 10, ../../sass/layout/designform.scss */
   .designform .designform_title {
     margin-top: -3px;
@@ -466,7 +466,7 @@ form .input {
   margin-top: 55px;
   overflow: auto;
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 9, ../../sass/layout/navmenu.scss */
   #pagebody #navmenu {
     margin-top: 40px;
@@ -512,7 +512,7 @@ form .input {
 }
 
 /* iPhone media query */
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 14, ../../sass/layout/buttons.scss */
   .button_login {
     font-size: 1.2em;
@@ -537,7 +537,7 @@ form .input {
   position: absolute;
   /* iPhone media query */
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 31, ../../sass/layout/buttons.scss */
   #toolbarnav #menu-btn_bg {
     width: 38px;
@@ -556,7 +556,7 @@ form .input {
   margin-bottom: 0px;
   /* iPhone media query */
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 42, ../../sass/layout/buttons.scss */
   #toolbarnav #menu-btn_bg #menu-button {
     border-bottom: 10px double white;
@@ -571,33 +571,35 @@ form .input {
   font-size: .8em;
   padding: 5px 5px 5px 30px;
   margin-left: 7px;
-  margin-top: -60px;
-  height: 30px;
+  margin-top: -50px;
+  height: 25px;
+  width: 72px;
   position: absolute;
   /* iPhone media query */
+  /* iPad media query */
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 61, ../../sass/layout/buttons.scss */
   #toolbarnav #home_back {
-    margin-top: -50px;
+    margin-top: -45px;
   }
 }
-@media screen and (device-aspect-ratio: 3 / 4) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* line 61, ../../sass/layout/buttons.scss */
   #toolbarnav #home_back {
     margin-top: -55px;
   }
 }
-/* line 78, ../../sass/layout/buttons.scss */
+/* line 80, ../../sass/layout/buttons.scss */
 #toolbarnav #home_back::before {
   width: 20px;
   height: 20px;
-  left: 15px;
+  left: 14px;
   top: 50%;
-  margin-top: -11px;
+  margin-top: -10px;
   margin-left: -10px;
 }
-/* line 87, ../../sass/layout/buttons.scss */
+/* line 89, ../../sass/layout/buttons.scss */
 #toolbarnav #menuoptions #home {
   font-size: .8em;
   padding: 5px 5px 5px 30px;
@@ -607,22 +609,23 @@ form .input {
   position: absolute;
   right: 20px;
   /* iPhone media query */
+  /* iPad media query */
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
-  /* line 87, ../../sass/layout/buttons.scss */
+@media only screen and (max-device-width: 480px) {
+  /* line 89, ../../sass/layout/buttons.scss */
   #toolbarnav #menuoptions #home {
     right: 10px;
     height: 35px;
     width: 35px;
   }
 }
-@media screen and (device-aspect-ratio: 3 / 4) {
-  /* line 87, ../../sass/layout/buttons.scss */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* line 89, ../../sass/layout/buttons.scss */
   #toolbarnav #menuoptions #home {
     right: 10px;
   }
 }
-/* line 107, ../../sass/layout/buttons.scss */
+/* line 110, ../../sass/layout/buttons.scss */
 #toolbarnav #menuoptions #home::before {
   width: 20px;
   height: 20px;
@@ -632,14 +635,14 @@ form .input {
   margin-left: -7px;
   /* iPhone media query */
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
-  /* line 107, ../../sass/layout/buttons.scss */
+@media only screen and (max-device-width: 480px) {
+  /* line 110, ../../sass/layout/buttons.scss */
   #toolbarnav #menuoptions #home::before {
     left: 14px;
   }
 }
 
-/* line 121, ../../sass/layout/buttons.scss */
+/* line 124, ../../sass/layout/buttons.scss */
 #nav_back {
   font-size: .8em;
   padding: 5px 5px 5px 30px;
@@ -649,14 +652,14 @@ form .input {
   position: absolute;
   /* iPhone media query */
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
-  /* line 121, ../../sass/layout/buttons.scss */
+@media only screen and (max-device-width: 480px) {
+  /* line 124, ../../sass/layout/buttons.scss */
   #nav_back {
     margin-top: -50px;
   }
 }
 
-/* line 135, ../../sass/layout/buttons.scss */
+/* line 138, ../../sass/layout/buttons.scss */
 #nav_back::before {
   width: 20px;
   height: 20px;
@@ -666,7 +669,7 @@ form .input {
   margin-left: -10px;
 }
 
-/* line 143, ../../sass/layout/buttons.scss */
+/* line 146, ../../sass/layout/buttons.scss */
 #nav_next {
   font-size: .8em;
   padding: 5px 30px 10px 10px;
@@ -675,23 +678,24 @@ form .input {
   position: absolute;
   right: 20px;
   /* iPhone media query */
+  /* iPad media query */
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
-  /* line 143, ../../sass/layout/buttons.scss */
+@media only screen and (max-device-width: 480px) {
+  /* line 146, ../../sass/layout/buttons.scss */
   #nav_next {
     margin-top: -49px;
     right: 10px;
   }
 }
-@media screen and (device-aspect-ratio: 3 / 4) {
-  /* line 143, ../../sass/layout/buttons.scss */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* line 146, ../../sass/layout/buttons.scss */
   #nav_next {
     margin-top: -59px;
     right: 10px;
   }
 }
 
-/* line 162, ../../sass/layout/buttons.scss */
+/* line 166, ../../sass/layout/buttons.scss */
 #nav_next::before {
   right: 15px;
   top: 50%;
@@ -699,7 +703,7 @@ form .input {
   margin-right: -10px;
 }
 
-/* line 168, ../../sass/layout/buttons.scss */
+/* line 172, ../../sass/layout/buttons.scss */
 #timercount {
   font-size: 1.2em;
   margin-top: -30px;
@@ -710,46 +714,46 @@ form .input {
   /* iPhone media query */
   /* iPad media query */
 }
-/* line 177, ../../sass/layout/buttons.scss */
+/* line 181, ../../sass/layout/buttons.scss */
 #timercount #timercountspan {
   margin-top: -5px;
   margin-left: -7px;
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
-  /* line 168, ../../sass/layout/buttons.scss */
+@media only screen and (max-device-width: 480px) {
+  /* line 172, ../../sass/layout/buttons.scss */
   #timercount {
     right: 50px;
     height: 34px;
     width: 38px;
     margin-top: -31px;
   }
-  /* line 187, ../../sass/layout/buttons.scss */
+  /* line 191, ../../sass/layout/buttons.scss */
   #timercount #timercountspan {
     margin-top: -5px;
     margin-left: 2px;
   }
 }
-@media screen and (device-aspect-ratio: 3 / 4) {
-  /* line 168, ../../sass/layout/buttons.scss */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* line 172, ../../sass/layout/buttons.scss */
   #timercount {
     right: 60px;
     margin-top: -31px;
   }
-  /* line 196, ../../sass/layout/buttons.scss */
+  /* line 200, ../../sass/layout/buttons.scss */
   #timercount #timercountspan {
     margin-top: -5px;
     margin-left: 4px;
   }
 }
 
-/* line 202, ../../sass/layout/buttons.scss */
+/* line 206, ../../sass/layout/buttons.scss */
 #viewresult {
   height: 40px;
   width: 150px;
   padding-bottom: 10px;
 }
 
-/* line 207, ../../sass/layout/buttons.scss */
+/* line 211, ../../sass/layout/buttons.scss */
 #exitLab {
   width: 150px;
   height: 35px;
@@ -758,16 +762,16 @@ form .input {
   /* iPhone media query */
   /* iPad media query */
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
-  /* line 207, ../../sass/layout/buttons.scss */
+@media only screen and (max-device-width: 480px) {
+  /* line 211, ../../sass/layout/buttons.scss */
   #exitLab {
     margin-left: 25%;
     margin-right: 50%;
     width: 140px;
   }
 }
-@media screen and (device-aspect-ratio: 3 / 4) {
-  /* line 207, ../../sass/layout/buttons.scss */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* line 211, ../../sass/layout/buttons.scss */
   #exitLab {
     margin-left: 40%;
     margin-right: 55%;

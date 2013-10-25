@@ -14,7 +14,7 @@
   margin-top: 55px;
   overflow: auto;
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 9, ../../sass/layout/navmenu.scss */
   #pagebody #navmenu {
     margin-top: 40px;

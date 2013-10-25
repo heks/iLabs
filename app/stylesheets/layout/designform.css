@@ -4,7 +4,7 @@
   width: 500px;
   /* iPhone media query */
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 3, ../../sass/layout/designform.scss */
   .designform {
     width: auto;
@@ -18,14 +18,14 @@
   /* iPhone media query */
   /* iPad media query */
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 10, ../../sass/layout/designform.scss */
   .designform .designform_title {
     margin-top: -1px;
     font-size: .7em;
   }
 }
-@media screen and (device-aspect-ratio: 3 / 4) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* line 10, ../../sass/layout/designform.scss */
   .designform .designform_title {
     margin-top: -3px;

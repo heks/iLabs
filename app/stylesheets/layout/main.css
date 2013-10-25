@@ -9,7 +9,7 @@
 }
 
 /* iPhone media query */
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 7, ../../sass/layout/main.scss */
   #wrapper {
     height: auto;
@@ -75,13 +75,13 @@
   line-height: 1.75em;
   margin-bottom: 25px;
 }
-@media screen and (device-aspect-ratio: 2 / 3) {
+@media only screen and (max-device-width: 480px) {
   /* line 44, ../../sass/layout/main.scss */
   #content {
     margin-top: 80px;
   }
 }
-@media screen and (device-aspect-ratio: 3 / 4) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* line 44, ../../sass/layout/main.scss */
   #content {
     margin-top: 90px;
