@@ -17,9 +17,6 @@
 
 mobileApp.controller('appController',
   function appController($scope, $location, $http){
-    var username = localStorage.getItem('Username');
-    var api_key = localStorage.getItem('API_KEY');
-    var parameters = 'username='+username+'&api_key='+api_key;
 
     /**
     * @ngdoc function 
@@ -31,7 +28,9 @@ mobileApp.controller('appController',
     */
 
     $scope.startLab = function(labjournal_uri){
-      console.log(parameters)
+      var username = localStorage.getItem('Username');
+      var api_key = localStorage.getItem('API_KEY');
+      var parameters = 'username='+username+'&api_key='+api_key;
       var labjournal_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com'+labjournal_uri+'?'+parameters;
       $.ajax({
         url: labjournal_url,
@@ -69,6 +68,9 @@ mobileApp.controller('appController',
     */
 
     $scope.sendLabjournalinstance = function(){
+      var username = localStorage.getItem('Username');
+      var api_key = localStorage.getItem('API_KEY');
+      var parameters = 'username='+username+'&api_key='+api_key;
       var getLabjournal = JSON.parse(localStorage.getItem('LABJOURNAL_JSON_DATA'));
       var labjournalID = getLabjournal.id;
       localStorage.setItem('LABJOURNAL_ID', labjournalID);

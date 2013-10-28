@@ -201,55 +201,31 @@
 
 /* line 172, ../../sass/layout/buttons.scss */
 #timercount {
-  font-size: 1.2em;
-  margin-top: -30px;
-  height: 38px;
   width: 40px;
-  position: absolute;
+  height: 40px;
   right: 70px;
+  top: 2px;
+  font-size: 16px;
+  padding-top: 5px;
   /* iPhone media query */
-  /* iPad media query */
-}
-/* line 181, ../../sass/layout/buttons.scss */
-#timercount #timercountspan {
-  margin-top: -5px;
-  margin-left: -7px;
 }
 @media only screen and (max-device-width: 480px) {
   /* line 172, ../../sass/layout/buttons.scss */
   #timercount {
-    right: 50px;
-    height: 34px;
-    width: 38px;
-    margin-top: -31px;
-  }
-  /* line 191, ../../sass/layout/buttons.scss */
-  #timercount #timercountspan {
-    margin-top: -5px;
-    margin-left: 2px;
-  }
-}
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-  /* line 172, ../../sass/layout/buttons.scss */
-  #timercount {
+    width: 35px;
+    height: 35px;
     right: 60px;
-    margin-top: -31px;
-  }
-  /* line 200, ../../sass/layout/buttons.scss */
-  #timercount #timercountspan {
-    margin-top: -5px;
-    margin-left: 4px;
   }
 }
 
-/* line 206, ../../sass/layout/buttons.scss */
+/* line 186, ../../sass/layout/buttons.scss */
 #viewresult {
   height: 40px;
   width: 150px;
   padding-bottom: 10px;
 }
 
-/* line 211, ../../sass/layout/buttons.scss */
+/* line 191, ../../sass/layout/buttons.scss */
 #exitLab {
   width: 150px;
   height: 35px;
@@ -259,7 +235,7 @@
   /* iPad media query */
 }
 @media only screen and (max-device-width: 480px) {
-  /* line 211, ../../sass/layout/buttons.scss */
+  /* line 191, ../../sass/layout/buttons.scss */
   #exitLab {
     margin-left: 25%;
     margin-right: 50%;
@@ -267,7 +243,7 @@
   }
 }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-  /* line 211, ../../sass/layout/buttons.scss */
+  /* line 191, ../../sass/layout/buttons.scss */
   #exitLab {
     margin-left: 40%;
     margin-right: 55%;

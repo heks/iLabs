@@ -272,7 +272,7 @@ mobileApp.controller('experimentCtrl',
         var count = timer;
         $scope.startBlink('timercount');
         countdown = setInterval(function(){
-          $('#timercountspan').html(count);
+          $('#timercount').html(count);
           $('#timercount').show();
           if (count == 0){
             $scope.stopBlink();
