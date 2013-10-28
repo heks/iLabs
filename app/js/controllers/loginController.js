@@ -43,7 +43,7 @@ mobileApp.controller('loginCtrl',
       var parameters = 'username='+username+'&password='+password;
       var emptyString = JSON.stringify({});
       $.ajax({
-        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/login/?username='+username+'&password='+password,
+        url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/login/?'+parameters,
         crossDomain: 'false',
         type: 'POST',
         data: emptyString,

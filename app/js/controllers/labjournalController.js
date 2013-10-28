@@ -17,9 +17,7 @@
 
 mobileApp.controller('labjournalCtrl',
   function labjournalCtrl($scope, $location, $http){
-    var username = localStorage.getItem('Username');
-    var api_key = localStorage.getItem('API_KEY');
-    var parameters = 'username='+username+'&api_key='+api_key;
+    var parameters = 'username='+localStorage.getItem('Username')+'&api_key='+localStorage.getItem('API_KEY');
 
     /**
     * @ngdoc function 

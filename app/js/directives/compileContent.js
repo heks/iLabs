@@ -62,12 +62,10 @@ directives.directive('compileContent', function($compile, $location, $http, chec
       // Dynamically creating the experiment design form elements
       var deviceform = getlabjournal.labjournalsteps[index].journal_parameter_group;
       if (deviceform != null){
-        var parameter_group_id = deviceform.id;
-        localStorage.setItem('PARAMETER_GROUP_ID', parameter_group_id);
-        var deviceform_title = deviceform.title;
+        localStorage.setItem('PARAMETER_GROUP_ID', deviceform.id);
         var deviceform_fields_length = deviceform.number_of_parameters;
         body_content += '<div class=\'designform\' id=\'device_form\'><div class=\'designform_header\'>';
-        body_content += '<h1 class=\'designform_title\'>'+deviceform_title+'</h1></div>';
+        body_content += '<h1 class=\'designform_title\'>'+deviceform.title+'</h1></div>';
         for (var i = 0; i < deviceform_fields_length; i++){
           var label = deviceform.parameters[i].title;
           var description = deviceform.parameters[i].help_text;
@@ -150,9 +148,7 @@ directives.directive('compileContent', function($compile, $location, $http, chec
       scope.exitLab = function(){
         var step = $location.path().substring($location.path().lastIndexOf('/') + 1);
         var index = parseInt(step.charAt(step.length-1));
-	      var username = localStorage.getItem('Username');
-	      var api_key = localStorage.getItem('API_KEY');
-	      var parameters = 'username='+username+'&api_key='+api_key;
+	      var parameters = 'username='+localStorage.getItem('Username')+'&api_key='+localStorage.getItem('API_KEY');
 
 	      // Check the inputfields are empty or not
 	      var textbox = checkInputfields.isTextboxempty();
@@ -170,10 +166,8 @@ directives.directive('compileContent', function($compile, $location, $http, chec
               var parameter_array = parameterquestionValues.getParametervalues(); 
               // grab the question values from the appropriate inputfields
               var question_array = parameterquestionValues.getQuestionvalues(); 
-	            console.log(parameter_array); console.log(question_array);
 	            // Create a JSON object containing parameter and question data using the parameter and question arrays
               var JSONcombined_data  = parameterquestionValues.parameterquestion_JSON(parameter_array, question_array);
-	            console.log(JSONcombined_data);
 	            // POST and UPDATE the experiment data on each step
 	            scope.postupdateExperimentdata(JSONcombined_data, parameters, step_name);
 	            var JSONcombined_data_string = JSON.stringify(JSONcombined_data);

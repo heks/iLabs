@@ -17,12 +17,7 @@
 
 mobileApp.controller('homeCtrl',
   function homeCtrl($scope, $location, $http){
-
-    var username = localStorage.getItem('Username');
-    var api_key = localStorage.getItem('API_KEY');
-    var parameters = 'username='+username+'&api_key='+api_key;
-
-    
+    var parameters = 'username='+localStorage.getItem('Username')+'&api_key='+localStorage.getItem('API_KEY');
 
     /**
     * @ngdoc function 
@@ -60,8 +55,7 @@ mobileApp.controller('homeCtrl',
         dataType: 'jsonp',
         async: false,
         success: function(json){
-          var groupjson = JSON.stringify(json);
-          localStorage.setItem('LABJOURNAL_GROUPS', groupjson);
+          localStorage.setItem('LABJOURNAL_GROUPS', JSON.stringify(json));
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
           alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
@@ -93,8 +87,7 @@ mobileApp.controller('homeCtrl',
         dataType: 'jsonp',
         async: false,
         success: function(json){
-          var assignmentjson = JSON.stringify(json);
-          localStorage.setItem('LABJOURNAL_ASSIGNMENT', assignmentjson);
+          localStorage.setItem('LABJOURNAL_ASSIGNMENT', JSON.stringify(json));
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
           alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
@@ -127,8 +120,7 @@ mobileApp.controller('homeCtrl',
         dataType: 'jsonp',
         async: false,
         success: function(json){
-          var subscriptionjson = JSON.stringify(json);
-          localStorage.setItem('LABJOURNAL_SUBSCRIPTION', subscriptionjson);
+          localStorage.setItem('LABJOURNAL_SUBSCRIPTION', JSON.stringify(json));
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
           alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
@@ -161,8 +153,7 @@ mobileApp.controller('homeCtrl',
         dataType: 'jsonp',
         async: false,
         success: function(json){
-          var labjournaljson = JSON.stringify(json);
-          localStorage.setItem('LABJOURNALS_BROWSE', labjournaljson);
+          localStorage.setItem('LABJOURNALS_BROWSE', JSON.stringify(json));
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
           alert('XMLHttpRequest: '+XMLHttpRequest.responseText);

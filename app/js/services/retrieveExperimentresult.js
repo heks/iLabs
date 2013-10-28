@@ -8,9 +8,7 @@ mobileapp.service('retrieveExperimentresult', function(){
     */
 
     this.retrieveExperimentresult = function(){
-      var username = localStorage.getItem('Username');
-      var api_key = localStorage.getItem('API_KEY');
-      var parameters = 'username='+username+'&api_key='+api_key;
+      var parameters = 'username='+localStorage.getItem('Username')+'&api_key='+localStorage.getItem('API_KEY');
       var empty_data = JSON.stringify({});
       $.ajax({
         url: 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/experiment/test/result/6/?'+parameters,
@@ -23,9 +21,7 @@ mobileapp.service('retrieveExperimentresult', function(){
         async: false,
         processData: false,
         success: function(data){
-          console.log(data);
-          var stringify_result = JSON.stringify(data);
-          localStorage.setItem('EXPERIMENT_RESULT', stringify_result);
+          localStorage.setItem('EXPERIMENT_RESULT', JSON.stringify(data));
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
           alert('XMLHttpRequest: '+XMLHttpRequest.responseText);

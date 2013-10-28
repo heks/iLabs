@@ -28,9 +28,7 @@ mobileApp.controller('appController',
     */
 
     $scope.startLab = function(labjournal_uri){
-      var username = localStorage.getItem('Username');
-      var api_key = localStorage.getItem('API_KEY');
-      var parameters = 'username='+username+'&api_key='+api_key;
+      var parameters = 'username='+localStorage.getItem('Username')+'&api_key='+localStorage.getItem('API_KEY');
       var labjournal_url = 'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com'+labjournal_uri+'?'+parameters;
       $.ajax({
         url: labjournal_url,
@@ -43,8 +41,7 @@ mobileApp.controller('appController',
         dataType: 'jsonp',
         async: false,
         success: function(json){
-          var dataToStore = JSON.stringify(json);
-          localStorage.setItem('LABJOURNAL_JSON_DATA', dataToStore);
+          localStorage.setItem('LABJOURNAL_JSON_DATA', JSON.stringify(json));
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
           alert('XMLHttpRequest: '+XMLHttpRequest.responseText);
@@ -68,24 +65,15 @@ mobileApp.controller('appController',
     */
 
     $scope.sendLabjournalinstance = function(){
-      var username = localStorage.getItem('Username');
-      var api_key = localStorage.getItem('API_KEY');
-      var parameters = 'username='+username+'&api_key='+api_key;
+      var parameters = 'username='+localStorage.getItem('Username')+'&api_key='+localStorage.getItem('API_KEY');
       var getLabjournal = JSON.parse(localStorage.getItem('LABJOURNAL_JSON_DATA'));
-      var labjournalID = getLabjournal.id;
-      localStorage.setItem('LABJOURNAL_ID', labjournalID);
-      var timestamp = new Date().getTime();
-      localStorage.setItem('TIMESTAMP', timestamp);
-      var getTimestamp = localStorage.getItem('TIMESTAMP');
-      var uniqueID = '' + timestamp + labjournalID;
-      var hashValue = hex_md5(uniqueID);
-      localStorage.setItem('HASH_VALUE', hashValue);
-      var getHash = localStorage.getItem('HASH_VALUE');
-      var username = localStorage.getItem('Username');
-      var GUID = username+'_'+getHash;
+      localStorage.setItem('LABJOURNAL_ID', getLabjournal.id);
+      localStorage.setItem('TIMESTAMP', new Date().getTime());
+      var uniqueID = '' + new Date().getTime() + getLabjournal.id;
+      localStorage.setItem('HASH_VALUE', hex_md5(uniqueID));
+      var GUID = localStorage.getItem('Username')+'_'+localStorage.getItem('HASH_VALUE');
       localStorage.setItem('GUID', GUID);
-      var instance_jsonObject = {"GUID": GUID, "lab_journal": "/api/v1/labjournal/"+labjournalID+"/"};
-      console.log(instance_jsonObject)
+      var instance_jsonObject = {"GUID": GUID, "lab_journal": "/api/v1/labjournal/"+getLabjournal.id+"/"};
       var instance_data = JSON.stringify(instance_jsonObject);
           
       $.ajax({
@@ -101,14 +89,11 @@ mobileApp.controller('appController',
         success: function(data){
           $scope.$apply(function(){
             var getLabjournal = JSON.parse(localStorage.getItem('LABJOURNAL_JSON_DATA'));
-            console.log(getLabjournal)
-            var labjournalID = getLabjournal.id;
             if (getLabjournal.labjournalsteps[1] != undefined){
-              var step_name = 'step1';
               var step_title = getLabjournal.labjournalsteps[1].journal_step_title.toLowerCase();
             }
             // Launch the experiment
-            $location.path('experiment/'+step_title+'/'+step_name);
+            $location.path('experiment/'+step_title+'/'+'step1');
           });
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
@@ -128,10 +113,7 @@ mobileApp.controller('appController',
 
     $scope.showMainmenu = function(){
       $(document).ready(function(){
-        var pagebody = $('#pagebody');
-        var themenu  = $('#navmenu');
-        var topbar   = $('#toolbarnav');
-        var content  = $('#homecontent');
+        var pagebody = $('#pagebody'), themenu = $('#navmenu'), topbar = $('#toolbarnav'), content = $('#homecontent');
         var viewport = {
           width  : $(window).width(),
           height : $(window).height()
@@ -160,10 +142,7 @@ mobileApp.controller('appController',
 
     $scope.showTemplatemenu = function(){
       $(document).ready(function(){
-        var pagebody = $('#pagebody');
-        var themenu  = $('#navmenu');
-        var topbar   = $('#toolbarnav');
-        var content  = $('#homecontent');
+        var pagebody = $('#pagebody'), themenu = $('#navmenu'), topbar = $('#toolbarnav'), content = $('#homecontent');
         var viewport = {
           width  : $(window).width(),
           height : $(window).height()
@@ -203,11 +182,8 @@ mobileApp.controller('appController',
           e.preventDefault();
           var linkurl  = $(this).attr('href');
           var linkhtmlurl = linkurl.substring(1, linkurl.length);
-          var imgloader  = '<center style=\'margin-top: 30px;\'>';
-          imgloader += '<img src=\'img/preloader.gif\' alt=\'loading...\'/></center>';
           closeme();
           $(function() { topbar.css('top', '0px'); window.scrollTo(0, 1); });
-          content.html(imgloader);
           setTimeout(function() { content.load(linkhtmlurl, function() {  }) }, 1200);
         });
       });

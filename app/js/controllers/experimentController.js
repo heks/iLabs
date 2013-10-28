@@ -65,9 +65,7 @@ mobileApp.controller('experimentCtrl',
       var step_name = $location.path().substring($location.path().lastIndexOf('/') + 1); 
       // Get the index for the next step data in the labjournal JSONobject. (ex: 1 + 1 = 2 => index)
       var index = parseInt(step_name.charAt(step_name.length-1)) + 1; 
-      var username = localStorage.getItem('Username');
-      var api_key = localStorage.getItem('API_KEY');
-      var parameters = 'username='+username+'&api_key='+api_key;
+      var parameters = 'username='+localStorage.getItem('Username')+'&api_key='+localStorage.getItem('API_KEY');
 
       // Check the inputfields are empty or not
       var textbox = checkInputfields.isTextboxempty();
@@ -82,10 +80,8 @@ mobileApp.controller('experimentCtrl',
         if (textbox == true && dropdown == true && textarea == true){
           var parameter_array = parameterquestionValues.getParametervalues(); // grab the parameter values from the appropriate inputfields
           var question_array = parameterquestionValues.getQuestionvalues(); // grab the question values from the appropriate inputfields
-          console.log(parameter_array); console.log(question_array);
           // Create a JSON object containing parameter and question data using the parameter and question arrays
           var JSONcombined_data  = parameterquestionValues.parameterquestion_JSON(parameter_array, question_array);
-          console.log(JSONcombined_data);
 
           // POST and UPDATE the experiment data on each step
           $scope.postupdateExperimentdata(JSONcombined_data, parameters, step_name);
@@ -114,12 +110,26 @@ mobileApp.controller('experimentCtrl',
     $scope.postupdateExperimentdata = function(JSONcombined_data, parameters,step_name){
       if (JSON.parse(localStorage.getItem(step_name))){
         var get_stepdata = JSON.parse(localStorage.getItem(step_name));
-        if (JSONcombined_data['parameters'] != undefined){
-          var splitinstance = get_stepdata.parameters[0].instance.split('/');
-          var lsinstance_GUID = splitinstance[splitinstance.length - 2];
-        }else if(JSONcombined_data['questions'] != undefined){
-          var splitinstance = get_stepdata.questions[0].instance.split('/');
-          var lsinstance_GUID = splitinstance[splitinstance.length - 2];
+        if (JSONcombined_data['questions'] != undefined){
+          if (get_stepdata.questions != undefined){
+            var splitinstance = get_stepdata.questions[0].instance.split('/');
+            var lsinstance_GUID = splitinstance[splitinstance.length - 2];
+          }else if (get_stepdata.parameters != undefined){
+            var splitinstance = get_stepdata.parameters[0].instance.split('/');
+            var lsinstance_GUID = splitinstance[splitinstance.length - 2];
+          }else{
+            var lsinstance_GUID = 0;
+          }
+        }else if (JSONcombined_data['parameters'] != undefined){
+          if (get_stepdata.parameters != undefined){
+            var splitinstance = get_stepdata.parameters[0].instance.split('/');
+            var lsinstance_GUID = splitinstance[splitinstance.length - 2];
+          }else if (get_stepdata.questions != undefined){
+            var splitinstance = get_stepdata.questions[0].instance.split('/');
+            var lsinstance_GUID = splitinstance[splitinstance.length - 2];
+          }else{
+            var lsinstance_GUID = 0;
+          }
         }else{
           var lsinstance_GUID = 0;
         }
