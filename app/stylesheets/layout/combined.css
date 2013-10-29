@@ -218,6 +218,7 @@ form .input {
 }
 /* line 64, ../../sass/layout/headers.scss */
 #menuoptions #step_desc {
+  position: absolute;
   margin-top: -2px;
   margin-left: 47%;
   margin-right: 30%;
@@ -229,23 +230,21 @@ form .input {
     height: 40px;
     margin-top: -13px;
   }
-  /* line 76, ../../sass/layout/headers.scss */
+  /* line 77, ../../sass/layout/headers.scss */
   #menuoptions #step_desc {
-    margin-left: 38%;
-    margin-right: 35%;
+    left: -30px;
     font-size: .8em;
   }
 }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* line 86, ../../sass/layout/headers.scss */
   #menuoptions #step_desc {
-    margin-left: 45%;
-    margin-right: 45%;
+    left: -10px;
     font-size: .8em;
   }
 }
 
-/* line 95, ../../sass/layout/headers.scss */
+/* line 94, ../../sass/layout/headers.scss */
 .designform_header {
   margin-top: -30px;
   margin-left: -30px;
@@ -253,21 +252,21 @@ form .input {
   /* iPhone media query */
 }
 @media only screen and (max-device-width: 480px) {
-  /* line 95, ../../sass/layout/headers.scss */
+  /* line 94, ../../sass/layout/headers.scss */
   .designform_header {
     width: auto;
     margin-right: -30px;
   }
 }
 
-/* line 106, ../../sass/layout/headers.scss */
+/* line 105, ../../sass/layout/headers.scss */
 #navmenu header {
   display: block;
   background: #303a44;
   height: 52px;
   margin-top: -10px;
 }
-/* line 111, ../../sass/layout/headers.scss */
+/* line 110, ../../sass/layout/headers.scss */
 #navmenu header h1 {
   padding-top: 10px;
   font-size: 1.5em;
@@ -275,13 +274,13 @@ form .input {
   /* iPad media query */
 }
 @media only screen and (max-device-width: 480px) {
-  /* line 111, ../../sass/layout/headers.scss */
+  /* line 110, ../../sass/layout/headers.scss */
   #navmenu header h1 {
     font-size: 1.2em;
   }
 }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-  /* line 111, ../../sass/layout/headers.scss */
+  /* line 110, ../../sass/layout/headers.scss */
   #navmenu header h1 {
     font-size: 1.2em;
   }
@@ -603,7 +602,7 @@ form .input {
 #toolbarnav #menuoptions #home {
   font-size: .8em;
   padding: 5px 5px 5px 30px;
-  margin-top: -32px;
+  margin-top: -8px;
   height: 40px;
   width: 40px;
   position: absolute;
@@ -735,21 +734,20 @@ form .input {
   height: 35px;
   margin-left: 45%;
   margin-right: 50%;
+  position: absolute;
   /* iPhone media query */
   /* iPad media query */
 }
 @media only screen and (max-device-width: 480px) {
   /* line 191, ../../sass/layout/buttons.scss */
   #exitLab {
-    margin-left: 25%;
-    margin-right: 50%;
+    left: -50px;
     width: 140px;
   }
 }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* line 191, ../../sass/layout/buttons.scss */
   #exitLab {
-    margin-left: 40%;
-    margin-right: 55%;
+    left: -50px;
   }
 }

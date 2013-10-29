@@ -99,7 +99,7 @@
 #toolbarnav #menuoptions #home {
   font-size: .8em;
   padding: 5px 5px 5px 30px;
-  margin-top: -32px;
+  margin-top: -8px;
   height: 40px;
   width: 40px;
   position: absolute;
@@ -231,21 +231,20 @@
   height: 35px;
   margin-left: 45%;
   margin-right: 50%;
+  position: absolute;
   /* iPhone media query */
   /* iPad media query */
 }
 @media only screen and (max-device-width: 480px) {
   /* line 191, ../../sass/layout/buttons.scss */
   #exitLab {
-    margin-left: 25%;
-    margin-right: 50%;
+    left: -50px;
     width: 140px;
   }
 }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* line 191, ../../sass/layout/buttons.scss */
   #exitLab {
-    margin-left: 40%;
-    margin-right: 55%;
+    left: -50px;
   }
 }
