@@ -9,7 +9,7 @@ app.configure(function() {
 	app.use(express.cookieParser());
 	// app.use(express.cookieSession());                           // Store the session in the (secret) cookie
  	app.use(express.methodOverride());
- 	app.use(express.static(__dirname + '/client/build'));
+ 	app.use(express.static(__dirname + '/public/build'));
 
 
 });
