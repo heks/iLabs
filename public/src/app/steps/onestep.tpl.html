@@ -1,0 +1,45 @@
+{{step.journal_step_title}}
+
+<markdown ng-model="step.journal_step_content"> </markdown>
+
+
+<parameters parameters="step.journal_parameter_group.parameters" title="parametertitle" data='data_param'> </parameters>
+
+<questions questions='step.questions' data='data_questions'>
+</questions>
+
+
+<br>
+<button type="button" ng-click="nextQuestion()" class="btn btn-primary btn-lg btn-block">Next</button>
+<button type="button" ng-click="doPatch()" class="btn btn-primary btn-lg btn-block">Patch</button>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
+
+{{step}}
+
+<br>
+<br>
+<br>
+
+{{step.journal_parameter_group.parameters}}
+<br>
+<br>
+<br>
+
+
+
+QUESTIONS:
+{{data_questions}}
+
+<br>
+<br>
+<br>
+
+PARAMS:
+{{data_param}}
