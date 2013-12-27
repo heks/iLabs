@@ -1,0 +1,23 @@
+{
+  "name": "ng-boilerplate",
+  "version": "0.3.1",
+  "devDependencies": {
+    "angular": "~1.2.5",
+    "angular-mocks": "~1.0.7",
+    "bootstrap": "~3.0.3",
+    "angular-bootstrap": "~0.3.0",
+    "angular-ui-router": "~0.2.7",
+    "angular-ui-utils": "~0.0.3",
+    "angular-touch": "~1.2.5",
+    "angular-snap": "*",
+    "showdown": "*",
+    "angular-slider": "~0.1.6",
+    "angular-ui-slider": "~0.0.1",
+    "jquery-ui": "~1.10.3",
+    "angularjs-slider": "~0.1.2"
+  },
+  "dependencies": {},
+  "resolutions": {
+    "angular": "1.2.5"
+  }
+}

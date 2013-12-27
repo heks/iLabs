@@ -1,0 +1,6 @@
+node_modules/
+public/vendor/
+public/node_modules/
+public/bin/
+public/build/
+public/karma/
