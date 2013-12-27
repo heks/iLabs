@@ -2,3 +2,12 @@ logs/*
 .gitkeep
 *.swp
 Thumbs.db
+
+client/build/
+client/bin/
+node_modules/
+client/vendor/
+client/bower_components/
+client/node_modules/
+
+
