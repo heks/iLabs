@@ -1,0 +1,44 @@
+<div>
+
+
+	<div ng-repeat="question in questions" 
+	ng-init="data[$index] = {'question':question.resource_uri,'instance':'/api/v1/labjournalinstance/x/',response:'' }">
+
+
+		<label class="row control-label"> {{question.question.question_text}} </label>
+
+		<div class="form-group" ng-switch="question.question.answer_field_type">
+		
+			<div ng-switch-when="TA">
+				<input ng-model='data[$index].response' type="text" class="form-control" placeholder="TEXT AREA" required/>
+			</div>
+
+			<div ng-switch-when="DD" class="row">
+				<select ng-model='data[$index].response' type="value" ng-options="c for c in question.question.options" required class="form-control"/>
+			</div>
+
+
+			<div class="row" ng-switch-when="SB">
+				<div ui-slider min='{{question.question.options[0]}}' max='{{question.question.options[1]}}' step='question.question.options[2]' ng-model="data[$index].response"></div>
+			</div>
+
+
+			<div class="row" ng-switch-when="TF">
+				<textarea ng-model='data[$index].response' class="form-control" rows="3" required></textarea>
+			</div>
+
+		</div>	
+
+	</div>
+
+<!--
+			<script type="text/ng-template" id="ques/tpl.html">
+
+		<slider floor='parseInt(question.question.options[0],10) || 0' ceiling='parseInt(question.question.options[1],10) || 13' step='parseInt(question.question.options[2],10) || 1' ng-model='data[$index].response' precision='parseInt(question.question.options[2],10) || 1'></slider>
+
+		</script>
+
+		-->
+
+</div>
+
