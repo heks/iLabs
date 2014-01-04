@@ -6,7 +6,7 @@
 		
 		<div ng-repeat="parameter in parameters">
 
-		<div ng-switch on="parameter.field_type" ng-init="data[$index] = {'question':question.resource_uri,'instance':'/api/v1/labjournalinstance/x/' }">
+		<div ng-switch on="parameter.field_type" ng-init="data[$index] = {'parameter':parameter.resource_uri,'instance':'/api/v1/labjournalinstance/x/' }">
 
 			<div class='form-group' ng-switch-when="TA">
 				    <label for="TAparam" class="row control-label">{{parameter.title}}</label>
@@ -32,10 +32,10 @@
 			<div class="form-group" ng-switch-when="SB">
 					<label for="SBparam" class="row control-label">{{parameter.title}}</label>
 					<div class="row">
-						<div ui-slider min='{{parameter.options[0]}}' max='{{parameter.options[1]}}' step='{{parameter.options[2]}}' ng-model="data[$index].response"></div>
+						<div ui-slider ng-init="data[$index].response = parameter.options[0]" min='{{parameter.options[0]}}' max='{{parameter.options[1]}}' step='{{parameter.options[2]}}' ng-model="data[$index].response"></div>
 					</div>
 				<small>
-					{{ parameter.help_text}}	
+					{{ parameter.help_text}}  :  {{data[$index].response}}	
 				</small>
 			</div>
 

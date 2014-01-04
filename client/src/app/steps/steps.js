@@ -17,7 +17,8 @@ angular.module( 'ilabs.steps', [
   'ui.bootstrap',
   'ngTouch',
   'directive',
-  'service'
+  'service',
+  'angularLocalStorage'
 ])
 
 /**
@@ -27,17 +28,36 @@ angular.module( 'ilabs.steps', [
  */
 .config(function config( $stateProvider ) {
   $stateProvider.state('steps',{
-    url: '/{type}/:idx/step/:stepnumber',
+    url: '/{type}/:idx',
+    abstract:true,
     views: {
       "main": {
-        controller: 'StepsCtrl',
-        templateUrl: 'steps/onestep.tpl.html'
+        controller: function($scope){},
+        template: '<div ui-view></div>'
       }
     },
     data: {pageTitle: 'Lab Journal'},
     resolve: {
       steps: function($stateParams,api){
-        return api.get_steps($stateParams.type,$stateParams.idx);
+        return api.get_steps($stateParams.type,$stateParams.idx).then(function(data){
+          return data;
+        });
+      }
+    }
+  })
+  .state('steps.step',{
+    url:'/step/:stepnumber',
+    controller: 'StepsCtrl',
+    templateUrl: 'steps/onestep.tpl.html',
+    resolve: {
+      step: function($stateParams,api,$state,steps) {
+        // steps.then(function(){
+          return api.get_step(parseInt($stateParams.stepnumber,10)).then(function(data){
+            return data;
+          },function(error){
+            $state.go('home');
+          });
+        // });
       }
     }
   });
@@ -60,25 +80,31 @@ angular.module( 'ilabs.steps', [
 /**
  * And of course we define a controller for our route.
  */
-.controller('StepsCtrl',['$scope','steps','$location','$stateParams','api', function StepsCtrl($scope,steps,$location,$stateParams,api){
+.controller('StepsCtrl',['$scope','step','$state','$stateParams','api','$rootScope','storage', function StepsCtrl($scope,step,$state,$stateParams,api,$rootScope,storage){
 
-  $scope.data_questions = [];
+  storage.bind($scope,'data_param',{defaultValue: '' ,storeName: step.resource_uri});
+
+
+
   $scope.data_param = [];
+  $scope.data_questions = [];
 
-  $scope.steps=steps.data;
+  $scope.stepnumber = $stateParams.stepnumber;
 
-  $scope.step = api.get_step($stateParams.stepnumber); 
+
+  $scope.step = step; 
   console.log("in step ctrl");
 
   $scope.nextQuestion = function() {
-    var next = parseInt($stateParams.stepnumber,10)+1;
-    $location.path($stateParams.type+'/'+$stateParams.idx+'/step/'+next.toString()).replace();
-    $scope.step = api.get_step(next); 
-    // $scope.step = api.get_step(parseInt($stateParams.stepnumber,10)+1);
+    var next = parseInt($stateParams.stepnumber, 10)+1;
+    $state.go('steps.step',{stepnumber:next});
+    //$location.path($stateParams.type+'/'+$stateParams.idx+'/step/'+next.toString()).replace();
+    //angular.copy(api.get_step(next), $scope.step);
+        // $scope.step = api.get_step(parseInt($stateParams.stepnumber,10)+1);
   };
 
   $scope.doPatch = function() {
-    api.post_lab_journal_resonse($scope.data_questions);
+    api.post_lab_journal_question_resonse($scope.data_questions);
   };
 
 }]);

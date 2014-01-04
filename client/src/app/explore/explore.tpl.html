@@ -42,10 +42,13 @@
 				<dd> {{journal.description}} </dd>
 			</dl>
 	      <div class="row">
-	      	<button type="submit" ng-click='suscribe()' class="btn btn-primary btn-block">Suscribe
+	      	<button type="submit" ng-click='suscribe(journal)' class="btn btn-primary btn-block">Suscribe
 	        </button>
 	      </div>
       </div>
+    </div>
+    <div ng-show="explore_journals == []">
+    	No Suscriptions Available !
     </div>
   </div>
 

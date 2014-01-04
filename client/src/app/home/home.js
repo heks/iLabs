@@ -35,7 +35,7 @@ angular.module( 'ilabs.home', [
     data:{ pageTitle: 'Home' },
     resolve: {
       suscriptions: ['api',function(api){
-        return "tempfornow";//api.get_suscriptions($rootScope.username,$rootScope.api_key);
+        return api.get_suscriptions();
       }],
       assignments: ['api',function(api){
         return api.get_assignments();
@@ -48,22 +48,23 @@ angular.module( 'ilabs.home', [
  * And of course we define a controller for our route.
  */
 .controller( 'HomeCtrl', ['$scope','api','suscriptions','assignments','$state','$rootScope', function HomeCtrl( $scope,api,suscriptions,assignments,$state,$rootScope ) {
-  // $scope.suscriptions = suscriptions.data.objects;
-  $scope.assignments = assignments.data.objects;
-  // $rootScope.assignments = assignments.data.objects;
-  // $rootScope.suscriptions = suscriptions.data.objects;
 
+  $scope.assignments = assignments;
+  $scope.suscriptions = suscriptions;
+  $scope.searchFlag = $rootScope.searchFlag;
 
 
 
   $scope.goToAssignments = function(journal) {
     api.start_journal(journal.lab_journal).then( function(response){
-      $state.go('steps',{type:'assignments',idx:$scope.assignments.indexOf(journal),stepnumber:0});
+      $state.go('steps.step',{type:'assignments',idx:$scope.assignments.indexOf(journal),stepnumber:0});
     });
   };
 
   $scope.goToSuscriptions = function(journal) {
-    $state.go('steps',{type:'suscriptions',idx:$scope.suscriptions.indexOf(journal).toString()});
+    api.start_journal(journal.lab_journal).then( function(response){
+      $state.go('steps.step',{type:'suscriptions',idx:$scope.suscriptions.indexOf(journal),stepnumber:0});
+    });
   };
 
   $scope.explore = function() {

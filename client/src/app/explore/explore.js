@@ -16,16 +16,16 @@ angular.module( 'ilabs.explore', [
     },
     data:{ pageTitle: 'Explore' },
     resolve: {
-      explore_journals: ['api','$rootScope',function(api,$rootScope){
-        return api.get_explore_journals($rootScope.username,$rootScope.api_key);
+      explore_journals: ['api',function(api){
+        return api.get_explore_journals();
       }]
     }
   });
 })
 
-.controller( 'ExploreCtrl', ['$scope','explore_journals', function ExploreCtrl( $scope,explore_journals ) {
+.controller( 'ExploreCtrl', ['$scope','explore_journals','api', function ExploreCtrl( $scope,explore_journals,api ) {
 
-  $scope.explore_journals = explore_journals.data.objects;
+  $scope.explore_journals = explore_journals;
 
 
   $scope.selectJournal = function(journal) {
@@ -38,6 +38,13 @@ angular.module( 'ilabs.explore', [
 
   $scope.isSelected = function(journal) {
     return $scope.selectedJournal === journal;
+  };
+
+  $scope.suscribe = function(journal) {
+    var d = {'lab_journal':journal.lab_journal};
+    api.suscribe_journal(d).then( function(){
+      console.log("Successfull Suscribed");
+    });
   };
 
 

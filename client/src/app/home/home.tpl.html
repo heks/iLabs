@@ -1,4 +1,4 @@
-<div class="bs-example" style="margin-left:0px;margin-right:0px;" >
+<div class="bs-example-home" style="margin-left:0px;margin-right:0px;" >
 
   <div class="form-group" style="margin-bottom:15px;">
 
@@ -20,7 +20,7 @@
 
   <h4> Favorites </h4>
   <div class="list-group">
-    <a ng-repeat="journal in suscriptions | filter:searchText"class="list-group-item" ng-click="goToAssignments(journal)">
+    <a ng-repeat="journal in suscriptions | filter:searchText"class="list-group-item" ng-click="goToSuscriptions(journal)">
       <span style="text-align:left">{{journal.lab_journal_title}}</span>
       <span style="float:right"><i class="fa fa-chevron-right"></i></span>
     </a>

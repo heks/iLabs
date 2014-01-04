@@ -73,11 +73,16 @@ module.exports = {
       'vendor/showdown/src/showdown.js',
       'vendor/angular-snap/angular-snap.js',
       'vendor/snapjs/snap.js',
-      'vendor/angular-ui-slider/src/slider.js'
+      'vendor/angular-ui-slider/src/slider.js',
+      'vendor/angular-local-storage/angular-local-storage.js',      
+      'vendor/d3/d3.js',
+      'vendor/angular-cookies/angular-cookies.js',
+      'vendor/angularLocalStorage/src/angularLocalStorage.js'
     ],
     css: [
       'vendor/angular-snap/angular-snap.css',
-      'vendor/jquery-ui/themes/smoothness/jquery-ui.min.css'
+      'vendor/jquery-ui/themes/smoothness/jquery-ui.min.css',
+      'vendor/jquery-ui/themes/jquery-ui.theme.css'
     ],
     assets: [
       'vendor/jquery-ui/themes/smoothness/images/**'

@@ -11,10 +11,11 @@
     "angular-touch": "~1.2.5",
     "angular-snap": "*",
     "showdown": "*",
-    "angular-slider": "~0.1.6",
     "angular-ui-slider": "~0.0.1",
     "jquery-ui": "~1.10.3",
-    "angularjs-slider": "~0.1.2"
+    "angularjs-slider": "~0.1.2",
+    "d3": "~3.3.13",
+    "angularLocalStorage": "~0.1.7"
   },
   "dependencies": {},
   "resolutions": {

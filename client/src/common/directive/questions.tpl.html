@@ -19,7 +19,8 @@
 
 
 			<div class="row" ng-switch-when="SB">
-				<div ui-slider min='{{question.question.options[0]}}' max='{{question.question.options[1]}}' step='question.question.options[2]' ng-model="data[$index].response"></div>
+				<div ui-slider ng-init='data[$index].response=question.question.options[0]' min='{{question.question.options[0]}}' max='{{question.question.options[1]}}' step='{{question.question.options[2]}}' ng-model="data[$index].response"></div>
+				{{data[$index].response}}
 			</div>
 
 

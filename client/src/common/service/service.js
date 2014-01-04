@@ -1,7 +1,7 @@
-angular.module('service', [])
-.constant('dev_server','http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com')
+angular.module('service', ['angularLocalStorage'])
+.constant('dev_server','http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1')
 .constant('other_server','http://54.200.25.203')
-.service('api', ['$http','dev_server','other_server','$rootScope', function ($http,dev_server,other_server,$rootScope) {
+.service('api', ['$http','$q','dev_server','other_server','$rootScope','storage', function ($http,$q,dev_server,other_server,$rootScope,storage) {
 	
   var username;
   var api_key;
@@ -13,7 +13,7 @@ angular.module('service', [])
   this.login = function(_username,_password) {
     username = _username;
 		var parameters = 'username=' + _username + '&password=' + _password;
-    var url = dev_server + '/api/v1/login/?' + parameters;
+    var url = dev_server + '/login/?' + parameters;
     return $http({
       method:'POST',
       url:url,
@@ -42,14 +42,20 @@ angular.module('service', [])
     var parameters = 'username=' + username + '&api_key=' + api_key;
     return $http({
       method:'GET',
-      url: dev_server + '/api/v1/labjournalassignment/?'+parameters,
+      url: dev_server + '/labjournalassignment/?'+parameters,
       headers:{'Content-Type': 'application/json'}
-    }).success(function(data){
-      console.log(data);
-      angular.copy(data.objects,assignments);
-      return data;
-    }).error(function(data){
-      return "Error in server call";
+    }).then(function(response){
+      angular.copy(response.data.objects,assignments);
+      storage.set('assignments',response.data.objects);
+      return response.data.objects;
+    }, function(error){
+      if(storage.get('assignments')) {
+        return storage.get('assignments');
+      } else {
+        // not in local storage so FUCK
+        console.log(error);
+        return 'error';
+      }
     });
 	};
 
@@ -57,62 +63,81 @@ angular.module('service', [])
     var parameters = 'username=' + username + '&api_key=' + api_key;
     return $http({
       method:'GET',
-      url:dev_server + '/api/v1/labjournalsubscription/?'+parameters,
+      url:dev_server + '/favoritelabjournal/?'+parameters,
       headers:{'Content-Type': 'application/json'}
-    }).success(function(data){
-      console.log(data);
-      angular.copy(data.objects,subscriptions);
-      return data;
-    }).error(function(data){
-      return data;
+    }).then(function(response){
+      angular.copy(response.data.objects,suscriptions);
+      storage.set('suscriptions',response.data.objects);
+      return response.data.objects;
+    }, function(error){
+      // look in local storage for the suscriptions
+      if(storage.get('suscriptions')) {
+        return storage.get('suscriptions');
+      } else {
+        // not in local storage so FUCK
+        console.log(error);
+        return 'error';
+      }
     });
+
   };
 
   this.get_steps = function(type,idx) {
-        var call = '';
-        console.log(assignments);
-        if(type === 'assignments') {
-          call = assignments[idx].lab_journal;
-        } else if ($stateParams.type === 'suscriptions') {
-          call = suscriptions[idx].lab_journal;
+        var deferred = $q.defer();
+
+
+        var call;
+
+        /* first check if we have the reponse stored in local storage */
+        var _type = storage.get(type);
+        var _idx = parseInt(storage.get('idx'),10);
+
+        if(angular.isDefined(_type) && angular.isNumber(_idx) && !isNaN(_idx) ) {
+          call = _type[_idx].lab_journal; // find the key
+          var _steps = storage.get(call);
+          angular.copy(_steps,steps); // copy the current steps
+          deferred.resolve(_steps);
+        } else {
+
+          if(type === 'assignments') {
+            call = assignments[idx].lab_journal;
+          } else if (type === 'suscriptions') {
+            call = suscriptions[idx].lab_journal;
+          }
+
+          $http({
+            method: 'GET',
+            url:'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com'+call+'?username='+username+'&api_key='+api_key,
+            headers:{'Content-Type': 'application/json'}
+          }).success(function(response){
+            angular.copy(response.lab_journal_steps, steps);
+            storage.set(call,response.lab_journal_steps);
+            storage.set('idx',idx);
+            deferred.resolve(response.lab_journal_steps);
+          }).error(function(err){
+            deferred.reject('ERRROR');
+          });
+
         }
 
-        return $http({
-          method: 'GET',
-          url:dev_server+call+'?username='+username+'&api_key='+api_key,
-          headers:{'Content-Type': 'application/json'}
-        }).success(function(data){
-          console.log(data);
-          angular.copy(data.lab_journal_steps, steps);
-          return data;
-        }).error(function(data){
-          return data;
-        });
+        return deferred.promise;
+
   };
 
   this.get_step = function(idx) {
-    // angular.forEach(steps[idx].questions, function(value, key){
-    //   angular.forEach(value.question, function(question, key){
-    //     angular.forEach(question.options,function(option,key) {
-    //       option = parseInt(option,10);
-    //     });
-    //   });
-    // });
-    // if(steps[idx].journal_parameter_group != null) {
-    //   angular.forEach(steps[idx].journal_parameter_group.parameters, function(parameter, key){
-    //     console.log(parameter);
-    //     if(parameter.field_type === 'SB' || parameter.field_type === 'DD') {
-    //       angular.forEach(parameter.options,function(option,key){
-    //         console.log(option);
-    //         angular.copy(parseInt(option,10).option);
-    //       });
-    //     }
-    //   });
-    // }
-    return steps[idx];
+    var deferred = $q.defer();
+    if(idx === steps.length) {
+      deferred.reject('Reached end');
+    } else {
+      console.log(steps[idx]);
+      deferred.resolve(steps[idx]);
+      //} else if(storage.get(idx.toString())) {
+      //  deferred.resolve( storage.get(idx.toString()) );
+      }
+    return deferred.promise;
   };
 
-  this.get_explore_journals = function(username,api_key) {
+  this.get_explore_journals = function() {
     var parameters = 'username=' + username + '&api_key=' + api_key;
     var promise;
 
@@ -121,13 +146,10 @@ angular.module('service', [])
     } else {
       promise = $http({
         method:'GET',
-        url: dev_server + '/api/v1/browselabjournal/?'+parameters,
+        url: dev_server + '/browselabjournal/?'+parameters,
         headers:{'Content-Type': 'application/json'}
-      }).success(function(response){
-        console.log(response.data);
-        return response.data; 
-      }).error(function(data){
-        return "Error in server call";
+      }).then(function(response){
+        return response.data.objects; 
       });
       return promise; 
     }
@@ -143,7 +165,7 @@ angular.module('service', [])
 /api/v1/labjournalinstance/?username=student1&api_key=53580…
 */
   this.start_journal = function(lab_journal) {
-        var call = '/api/v1/labjournalinstance/';
+        var call = '/labjournalinstance/';
         var GUID = 'x';//username + ':' + new Date().getTime().toString();
 
         var data = {
@@ -164,8 +186,8 @@ angular.module('service', [])
         });
   };
 
-  this.post_lab_journal_resonse = function(data) {
-    var call = '/api/v1/labjournalquestionresponse/';
+  this.post_lab_journal_question_resonse = function(data) {
+    var call = '/labjournalquestionresponse/';
     var x = {objects:data};
     console.log(x);
     return $http({
@@ -177,6 +199,41 @@ angular.module('service', [])
       return data;
     }).error( function(data){
       console.log("error");
+      return data;
+    });
+  };
+
+// api/v1/labjournalquestionresponse/?username=student1&api_key=53580…
+
+  this.post_lab_journal_parameter_response = function(data) {
+    var call = '/labjournalparameterresponse/';
+    console.log(x);
+    return $http({
+      url:dev_server+call+'?username='+username+'&api_key='+api_key,
+      method:"PATCH",
+      data:x
+    }).success(function(data){
+      console.log("successful patch");
+      return data;
+    }).error( function(data){
+      console.log("error");
+      return data;
+    });
+  };
+
+// /api/v1/favoritelabjournal/?username=student1&api_key=53580…
+
+  this.suscribe_journal = function(data) {
+    var call = '/favoritelabjournal/';
+    return $http({
+      url:dev_server+call+'?username='+username+'&api_key='+api_key,
+      method:"POST",
+      data:data
+    }).success(function(data){
+      console.log("successfully suscribed");
+      return data;
+    }).error( function(data){
+      console.log("could not suscribe");
       return data;
     });
   };

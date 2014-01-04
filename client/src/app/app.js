@@ -20,7 +20,7 @@ angular.module( 'ilabs', [
 
 })
 
-.controller( 'AppCtrl', ['$scope','$rootScope', function AppCtrl ( $scope, $rootScope ) {
+.controller( 'AppCtrl', ['$scope','$rootScope','$location','$state', function AppCtrl ( $scope, $rootScope,$location,$state ) {
   $rootScope.searchFlag = false;
 
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
@@ -29,15 +29,58 @@ angular.module( 'ilabs', [
     }
   });
 
-  $scope.toggleSearch = function() {
-    if($rootScope.searchFlag) {
-      $rootScope.searchFlag = false;
+  /* for search button */
+  $scope.searchFlag = function() {
+    if($location.path() === '/home' || $location.path() === '/explore') {
+      return true;
     } else {
-      $rootScope.searchFlag = true;      
+      return false;
     }
   };
 
+  /* for menu button */
+  $scope.loginFlag = function() {
+    if($location.path() === '/login' || $location.path() === '/register') {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  $scope.toggleSearch = function() {
+    $rootScope.searchFlag = !$rootScope.searchFlag;
+  };
+
+  $scope.goHome = function() {
+    $state.go('home');
+  };
+
+  $scope.goExplore = function() {
+    $state.go('explore');
+  };
+
+  $scope.goProfile = function() {
+    console.log("go to profile");
+  };
+
+  $scope.goLogout = function() {
+    console.log("Logout");
+  };
+
+
 }])
+.directive('customDragArea', function (snapRemote) {
+  return {
+    restrict: 'AE',
+    link: function(scope, element, attrs) {
+      snapRemote.getSnapper().then(function(snapper) {
+        snapper.settings({
+          dragger: element[0]
+        });
+      });
+    }
+  };
+})
 
 ;
 
