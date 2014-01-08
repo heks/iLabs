@@ -81,19 +81,20 @@ angular.module( 'ilabs.steps', [
  * And of course we define a controller for our route.
  */
 .controller('StepsCtrl',['$scope','step','$state','$stateParams','api','$rootScope','storage', function StepsCtrl($scope,step,$state,$stateParams,api,$rootScope,storage){
-
-  storage.bind($scope,'data_param',{defaultValue: '' ,storeName: step.resource_uri});
-
-
-
   $scope.data_param = [];
   $scope.data_questions = [];
+
+  if($scope.data_param.length > 0) {
+    storage.bind($scope,'data_param',{defaultValue: '' ,storeName: step.resource_uri});
+  } else if($scope.data_questions.length > 0 ) {
+    storage.bind($scope,'data_questions',{defaultValue: '' ,storeName: step.resource_uri});
+  }
+
 
   $scope.stepnumber = $stateParams.stepnumber;
 
 
   $scope.step = step; 
-  console.log("in step ctrl");
 
   $scope.nextQuestion = function() {
     var next = parseInt($stateParams.stepnumber, 10)+1;
@@ -103,9 +104,19 @@ angular.module( 'ilabs.steps', [
         // $scope.step = api.get_step(parseInt($stateParams.stepnumber,10)+1);
   };
 
-  $scope.doPatch = function() {
-    api.post_lab_journal_question_resonse($scope.data_questions);
+  $scope.doPatchQues = function() {
+    api.post_lab_journal_parameter_response($scope.data_questions);
   };
+
+  $scope.doPatchParam = function() {
+    var data = {};
+    data.parameter_group = $scope.step.journal_parameter_group.resource_uri;
+    data.instance = '/api/v1/labjournalinstance/x/';
+    //api.post_lab_journal_parameter_response($scope.data_param);
+    api.submit_experiment(data,$scope.data_param);
+
+  };
+
 
 }]);
 

@@ -6,7 +6,7 @@
 		
 		<div ng-repeat="parameter in parameters">
 
-		<div ng-switch on="parameter.field_type" ng-init="data[$index] = {'parameter':parameter.resource_uri,'instance':'/api/v1/labjournalinstance/x/' }">
+		<div ng-switch on="parameter.field_type" ng-init="data[$index] = {'parameter':parameter.resource_uri,'instance':'/api/v1/labjournalinstance/x/','step':stepdata }">
 
 			<div class='form-group' ng-switch-when="TA">
 				    <label for="TAparam" class="row control-label">{{parameter.title}}</label>

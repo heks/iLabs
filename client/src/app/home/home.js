@@ -51,7 +51,6 @@ angular.module( 'ilabs.home', [
 
   $scope.assignments = assignments;
   $scope.suscriptions = suscriptions;
-  $scope.searchFlag = $rootScope.searchFlag;
 
 
 

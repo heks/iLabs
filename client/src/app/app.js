@@ -3,7 +3,8 @@ angular.module( 'ilabs', [
   'templates-common',
   'ilabs.home',
   'ilabs.login',
- 'ilabs.register',
+  'ilabs.register',
+  'ilabs.profile',
   'ilabs.steps',
   'ilabs.explore',
   'snap',
@@ -20,8 +21,9 @@ angular.module( 'ilabs', [
 
 })
 
-.controller( 'AppCtrl', ['$scope','$rootScope','$location','$state', function AppCtrl ( $scope, $rootScope,$location,$state ) {
-  $rootScope.searchFlag = false;
+.controller( 'AppCtrl', ['$scope','$location','$state', function AppCtrl ( $scope, $location,$state ) {
+
+  $scope.search = false;
 
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
     if ( angular.isDefined( toState.data.pageTitle ) ) {
@@ -48,7 +50,7 @@ angular.module( 'ilabs', [
   };
 
   $scope.toggleSearch = function() {
-    $rootScope.searchFlag = !$rootScope.searchFlag;
+    $scope.search = !$scope.search;
   };
 
   $scope.goHome = function() {
@@ -60,7 +62,7 @@ angular.module( 'ilabs', [
   };
 
   $scope.goProfile = function() {
-    console.log("go to profile");
+    $state.go('profile');
   };
 
   $scope.goLogout = function() {

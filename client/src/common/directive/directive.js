@@ -24,6 +24,7 @@ angular.module('directive', ['ngTouch','ui.slider'])
     restrict: 'E',
     scope: {
     parameters:'=',
+    stepdata:'@',
     title:'=',
     data:'='
     },
