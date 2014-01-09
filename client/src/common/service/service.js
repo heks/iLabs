@@ -115,6 +115,7 @@ angular.module('service', ['angularLocalStorage'])
         var _idx = parseInt(storage.get('idx'),10);
         console.log(storage.get(x));
 
+        /* check to see if we already launched the journal before */
         if( storage.get(x) != null ) {
             console.log(x);
             storage.set('idx',idx);
@@ -330,9 +331,74 @@ angular.module('service', ['angularLocalStorage'])
     }).then(function(response) {
       return response.data.objects;
     });
+  };
 
+
+  this.get_launched_instances = function () {
+    var call = '/labjournalinstance/';
+    return $http({
+      url:dev_server+call+'?username='+username+'&api_key='+api_key,
+      method:"GET"
+    }).then(function(response) {
+      return response.data.objects;
+    });
+  };
+
+
+  // TODO
+  /* Combine all 3 calls for the home page */
+  this.get_home = function() {
+    var params = '?username=' + username + '&api_key=' + api_key;
+
+
+    /* ASSIGNMENTS PROMISE */
+    var call_assignments = '/labjournalassignment/';
+    var assignments = $http({
+      url:dev_server+call_assignments+params,
+      method:"GET",
+      headers:{'Content-Type': 'application/json'}
+    });
+    /* SUSCRIPTIONS PROMISE */
+    var call_suscriptions = '/favoritelabjournal/';
+    var suscriptions = $http({
+      method:'GET',
+      url:dev_server + call_suscriptions +params,
+      headers:{'Content-Type': 'application/json'}
+    });
+    /* LAUNCHED LAB INSTANCES PROMISE */
+    var call_launched = '/labjournalinstance/';
+    var launched = $http({
+      url:dev_server+call_launched+params,
+      method:"GET",
+      headers:{'Content-Type': 'application/json'}
+    });
+
+    $q.all([assignments,suscriptions,launched]).then(function(response){
+      var assignments = response[0].data.objects;
+      var suscriptions = response[1].data.objects;
+      var launched_instances = response[2].data.objects;
+      console.log(assignments);
+      console.log(suscriptions);
+      console.log(launched_instances);
+
+      /* need to merge the reponses to see which ones are in progress / completed */
+      // angular.forEach(launched_instances, function(instance, key){
+      //   angular.forEach(assignments, function(assignment, key){
+      //     if(instance.lab_journal === assignment.lab_journal ) {
+
+      //     }
+      //   });
+      //   angular.forEach(suscriptions, function(suscription, key){
+          
+      //   });
+
+      // });
+
+
+    });
 
   };
+
 
 }]);
 

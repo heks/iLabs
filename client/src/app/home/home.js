@@ -39,6 +39,9 @@ angular.module( 'ilabs.home', [
       }],
       assignments: ['api',function(api){
         return api.get_assignments();
+      }],
+      launched_instances: ['api',function(api) {
+        return api.get_launched_instances();
       }]
     }
   });
@@ -47,11 +50,11 @@ angular.module( 'ilabs.home', [
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'HomeCtrl', ['$scope','api','suscriptions','assignments','$state','$rootScope', function HomeCtrl( $scope,api,suscriptions,assignments,$state,$rootScope ) {
+.controller( 'HomeCtrl', ['$scope','api','suscriptions','assignments','launched_instances','$state','$rootScope', function HomeCtrl( $scope,api,suscriptions,assignments,launched_instances,$state,$rootScope ) {
 
   $scope.assignments = assignments;
   $scope.suscriptions = suscriptions;
-
+  $scope.launched_instances = launched_instances;
 
 
   $scope.goToAssignments = function(journal) {

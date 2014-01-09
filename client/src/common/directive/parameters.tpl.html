@@ -4,50 +4,53 @@
 
 	<form class="form-horizontal" novalidate name="paramForm" role="form">
 		
-		<div ng-repeat="parameter in parameters">
+		<div ng-repeat="parameter in parameters" ng-form="subForm{{$index}}">
 
-		<div ng-switch on="parameter.field_type" ng-init="data[$index] = {'parameter':parameter.resource_uri,'instance':'/api/v1/labjournalinstance/x/','step':stepdata }">
+			<div  class="form-group" ng-switch on="parameter.field_type" ng-init="data[$index] = {'parameter':parameter.resource_uri,'instance':'/api/v1/labjournalinstance/x/','step':stepdata }">
 
-			<div class='form-group' ng-switch-when="TA">
-				    <label for="TAparam" class="row control-label">{{parameter.title}}</label>
-				    <div class="row">
-				      <input ng-model="data[$index].response" type="text" class="form-control" id="TAparam" name="TAparam" placeholder="TAparam" required>
-				    </div>
-				    <small>
-						{{ parameter.help_text}}	
+				<div class='row' ng-switch-when="TA">
+					    <label for="TA" class="row control-label">{{parameter.title}} : <small>{{ parameter.help_text}}</small></label>
+					    <div ng-class="{'has-error': subForm{{$index}}.TA.$invalid && !subForm{{$index}}.TA.$pristine,'has-success': !subForm{{$index}}.TA.$invalid && !subForm{{$index}}.TA.$pristine}" class="row">
+					      <input name="TA" ng-model="data[$index].response" type="text" class="form-control" id="TAparam" name="TAparam" placeholder="TAparam" required>
+					    </div>
+				    <small class="error" ng-show="subForm{{$index}}.TA.$error.required && !subForm{{$index}}.TA.$pristine">
+				      This is a required field
 				    </small>
-			</div>
-
-			<div class="form-group" ng-switch-when="DD">
-				<label for="DDparam" class="row control-label">{{parameter.title}}</label>
-				 <div class="row">
-					 <select ng-model="data[$index].response" class="form-control" name="DDparam" id="DDparam" ng-model='options' type="value" ng-options="c for c in parameter.options" required>
-					 </select>
 				</div>
-				<small>
-					{{ parameter.help_text}}	
-				</small>	
-			</div>
 
-			<div class="form-group" ng-switch-when="SB">
-					<label for="SBparam" class="row control-label">{{parameter.title}}</label>
-					<div class="row">
-						<div ui-slider ng-init="data[$index].response = parameter.options[0]" min='{{parameter.options[0]}}' max='{{parameter.options[1]}}' step='{{parameter.options[2]}}' ng-model="data[$index].response"></div>
+				<div class="row" ng-switch-when="DD">
+					<label for="DD" class="row control-label">{{parameter.title}}: <small>{{ parameter.help_text}}</small></label>
+					 <div ng-class="{'has-error': subForm{{$index}}.DD.$invalid && !subForm{{$index}}.DD.$pristine,'has-success': !subForm{{$index}}.DD.$invalid && !subForm{{$index}}.DD.$pristine}" class="row">
+						 <select ng-model="data[$index].response" class="form-control" name="DD" id="DDparam" ng-model='options' type="value" ng-options="c for c in parameter.options" required>
+						 </select>
 					</div>
-				<small>
-					{{ parameter.help_text}}  :  {{data[$index].response}}	
-				</small>
-			</div>
+				    <small class="error" ng-show="subForm{{$index}}.DD.$error.required && !subForm{{$index}}.DD.$pristine">
+				      This is a required field
+				    </small>	
+				</div>
 
-			<div ng-switch-when="TF">
-				<label for="TFparam" class="row control-label">{{parameter.title}}</label>
-				<textarea ng-model="data[$index].response" name="TFparam" id="TFparam" class="form-control" rows="3"></textarea>
-				<small>
-					{{ parameter.help_text}}	
-				</small>
-			</div>	
-<!-- 
-		 <slider floor="parameter.options[0] || 0" ng-model="data[$index].response" id="SBparam" name="SBparam" ceiling='parameter.options[1] || 3' step='parameter.options[2] || 1' precision="1" required></slider> -->
+				<div class="row" ng-switch-when="SB">
+						<label for="SB" class="row control-label">{{parameter.title}}:</label>
+						<div ng-class="{'has-error': subForm{{$index}}.SB.$invalid && !subForm{{$index}}.SB.$pristine,'has-success': !subForm{{$index}}.SB.$invalid && !subForm{{$index}}.SB.$pristine}" class="row">
+							<div name="SB" ui-slider ng-init="data[$index].response = parameter.options[0]" min='{{parameter.options[0]}}' max='{{parameter.options[1]}}' step='{{parameter.options[2]}}' ng-model="data[$index].response"></div>
+						</div>
+					<small>
+						{{ parameter.help_text}}  :  {{data[$index].response}}	
+					</small>
+				    <small class="error" ng-show="subForm{{$index}}.SB.$error.required && !subForm{{$index}}.SB.$pristine">
+				      This is a required field
+				    </small>
+				</div>
+
+				<div ng-class="{'has-error': subForm{{$index}}.TF.$invalid && !subForm{{$index}}.TF.$pristine,'has-success': !subForm{{$index}}.TF.$invalid && !subForm{{$index}}.TF.$pristine}" class="row" ng-switch-when="TF">
+					<label for="TF" class="row control-label">{{parameter.title}}: <small>{{ parameter.help_text}}</small></label>
+						<textarea ng-model="data[$index].response" name="TF" id="TFparam" class="form-control" rows="3"></textarea>
+				    <small class="error" ng-show="subForm{{$index}}.TF.$error.required && !subForm{{$index}}.TF.$pristine">
+				      This is a required field
+				    </small>
+				</div>	
+
+			</div>
 
 		</div>
 	</form>

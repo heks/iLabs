@@ -3,15 +3,15 @@
 
 	<markdown ng-model="step.journal_step_content"> </markdown>
 
+	<form name="mainForm">
+		<parameters parameters="step.journal_parameter_group.parameters" title="parametertitle" data='data_param' stepdata='{{step.resource_uri}}'> </parameters>
 
-	<parameters parameters="step.journal_parameter_group.parameters" title="parametertitle" data='data_param' stepdata='{{step.resource_uri}}'> </parameters>
-
-	<questions questions='step.questions' data='data_questions'>
-	</questions>
-
+		<questions questions='step.questions' data='data_questions'>
+		</questions>
+	</form>
 
 	<br>
-	<button type="button" ng-click="nextQuestion()" class="btn btn-primary btn-lg btn-block">Next</button>
+	<button type="button" ng-disabled="mainForm.$invalid" ng-click="nextQuestion()" class="btn btn-primary btn-lg btn-block">Next</button>
 	<button type="button" ng-click="doPatchParam()" class="btn btn-primary btn-lg btn-block">Patch</button>
 	<br>
 	<br>

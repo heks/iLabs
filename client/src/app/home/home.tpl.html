@@ -15,7 +15,7 @@
     </div>
 
         <ul ng-switch-when="true" class="list-group">
-            <li class="list-group-item" ng-repeat="journal in assignments | filter:searchText" ng-click="goToAssignments(journal)">
+            <li id="list" class="list-group-item" ng-repeat="journal in assignments | filter:searchText" ng-click="goToAssignments(journal)">
                 <span style="text-align:left">{{journal.lab_journal_title}}</span>
                 <span style="float:right"><i class="fa fa-chevron-right"></i></span>
             </li>
@@ -35,7 +35,7 @@
       </div>
 
         <ul ng-switch-when="true" class="list-group">
-          <li class="list-group-item" ng-repeat="s in suscriptions | filter:searchText" ng-click="goToSuscriptions(s)">
+          <li id="list" class="list-group-item" ng-repeat="s in suscriptions | filter:searchText" ng-click="goToSuscriptions(s)">
               <span style="text-align:left">{{s.lab_journal_title}}</span>
               <span style="float:right"><i class="fa fa-chevron-right"></i></span>
             </li>
@@ -58,4 +58,8 @@
 
 {{assignments | json}}
 
+<br>
+<br>
+<br>
 
+{{ launched_instances | json }}

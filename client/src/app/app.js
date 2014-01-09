@@ -66,7 +66,7 @@ angular.module( 'ilabs', [
   };
 
   $scope.goLogout = function() {
-    console.log("Logout");
+    $state.go('login');
   };
 
 

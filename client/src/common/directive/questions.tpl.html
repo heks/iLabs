@@ -1,37 +1,51 @@
-<div>
+<form name="mainForm">
 
 
 	<div ng-repeat="question in questions" 
-	ng-init="data[$index] = {'question':question.resource_uri,'instance':'/api/v1/labjournalinstance/x/',response:'' }">
-
+	ng-init="data[$index] = {'question':question.resource_uri,'instance':'/api/v1/labjournalinstance/x/',response:'' }" ng-form="subForm{{$index}}">
 
 		<label class="row control-label"> {{question.question.question_text}} </label>
 
 		<div class="form-group" ng-switch="question.question.answer_field_type">
 		
-			<div ng-switch-when="TA">
-				<input ng-model='data[$index].response' type="text" class="form-control" placeholder="TEXT AREA" required/>
+			<div class="row" ng-class="{'has-error': subForm{{$index}}.TA.$invalid && !subForm{{$index}}.TA.$pristine,'has-success': !subForm{{$index}}.TA.$invalid && !subForm{{$index}}.TA.$pristine}" ng-switch-when="TA">
+				<input name='TA' ng-model='data[$index].response' type="text" class="form-control" placeholder="TEXT AREA" required/>
+			    <small class="error" ng-show="subForm{{$index}}.TA.$error.required && !subForm{{$index}}.TA.$pristine">
+			      This is a required field
+			    </small>
 			</div>
 
-			<div ng-switch-when="DD" class="row">
-				<select ng-model='data[$index].response' type="value" ng-options="c for c in question.question.options" required class="form-control"/>
+			<div class="row" ng-class="{'has-error': subForm{{$index}}.DD.$invalid && !subForm{{$index}}.DD.$pristine,'has-success': !subForm{{$index}}.DD.$invalid && !subForm{{$index}}.DD.$pristine}" ng-switch-when="DD">
+				<select name="DD" ng-model='data[$index].response' type="value" ng-options="c for c in question.question.options" required class="form-control"/>
+			    <small class="error" ng-show="subForm{{$index}}.DD.$error.required && !subForm{{$index}}.DD.$pristine">
+			      This is a required field
+			    </small>
 			</div>
 
 
-			<div class="row" ng-switch-when="SB">
-				<div ui-slider ng-init='data[$index].response=question.question.options[0]' min='{{question.question.options[0]}}' max='{{question.question.options[1]}}' step='{{question.question.options[2]}}' ng-model="data[$index].response"></div>
+			<div class="row" ng-class="{'has-error': subForm{{$index}}.SB.$invalid && !subForm{{$index}}.SB.$pristine,'has-success': !subForm{{$index}}.SB.$invalid && !subForm{{$index}}.SB.$pristine}" ng-switch-when="SB">
+				<div name="SB" ui-slider ng-init='data[$index].response=question.question.options[0]' min='{{question.question.options[0]}}' max='{{question.question.options[1]}}' required step='{{question.question.options[2]}}' ng-model="data[$index].response"></div>
 				{{data[$index].response}}
+			    <small class="error" ng-show="subForm{{$index}}.SB.$error.required && !subForm{{$index}}.SB.$pristine">
+			      This is a required field
+			    </small>
 			</div>
 
 
-			<div class="row" ng-switch-when="TF">
-				<textarea ng-model='data[$index].response' class="form-control" rows="3" required></textarea>
+			<div class="row" ng-class="{'has-error': subForm{{$index}}.TF.$invalid && !subForm{{$index}}.TF.$pristine,'has-success': !subForm{{$index}}.TF.$invalid && !subForm{{$index}}.TF.$pristine}" ng-switch-when="TF">
+				<textarea name="TF" ng-model='data[$index].response' class="form-control" rows="3" required></textarea>
+			    <small class="error" ng-show="subForm{{$index}}.TF.$error.required && !subForm{{$index}}.TF.$pristine">
+			      This is a required field
+			    </small>
 			</div>
 
-		</div>	
+		</div>
+
 
 	</div>
 
+
+	{{mainForm.$invalid }}
 <!--
 			<script type="text/ng-template" id="ques/tpl.html">
 
@@ -41,5 +55,5 @@
 
 		-->
 
-</div>
+</form>
 
