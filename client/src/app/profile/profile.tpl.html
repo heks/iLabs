@@ -1,0 +1,54 @@
+<div class="bs-example-home">
+
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">Profile</h3>
+	  </div>
+	  <div class="panel-body">
+
+		<ul class="list-group">
+		  <li class="list-group-item">
+		  	<strong >Username:</strong>
+		  	<span style="padding-left:15px;">
+		  		{{ student_info.user.username }}
+		  	</span>
+		  </li>
+		  <li class="list-group-item">
+		  	<strong>Email:</strong>
+		  	<span style="padding-left:15px;">
+		  		{{ student_info.user.email }}
+		  	</span>
+		  </li>
+		  <li class="list-group-item">
+		  	<strong>Firstname:</strong>
+		  	<span style="padding-left:15px;"> 
+		  		{{ student_info.user.first_name | capitalizeFirst }}
+		  	</span>
+		  </li>
+		  <li class="list-group-item">
+		  	<strong>Lastname:</strong>
+		  	<span style="padding-left:15px;">
+		  		{{ student_info.user.last_name | capitalizeFirst }}
+		  	</span>
+		  </li>
+		  <li class="list-group-item">
+		  	<strong>Affiliation:</strong>
+		  	<span style="padding-left:15px;">
+		  		{{student_info.user.affiliation }}
+		  	</span>
+		  </li>
+		  <li class="list-group-item">
+		  	<strong>Sign Up Reason:</strong>
+		  	<span style="padding-left:15px;">
+		  		{{student_info.signup_reason}}
+		  	</span>
+		  </li>
+		 </ul>
+
+	  </div>
+	</div>
+
+
+</div>
+
+{{ student_info }}

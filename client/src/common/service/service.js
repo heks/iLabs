@@ -98,16 +98,35 @@ angular.module('service', ['angularLocalStorage'])
   this.get_steps = function(type,idx) {
         var deferred = $q.defer();
 
+        var x;
+
+        if(type === 'assignments') {
+          x = assignments[idx].lab_journal;
+        } else if (type === 'suscriptions') {
+          x = suscriptions[idx].lab_journal;
+        }
+
+        console.log(x);
 
         var call;
-
+        var _steps;
         /* first check if we have the reponse stored in local storage */
         var _type = storage.get(type);
         var _idx = parseInt(storage.get('idx'),10);
+        console.log(storage.get(x));
 
-        if(angular.isDefined(_type) && angular.isNumber(_idx) && !isNaN(_idx) ) {
+        if( storage.get(x) != null ) {
+            console.log(x);
+            storage.set('idx',idx);
+            //call = _type[idx].lab_journal;
+            _steps = storage.get(x);
+            angular.copy(_steps,steps); // copy the current steps
+            deferred.resolve(_steps);
+        } else if(angular.isDefined(_type) && angular.isNumber(_idx) && !isNaN(_idx) ) {
+          console.log("IN LOCAL STORAGE IN GET STEPS");
           call = _type[_idx].lab_journal; // find the key
-          var _steps = storage.get(call);
+          console.log(call);
+          _steps = storage.get(call);
           angular.copy(_steps,steps); // copy the current steps
           deferred.resolve(_steps);
         } else {
@@ -142,7 +161,6 @@ angular.module('service', ['angularLocalStorage'])
     if(idx === steps.length) {
       deferred.reject('Reached end');
     } else {
-      console.log(steps[idx]);
       deferred.resolve(steps[idx]);
       //} else if(storage.get(idx.toString())) {
       //  deferred.resolve( storage.get(idx.toString()) );
@@ -309,11 +327,8 @@ angular.module('service', ['angularLocalStorage'])
     return $http({
       url:dev_server+call+'?username='+username+'&api_key='+api_key,
       method:"GET"
-    }).success(function(data){
-      console.log("got user information");
-      return data;
-    }).error(function(response){
-      console.log("ERROR");
+    }).then(function(response) {
+      return response.data.objects;
     });
 
 

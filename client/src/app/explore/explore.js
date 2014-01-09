@@ -2,7 +2,8 @@
 angular.module( 'ilabs.explore', [
   'ui.router',
   'ngTouch',
-  'service'
+  'service',
+  'filters'
 ])
 
 .config(function config( $stateProvider ) {

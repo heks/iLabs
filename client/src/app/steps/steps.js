@@ -55,6 +55,8 @@ angular.module( 'ilabs.steps', [
           return api.get_step(parseInt($stateParams.stepnumber,10)).then(function(data){
             return data;
           },function(error){
+            localStorage.removeItem('type');
+            localStorage.removeItem('idx');
             $state.go('home');
           });
         // });
