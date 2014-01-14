@@ -29,7 +29,6 @@ angular.module('service', ['angularLocalStorage'])
       storage.set('api_key',data.api_key);
       storage.set('username',username);
 
-      console.log(data);
       return data;
     }).error(function(error){
       console.log(error);
