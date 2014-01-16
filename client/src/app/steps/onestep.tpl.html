@@ -10,9 +10,27 @@
 		</questions>
 	</form>
 
+
+
+	<div ng-if="timerclock">
+		<timer countdown="timerclock" interval="1000">
+			<div class="well well-sm">
+				<h4 ng-show="countdown > 0" style="text-align:center"> Running Experiment </h4>
+			  <div ng-show="countdown > 0" class="progress progress-striped active"> 
+			    <div class="progress-bar" role="progressbar" style="width: {{ (countdown*100/inittime) | number:0 }}%;"> {{countdown}} </div> 
+			  </div>
+			</div>		
+		</timer>
+	</div>
+
+	<div ng-if="chart">
+		<canvas chart type="Line" options="options" data="chart" width="300" height="300"></canvas>
+	</div>
+
+
 	<br>
 	<button type="button" ng-disabled="mainForm.$invalid" ng-click="nextQuestion()" class="btn btn-primary btn-lg btn-block">Next</button>
-	<button type="button" ng-click="doPatchParam()" class="btn btn-primary btn-lg btn-block">Patch</button>
+	<button ng-show="step.journal_parameter_group.parameters" type="button" ng-click="doPatchParam()" class="btn btn-primary btn-lg btn-block">Patch</button>
 	<br>
 	<br>
 	<br>

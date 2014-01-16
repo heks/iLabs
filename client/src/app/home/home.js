@@ -16,6 +16,7 @@ angular.module( 'ilabs.home', [
   'ui.router',
   'ngTouch',
   'service'
+
 ])
 
 /**
@@ -56,7 +57,6 @@ angular.module( 'ilabs.home', [
   $scope.suscriptions = suscriptions;
   $scope.launched_instances = launched_instances;
 
-
   $scope.goToAssignments = function(journal) {
     api.start_journal(journal.lab_journal).then( function(response){
       $state.go('steps.step',{type:'assignments',idx:$scope.assignments.indexOf(journal),stepnumber:0});
@@ -72,6 +72,7 @@ angular.module( 'ilabs.home', [
   $scope.explore = function() {
     $state.go('explore');
   };
+
 
 
 }]);

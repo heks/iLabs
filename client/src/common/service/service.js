@@ -36,14 +36,6 @@ angular.module('service', ['angularLocalStorage'])
     }); 
 	};
 
-  this.get_assignment = function(idx,type) {
-    if(type==='assignments') {
-      return assignments[idx];
-    }
-    else if(type==='subscriptions') {
-      return subscriptions[idx];
-    }
-  };
 
 	this.get_assignments = function() {
     var deferred = $q.defer();
@@ -94,42 +86,11 @@ angular.module('service', ['angularLocalStorage'])
 
   };
 
-  this.get_steps = function(type,idx) {
+
+    this.get_steps = function(type,idx) {
         var deferred = $q.defer();
 
-        var x;
-
-        if(type === 'assignments') {
-          x = assignments[idx].lab_journal;
-        } else if (type === 'suscriptions') {
-          x = suscriptions[idx].lab_journal;
-        }
-
-        console.log(x);
-
-        var call;
-        var _steps;
-        /* first check if we have the reponse stored in local storage */
-        var _type = storage.get(type);
-        var _idx = parseInt(storage.get('idx'),10);
-        console.log(storage.get(x));
-
-        /* check to see if we already launched the journal before */
-        if( storage.get(x) != null ) {
-            console.log(x);
-            storage.set('idx',idx);
-            //call = _type[idx].lab_journal;
-            _steps = storage.get(x);
-            angular.copy(_steps,steps); // copy the current steps
-            deferred.resolve(_steps);
-        } else if(angular.isDefined(_type) && angular.isNumber(_idx) && !isNaN(_idx) ) {
-          console.log("IN LOCAL STORAGE IN GET STEPS");
-          call = _type[_idx].lab_journal; // find the key
-          console.log(call);
-          _steps = storage.get(call);
-          angular.copy(_steps,steps); // copy the current steps
-          deferred.resolve(_steps);
-        } else {
+          var call = '';
 
           if(type === 'assignments') {
             call = assignments[idx].lab_journal;
@@ -143,18 +104,14 @@ angular.module('service', ['angularLocalStorage'])
             headers:{'Content-Type': 'application/json'}
           }).success(function(response){
             angular.copy(response.lab_journal_steps, steps);
-            storage.set(call,response.lab_journal_steps);
-            storage.set('idx',idx);
             deferred.resolve(response.lab_journal_steps);
           }).error(function(err){
             deferred.reject('ERRROR');
           });
 
-        }
-
         return deferred.promise;
+      };
 
-  };
 
   this.get_step = function(idx) {
     var deferred = $q.defer();
@@ -195,6 +152,9 @@ angular.module('service', ['angularLocalStorage'])
 
 /api/v1/labjournalinstance/?username=student1&api_key=53580…
 */
+  
+  this.curr_journal = [];
+
   this.start_journal = function(lab_journal) {
         var call = '/labjournalinstance/';
         var GUID = 'x';//username + ':' + new Date().getTime().toString();
@@ -203,6 +163,8 @@ angular.module('service', ['angularLocalStorage'])
           "GUID": GUID,
           "lab_journal":lab_journal
         };
+
+        this.curr_journal = angular.copy(data);
 
         return $http({
           method: 'POST',
@@ -280,11 +242,19 @@ angular.module('service', ['angularLocalStorage'])
       data:{objects:data_param}
     });
 
-    $q.all([param,exp]).then(function(response){
-      console.log(response);
-    });
+    return $q.all([param,exp]);
 
   };
+
+  // this.unsuscribe_journal = function(data) {
+  //   var call = '/favoritelabjournal/';
+  //   return $http({
+  //     url:dev_server+call+'?username='+username+'&api_key='+api_key,
+  //     method:"DELETE"
+  //     date
+  //   });
+  // }
+
 
   this.suscribe_journal = function(data) {
     var call = '/favoritelabjournal/';
@@ -302,12 +272,27 @@ angular.module('service', ['angularLocalStorage'])
   };
 
   // /api/v1/experiment/result/251/?username=student1&api_key=53580…
-  this.get_experiment_result = function() {
-    var call = '/experiment/result/251/';
-    return $http({
+  this.get_experiment_result = function(experiment_id) {
+    var deferred = $q.defer();
+    var call = '/experiment/result/'+experiment_id +'/';
+    
+    $http({
       url:dev_server+call+'?username='+username+'&api_key='+api_key,
       method:"GET"
+    }).then(function(response){
+      deferred.resolve(response.data);
+    },function(error){
+      var call2 = '/experiment/status/' + experiment_id + '/';
+      $http({
+        url:dev_server+call2+'?username='+username+'&api_key='+api_key,
+        method:"GET"
+      }).then(function(result){
+        deferred.reject(result.data);
+      },function(error){
+        deferred.reject("ERROR");
+      });
     });
+    return deferred.promise;
   };
 
 
@@ -344,56 +329,82 @@ angular.module('service', ['angularLocalStorage'])
   };
 
 
+  ///api/v1/experiment/status/251/?username=student1&api_key=53580…
+
   // TODO
   /* Combine all 3 calls for the home page */
-  this.get_home = function() {
-    var params = '?username=' + username + '&api_key=' + api_key;
+  // this.get_home = function() {
+  //   var params = '?username=' + username + '&api_key=' + api_key;
 
 
-    /* ASSIGNMENTS PROMISE */
-    var call_assignments = '/labjournalassignment/';
-    var assignments = $http({
-      url:dev_server+call_assignments+params,
-      method:"GET",
-      headers:{'Content-Type': 'application/json'}
-    });
-    /* SUSCRIPTIONS PROMISE */
-    var call_suscriptions = '/favoritelabjournal/';
-    var suscriptions = $http({
-      method:'GET',
-      url:dev_server + call_suscriptions +params,
-      headers:{'Content-Type': 'application/json'}
-    });
-    /* LAUNCHED LAB INSTANCES PROMISE */
-    var call_launched = '/labjournalinstance/';
-    var launched = $http({
-      url:dev_server+call_launched+params,
-      method:"GET",
-      headers:{'Content-Type': 'application/json'}
-    });
+  //   /* ASSIGNMENTS PROMISE */
+  //   var call_assignments = '/labjournalassignment/';
+  //   var assignments = $http({
+  //     url:dev_server+call_assignments+params,
+  //     method:"GET",
+  //     headers:{'Content-Type': 'application/json'}
+  //   });
+  //   /* SUSCRIPTIONS PROMISE */
+  //   var call_suscriptions = '/favoritelabjournal/';
+  //   var suscriptions = $http({
+  //     method:'GET',
+  //     url:dev_server + call_suscriptions +params,
+  //     headers:{'Content-Type': 'application/json'}
+  //   });
+  //   /* LAUNCHED LAB INSTANCES PROMISE */
+  //   var call_launched = '/labjournalinstance/';
+  //   var launched = $http({
+  //     url:dev_server+call_launched+params,
+  //     method:"GET",
+  //     headers:{'Content-Type': 'application/json'}
+  //   });
 
-    $q.all([assignments,suscriptions,launched]).then(function(response){
-      var assignments = response[0].data.objects;
-      var suscriptions = response[1].data.objects;
-      var launched_instances = response[2].data.objects;
-      console.log(assignments);
-      console.log(suscriptions);
-      console.log(launched_instances);
+  //   $q.all([assignments,suscriptions,launched]).then(function(response){
+  //     var assignments = response[0].data.objects;
+  //     var suscriptions = response[1].data.objects;
+  //     var launched_instances = response[2].data.objects;
+  //     console.log(assignments);
+  //     console.log(suscriptions);
+  //     console.log(launched_instances);
 
-      /* need to merge the reponses to see which ones are in progress / completed */
-      // angular.forEach(launched_instances, function(instance, key){
-      //   angular.forEach(assignments, function(assignment, key){
-      //     if(instance.lab_journal === assignment.lab_journal ) {
+  //     /* need to merge the reponses to see which ones are in progress / completed */
+  //     // angular.forEach(launched_instances, function(instance, key){
+  //     //   angular.forEach(assignments, function(assignment, key){
+  //     //     if(instance.lab_journal === assignment.lab_journal ) {
 
-      //     }
-      //   });
-      //   angular.forEach(suscriptions, function(suscription, key){
+  //     //     }
+  //     //   });
+  //     //   angular.forEach(suscriptions, function(suscription, key){
           
-      //   });
+  //     //   });
 
-      // });
+  //     // });
 
 
+  //   });
+
+  // };
+
+  this.register = function(data) {
+    var call = '/registration/';
+    return $http({
+      url:dev_server+call,
+      method:"POST",
+      data:data
+    }).then(function(response) {
+      return response.data.objects;
+    });
+  };
+
+
+  this.complete_the_journal = function(data) {
+    var call = '/labjournalinstance/';
+    return $http({
+      url:dev_server+call+'?username='+username+'&api_key='+api_key,
+      method:"POST",
+      data:data
+    }).then(function(response){
+      console.log(response);
     });
 
   };
@@ -401,5 +412,67 @@ angular.module('service', ['angularLocalStorage'])
 
 }]);
 
+
+  // this.get_steps = function(type,idx) {
+  //       var deferred = $q.defer();
+
+  //       var x;
+
+  //       if(type === 'assignments') {
+  //         x = assignments[idx].lab_journal;
+  //       } else if (type === 'suscriptions') {
+  //         x = suscriptions[idx].lab_journal;
+  //       }
+
+  //       console.log(x);
+
+  //       var call;
+  //       var _steps;
+  //       /* first check if we have the reponse stored in local storage */
+  //       var _type = storage.get(type);
+  //       var _idx = parseInt(storage.get('idx'),10);
+  //       console.log(storage.get(x));
+
+  //       /* check to see if we already launched the journal before */
+  //       if( storage.get(x) != null ) {
+  //           console.log(x);
+  //           storage.set('idx',idx);
+  //           //call = _type[idx].lab_journal;
+  //           _steps = storage.get(x);
+  //           angular.copy(_steps,steps); // copy the current steps
+  //           deferred.resolve(_steps);
+  //       } else if(angular.isDefined(_type) && angular.isNumber(_idx) && !isNaN(_idx) ) {
+  //         console.log("IN LOCAL STORAGE IN GET STEPS");
+  //         call = _type[_idx].lab_journal; // find the key
+  //         console.log(call);
+  //         _steps = storage.get(call);
+  //         angular.copy(_steps,steps); // copy the current steps
+  //         deferred.resolve(_steps);
+  //       } else {
+
+  //         if(type === 'assignments') {
+  //           call = assignments[idx].lab_journal;
+  //         } else if (type === 'suscriptions') {
+  //           call = suscriptions[idx].lab_journal;
+  //         }
+
+  //         $http({
+  //           method: 'GET',
+  //           url:'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com'+call+'?username='+username+'&api_key='+api_key,
+  //           headers:{'Content-Type': 'application/json'}
+  //         }).success(function(response){
+  //           angular.copy(response.lab_journal_steps, steps);
+  //           storage.set(call,response.lab_journal_steps);
+  //           storage.set('idx',idx);
+  //           deferred.resolve(response.lab_journal_steps);
+  //         }).error(function(err){
+  //           deferred.reject('ERRROR');
+  //         });
+
+  //       }
+
+  //       return deferred.promise;
+
+  // };
 
 // http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournal/?username=student1&api_key=91eb6ee778f194eae706732b55bcef8171afb22f57363d3cdd1bd4e2 

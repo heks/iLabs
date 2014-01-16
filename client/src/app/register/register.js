@@ -19,18 +19,18 @@ angular.module( 'ilabs.register', [
   });
 })
 
-.controller( 'registerCtrl', ['$scope','$state','AFFILIATIONS', function registerCtrl( $scope,$state, AFFILIATIONS ) {
+.controller( 'registerCtrl', ['$scope','$state','AFFILIATIONS','api', function registerCtrl( $scope,$state, AFFILIATIONS,api ) {
   $scope.user = {};
 
   $scope.affiliations = AFFILIATIONS;
 
   $scope.register = function() {
+    //api.register($scope.user)
     console.log("REGISTER");
     $state.go('login');
   };
 
   $scope.cancel = function() {
-    console.log("CANCEL");
     $state.go('login');
   };
 

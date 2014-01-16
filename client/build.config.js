@@ -75,8 +75,11 @@ module.exports = {
       'vendor/snapjs/snap.js',
       'vendor/angular-ui-slider/src/slider.js',
       'vendor/angular-local-storage/angular-local-storage.js',      
-      'vendor/d3/d3.js',
+      'vendor/chartjs/Chart.js',
+      'vendor/angles/libs/angles.js',
       'vendor/angular-cookies/angular-cookies.js',
+      'vendor/jquery-ui-touch-punch/jquery-ui-touch-punch.min.js',
+      'vendor/angular-timer/dist/angular-timer.js',
       'vendor/angularLocalStorage/src/angularLocalStorage.js'
     ],
     css: [

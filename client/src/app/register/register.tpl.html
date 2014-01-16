@@ -43,7 +43,7 @@
   <div class="form-group" ng-class="{'has-error': myForm.firstname.$invalid && !myForm.firstname.$pristine,'has-success': !myForm.firstname.$invalid && !myForm.firstname.$pristine}">
     <div class="row input-group">
       <span class="input-group-addon"><i class="fa fa-tags fa-fw"></i></span>
-      <input type="text" name="firstname" ng-model="user.firstname" class="form-control" id="inputEmail3" placeholder="Firstname" required capitalize-first ng-minlength='3' ng-maxlength='20' />
+      <input type="text" name="firstname" ng-model="user.first_name" class="form-control" id="inputEmail3" placeholder="Firstname" required capitalize-first ng-minlength='3' ng-maxlength='20' />
     </div>
     <small class="error" ng-show="myForm.firstname.$error.required && !myForm.firstname.$pristine">
             Your firstname is required
@@ -59,7 +59,7 @@
   <div class="form-group" ng-class="{'has-error': myForm.lastname.$invalid && !myForm.lastname.$pristine,'has-success': !myForm.lastname.$invalid && !myForm.lastname.$pristine}">
     <div class="row input-group">
       <span class="input-group-addon"><i class="fa fa-tags fa-fw"></i></span>
-      <input type="text" name="lastname" ng-model="user.lastname" class="form-control" id="inputEmail3" placeholder="Lastname" required capitalize-first ng-minlength='3' ng-maxlength='20'/>
+      <input type="text" name="lastname" ng-model="user.last_name" class="form-control" id="inputEmail3" placeholder="Lastname" required capitalize-first ng-minlength='3' ng-maxlength='20'/>
     </div>
     <small class="error" ng-show="myForm.lastname.$error.required && !myForm.lastname.$pristine">
             Your lastname is required
@@ -105,7 +105,7 @@
   <div class="form-group" ng-class="{'has-error': myForm.SignupReason.$invalid && myForm.SignupReason.$dirty,'has-success': !myForm.SignupReason.$invalid && myForm.SignupReason.$dirty}">
     <div class="row">
       <label for="SignupReason">Why do you want to sign up?</label>
-      <textarea name="SignupReason" id="SignupReason" ng-model="user.reason" class="form-control" capitalize-first requried ng-minlength="8" ng-maxlength="240">
+      <textarea name="SignupReason" id="SignupReason" ng-model="user.signup_reason" class="form-control" capitalize-first requried ng-minlength="8" ng-maxlength="240">
       </textarea>
     <small class="error" ng-show="myForm.SignupReason.$error.required && myForm.SignupReason.$dirty">
             This is a required field
@@ -130,7 +130,7 @@
   </div>
 
 </form>
-</div>
-
 
 {{user | json}}
+</div>
+
