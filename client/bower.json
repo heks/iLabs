@@ -18,10 +18,12 @@
     "angularLocalStorage": "~0.1.7",
     "angles": "*",
     "chartjs": "*",
-    "angular-timer": "~1.0.11"
+    "angular-timer": "~1.0.11",
+    "highcharts-ng": "~0.0.3"
   },
   "dependencies": {},
   "resolutions": {
-    "angular": "1.2.5"
+    "angular": "1.2.5",
+    "jquery": "~2.0.3"
   }
 }

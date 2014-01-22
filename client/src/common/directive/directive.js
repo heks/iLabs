@@ -1,4 +1,4 @@
-angular.module('directive', ['ngTouch','ui.slider'])
+angular.module('directive', ['ngTouch','ui.keypress'])
 
 .directive('questions', [  function () {
   return {
@@ -31,6 +31,24 @@ angular.module('directive', ['ngTouch','ui.slider'])
     templateUrl: 'directive/parameters.tpl.html',
     link: function($scope, element, attrs) {
       $scope.array = [1,60,2];
+
+      $scope.pushToArray = function(idx,val) {
+        $scope.data[idx].response.push(val);
+        // if($scope.data[idx].response = '') {
+        //   $scope.data[idx].response = value.toString();
+        // } else {
+        //   $scope.data[idx].response += ','+value.toString();
+        // }
+        $scope.value = '';
+      };
+
+      $scope.removeDistance = function(pidx,idx) {
+        if (idx > -1) {
+            $scope.data[pidx].response.splice(idx, 1);
+        }
+      };
+
+
     }
   };
 }])

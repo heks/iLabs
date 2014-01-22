@@ -24,7 +24,9 @@
 
 
 			<div class="row" ng-class="{'has-error': subForm{{$index}}.SB.$invalid && !subForm{{$index}}.SB.$pristine,'has-success': !subForm{{$index}}.SB.$invalid && !subForm{{$index}}.SB.$pristine}" ng-switch-when="SB">
-				<div name="SB" ui-slider ng-init='data[$index].response=question.question.options[0]' min='{{question.question.options[0]}}' max='{{question.question.options[1]}}' required step='{{question.question.options[2]}}' ng-model="data[$index].response"></div>
+
+				<input style="width:100%" name="SB" ng-model="data[$index].response" ng-init='data[$index].response=question.question.options[0]' type="range" min='{{question.question.options[0]}}' ng-model="data[$index].response" max='{{question.question.options[1]}}' step='{{question.question.options[2]}}'/>
+
 				{{data[$index].response}}
 			    <small class="error" ng-show="subForm{{$index}}.SB.$error.required && !subForm{{$index}}.SB.$pristine">
 			      This is a required field
@@ -43,15 +45,6 @@
 
 
 	</div>
-
-<!--
-			<script type="text/ng-template" id="ques/tpl.html">
-
-		<slider floor='parseInt(question.question.options[0],10) || 0' ceiling='parseInt(question.question.options[1],10) || 13' step='parseInt(question.question.options[2],10) || 1' ng-model='data[$index].response' precision='parseInt(question.question.options[2],10) || 1'></slider>
-
-		</script>
-
-		-->
 
 </div>
 

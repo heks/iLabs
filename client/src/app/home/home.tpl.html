@@ -11,7 +11,9 @@
 <div ng-switch on="assignments.length>0" class="panel panel-default">
 
     <div class="panel-heading">
-      <h3 class="panel-title">Inbox</h3>
+      <h3 class="panel-title">
+        <strong>Inbox</strong>
+      </h3>
     </div>
 
         <ul ng-switch-when="true" class="list-group">
@@ -31,7 +33,9 @@
   <div ng-switch on="suscriptions.length>0" class="panel panel-default">
 
       <div class="panel-heading">
-        <h3 class="panel-title">Favorites</h3>
+        <h3 class="panel-title">
+          <strong>Favorites</strong>
+        </h3>
       </div>
 
         <ul ng-switch-when="true" class="list-group">
@@ -47,8 +51,11 @@
 
   </div>
 
+  <div class="row">
+    <highchart config="chartConfig"></highchart>
+  </div>
 
-{{suscriptions | json }}
+<!-- {{suscriptions | json }}
 
 <br>
 <br>
@@ -61,6 +68,6 @@
 <br>
 
 {{ launched_instances | json }}
-
+ -->
 </div>
 

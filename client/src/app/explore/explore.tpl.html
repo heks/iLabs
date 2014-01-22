@@ -9,15 +9,21 @@
  -->  
   </div>
 
-  <h4> Suscribe: </h4>
 
-	<div ng-switch on="explore_journals.length>0">
+	<div ng-switch on="explore_journals.length>0" class="panel panel-default"> 
+
+		<div class="panel-heading">
+		  <h2 class="panel-title">
+			  <strong>Available Lab Journals</strong>
+		   </h2>
+		</div>
+
 
 	    <div ng-switch-when="true">
 	    	<div ng-repeat="journal in explore_journals" ng-switch on="isSelected(journal)" class="list-group-item">
 		      <div class="container" ng-click="selectJournal(journal)">
 			      <h5  class="pull-left">
-			      	 {{journal.title}}
+			      	 <strong>{{journal.title}}</strong>
 			      </h5>
 			      <span class="pull-right" style="margin-top:10px;" ng-switch-when="false">
 				      <i class="fa fa-chevron-left"></i>
@@ -26,20 +32,15 @@
 				      <i class="fa fa-chevron-down"></i>
 			      </span>
 			   </div>
-		      <div class="container" ng-switch-when="true">
-		      		<div class="container">
-						<dl class="dl-horizontal pull-left" >
+		      <div class="row" ng-switch-when="true">
+						<dl class="container" >
 							<dt> Author: </dt>
 							<dd> {{journal.author}} </dd>
 							<dt> Subject: </dt>
 							<dd> {{journal.subject}} </dd>
+							<dt> Description: </dt>
+							<dd> {{journal.description}} </dd>
 						</dl>
-					</div>
-
-					<dl>
-						<dt> Description: </dt>
-						<dd> {{journal.description}} </dd>
-					</dl>
 			      <div class="row">
 			      	<button type="submit" ng-click='suscribe(journal)' class="btn btn-primary btn-block">Suscribe
 			        </button>
@@ -48,12 +49,10 @@
 	      </div>
 	    </div>
 	    
-	    <div ng-switch-when="false">
+	    <div ng-switch-when="false" class="panel-body">
 	    	No Suscriptions Available !
 	    </div>
 
 	</div>
 	
 </div>
-
-{{explore_journals}}

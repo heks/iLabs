@@ -280,6 +280,16 @@ angular.module('service', ['angularLocalStorage'])
       url:dev_server+call+'?username='+username+'&api_key='+api_key,
       method:"GET"
     }).then(function(response){
+      /* need to do some parsing becuase this data is in such a shit format */
+      angular.forEach(response.data.results, function(value, key){
+        value.result = value.result.split(",");
+        value.distance = parseInt(value.distance,10);
+      });
+      /* sort the results by distance before getting */
+      response.data.results.sort(function(a,b){
+        return a.distance - b.distance;
+      });
+
       deferred.resolve(response.data);
     },function(error){
       var call2 = '/experiment/status/' + experiment_id + '/';

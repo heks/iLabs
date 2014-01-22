@@ -67,6 +67,9 @@ angular.module( 'ilabs.steps', [
             $state.go('home');
           });
         // });
+      },
+      number_of_steps : function(steps) {
+        return steps.length;
       }
     }
   });
@@ -89,7 +92,10 @@ angular.module( 'ilabs.steps', [
 /**
  * And of course we define a controller for our route.
  */
-.controller('StepsCtrl',['$scope','step','$state','$stateParams','api','storage','$timeout', function StepsCtrl($scope,step,$state,$stateParams,api,storage,$timeout){
+.controller('StepsCtrl',['$scope','step','$state','$stateParams','api','storage','$timeout','number_of_steps', function StepsCtrl($scope,step,$state,$stateParams,api,storage,$timeout,number_of_steps){
+  
+  $scope.number_of_steps = number_of_steps;
+
   $scope.data_param = [];
   $scope.data_questions = [];
 
@@ -104,6 +110,12 @@ angular.module( 'ilabs.steps', [
 
 
   $scope.step = step; 
+
+
+  $scope.prevQuestion = function() {
+    var prev = parseInt($stateParams.stepnumber, 10)-1;
+    $state.go('steps.step',{stepnumber:prev});
+  };
 
   $scope.nextQuestion = function() {
     var next = parseInt($stateParams.stepnumber, 10)+1;
@@ -122,46 +134,63 @@ angular.module( 'ilabs.steps', [
     data.parameter_group = $scope.step.journal_parameter_group.resource_uri;
     data.instance = '/api/v1/labjournalinstance/x/';
     data.step = "/api/v1/labjournalstep/6/";
+
     api.submit_experiment(data,$scope.data_param).then(function(response){
       console.log(response);
-      // need to do wait time
-      //response[1].data.status.waitTime
-      $scope.timerclock = parseInt(response[1].data.status.estRunTime,10)+5;
-      var experiment_id = response[1].data.experiment_id;
-      $timeout(function(){},$scope.timerclock*1000+3000).then( function() {
-        api.get_experiment_result(experiment_id).then(function(response){
-          console.log(response);
 
+      $timeout(function(){
+        $scope.waitclock = parseInt(response[1].data.status.waitTime,10);
+      },$scope.waitclock*1000 ).then(function() {
+        $scope.timerclock = parseInt(response[1].data.status.estRunTime,10)+5;
+        var experiment_id = response[1].data.experiment_id;
+
+        $timeout(function(){},$scope.timerclock*1000+3000).then( function() {
+        api.get_experiment_result(experiment_id).then(function(response){
+
+            console.log(response);
+            $scope.data = angular.copy(response);
+            var colors = ['#00bdb3','#800000','#0f628b','#86cdeb','#71e5e1','#559f84','#e3a115','a386eb','#32cd32','#15e3a2','#0f628b','#ffdddc'];
             var labels = [];
             var dataset = [];
             angular.forEach(response.results, function(result, key){
               labels.push(result.distance);
-              angular.forEach(result, function(value, key){
+              var idx = 0;
+              angular.forEach(result.result, function(value, key){
                 if( response.results.indexOf(result) === 0 ) {
                   //var idx = result.indexOf(value);
                   dataset.push(
                     {
                       fillColor : "rgba(255,255,255, 0)",
-                      strokeColor : "rgba(220,220,220,1)",
-                      data : [value]
+                      strokeColor : colors[idx],
+                      data : [parseInt(value,10)]
                     }
                   );
+                  idx += 1;
                 } else {
-                  dataset[key].data.push(value);
+                  dataset[key].data.push(parseInt(value,10));
                 }
               });
             });
 
+            console.log(labels);
+            console.log(dataset);
+
+            $scope.chart = {};
             $scope.chart.labels = angular.copy(labels);
             $scope.chart.datasets = angular.copy(dataset);
 
         },function(error){
           console.log(error);
         });
+
       });
+      });
+
+
     });
 
   };
+
 
 
   // $scope.chart = {

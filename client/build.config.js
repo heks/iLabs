@@ -64,31 +64,27 @@ module.exports = {
     js: [
       'vendor/jquery/jquery.js',
       'vendor/angular/angular.js',
-      'vendor/jquery-ui/ui/jquery-ui.js',
       'vendor/angular-bootstrap/ui-bootstrap-tpls.js',
       'vendor/angular-touch/angular-touch.js',
-      // 'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
       'vendor/angular-ui-router/release/angular-ui-router.js',
       'vendor/angular-ui-utils/modules/route/route.js',
+      'vendor/angular-ui-utils/modules/keypress/keypress.js',
       'vendor/showdown/src/showdown.js',
       'vendor/angular-snap/angular-snap.js',
+      'vendor/highcharts-ng/dist/highcharts-ng.js',
+      // 'vendor/d3/d3.js',
       'vendor/snapjs/snap.js',
-      'vendor/angular-ui-slider/src/slider.js',
       'vendor/angular-local-storage/angular-local-storage.js',      
       'vendor/chartjs/Chart.js',
       'vendor/angles/libs/angles.js',
       'vendor/angular-cookies/angular-cookies.js',
-      'vendor/jquery-ui-touch-punch/jquery-ui-touch-punch.min.js',
       'vendor/angular-timer/dist/angular-timer.js',
       'vendor/angularLocalStorage/src/angularLocalStorage.js'
     ],
     css: [
       'vendor/angular-snap/angular-snap.css',
-      'vendor/jquery-ui/themes/smoothness/jquery-ui.min.css',
-      'vendor/jquery-ui/themes/jquery-ui.theme.css'
     ],
     assets: [
-      'vendor/jquery-ui/themes/smoothness/images/**'
     ]
   },
 };

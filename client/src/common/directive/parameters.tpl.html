@@ -10,12 +10,37 @@
 
 				<div class='row' ng-switch-when="TA">
 					    <label for="TA" class="row control-label">{{parameter.title}} : <small>{{ parameter.help_text}}</small></label>
-					    <div ng-class="{'has-error': subForm{{$index}}.TA.$invalid && !subForm{{$index}}.TA.$pristine,'has-success': !subForm{{$index}}.TA.$invalid && !subForm{{$index}}.TA.$pristine}" class="row">
-					      <input name="TA" ng-model="data[$index].response" type="text" class="form-control" id="TAparam" name="TAparam" placeholder="TAparam" required>
+					    <div ng-class="{'has-error': (subForm{{$index}}.$invalid && subForm{{$index}}.TA.$dirty),'has-success': subForm{{$index}}.$valid && value}" class="form-group">
+
+							<div class="input-group text-center">
+								<div class="col-xs-4">
+								 	<input min="{{parameter.options[0]}}" max="{{parameter.options[1]}}" style="text-align:center" ng-init="data[$index].response = []" class="form-control" name="TA" ng-model="value" type="number" id="TAparam" ui-keypress="{13:'(subForm{{$index}}.$invalid || !value) || pushToArray($index,value)'}" ui-keydown="{'tab': '(subForm{{$index}}.$invalid || !value) || pushToArray($index,value)'}"/>
+								 </div>
+								 <div class="col-xs-8">
+									<button ng-disabled="subForm{{$index}}.$invalid || !value " ng-click="pushToArray($index,value)" type="button" class="btn btn-default">
+										<i class="fa fa-plus"></i> Add {{parameter.title}}
+									</button>
+								</div>
+							</div>
+						    <small class="error" ng-show="subForm{{$index}}.TA.$error.max && subForm{{$index}}.TA.$dirty">
+						            Please enter a distance less than {{ parameter.options[1] }}
+						    </small>
+						      <small class="error" ng-show="subForm{{$index}}.TA.$error.min && subForm{{$index}}.TA.$dirty">
+						            Please enter a distance greater than {{ parameter.options[0] }}
+						    </small>
+
 					    </div>
-				    <small class="error" ng-show="subForm{{$index}}.TA.$error.required && !subForm{{$index}}.TA.$pristine">
-				      This is a required field
-				    </small>
+
+						<div ng-show="data[$index].response != []">
+							<table class="table">
+									<tr ng-repeat="value in data[$index].response track by $index">
+										<th class="text-center"> {{parameter.title}} {{$index+1}}: </th>
+										<td> {{value}} </td>
+										<td ng-click="removeDistance($parent.$index,$index)"> <i class="fa fa-times fa-1x"></i> </td>
+									</tr>
+							</table>
+						</div>
+
 				</div>
 
 				<div class="row" ng-switch-when="DD">
@@ -32,7 +57,7 @@
 				<div class="row" ng-switch-when="SB">
 						<label for="SB" class="row control-label">{{parameter.title}}:</label>
 						<div ng-class="{'has-error': subForm{{$index}}.SB.$invalid && !subForm{{$index}}.SB.$pristine,'has-success': !subForm{{$index}}.SB.$invalid && !subForm{{$index}}.SB.$pristine}" class="row">
-							<div name="SB" ui-slider ng-init="data[$index].response = parameter.options[0]" min='{{parameter.options[0]}}' max='{{parameter.options[1]}}' step='{{parameter.options[2]}}' ng-model="data[$index].response"></div>
+						<input style="width:100%" name="SB" ng-model="data[$index].response" ng-init="data[$index].response = parameter.options[0]" type="range" min='{{parameter.options[0]}}' ng-model="data[$index].response" max='{{parameter.options[1]}}' step='{{parameter.options[2]}}'/>
 						</div>
 					<small>
 						{{ parameter.help_text}}  :  {{data[$index].response}}	
