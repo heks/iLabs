@@ -46,7 +46,7 @@ angular.module('service', ['angularLocalStorage'])
       var parameters = 'username=' + username + '&api_key=' + api_key;
       $http({
         method:'GET',
-        url: dev_server + '/labjournalassignment/?'+parameters,
+        url: dev_server + '/individualassignment/?'+parameters,
         headers:{'Content-Type': 'application/json'}
       }).then(function(response){
         angular.copy(response.data.objects,assignments);

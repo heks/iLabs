@@ -20,7 +20,7 @@ angular.module( 'ilabs.steps', [
   'service',
   'angularLocalStorage',
   'timer',
-  'angles'
+  'highcharts-ng'
 ])
 
 /**
@@ -149,25 +149,23 @@ angular.module( 'ilabs.steps', [
 
             console.log(response);
             $scope.data = angular.copy(response);
-            var colors = ['#00bdb3','#800000','#0f628b','#86cdeb','#71e5e1','#559f84','#e3a115','a386eb','#32cd32','#15e3a2','#0f628b','#ffdddc'];
             var labels = [];
             var dataset = [];
             angular.forEach(response.results, function(result, key){
               labels.push(result.distance);
-              var idx = 0;
+              var trial = 1;
               angular.forEach(result.result, function(value, key){
                 if( response.results.indexOf(result) === 0 ) {
                   //var idx = result.indexOf(value);
                   dataset.push(
                     {
-                      fillColor : "rgba(255,255,255, 0)",
-                      strokeColor : colors[idx],
-                      data : [parseInt(value,10)]
+                      name: 'Trial '+trial.toString(),
+                      data : [[result.distance,parseInt(value,10)]]
                     }
                   );
-                  idx += 1;
+                  trial += 1;
                 } else {
-                  dataset[key].data.push(parseInt(value,10));
+                  dataset[key].data.push([result.distance,parseInt(value,10)]);
                 }
               });
             });
@@ -175,9 +173,45 @@ angular.module( 'ilabs.steps', [
             console.log(labels);
             console.log(dataset);
 
-            $scope.chart = {};
-            $scope.chart.labels = angular.copy(labels);
-            $scope.chart.datasets = angular.copy(dataset);
+
+            $scope.chartConfig = {
+                legend: {
+                      itemStyle: {
+                         fontSize:'20px',
+                         //font: '35pt Trebuchet MS, Verdana, sans-serif',
+                         color: '#A0A0A0'
+                      }
+                },
+                options: {
+                    chart: {
+                        type: 'line',
+                        zoomType: 'x'
+                    }
+                },
+                series: dataset,
+                // series: [{
+                //     data: [10, 15, 12, 8, 7, 1, 1, 19, 15, 10]
+                // }],
+                title: {
+                    text: 'Results'
+                },
+                xAxis: {
+                  title: {
+                    text: 'Distance'
+                  }
+                  // plotLines
+                  // currentMin: labels[0],
+                  // currentMax: labels[labels.length-1]
+                  //minRange:1
+                  // categories:labels
+                },
+                yAxis: {
+                  title: {
+                    text: 'Particle Count'
+                  }
+                },
+                loading: false
+            };
 
         },function(error){
           console.log(error);
@@ -192,33 +226,6 @@ angular.module( 'ilabs.steps', [
   };
 
 
-
-  // $scope.chart = {
-  //     labels : ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-  //     datasets : [
-  //         {
-  //             fillColor : "rgba(255,255,255, 0)",
-  //             strokeColor : "rgba(220,220,220,1)",
-  //             //pointColor : "rgba(151,187,205,0)",
-  //             //pointStrokeColor : "#e67e22",
-  //             data : [4, 3, 5, 4, 6]
-  //         },
-  //         {
-  //             fillColor : "rgba(255,255,255, 0)",
-  //             strokeColor : "rgba(151,187,205,1)",
-  //             //pointColor : "rgba(151,187,205,0)",
-  //             //pointStrokeColor : "#f1c40f",
-  //             data : [8, 3, 2, 5, 4]
-  //         },
-  //         {
-  //             fillColor : "rgba(255,255,255, 0)",
-  //             strokeColor : "#4D5360",
-  //             //pointColor : "rgba(151,187,205,0)",
-  //             //pointStrokeColor : "#f1c40f",
-  //             data : [3, 4, 5, 1, 7]
-  //         }
-  //     ] 
-  // };
 
   $scope.options =  {
           //Boolean - Whether we should show a stroke on each segment

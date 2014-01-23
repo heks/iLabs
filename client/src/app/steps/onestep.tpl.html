@@ -62,9 +62,10 @@
 		</table>
  	</div>
 
-	<div ng-if="chart" class="row">
-		<canvas class="center-block" chart type="Line" options="options" data="chart" width="350" height="350"></canvas>
+	<div ng-if="chartConfig" class="row">
+	    <highchart id="chart1" config="chartConfig" class="span10"></highchart>
 	</div>
+
 
 
 	<div class="row">
