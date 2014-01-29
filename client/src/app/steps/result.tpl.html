@@ -1,0 +1,58 @@
+<div class="bs-example-home" style="padding-top:0px">
+	<div class="row" style="margin-top:2px;">
+		<small class="pull-left"> {{step_info.title}}  </small>
+		<small class="pull-right"> Results  </small>
+	</div>
+
+	<div class="row">
+		<h3 class="text-center" style="text-decoration:underline">Results</h3>
+	</div>
+
+
+
+	<div class="row">
+	    <highchart id="chart1" config="chartConfig" style="margin-left:2.5%;width:95%;"></highchart>
+
+		<table class="table">
+			<tr ng-repeat="value in regression_data track by $index">
+				<th class="text-center"> {{value.name}} </th>
+				<td> {{value.id}} </td>
+			</tr>
+		</table>
+	</div>
+
+
+
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th style="text-decoration:underline;">Distance: </th>
+					<th ng-repeat="val in trial_data[0].data track by $index"> {{ val[0] }}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="value in trial_data track by $index">
+					<th> {{ value.name }}: </th>
+					<td ng-repeat="val in value.data track by $index"> {{ val[1] }}</td>
+				</tr>
+			</tbody>
+		</table>
+ 	</div>
+
+
+	<div class="row">
+		<div class="col-xs-6">
+			<button type="button" ng-disabled="stepnumber==0" ng-click="prevQuestion()" class="btn btn-lg btn-primary btn-block">
+			<i class="fa fa-chevron-left fa-lg fa-fw"></i>Back
+			</button>
+		</div>
+		<div class="col-xs-6">
+			<button type="button" ng-disabled="mainForm.$invalid" ng-click="nextQuestion()" class="btn btn-lg btn-primary btn-block">
+			Next <i class="fa fa-chevron-right fa-lg fa-fw"></i>
+			</button>
+		</div>
+	</div>
+
+
+</div>
