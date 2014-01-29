@@ -185,14 +185,14 @@ angular.module('service.api', ['angularLocalStorage'])
 
   };
 
-  // this.unsuscribe_journal = function(data) {
-  //   var call = '/favoritelabjournal/';
-  //   return $http({
-  //     url:dev_server+call+'?username='+username+'&api_key='+api_key,
-  //     method:"DELETE"
-  //     date
-  //   });
-  // }
+  this.remove_journal = function(data) {
+    var call = '/favoritelabjournal/';
+    return $http({
+      url:dev_server+call+'?username='+username+'&api_key='+api_key,
+      method:"DELETE",
+      data:data
+    });
+  };
 
 
   this.suscribe_journal = function(data) {

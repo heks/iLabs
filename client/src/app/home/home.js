@@ -74,6 +74,20 @@ angular.module( 'ilabs.home', [
     });
   };
 
+  $scope.removeJournal = function(journal) {
+    var data = {};
+    data.added_date = journal.added_date;
+    data.lab_journal = journal.lab_journal;
+    data.id = journal.id;
+    data.student = journal.student;
+    api.remove_journal(data).then(function(response){
+      var idx = $scope.suscriptions.indexOf(journal);
+      if(idx > -1) {
+        $scope.suscriptions.splice(idx,1);
+      }
+    });
+  };
+
   $scope.explore = function() {
     $state.go('explore');
   };

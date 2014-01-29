@@ -22,9 +22,9 @@
 	    <div ng-switch-when="true">
 	    	<div ng-repeat="journal in explore_journals" ng-switch on="isSelected(journal)" class="list-group-item">
 		      <div class="container" ng-click="selectJournal(journal)">
-			      <h5  class="pull-left">
+			      <h4  class="pull-left">
 			      	 <strong>{{journal.title}}</strong>
-			      </h5>
+			      </h4>
 			      <span class="pull-right" style="margin-top:10px;" ng-switch-when="false">
 				      <i class="fa fa-chevron-right"></i>
 			      </span>
@@ -50,7 +50,7 @@
 	    </div>
 	    
 	    <div ng-switch-when="false" class="panel-body">
-	    	No Suscriptions Available !
+	    	<p style="margin-left:16px;margin-top:8px;">No Suscriptions Available !</p>
 	    </div>
 
 	</div>
