@@ -12,6 +12,7 @@ angular.module('service', ['angularLocalStorage'])
   var suscriptions = storage.get('suscriptions') || [];
   var explore_journals = [];
   var steps = [];
+  var step_info;
 
   this.login = function(_username,_password) {
 		var parameters = 'username=' + _username + '&password=' + _password;
@@ -39,10 +40,10 @@ angular.module('service', ['angularLocalStorage'])
 
 	this.get_assignments = function() {
     var deferred = $q.defer();
-    console.log(storage.get('assignments'));
-    if( assignments.length > 0 ) {
-      deferred.resolve(assignments);
-    } else {
+    // console.log(storage.get('assignments'));
+    // if( assignments.length > 0 ) {
+    //   deferred.resolve(assignments);
+    // } else {
       var parameters = 'username=' + username + '&api_key=' + api_key;
       $http({
         method:'GET',
@@ -56,7 +57,7 @@ angular.module('service', ['angularLocalStorage'])
         console.log(error);
         deferred.reject('ERRROR');
       });
-    }
+    //}
 
     return deferred.promise;
 	};
@@ -104,6 +105,13 @@ angular.module('service', ['angularLocalStorage'])
             headers:{'Content-Type': 'application/json'}
           }).success(function(response){
             angular.copy(response.lab_journal_steps, steps);
+            var gen_step_info = {};
+            gen_step_info.title = angular.copy(response.title);
+            gen_step_info.number_of_steps = angular.copy(response.number_of_steps);
+            gen_step_info.description = angular.copy(response.description);
+            gen_step_info.post_endpoint = angular.copy(response.post_endpoint);
+            step_info = angular.copy(gen_step_info);
+
             deferred.resolve(response.lab_journal_steps);
           }).error(function(err){
             deferred.reject('ERRROR');
@@ -111,6 +119,10 @@ angular.module('service', ['angularLocalStorage'])
 
         return deferred.promise;
       };
+
+  this.get_step_gen_info = function() {
+    return step_info;
+  };
 
 
   this.get_step = function(idx) {
@@ -153,30 +165,46 @@ angular.module('service', ['angularLocalStorage'])
 /api/v1/labjournalinstance/?username=student1&api_key=53580…
 */
   
-  this.curr_journal = [];
-
   this.start_journal = function(lab_journal) {
-        var call = '/labjournalinstance/';
-        var GUID = 'x';//username + ':' + new Date().getTime().toString();
+        var deferred = $q.defer();
+        var data = {};
+        /* In progress lab journal so dont start a new one but get the old one */
+        if( angular.isDefined(lab_journal.status) ) {
+          data.GUID = lab_journal.GUID;
+          if(!lab_journal.last_step_completed) {
+            data.last_step_completed = 0;
+          } else {
+            data.last_step_completed = parseInt(lab_journal.last_step_completed,10);
+          }
+          deferred.resolve(data);
+        /* lab journal not launched yet so generate a new GUID and launch the journal */
+        } else {
+          var call = '/labjournalinstance/';
+          var GUID = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {var r = Math.random()*16|0,v=c=='x'?r:r&0x3|0x8;return v.toString(16);});
+          var ret_data = {};
+          var post_data = {
+            "GUID": GUID,
+            "lab_journal":lab_journal
+          };
 
-        var data = {
-          "GUID": GUID,
-          "lab_journal":lab_journal
-        };
+          this.curr_journal = angular.copy(data);
 
-        this.curr_journal = angular.copy(data);
+          $http({
+            method: 'POST',
+            url:dev_server+call+'?username='+username+'&api_key='+api_key,
+            headers:{'Content-Type': 'application/json'},
+            data:post_data
+          }).success(function(data){
+            console.log("Successfully started journal");
+            ret_data.GUID = GUID;
+            ret_data.last_step_completed = 0;
+            deferred.resolve(ret_data);
+          }).error(function(data){
+            deferred.reject("Somthing went wrong");
+          });
+        }
 
-        return $http({
-          method: 'POST',
-          url:dev_server+call+'?username='+username+'&api_key='+api_key,
-          headers:{'Content-Type': 'application/json'},
-          data:data
-        }).success(function(data){
-          console.log("Successfully started journal");
-          return data;
-        }).error(function(data){
-          return data;
-        });
+        return deferred.promise;
   };
 
   this.post_lab_journal_question_resonse = function(data) {
@@ -197,22 +225,6 @@ angular.module('service', ['angularLocalStorage'])
   };
 
 // api/v1/labjournalquestionresponse/?username=student1&api_key=53580…
-
-  this.post_lab_journal_parameter_response = function(data) {
-    var call = '/labjournalparameterresponse/';
-    var x = {objects:data};
-    return $http({
-      url:dev_server+call+'?username='+username+'&api_key='+api_key,
-      method:"PATCH",
-      data:x
-    }).success(function(data){
-      console.log("successful patch");
-      return data;
-    }).error( function(data){
-      console.log("error");
-      return data;
-    });
-  };
 
   // this.post_experiment = function() {
   //   var call = '/experiment/'
@@ -308,7 +320,7 @@ angular.module('service', ['angularLocalStorage'])
 
   // /api/v1/experiment/estTime/GUID/guidxrd/parameter_group_id/11/?username=student1&api_key=53580…
   this.get_estimated_time = function() {
-    var call = '/experiment/estTime/GUID/' + 'x' + '/parameter_group_id/11/';
+    var call = '/experiment/estTime/GUID/' + 'y' + '/parameter_group_id/11/';
     return $http({
       url:dev_server+call+'?username='+username+'&api_key='+api_key,
       method:"GET"
@@ -328,72 +340,67 @@ angular.module('service', ['angularLocalStorage'])
   };
 
 
-  this.get_launched_instances = function () {
-    var call = '/labjournalinstance/';
-    return $http({
-      url:dev_server+call+'?username='+username+'&api_key='+api_key,
-      method:"GET"
-    }).then(function(response) {
-      return response.data.objects;
-    });
-  };
-
-
   ///api/v1/experiment/status/251/?username=student1&api_key=53580…
 
   // TODO
   /* Combine all 3 calls for the home page */
-  // this.get_home = function() {
-  //   var params = '?username=' + username + '&api_key=' + api_key;
+  this.get_home = function() {
+    var params = '?username=' + username + '&api_key=' + api_key;
 
 
-  //   /* ASSIGNMENTS PROMISE */
-  //   var call_assignments = '/labjournalassignment/';
-  //   var assignments = $http({
-  //     url:dev_server+call_assignments+params,
-  //     method:"GET",
-  //     headers:{'Content-Type': 'application/json'}
-  //   });
-  //   /* SUSCRIPTIONS PROMISE */
-  //   var call_suscriptions = '/favoritelabjournal/';
-  //   var suscriptions = $http({
-  //     method:'GET',
-  //     url:dev_server + call_suscriptions +params,
-  //     headers:{'Content-Type': 'application/json'}
-  //   });
-  //   /* LAUNCHED LAB INSTANCES PROMISE */
-  //   var call_launched = '/labjournalinstance/';
-  //   var launched = $http({
-  //     url:dev_server+call_launched+params,
-  //     method:"GET",
-  //     headers:{'Content-Type': 'application/json'}
-  //   });
+    /* ASSIGNMENTS PROMISE */
+    var call_assignments = '/individualassignment/';
+    var assignments = $http({
+      url:dev_server+call_assignments+params,
+      method:"GET",
+      headers:{'Content-Type': 'application/json'}
+    });
+    /* SUSCRIPTIONS PROMISE */
+    var call_suscriptions = '/favoritelabjournal/';
+    var suscriptions = $http({
+      method:'GET',
+      url:dev_server + call_suscriptions +params,
+      headers:{'Content-Type': 'application/json'}
+    });
+    /* LAUNCHED LAB INSTANCES PROMISE */
+    var call_launched = '/labjournalinstance/';
+    var launched = $http({
+      url:dev_server+call_launched+params,
+      method:"GET",
+      headers:{'Content-Type': 'application/json'}
+    });
 
-  //   $q.all([assignments,suscriptions,launched]).then(function(response){
-  //     var assignments = response[0].data.objects;
-  //     var suscriptions = response[1].data.objects;
-  //     var launched_instances = response[2].data.objects;
-  //     console.log(assignments);
-  //     console.log(suscriptions);
-  //     console.log(launched_instances);
+    return $q.all([assignments,suscriptions,launched]).then(function(response){
+      var assignments = response[0].data.objects;
+      var suscriptions = response[1].data.objects;
+      var launched_instances = response[2].data.objects;
+      /* need to merge the reponses to see which ones are in progress / completed */
+      angular.forEach(launched_instances, function(instance, key){
+        angular.forEach(assignments, function(assignment, key){
+          if(instance.lab_journal === assignment.lab_journal ) {
+            assignment.GUID = angular.copy(instance.GUID);
+            assignment.status = angular.copy(instance.status);
+            assignment.last_step_completed = angular.copy(instance.last_step_completed);
+          }
+        });
+        angular.forEach(suscriptions, function(suscription, key){
+          if(instance.lab_journal === suscription.lab_journal ) {
+            suscription.GUID = angular.copy(instance.GUID);
+            suscription.status = angular.copy(instance.status);
+            suscription.last_step_completed = angular.copy(instance.last_step_completed);
+          }
+        });
+      });
+      var home = {
+      'assignments':assignments,
+      'suscriptions':suscriptions
+      };
 
-  //     /* need to merge the reponses to see which ones are in progress / completed */
-  //     // angular.forEach(launched_instances, function(instance, key){
-  //     //   angular.forEach(assignments, function(assignment, key){
-  //     //     if(instance.lab_journal === assignment.lab_journal ) {
+      return home;
 
-  //     //     }
-  //     //   });
-  //     //   angular.forEach(suscriptions, function(suscription, key){
-          
-  //     //   });
-
-  //     // });
-
-
-  //   });
-
-  // };
+    });
+  
+  };
 
   this.register = function(data) {
     var call = '/registration/';

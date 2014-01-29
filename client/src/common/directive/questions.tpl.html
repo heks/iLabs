@@ -2,7 +2,7 @@
 
 
 	<div ng-repeat="question in questions" 
-	ng-init="data[$index] = {'question':question.resource_uri,'instance':'/api/v1/labjournalinstance/x/',response:'' }" ng-form="subForm{{$index}}">
+	ng-init="data[$index] = {'question':question.resource_uri,'instance':'/api/v1/labjournalinstance/'+guid +'/',response:'' }" ng-form="subForm{{$index}}">
 
 		<label class="row control-label"> {{question.question.question_text}} </label>
 

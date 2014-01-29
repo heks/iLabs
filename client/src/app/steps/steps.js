@@ -30,7 +30,7 @@ angular.module( 'ilabs.steps', [
  */
 .config(function config( $stateProvider ) {
   $stateProvider.state('steps',{
-    url: '/{type}/:idx',
+    url: '/{type}/{GUID}/:idx',
     abstract:true,
     views: {
       "main": {
@@ -68,42 +68,43 @@ angular.module( 'ilabs.steps', [
           });
         // });
       },
-      number_of_steps : function(steps) {
-        return steps.length;
+      step_info : function(api,steps) {
+        return api.get_step_gen_info();
       }
     }
+  })
+  .state('steps.result',{
+    url:'/step/:stepnumber/{experiment_id}',
+    controller: 'ResultCtrl',
+    templateUrl: 'steps/result.tpl.html',
+    resolve: {
+      results: function($stateParams,api,chart) {
+        return api.get_experiment_result($stateParams.experiment_id).then(function(response) {
+          return chart.format(response);
+        });
+      },
+      step_info: function(api,steps) {
+        return api.get_step_gen_info();
+      }  
+    },
+    data: {pageTitle: 'Results'}
   });
-  // .state('newstep',{
-  //   url:'/step/:stepnumber',
-  //   views: {
-  //     "main": {
-  //       controller: 'StepCtrl',
-  //       templateUrl: 'steps/onestep.tpl.html'
-  //     }
-  //   },
-  //   resolve: {
-  //     step: function($stateParams,api){
-  //       return api.get_step(parseInt($stateParams.stepnumber,10));
-  //     }
-  //   },
-  //   data: {pageTitle: 'Step'}
-  // });
 })
-/**
- * And of course we define a controller for our route.
- */
-.controller('StepsCtrl',['$scope','step','$state','$stateParams','api','storage','$timeout','number_of_steps', function StepsCtrl($scope,step,$state,$stateParams,api,storage,$timeout,number_of_steps){
-  
-  $scope.number_of_steps = number_of_steps;
+
+
+.controller('StepsCtrl',['$scope','step','$state','$stateParams','api','storage','$timeout','step_info', function StepsCtrl($scope,step,$state,$stateParams,api,storage,$timeout,step_info){
+  $scope.GUID = $stateParams.GUID;
+
+  $scope.step_info = step_info;
 
   $scope.data_param = [];
   $scope.data_questions = [];
 
-  if($scope.data_param.length > 0) {
-    storage.bind($scope,'data_param',{defaultValue: '' ,storeName: step.resource_uri});
-  } else if($scope.data_questions.length > 0 ) {
-    storage.bind($scope,'data_questions',{defaultValue: '' ,storeName: step.resource_uri});
-  }
+  // if($scope.data_param.length > 0) {
+  //   storage.bind($scope,'data_param',{defaultValue: '' ,storeName: step.resource_uri});
+  // } else if($scope.data_questions.length > 0 ) {
+  //   storage.bind($scope,'data_questions',{defaultValue: '' ,storeName: step.resource_uri});
+  // }
 
 
   $scope.stepnumber = $stateParams.stepnumber;
@@ -119,138 +120,160 @@ angular.module( 'ilabs.steps', [
 
   $scope.nextQuestion = function() {
     var next = parseInt($stateParams.stepnumber, 10)+1;
+    if($scope.step.questions.length > 0) {
+      api.post_lab_journal_question_resonse($scope.data_questions);
+    }
+    if($scope.step.journal_parameter_group) {
+      /* do some shit if there are parameters */
+      if($scope.step.journal_parameter_group.parameters.length > 0) {
+        post_to_lab();
+      }
+    } 
     $state.go('steps.step',{stepnumber:next});
-    //$location.path($stateParams.type+'/'+$stateParams.idx+'/step/'+next.toString()).replace();
-    //angular.copy(api.get_step(next), $scope.step);
-        // $scope.step = api.get_step(parseInt($stateParams.stepnumber,10)+1);
   };
 
-  $scope.doPatchQues = function() {
-    api.post_lab_journal_parameter_response($scope.data_questions);
-  };
+  /* we must do this shit if we are posting to the equipment */
 
-  $scope.doPatchParam = function() {
+  var post_to_lab = function() {
+    /* construct the data to post to the equipment */
     var data = {};
     data.parameter_group = $scope.step.journal_parameter_group.resource_uri;
-    data.instance = '/api/v1/labjournalinstance/x/';
-    data.step = "/api/v1/labjournalstep/6/";
+    data.instance = step_info.post_endpoint + $stateParams.GUID + '/';
+    data.step = $scope.step.resource_uri;
 
     api.submit_experiment(data,$scope.data_param).then(function(response){
-      console.log(response);
-
-      $timeout(function(){
-        $scope.waitclock = parseInt(response[1].data.status.waitTime,10);
-      },$scope.waitclock*1000 ).then(function() {
+      $scope.waitclock = parseInt(response[1].data.status.waitTime,10);
+      var run_rest = function() {
         $scope.timerclock = parseInt(response[1].data.status.estRunTime,10)+5;
         var experiment_id = response[1].data.experiment_id;
-
-        $timeout(function(){},$scope.timerclock*1000+3000).then( function() {
-        api.get_experiment_result(experiment_id).then(function(response){
-
-            console.log(response);
-            $scope.data = angular.copy(response);
-            var labels = [];
-            var dataset = [];
-            angular.forEach(response.results, function(result, key){
-              labels.push(result.distance);
-              var trial = 1;
-              angular.forEach(result.result, function(value, key){
-                if( response.results.indexOf(result) === 0 ) {
-                  //var idx = result.indexOf(value);
-                  dataset.push(
-                    {
-                      name: 'Trial '+trial.toString(),
-                      data : [[result.distance,parseInt(value,10)]]
-                    }
-                  );
-                  trial += 1;
-                } else {
-                  dataset[key].data.push([result.distance,parseInt(value,10)]);
-                }
-              });
-            });
-
-            console.log(labels);
-            console.log(dataset);
-
-
-            $scope.chartConfig = {
-                legend: {
-                      itemStyle: {
-                         fontSize:'20px',
-                         //font: '35pt Trebuchet MS, Verdana, sans-serif',
-                         color: '#A0A0A0'
-                      }
-                },
-                options: {
-                    chart: {
-                        type: 'line',
-                        zoomType: 'x'
-                    }
-                },
-                series: dataset,
-                // series: [{
-                //     data: [10, 15, 12, 8, 7, 1, 1, 19, 15, 10]
-                // }],
-                title: {
-                    text: 'Results'
-                },
-                xAxis: {
-                  title: {
-                    text: 'Distance'
-                  }
-                  // plotLines
-                  // currentMin: labels[0],
-                  // currentMax: labels[labels.length-1]
-                  //minRange:1
-                  // categories:labels
-                },
-                yAxis: {
-                  title: {
-                    text: 'Particle Count'
-                  }
-                },
-                loading: false
-            };
-
-        },function(error){
-          console.log(error);
-        });
-
-      });
-      });
-
-
+        $timeout( function() {
+          var curr = parseInt($stateParams.stepnumber, 10);
+          $state.go('steps.result',{stepnumber:curr, experiment_id:experiment_id});
+          //do_call(experiment_id);
+        },$scope.timerclock*1000+3000);
+      };
+      $timeout(run_rest,$scope.waitclock*1000 );
     });
-
   };
 
 
+}])
 
-  $scope.options =  {
-          //Boolean - Whether we should show a stroke on each segment
-          segmentShowStroke : true,
-          //String - The colour of each segment stroke
-          segmentStrokeColor : "#fff",
-          //Number - The width of each segment stroke
-          segmentStrokeWidth : 24,
-          //The percentage of the chart that we cut out of the middle.
-          percentageInnerCutout : 50,
-          //Boolean - Whether we should animate the chart
-          animation : true,
-          //Number - Amount of animation steps
-          animationSteps : 100,
-          //String - Animation easing effect
-          animationEasing : "easeOutBounce",
-          //Boolean - Whether we animate the rotation of the Doughnut
-          animateRotate : true,
-          //Boolean - Whether we animate scaling the Doughnut from the centre
-          animateScale : false,
-          //Function - Will fire on animation completion.
-          onAnimationComplete : null
-      };
+.controller('ResultCtrl', ['$scope','results','step_info','$stateParams','$state', function ($scope,results,step_info,$stateParams,$state) {
+  $scope.step_info = step_info;
+  console.log(results);
+
+  $scope.trial_data = results.trial;
+  $scope.regression_data = results.regression;
+
+  $scope.chartConfig = {
+    options: {
+        chart: {
+            backgroundColor: null,
+            zoomType: 'x'
+        },
+        legend: {
+          itemStyle: {
+             fontSize:'19px',
+             color: '#A0A0A0'
+          }
+        }
+    },
+    series: results.regression.concat(results.trial),
+    title: {
+        text: "",
+        style: {
+          display:'none'
+        }
+    },
+    xAxis: {
+      title: {
+        text: 'Distance'
+      }
+    },
+    yAxis: {
+      title: {
+        text: 'Particle Count'
+      }
+    },
+    credits: {
+          enabled: false
+    },
+    loading: false
+  };
 
 
+  $scope.prevQuestion = function() {
+    $state.go('steps.step');
+  };
+
+  $scope.nextQuestion = function() {
+    var next = parseInt($stateParams.stepnumber, 10)+1;
+    $state.go('steps.step',{stepnumber:next});
+  };
+
+
+}])
+
+/* helper function to get data into highchartjs format */
+.service('chart', [function () {
+
+  var data = {};
+
+
+  var doRegression = function(full_data) {
+    var flag = true;
+    var dataset = [];
+    var line_types = ['linear','exponential','logarithmic','power'];
+    angular.forEach(line_types, function(line_type, key){
+      var reg = regression(line_type,full_data);
+      var points = reg.points;
+      var equation = reg.string;
+      points = points.filter(function(elem,pos,self){
+        return self.indexOf(elem) == pos;
+      });
+      dataset.push(
+        {
+          name: line_type.charAt(0).toUpperCase() + line_type.slice(1),
+          data: points,
+          id: equation,
+          type:'spline',
+          marker: {enabled:false},
+          visible: flag
+        }
+      );
+      flag = false;
+    });
+    return dataset;
+  };
+
+  this.format = function(response) {
+    var dataset = [];
+    var full_data = [];
+    angular.forEach(response.results, function(result, key){
+      var trial = 1;
+        angular.forEach(result.result, function(value, key){
+          if( response.results.indexOf(result) === 0 ) {
+            dataset.push(
+              {
+                type:'scatter',
+                name: 'Trial '+trial.toString(),
+                data : [[result.distance,parseInt(value,10)]]
+              }
+            );
+            full_data.push([result.distance,parseInt(value,10)]);
+          trial += 1;
+          } else {
+            dataset[key].data.push([result.distance,parseInt(value,10)]);
+            full_data.push([result.distance,parseInt(value,10)]);
+          }
+        });
+    });
+    data.trial = angular.copy(dataset);
+    data.regression = angular.copy(doRegression(full_data));
+
+    return data;
+  };
 
 
 }]);

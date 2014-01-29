@@ -6,7 +6,7 @@
 		
 		<div ng-repeat="parameter in parameters" ng-form="subForm{{$index}}">
 
-			<div  class="form-group" ng-switch on="parameter.field_type" ng-init="data[$index] = {'parameter':parameter.resource_uri,'instance':'/api/v1/labjournalinstance/x/','step':stepdata }">
+			<div  class="form-group" ng-switch on="parameter.field_type" ng-init="data[$index] = {'parameter':parameter.resource_uri,'instance':'/api/v1/labjournalinstance/'+guid +'/','step':stepdata }">
 
 				<div class='row' ng-switch-when="TA">
 					    <label for="TA" class="row control-label">{{parameter.title}} : <small>{{ parameter.help_text}}</small></label>
@@ -22,6 +22,7 @@
 									</button>
 								</div>
 							</div>
+							
 						    <small class="error" ng-show="subForm{{$index}}.TA.$error.max && subForm{{$index}}.TA.$dirty">
 						            Please enter a distance less than {{ parameter.options[1] }}
 						    </small>

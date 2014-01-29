@@ -34,14 +34,8 @@ angular.module( 'ilabs.home', [
     },
     data:{ pageTitle: 'Home' },
     resolve: {
-      suscriptions: ['api',function(api){
-        return api.get_suscriptions();
-      }],
-      assignments: ['api',function(api){
-        return api.get_assignments();
-      }],
-      launched_instances: ['api',function(api) {
-        return api.get_launched_instances();
+      instances: ['api', function(api){
+        return api.get_home();
       }]
     }
   });
@@ -50,28 +44,38 @@ angular.module( 'ilabs.home', [
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'HomeCtrl', ['$scope','api','suscriptions','assignments','launched_instances','$state','$rootScope', function HomeCtrl( $scope,api,suscriptions,assignments,launched_instances,$state,$rootScope ) {
+.controller( 'HomeCtrl', ['$scope','api','instances','$state', function HomeCtrl( $scope,api,instances,$state ) {
 
-  $scope.assignments = assignments;
-  $scope.suscriptions = suscriptions;
-  $scope.launched_instances = launched_instances;
+  $scope.isSelectedInbox = function(journal) {
+    return $scope.selectedJournal === journal;
+  };
+
+  $scope.selectJournalInbox = function(journal) {
+    if($scope.selectedJournal === journal) {
+      $scope.selectedJournal = null;
+    } else {
+      $scope.selectedJournal = journal;
+    }
+  };
+
+  $scope.assignments = instances.assignments;
+  $scope.suscriptions = instances.suscriptions;
 
   $scope.goToAssignments = function(journal) {
-    api.start_journal(journal.lab_journal).then( function(response){
-      $state.go('steps.step',{type:'assignments',idx:$scope.assignments.indexOf(journal),stepnumber:0});
+    api.start_journal(journal).then( function(response){
+      $state.go('steps.step',{type:'assignments',idx:$scope.assignments.indexOf(journal),stepnumber:response.last_step_completed,GUID:response.GUID});
     });
   };
 
   $scope.goToSuscriptions = function(journal) {
-    api.start_journal(journal.lab_journal).then( function(response){
-      $state.go('steps.step',{type:'suscriptions',idx:$scope.suscriptions.indexOf(journal),stepnumber:0});
+    api.start_journal(journal).then( function(response){
+      $state.go('steps.step',{type:'suscriptions',idx:$scope.suscriptions.indexOf(journal),stepnumber:response.last_step_completed,GUID:response.GUID});
     });
   };
 
   $scope.explore = function() {
     $state.go('explore');
   };
-
 
 
 }]);

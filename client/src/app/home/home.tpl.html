@@ -16,43 +16,92 @@
       </h3>
     </div>
 
-        <ul ng-switch-when="true" class="list-group">
-            <li id="list" class="list-group-item" ng-repeat="journal in assignments | filter:searchText" ng-click="goToAssignments(journal)">
-                <span style="text-align:left">{{journal.lab_journal_title}}</span>
-                <span style="float:right"><i class="fa fa-chevron-right"></i></span>
-            </li>
-        </ul>
+        <div ng-switch-when="true">
+            <div class="list-group-item" ng-repeat="journal in assignments | filter:searchText"  ng-switch on="isSelectedInbox(journal)" class="list-group-item">
+              <div class="container" ng-click="selectJournalInbox(journal)">
+                <h5 class="pull-left">
+                  <strong>{{journal.lab_journal_title}}</strong>
+                </h5>
+                <span style="margin-top:10px;" ng-switch-when="false" class="pull-right">
+                  <i class="fa fa-chevron-right"></i>
+                </span>
+                <span class="pull-right" style="margin-top:10px;" ng-switch-when="true">
+                  <i class="fa fa-chevron-down"></i>
+                </span>
+              </div>
+              <div class="row" ng-switch-when="true">
+                <dl class="container">
+                  <dt>Assigned Date</dt>
+                  <dd>{{journal.assigned_date | date:'shortDate'}}</dd>
+                  <dt>Due Date</dt>
+                  <dd>{{journal.due_date | date:'shortDate'}}</dd>
+                  <dt>Description</dt>
+                  <dd>{{journal.description}}</dd>
+                </dl>
+                <div class="row">
+                  <button type="submit" ng-click="goToAssignments(journal)" class="btn btn-primary btn-block">Start Lab
+                  </button>
+                </div>
+              </div>
+
+            </div>
+        </div>
 
         <div ng-switch-when="false" class="panel-body">
           <p>You currently have nothing assigned</p>
         </div>
 
-</div>
-
+  </div>
 
   <div ng-switch on="suscriptions.length>0" class="panel panel-default">
 
-      <div class="panel-heading">
-        <h3 class="panel-title">
-          <strong>Favorites</strong>
-        </h3>
-      </div>
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <strong>Favorites</strong>
+          </h3>
+        </div>
 
-        <ul ng-switch-when="true" class="list-group">
-          <li id="list" class="list-group-item" ng-repeat="s in suscriptions | filter:searchText" ng-click="goToSuscriptions(s)">
-              <span style="text-align:left">{{s.lab_journal_title}}</span>
-              <span style="float:right"><i class="fa fa-chevron-right"></i></span>
-            </li>
-        </ul>
+        <div ng-switch-when="true">
+            <div class="list-group-item" ng-repeat="journal in suscriptions | filter:searchText"  ng-switch on="isSelectedInbox(journal)" class="list-group-item">
+              <div class="container" ng-click="selectJournalInbox(journal)">
+                <h5 class="pull-left">
+                  <strong>{{journal.lab_journal_title}}</strong>
+                </h5>
+                <span style="margin-top:10px;" ng-switch-when="false" class="pull-right">
+                  <i class="fa fa-chevron-right"></i>
+                </span>
+                <span class="pull-right" style="margin-top:10px;" ng-switch-when="true">
+                  <i class="fa fa-chevron-down"></i>
+                </span>
+              </div>
+              <div class="row" ng-switch-when="true">
+                <dl class="container">
+                  <dt>Status</dt>
+                  <dd>{{journal.status}}
+                  <dt>Assigned Date</dt>
+                  <dd>{{journal.assigned_date | date:'shortDate'}}</dd>
+                  <dt>Due Date</dt>
+                  <dd>{{journal.due_date | date:'shortDate'}}</dd>
+                  <dt>Description</dt>
+                  <dd>{{journal.description}}</dd>
+                </dl>
+                <div class="row">
+                  <button type="submit" ng-click="goToAssignments(journal)" class="btn btn-primary btn-block">Start Lab
+                  </button>
+                </div>
+              </div>
+          </div>
+        </div>
 
         <div ng-switch-when="false" class="panel-body">
-          You currently have no favorites 
+          <p>You currently have no favorites</p>
         </div>
 
   </div>
 
 
-<!-- {{suscriptions | json }}
+
+{{suscriptions | json }}
 
 <br>
 <br>
@@ -60,11 +109,11 @@
 
 {{assignments | json}}
 
-<br>
+<!-- <br>
 <br>
 <br>
 
-{{ launched_instances | json }}
- -->
+{{ launched_instances | json }} -->
+
 </div>
 

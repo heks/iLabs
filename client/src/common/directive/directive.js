@@ -5,13 +5,12 @@ angular.module('directive', ['ngTouch','ui.keypress'])
     restrict: 'E',
     scope: {
     questions:'=',
+    guid:'@',
     data:'='
     },
     replace: true,
     templateUrl: 'directive/questions.tpl.html',
     link: function($scope, element, attrs) {
-
-
       $scope.parseInt = parseInt;
       
     }
@@ -26,6 +25,7 @@ angular.module('directive', ['ngTouch','ui.keypress'])
     parameters:'=',
     stepdata:'@',
     title:'=',
+    guid:'@',
     data:'='
     },
     templateUrl: 'directive/parameters.tpl.html',
@@ -33,13 +33,11 @@ angular.module('directive', ['ngTouch','ui.keypress'])
       $scope.array = [1,60,2];
 
       $scope.pushToArray = function(idx,val) {
-        $scope.data[idx].response.push(val);
-        // if($scope.data[idx].response = '') {
-        //   $scope.data[idx].response = value.toString();
-        // } else {
-        //   $scope.data[idx].response += ','+value.toString();
-        // }
-        $scope.value = '';
+        /* make sure we dont push values that are already in the array */
+        if($scope.data[idx].response.indexOf(val) == -1 ) {
+          $scope.data[idx].response.push(val);
+          $scope.value = '';
+        }
       };
 
       $scope.removeDistance = function(pidx,idx) {
@@ -100,5 +98,26 @@ angular.module('directive', ['ngTouch','ui.keypress'])
             require: 'ngModel',
             link: link
         };
-    });
+    })
 
+.directive('ngFocus', [function () {
+  var FOCUS_CLASS = "ng-focused";
+  return {
+    restrict: 'A',
+    require: "ngModel",
+    link: function (scope, iElement, iAttrs, ctrl) {
+      ctrl.$focused = false;
+      iElement.bind('focus',function(evt){
+        iElement.addClass(FOCUS_CLASS);
+        scope.$apply(function(){
+          ctrl.$focused = true;
+        });
+      }).bind('blur',function(evt){
+        iElement.removeClass(FOCUS_CLASS);
+        scope.$apply(function(){
+          ctrl.$focused = false;
+        });
+      });
+    }
+  };
+}]);

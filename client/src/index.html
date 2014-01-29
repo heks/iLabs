@@ -71,7 +71,7 @@
 
 
 
-              <button ng-click="toggleSearch()" ng-show="searchFlag()" type="button" style="float:right;margin-top:11px;margin-right:10px;background-color:transparent" class="btn btn-default">
+              <button ng-click="toggleSearch()" ng-class="{visible: !searchFlag() }" type="button" style="float:right;margin-top:11px;margin-right:10px;background-color:transparent" class="btn btn-default">
                 <i class="fa fa-search fa-lg"></i>
               </button>
 

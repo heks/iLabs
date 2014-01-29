@@ -2,7 +2,7 @@
 <div class='bs-example' style="margin-left:0px;margin-right:0px;">
   <form class="form-horizontal" novalidate role="form" name="loginForm">
 
-    <div class="form-group" ng-class="{'has-error': loginForm.username.$invalid && !loginForm.username.$pristine,'has-success': !loginForm.username.$invalid && !loginForm.username.$pristine}">
+    <div class="form-group" ng-class="{'has-error': loginForm.username.$invalid && !loginForm.username.$pristine}">
         <div class='.col-xs-12 input-group'>
           <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
           <input type="text" class="form-control" id="inputEmail3" placeholder="Username" name="username" ng-model="user.username" ng-min='2' required/>
@@ -12,7 +12,7 @@
           </small>
     </div>
 
-    <div class="form-group" ng-class="{'has-error': loginForm.password.$invalid && !loginForm.password.$pristine,'has-success': !loginForm.password.$invalid && !loginForm.password.$pristine}">
+    <div class="form-group" ng-class="{'has-error': loginForm.password.$invalid && !loginForm.password.$pristine}">
         <div class='.col-xs-12 input-group'>
           <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
           <input type="password" ng-model="user.password" name="password" class="form-control" ng-min='2' id="inputPassword3" placeholder="Password" required>
@@ -42,9 +42,6 @@
     
 
   </form>
-
-{{user | json}}
-
 
 
 </div>

@@ -2,91 +2,91 @@
 <form class="form-horizontal" novalidate role="form" name="myForm">
 
   <div class="form-group">
-    <div class="row input-group" ng-class="{'has-error': myForm.username.$invalid && !myForm.username.$pristine,'has-success': !myForm.username.$invalid && !myForm.username.$pristine}">
+    <div class="row input-group" ng-class="{'has-error': myForm.username.$invalid && !myForm.username.$pristine && !myForm.username.$focused,'has-success': !myForm.username.$invalid && !myForm.username.$pristine && !myForm.username.$focused }">
       <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-      <input type="text" ng-model="user.username" class="form-control" id="username" placeholder="iLabs Username" name="username" required ng-minlength='3' ng-maxlength='20'>
+      <input type="text" ng-model="user.username" class="form-control" id="username" placeholder="iLabs Username" name="username" required ng-focus ng-minlength='3' ng-maxlength='20'>
     </div>
-    <small class="error" ng-show="myForm.username.$error.required && !myForm.username.$pristine">
+    <small class="error" ng-show="myForm.username.$error.required && myForm.username.$dirty && !myForm.username.$focused">
             Please input a username
     </small>
-    <small class="error" ng-show="myForm.username.$error.minlength && !myForm.username.$pristine">
+    <small class="error" ng-show="myForm.username.$error.minlength && myForm.username.$dirty && !myForm.username.$focused">
             Your username is required to be at least 3 characters
     </small>
-    <small class="error" ng-show="myForm.username.$error.maxlength && !myForm.username.$pristine">
+    <small class="error" ng-show="myForm.username.$error.maxlength && myForm.username.$dirty && !myForm.username.$focused">
             Your username cannot be longer than 20 characters
     </small>
   </div>
 
   <div class="form-group"
-   ng-class="{'has-error': (myForm.password.$invalid && !myForm.password.$pristine) || (myForm.confirm_pw.$invalid && !myForm.confirm_pw.$pristine),'has-success': (!myForm.password.$invalid && !myForm.password.$pristine)&&(!myForm.confirm_pw.$invalid && !myForm.confirm_pw.$pristine)}">
+   ng-class="{'has-error': (myForm.password.$invalid && !myForm.password.$pristine && !myForm.password.$focused) || (myForm.confirm_pw.$invalid && !myForm.confirm_pw.$pristine && !myForm.confirm_pw.$focused),'has-success': (!myForm.password.$invalid && !myForm.password.$pristine && !myForm.password.$focused)&&(!myForm.confirm_pw.$invalid && !myForm.confirm_pw.$pristine && !myForm.confirm_pw.$focused)}">
     <div class="row input-group">
       <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-      <input name="password" type="password" ng-model="user.password" class="form-control" id="inputPassword3" placeholder="Enter a Password" required />
+      <input name="password" type="password" ng-model="user.password" class="form-control" id="inputPassword3" placeholder="Enter a Password" required ng-focus/>
     </div>
-    <small class="error" ng-show="myForm.password.$error.required && !myForm.password.$pristine">
+    <small class="error" ng-show="myForm.password.$error.required && !myForm.password.$pristine && !myForm.password.$focused">
       A password is required
     </small>
   </div>
 
-  <div class="form-group" ng-class="{'has-error': (myForm.confirm_pw.$invalid && !myForm.confirm_pw.$pristine) || (myForm.password.$invalid && !myForm.password.$pristine),'has-success': (!myForm.confirm_pw.$invalid && !myForm.confirm_pw.$pristine) && (!myForm.password.$invalid && !myForm.password.$pristine)}">
+  <div class="form-group" ng-class="{'has-error': (myForm.confirm_pw.$invalid && !myForm.confirm_pw.$pristine && !myForm.confirm_pw.$focused) || (myForm.password.$invalid && myForm.password.$dirty && !myForm.confirm_pw.$focused),'has-success': (!myForm.confirm_pw.$invalid && myForm.confirm_pw.$dirty && !myForm.confirm_pw.$focused) && (!myForm.password.$invalid && !myForm.password.$pristine && !myForm.password.$focused)}">
     <div class="row input-group">
       <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
-      <input name="confirm_pw" type="password" ng-model="user.confirm_password" class="form-control" id="inputPassword3" match="user.password" placeholder="Re-enter a password" required/>
+      <input name="confirm_pw" type="password" ng-model="user.confirm_password" class="form-control" id="inputPassword3" match="user.password" placeholder="Re-enter a password" required ng-focus/>
     </div>
-    <small class="error" ng-show="myForm.confirm_pw.$error.mismatch && !myForm.confirm_pw.$pristine">
+    <small class="error" ng-show="myForm.confirm_pw.$error.mismatch && !myForm.confirm_pw.$pristine && !myForm.confirm_pw.$focused">
       Your passwords don't match
     </small>
 
   </div>
 
 
-  <div class="form-group" ng-class="{'has-error': myForm.firstname.$invalid && !myForm.firstname.$pristine,'has-success': !myForm.firstname.$invalid && !myForm.firstname.$pristine}">
+  <div class="form-group" ng-class="{'has-error': myForm.firstname.$invalid && !myForm.firstname.$pristine && !myForm.firstname.$focused,'has-success': !myForm.firstname.$invalid && !myForm.firstname.$pristine && !myForm.firstname.$focused}">
     <div class="row input-group">
       <span class="input-group-addon"><i class="fa fa-tags fa-fw"></i></span>
-      <input type="text" name="firstname" ng-model="user.first_name" class="form-control" id="inputEmail3" placeholder="Firstname" required capitalize-first ng-minlength='3' ng-maxlength='20' />
+      <input type="text" name="firstname" ng-model="user.first_name" class="form-control" id="inputEmail3" placeholder="Firstname" required capitalize-first ng-minlength='3' ng-maxlength='20' ng-focus/>
     </div>
-    <small class="error" ng-show="myForm.firstname.$error.required && !myForm.firstname.$pristine">
+    <small class="error" ng-show="myForm.firstname.$error.required && myForm.firstname.$dirty && !myForm.firstname.$focused">
             Your firstname is required
     </small>
-    <small class="error" ng-show="myForm.firstname.$error.minlength && !myForm.firstname.$pristine">
+    <small class="error" ng-show="myForm.firstname.$error.minlength && myForm.firstname.$dirty && !myForm.firstname.$focused">
             Your firstname is required to be at least 3 characters
     </small>
-    <small class="error" ng-show="myForm.firstname.$error.maxlength && !myForm.firstname.$pristine">
+    <small class="error" ng-show="myForm.firstname.$error.maxlength && myForm.firstname.$dirty && !myForm.firstname.$focused">
             Your firstname cannot be longer than 20 characters
     </small>
   </div>
 
-  <div class="form-group" ng-class="{'has-error': myForm.lastname.$invalid && !myForm.lastname.$pristine,'has-success': !myForm.lastname.$invalid && !myForm.lastname.$pristine}">
+  <div class="form-group" ng-class="{'has-error': myForm.lastname.$invalid && !myForm.lastname.$pristine && !myForm.lastname.$focused,'has-success': !myForm.lastname.$invalid && !myForm.lastname.$pristine && !myForm.lastname.$focused}">
     <div class="row input-group">
       <span class="input-group-addon"><i class="fa fa-tags fa-fw"></i></span>
-      <input type="text" name="lastname" ng-model="user.last_name" class="form-control" id="inputEmail3" placeholder="Lastname" required capitalize-first ng-minlength='3' ng-maxlength='20'/>
+      <input type="text" name="lastname" ng-model="user.last_name" class="form-control" id="inputEmail3" placeholder="Lastname" ng-focus required capitalize-first ng-minlength='3' ng-maxlength='20'/>
     </div>
-    <small class="error" ng-show="myForm.lastname.$error.required && !myForm.lastname.$pristine">
+    <small class="error" ng-show="myForm.lastname.$error.required && !myForm.lastname.$pristine && !myForm.lastname.$focused">
             Your lastname is required
     </small>
-    <small class="error" ng-show="myForm.lastname.$error.minlength && !myForm.lastname.$pristine">
+    <small class="error" ng-show="myForm.lastname.$error.minlength && !myForm.lastname.$pristine && !myForm.lastname.$focused">
             Your lastname is required to be at least 3 characters
     </small>
-    <small class="error" ng-show="myForm.lastname.$error.maxlength && !myForm.lastname.$pristine">
+    <small class="error" ng-show="myForm.lastname.$error.maxlength && !myForm.lastname.$pristine && !myForm.lastname.$focused">
             Your lastname cannot be longer than 20 characters
     </small>
   </div>
 
-  <div class="form-group" ng-class="{'has-error': myForm.email.$invalid && !myForm.email.$pristine,'has-success': !myForm.email.$invalid && !myForm.email.$pristine}">
+  <div class="form-group" ng-class="{'has-error': myForm.email.$invalid && myForm.email.$dirty && !myForm.email.$focused,'has-success': !myForm.email.$invalid && myForm.email.$dirty && !myForm.email.$focused}">
     <div class="row input-group">
       <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-      <input type="email" ng-model="user.email" class="form-control" id="inputEmail3" name="email" placeholder="Email address" required ng-minlength='3' ng-maxlength='20'/>
+      <input type="email" ng-model="user.email" class="form-control" id="inputEmail3" name="email" placeholder="Email address" required ng-minlength='3' ng-maxlength='20' ng-focus/>
     </div>
-    <small class="error" ng-show="myForm.email.$error.required && !myForm.email.$pristine">
+    <small class="error" ng-show="myForm.email.$error.required && myForm.email.$dirty && !myForm.email.$focused">
             Your email is required
     </small>
-    <small class="error" ng-show="myForm.email.$error.email && !myForm.email.$pristine">
+    <small class="error" ng-show="myForm.email.$error.email && myForm.email.$dirty && !myForm.email.$focused">
             Invalid Email
     </small>
-    <small class="error" ng-show="myForm.email.$error.minlength && !myForm.email.$pristine">
+    <small class="error" ng-show="myForm.email.$error.minlength && myForm.email.$dirty && !myForm.email.$focused">
             Your email is required to be at least 3 characters
     </small>
-    <small class="error" ng-show="myForm.email.$error.maxlength && !myForm.email.$pristine">
+    <small class="error" ng-show="myForm.email.$error.maxlength && myForm.email.$dirty && !myForm.email.$focused">
             Your email cannot be longer than 20 characters
     </small>
   </div>
@@ -94,26 +94,26 @@
   <div class="form-group">
     <div class="row">
       <label for="affiliation">Affiliation:</label>
-      <select ng-model="user.affiliation" class="form-control" id="inputEmail3" name="affiliation" placeholder="Affiliation" ng-options="a for a in affiliations" required>
+      <select ng-model="user.affiliation" class="form-control" id="inputEmail3" name="affiliation" placeholder="Affiliation" ng-options="a for a in affiliations" ng-focus required>
       </select>
-      <small class="error" ng-show="myForm.affiliation.$error.required && !myForm.affiliation.$pristine">
+      <small class="error" ng-show="myForm.affiliation.$error.required && myForm.affiliation.$dirty && !myForm.affiliation.$focused">
               Affiliation is requried
       </small>
     </div>
   </div>
 
-  <div class="form-group" ng-class="{'has-error': myForm.SignupReason.$invalid && myForm.SignupReason.$dirty,'has-success': !myForm.SignupReason.$invalid && myForm.SignupReason.$dirty}">
+  <div class="form-group" ng-class="{'has-error': myForm.SignupReason.$invalid && myForm.SignupReason.$dirty && !myForm.SignupReason.$focused,'has-success': !myForm.SignupReason.$invalid && myForm.SignupReason.$dirty && !myForm.SignupReason.$focused}">
     <div class="row">
       <label for="SignupReason">Why do you want to sign up?</label>
-      <textarea name="SignupReason" id="SignupReason" ng-model="user.signup_reason" class="form-control" capitalize-first requried ng-minlength="8" ng-maxlength="240">
+      <textarea name="SignupReason" id="SignupReason" ng-model="user.signup_reason" class="form-control" capitalize-first ng-focus requried ng-minlength="8" ng-maxlength="240">
       </textarea>
-    <small class="error" ng-show="myForm.SignupReason.$error.required && myForm.SignupReason.$dirty">
+    <small class="error" ng-show="myForm.SignupReason.$error.required && myForm.SignupReason.$dirty && !myForm.SignupReason.$focused">
             This is a required field
     </small>
-    <small class="error" ng-show="myForm.SignupReason.$error.minlength && myForm.SignupReason.$dirty">
+    <small class="error" ng-show="myForm.SignupReason.$error.minlength && myForm.SignupReason.$dirty && !myForm.SignupReason.$focused">
             Your response cannot be shorter than 8 characters
     </small>
-    <small class="error" ng-show="myForm.SignupReason.$error.maxlength && myForm.SignupReason.$dirty">
+    <small class="error" ng-show="myForm.SignupReason.$error.maxlength && myForm.SignupReason.$dirty && !myForm.SignupReason.$focused">
             Your response cannot be longer than 240 characters
     </small>
     </div>
@@ -133,7 +133,5 @@
   </div>
 
 </form>
-
-{{user | json}}
 </div>
 

@@ -1,7 +1,8 @@
 
 <div class="bs-example-home" style="padding-top:0px">
-	<div class="row">
-		<small class="pull-right"> {{step.order}}/{{number_of_steps}}  </small>
+	<div class="row" style="margin-top:2px;">
+		<small class="pull-left"> {{step_info.title}}  </small>
+		<small class="pull-right"> {{step.order}}/{{step_info.number_of_steps}}  </small>
 	</div>
 
 	<div class="row">
@@ -11,9 +12,9 @@
 	<markdown ng-model="step.journal_step_content"> </markdown>
 
 	<form name="mainForm">
-		<parameters parameters="step.journal_parameter_group.parameters" title="parametertitle" data='data_param' stepdata='{{step.resource_uri}}'> </parameters>
+		<parameters guid="{{GUID}}" parameters="step.journal_parameter_group.parameters" title="parametertitle" data='data_param' stepdata='{{step.resource_uri}}'> </parameters>
 
-		<questions questions='step.questions' data='data_questions'>
+		<questions guid="{{GUID}}" questions='step.questions' data='data_questions'>
 		</questions>
 	</form>
 
@@ -24,7 +25,7 @@
 			<div ng-show="countdown > 0" class="well well-sm">
 				<h4 style="text-align:center"> Running Experiment </h4>
 			  <div class="progress progress-striped active"> 
-			    <div class="progress-bar" role="progressbar" style="width: {{ (countdown*100/inittime) | number:0 }}%;"> {{countdown}} </div> 
+			    <div class="progress-bar" role="progressbar" style="width: {{ 100-(countdown*100/inittime) | number:0 }}%;"> {{100-(countdown*100/inittime) | number:0}} </div> 
 			  </div>
 			</div>		
 		</timer>
@@ -42,31 +43,6 @@
 	<br>
 	<br>
 	<br>
-
-
-
-	<div class="table-responsive" ng-if="data">
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Distance </th>
-					<th ng-repeat="val in data.results[0].result track by $index">Trial {{ $index+1 }}</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="value in data.results track by $index">
-					<th> {{value.distance}} </th>
-					<td ng-repeat="val in value.result track by $index" >{{val}}</td>
-				</tr>
-
-		</table>
- 	</div>
-
-	<div ng-if="chartConfig" class="row">
-	    <highchart id="chart1" config="chartConfig" class="span10"></highchart>
-	</div>
-
-
 
 	<div class="row">
 		<div class="col-xs-6">
@@ -86,9 +62,10 @@
 	<br>
 	<br>
 
+	{{step}}
+
 
 <!-- 
-	{{step}}
 	<br>
 	<br>
 	<br>
