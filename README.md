@@ -7,12 +7,12 @@ client/ - src code of the app
 # TO build Run these commands:
 
 
-cd/client
-npm install
-bower install
-grunt
-cd ..
-npm install
-node server.js
+`cd/client`
+`npm install`
+`bower install`
+`grunt`
+`cd ..`
+`npm install`
+`node server.js`
 
 navigate browser to localhost:9000/
