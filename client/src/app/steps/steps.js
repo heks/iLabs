@@ -17,9 +17,10 @@ angular.module( 'ilabs.steps', [
   'ui.bootstrap',
   'ngTouch',
   'directive',
-  'service',
+  'service.api',
   'angularLocalStorage',
   'timer',
+  'services.httpRequestTracker',
   'highcharts-ng'
 ])
 
@@ -81,6 +82,8 @@ angular.module( 'ilabs.steps', [
       results: function($stateParams,api,chart) {
         return api.get_experiment_result($stateParams.experiment_id).then(function(response) {
           return chart.format(response);
+        },function(error){
+          console.log("Error out but you should return to the previous step and keep waiting for the next available equipemnt");
         });
       },
       step_info: function(api,steps) {
@@ -92,7 +95,7 @@ angular.module( 'ilabs.steps', [
 })
 
 
-.controller('StepsCtrl',['$scope','step','$state','$stateParams','api','storage','$timeout','step_info', function StepsCtrl($scope,step,$state,$stateParams,api,storage,$timeout,step_info){
+.controller('StepsCtrl',['$scope','step','$state','$stateParams','api','storage','$timeout','step_info','httpRequestTracker', function StepsCtrl($scope,step,$state,$stateParams,api,storage,$timeout,step_info,httpRequestTracker){
   $scope.GUID = $stateParams.GUID;
 
   $scope.step_info = step_info;
@@ -121,15 +124,16 @@ angular.module( 'ilabs.steps', [
   $scope.nextQuestion = function() {
     var next = parseInt($stateParams.stepnumber, 10)+1;
     if($scope.step.questions.length > 0) {
-      api.post_lab_journal_question_resonse($scope.data_questions);
+      api.post_lab_journal_question_response($scope.data_questions);
     }
     if($scope.step.journal_parameter_group) {
       /* do some shit if there are parameters */
       if($scope.step.journal_parameter_group.parameters.length > 0) {
         post_to_lab();
       }
+    } else {
+      $state.go('steps.step',{stepnumber:next});
     } 
-    $state.go('steps.step',{stepnumber:next});
   };
 
   /* we must do this shit if we are posting to the equipment */
@@ -156,12 +160,15 @@ angular.module( 'ilabs.steps', [
     });
   };
 
+  $scope.hasPendingRequests = function () {
+    return httpRequestTracker.hasPendingRequests();
+  };
+
 
 }])
 
 .controller('ResultCtrl', ['$scope','results','step_info','$stateParams','$state', function ($scope,results,step_info,$stateParams,$state) {
   $scope.step_info = step_info;
-  console.log(results);
 
   $scope.trial_data = results.trial;
   $scope.regression_data = results.regression;

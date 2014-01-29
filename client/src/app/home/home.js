@@ -15,7 +15,7 @@
 angular.module( 'ilabs.home', [
   'ui.router',
   'ngTouch',
-  'service'
+  'service.api'
 ])
 
 /**
@@ -69,6 +69,7 @@ angular.module( 'ilabs.home', [
 
   $scope.goToSuscriptions = function(journal) {
     api.start_journal(journal).then( function(response){
+      console.log(response);
       $state.go('steps.step',{type:'suscriptions',idx:$scope.suscriptions.indexOf(journal),stepnumber:response.last_step_completed,GUID:response.GUID});
     });
   };

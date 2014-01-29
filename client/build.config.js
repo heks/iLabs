@@ -73,11 +73,7 @@ module.exports = {
       'vendor/angular-snap/angular-snap.js',
       'vendor/highcharts/highcharts.src.js',
       'vendor/highcharts-ng/dist/highcharts-ng.js',
-      // 'vendor/d3/d3.js',
       'vendor/snapjs/snap.js',
-      'vendor/angular-local-storage/angular-local-storage.js',      
-      'vendor/chartjs/Chart.js',
-      'vendor/regression-js/src/regression-js',
       'vendor/angular-cookies/angular-cookies.js',
       'vendor/angular-timer/dist/angular-timer.js',
       'vendor/angularLocalStorage/src/angularLocalStorage.js'

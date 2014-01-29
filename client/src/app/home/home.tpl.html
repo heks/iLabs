@@ -31,10 +31,13 @@
               </div>
               <div class="row" ng-switch-when="true">
                 <dl class="container">
-                  <dt>Assigned Date</dt>
-                  <dd>{{journal.assigned_date | date:'shortDate'}}</dd>
-                  <dt>Due Date</dt>
-                  <dd>{{journal.due_date | date:'shortDate'}}</dd>
+                  <dt>Status</dt>
+                  <dd ng-show="journal.status">{{journal.status}}</dd>
+                  <dd ng-show="!journal.status"> Not started </dd>
+                  <dt ng-show="journal.assigned_date">Assigned Date</dt>
+                  <dd ng-show="journal.assigned_date">{{journal.assigned_date | date:'shortDate'}}</dd>
+                  <dt ng-show="journal.due_date">Due Date</dt>
+                  <dd ng-show="journal.due_date">{{journal.due_date | date:'shortDate'}}</dd>
                   <dt>Description</dt>
                   <dd>{{journal.description}}</dd>
                 </dl>
@@ -77,16 +80,15 @@
               <div class="row" ng-switch-when="true">
                 <dl class="container">
                   <dt>Status</dt>
-                  <dd>{{journal.status}}
-                  <dt>Assigned Date</dt>
-                  <dd>{{journal.assigned_date | date:'shortDate'}}</dd>
-                  <dt>Due Date</dt>
-                  <dd>{{journal.due_date | date:'shortDate'}}</dd>
+                  <dd ng-show="journal.status">{{journal.status}}</dd>
+                  <dd ng-show="!journal.status"> Not started </dd>
+                  <dt>Added Date</dt>
+                  <dd>{{journal.added_date | date:'shortDate'}}</dd>
                   <dt>Description</dt>
                   <dd>{{journal.description}}</dd>
                 </dl>
                 <div class="row">
-                  <button type="submit" ng-click="goToAssignments(journal)" class="btn btn-primary btn-block">Start Lab
+                  <button type="submit" ng-click="goToSuscriptions(journal)" class="btn btn-primary btn-block">Start Lab
                   </button>
                 </div>
               </div>

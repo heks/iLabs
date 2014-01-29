@@ -2,7 +2,7 @@
 angular.module( 'ilabs.explore', [
   'ui.router',
   'ngTouch',
-  'service',
+  'service.api',
   'filters'
 ])
 
@@ -44,7 +44,10 @@ angular.module( 'ilabs.explore', [
   $scope.suscribe = function(journal) {
     var d = {'lab_journal':journal.lab_journal};
     api.suscribe_journal(d).then( function(){
-      console.log("Successfull Suscribed");
+      var idx = $scope.explore_journals.indexOf(journal);
+      if( idx > -1) {
+        $scope.explore_journals.splice(idx,1);
+      }
     });
   };
 

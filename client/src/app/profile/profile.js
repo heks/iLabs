@@ -15,7 +15,7 @@
 angular.module( 'ilabs.profile', [
   'ui.router',
   'ngTouch',
-  'service'
+  'service.api'
 ])
 
 /**

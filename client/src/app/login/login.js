@@ -2,7 +2,7 @@ angular.module( 'ilabs.login', [
   'ui.router',
   'ui.bootstrap',
   'directive',
-  'service',
+  'service.api',
   'ngTouch'
 ])
 

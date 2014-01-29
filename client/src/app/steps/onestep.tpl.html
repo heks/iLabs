@@ -18,7 +18,7 @@
 		</questions>
 	</form>
 
-
+	<br>
 
 	<div ng-if="timerclock">
 		<timer countdown="timerclock" interval="1000">
@@ -32,19 +32,12 @@
 	</div>
 
 	<div ng-if="waitclock">
-		<div class="row" ng-show="waitclock > 0">
-			Time left queue:  <timer interval="1000" countdown="waitclock"></timer>
+		<div class="row" style="text-align:center">
+			<h3 ng-show="waitclock > 0"> Time left queue:  <timer interval="1000" countdown="waitclock">{{seconds}} seconds</timer> </h3>
 		</div>
 	</div>
 
-
-	<br>
-	<button ng-show="step.journal_parameter_group.parameters" type="button" ng-click="doPatchParam()" class="btn btn-primary btn-lg btn-block">Patch</button>
-	<br>
-	<br>
-	<br>
-
-	<div class="row">
+	<div class="row" ng-show="!timerclock && !waitclock && !hasPendingRequests()">
 		<div class="col-xs-6">
 			<button type="button" ng-disabled="stepnumber==0" ng-click="prevQuestion()" class="btn btn-lg btn-primary btn-block">
 			<i class="fa fa-chevron-left fa-lg fa-fw"></i>Back
@@ -55,6 +48,9 @@
 			Next <i class="fa fa-chevron-right fa-lg fa-fw"></i>
 			</button>
 		</div>
+	</div>
+	<div class="row" style="text-align:center" ng-show="hasPendingRequests()">
+		<img src="/assets/images/spinner.gif">
 	</div>
 
 
