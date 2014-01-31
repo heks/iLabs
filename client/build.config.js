@@ -72,11 +72,12 @@ module.exports = {
       'vendor/showdown/src/showdown.js',
       'vendor/angular-snap/angular-snap.js',
       'vendor/highcharts/highcharts.src.js',
+      'vendor/highcharts/modules/exporting.js',
       'vendor/highcharts-ng/dist/highcharts-ng.js',
       'vendor/snapjs/snap.js',
       'vendor/angular-cookies/angular-cookies.js',
       'vendor/angular-timer/dist/angular-timer.js',
-      'vendor/angularLocalStorage/src/angularLocalStorage.js'
+      'vendor/angular-local-storage/angular-local-storage.js'
     ],
     css: [
       'vendor/angular-snap/angular-snap.css',

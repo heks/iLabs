@@ -33,7 +33,7 @@
 
 	<div ng-if="waitclock">
 		<div class="row" style="text-align:center">
-			<h3 ng-show="waitclock > 0"> Time left queue:  <timer interval="1000" countdown="waitclock">{{seconds}} seconds</timer> </h3>
+			<h3 ng-show="waitclock > 0"> Time left in queue:  <timer interval="1000" countdown="waitclock">{{countdown}} seconds</timer> </h3>
 		</div>
 	</div>
 
@@ -53,13 +53,13 @@
 		<img src="/assets/images/spinner.gif">
 	</div>
 
-
+<!-- 
 	<br>
 	<br>
 	<br>
 
 	{{step}}
-
+ -->
 
 <!-- 
 	<br>

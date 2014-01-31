@@ -2,7 +2,7 @@
 
 
 	<div ng-repeat="question in questions" 
-	ng-init="data[$index] = {'question':question.resource_uri,'instance':'/api/v1/labjournalinstance/'+guid +'/',response:'' }" ng-form="subForm{{$index}}">
+	ng-init="data[$index] = data[$index] || {'question':question.resource_uri,'instance':'/api/v1/labjournalinstance/'+guid +'/' }" ng-form="subForm{{$index}}">
 
 		<label class="row control-label"> {{question.question.question_text}} </label>
 
@@ -25,7 +25,7 @@
 
 			<div class="row" ng-class="{'has-error': subForm{{$index}}.SB.$invalid && !subForm{{$index}}.SB.$pristine,'has-success': !subForm{{$index}}.SB.$invalid && !subForm{{$index}}.SB.$pristine}" ng-switch-when="SB">
 
-				<input style="width:100%" name="SB" ng-model="data[$index].response" ng-init='data[$index].response=question.question.options[0]' type="range" min='{{question.question.options[0]}}' ng-model="data[$index].response" max='{{question.question.options[1]}}' step='{{question.question.options[2]}}'/>
+				<input style="width:100%" name="SB" ng-model="data[$index].response" type="range" min='{{question.question.options[0]}}' ng-model="data[$index].response" max='{{question.question.options[1]}}' step='{{question.question.options[2]}}'/>
 
 				{{data[$index].response}}
 			    <small class="error" ng-show="subForm{{$index}}.SB.$error.required && !subForm{{$index}}.SB.$pristine">

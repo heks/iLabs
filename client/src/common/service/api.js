@@ -1,15 +1,15 @@
-angular.module('service.api', ['angularLocalStorage'])
+angular.module('service.api', [])
 .constant('dev_server','http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1')
 .constant('api_prefix','/api/v1')
 .constant('other_server','http://54.200.25.203')
 
 
-.service('api', ['$http','$q','dev_server','other_server','$rootScope','storage', function ($http,$q,dev_server,other_server,$rootScope,storage) {
+.service('api', ['$http','$q','dev_server','other_server','$rootScope','localStorageService', function ($http,$q,dev_server,other_server,$rootScope,localStorageService) {
 	
-  var username = storage.get('username') || [];
-  var api_key = storage.get('api_key') || [];
-  var assignments = storage.get('assignments') || [];
-  var suscriptions = storage.get('suscriptions') || [];
+  var username = localStorageService.get('username') || [];
+  var api_key = localStorageService.get('api_key') || [];
+  var assignments = [];
+  var suscriptions = [];
   var explore_journals = [];
   var steps = [];
   var step_info;
@@ -23,13 +23,10 @@ angular.module('service.api', ['angularLocalStorage'])
       headers:{'Content-Type': 'application/json'},
       data:{}
     }).success(function(data){
+      localStorageService.add('username',_username);
+      localStorageService.add('api_key',data.api_key);
       api_key = data.api_key;
       username = _username;
-
-      /* set the local storage (person should need to reauthenticate on a disconnect */
-      storage.set('api_key',data.api_key);
-      storage.set('username',username);
-
       return data;
     }).error(function(error){
       console.log(error);
@@ -83,8 +80,6 @@ angular.module('service.api', ['angularLocalStorage'])
       deferred.reject('Reached end');
     } else {
       deferred.resolve(steps[idx]);
-      //} else if(storage.get(idx.toString())) {
-      //  deferred.resolve( storage.get(idx.toString()) );
       }
     return deferred.promise;
   };
@@ -118,7 +113,7 @@ angular.module('service.api', ['angularLocalStorage'])
           if(!lab_journal.last_step_completed) {
             data.last_step_completed = 0;
           } else {
-            data.last_step_completed = parseInt(lab_journal.last_step_completed,10);
+            data.last_step_completed = parseInt(lab_journal.last_step_completed,10)-1;
           }
           deferred.resolve(data);
         /* lab journal not launched yet so generate a new GUID and launch the journal */
@@ -213,32 +208,42 @@ angular.module('service.api', ['angularLocalStorage'])
     var deferred = $q.defer();
     var call = '/experiment/result/'+experiment_id +'/';
     
-    $http({
-      url:dev_server+call+'?username='+username+'&api_key='+api_key,
-      method:"GET"
-    }).then(function(response){
-      /* need to do some parsing becuase this data is in such a shit format */
-      angular.forEach(response.data.results, function(value, key){
-        value.result = value.result.split(",");
-        value.distance = parseInt(value.distance,10);
-      });
-      /* sort the results by distance before getting */
-      response.data.results.sort(function(a,b){
-        return a.distance - b.distance;
-      });
+    var results = localStorageService.get('results');
+    if(results) {
+      deferred.resolve(results);
+    } else {
 
-      deferred.resolve(response.data);
-    },function(error){
-      var call2 = '/experiment/status/' + experiment_id + '/';
       $http({
-        url:dev_server+call2+'?username='+username+'&api_key='+api_key,
+        url:dev_server+call+'?username='+username+'&api_key='+api_key,
         method:"GET"
-      }).then(function(result){
-        deferred.reject(result.data);
+      }).then(function(response){
+        /* need to do some parsing becuase this data is in such a shit format */
+        angular.forEach(response.data.results, function(value, key){
+          value.result = value.result.split(",");
+          value.distance = parseInt(value.distance,10);
+        });
+        /* sort the results by distance before getting */
+        response.data.results.sort(function(a,b){
+          return a.distance - b.distance;
+        });
+
+        //store the results in local storage
+        localStorageService.add('results',response.data);
+
+        deferred.resolve(response.data);
       },function(error){
-        deferred.reject("ERROR");
+        var call2 = '/experiment/status/' + experiment_id + '/';
+        $http({
+          url:dev_server+call2+'?username='+username+'&api_key='+api_key,
+          method:"GET"
+        }).then(function(result){
+          deferred.reject(result.data);
+        },function(error){
+          deferred.reject("ERROR");
+        });
       });
-    });
+    }
+
     return deferred.promise;
   };
 
@@ -326,6 +331,18 @@ angular.module('service.api', ['angularLocalStorage'])
   
   };
 
+  this.update_instance = function(data) {
+    var call = '/labjournalinstance/';
+    return $http({
+      url:dev_server+call,
+      method:"POST",
+      data:data
+    }).success(function(response){
+      return response;
+    });
+  };
+
+
   this.register = function(data) {
     var call = '/registration/';
     return $http({
@@ -353,67 +370,5 @@ angular.module('service.api', ['angularLocalStorage'])
 
 }]);
 
-
-  // this.get_steps = function(type,idx) {
-  //       var deferred = $q.defer();
-
-  //       var x;
-
-  //       if(type === 'assignments') {
-  //         x = assignments[idx].lab_journal;
-  //       } else if (type === 'suscriptions') {
-  //         x = suscriptions[idx].lab_journal;
-  //       }
-
-  //       console.log(x);
-
-  //       var call;
-  //       var _steps;
-  //       /* first check if we have the reponse stored in local storage */
-  //       var _type = storage.get(type);
-  //       var _idx = parseInt(storage.get('idx'),10);
-  //       console.log(storage.get(x));
-
-  //       /* check to see if we already launched the journal before */
-  //       if( storage.get(x) != null ) {
-  //           console.log(x);
-  //           storage.set('idx',idx);
-  //           //call = _type[idx].lab_journal;
-  //           _steps = storage.get(x);
-  //           angular.copy(_steps,steps); // copy the current steps
-  //           deferred.resolve(_steps);
-  //       } else if(angular.isDefined(_type) && angular.isNumber(_idx) && !isNaN(_idx) ) {
-  //         console.log("IN LOCAL STORAGE IN GET STEPS");
-  //         call = _type[_idx].lab_journal; // find the key
-  //         console.log(call);
-  //         _steps = storage.get(call);
-  //         angular.copy(_steps,steps); // copy the current steps
-  //         deferred.resolve(_steps);
-  //       } else {
-
-  //         if(type === 'assignments') {
-  //           call = assignments[idx].lab_journal;
-  //         } else if (type === 'suscriptions') {
-  //           call = suscriptions[idx].lab_journal;
-  //         }
-
-  //         $http({
-  //           method: 'GET',
-  //           url:'http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com'+call+'?username='+username+'&api_key='+api_key,
-  //           headers:{'Content-Type': 'application/json'}
-  //         }).success(function(response){
-  //           angular.copy(response.lab_journal_steps, steps);
-  //           storage.set(call,response.lab_journal_steps);
-  //           storage.set('idx',idx);
-  //           deferred.resolve(response.lab_journal_steps);
-  //         }).error(function(err){
-  //           deferred.reject('ERRROR');
-  //         });
-
-  //       }
-
-  //       return deferred.promise;
-
-  // };
 
 // http://devloadbalancer-822704837.us-west-2.elb.amazonaws.com/api/v1/labjournal/?username=student1&api_key=91eb6ee778f194eae706732b55bcef8171afb22f57363d3cdd1bd4e2 

@@ -11,14 +11,13 @@
     "angular-touch": "~1.2.5",
     "angular-snap": "*",
     "showdown": "*",
-    "angularLocalStorage": "~0.1.7",
+    "angular-local-stoarge": "*",
     "angular-timer": "~1.0.11",
     "regression-js": "latest",
     "highcharts-ng": "~0.0.3"
   },
   "dependencies": {},
   "resolutions": {
-    "angular": "~1.2.0-rc.2",
-    "jquery": ">= 1.9.0"
+    "angular": "~1.2.0-rc.2"
   }
 }

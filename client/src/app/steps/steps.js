@@ -18,9 +18,9 @@ angular.module( 'ilabs.steps', [
   'ngTouch',
   'directive',
   'service.api',
-  'angularLocalStorage',
   'timer',
   'services.httpRequestTracker',
+  'LocalStorageModule',
   'highcharts-ng'
 ])
 
@@ -95,20 +95,13 @@ angular.module( 'ilabs.steps', [
 })
 
 
-.controller('StepsCtrl',['$scope','step','$state','$stateParams','api','storage','$timeout','step_info','httpRequestTracker', function StepsCtrl($scope,step,$state,$stateParams,api,storage,$timeout,step_info,httpRequestTracker){
+.controller('StepsCtrl',['$scope','step','$state','$stateParams','api','localStorageService','$timeout','step_info','httpRequestTracker', function StepsCtrl($scope,step,$state,$stateParams,api,localStorageService,$timeout,step_info,httpRequestTracker){
   $scope.GUID = $stateParams.GUID;
 
   $scope.step_info = step_info;
 
-  $scope.data_param = [];
-  $scope.data_questions = [];
-
-  // if($scope.data_param.length > 0) {
-  //   storage.bind($scope,'data_param',{defaultValue: '' ,storeName: step.resource_uri});
-  // } else if($scope.data_questions.length > 0 ) {
-  //   storage.bind($scope,'data_questions',{defaultValue: '' ,storeName: step.resource_uri});
-  // }
-
+  $scope.data_param = localStorageService.get('data_param_'+step.order.toString()) || [];
+  $scope.data_questions = localStorageService.get('data_questions_'+step.order.toString()) || [];
 
   $scope.stepnumber = $stateParams.stepnumber;
 
@@ -117,6 +110,13 @@ angular.module( 'ilabs.steps', [
 
 
   $scope.prevQuestion = function() {
+    /* only add to local storage if there are contents */
+    if($scope.data_param.length>0) {
+      localStorageService.add('data_param_'+$scope.step.order.toString(),$scope.data_param);
+    }
+    if($scope.data_questions.length>0) {
+      localStorageService.add('data_questions_'+$scope.step.order.toString(),$scope.data_questions);
+    } 
     var prev = parseInt($stateParams.stepnumber, 10)-1;
     $state.go('steps.step',{stepnumber:prev});
   };
@@ -124,16 +124,24 @@ angular.module( 'ilabs.steps', [
   $scope.nextQuestion = function() {
     var next = parseInt($stateParams.stepnumber, 10)+1;
     if($scope.step.questions.length > 0) {
+      localStorageService.add('data_questions_'+$scope.step.order.toString(),$scope.data_questions);
       api.post_lab_journal_question_response($scope.data_questions);
     }
     if($scope.step.journal_parameter_group) {
       /* do some shit if there are parameters */
       if($scope.step.journal_parameter_group.parameters.length > 0) {
+        /* add the data to local storage */
+        localStorageService.add('data_param_'+$scope.step.order.toString(),$scope.data_param);
         post_to_lab();
       }
     } else {
       $state.go('steps.step',{stepnumber:next});
-    } 
+    }
+    var data = {
+      'GUID':$stateParams.GUID,
+      'last_step_completed':$scope.step.order.toString()
+    };
+    api.update_instance(data); 
   };
 
   /* we must do this shit if we are posting to the equipment */
@@ -205,6 +213,26 @@ angular.module( 'ilabs.steps', [
     },
     credits: {
           enabled: false
+    },
+    exporting: {
+      buttons: {
+        contextButton: {
+            menuItems: [{
+                text: 'Print',
+                onclick: function() {
+                    this.print();
+                }
+            }, {
+                text: 'Export to PNG (small)',
+                onclick: function() {
+                    this.exportChart({
+                      width: 250
+                    });
+                },
+                separator: false
+            }]
+        }
+      }
     },
     loading: false
   };

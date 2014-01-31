@@ -6,7 +6,7 @@
 		
 		<div ng-repeat="parameter in parameters" ng-form="subForm{{$index}}">
 
-			<div  class="form-group" ng-switch on="parameter.field_type" ng-init="data[$index] = {'parameter':parameter.resource_uri,'instance':'/api/v1/labjournalinstance/'+guid +'/','step':stepdata }">
+			<div  class="form-group" ng-switch on="parameter.field_type" ng-init="data[$index] = data[$index] || {'parameter':parameter.resource_uri,'instance':'/api/v1/labjournalinstance/'+guid +'/','step':stepdata }">
 
 				<div class='row' ng-switch-when="TA">
 					    <label for="TA" class="row control-label">{{parameter.title}} : <small>{{ parameter.help_text}}</small></label>
@@ -14,7 +14,7 @@
 
 							<div class="input-group text-center">
 								<div class="col-xs-4">
-								 	<input min="{{parameter.options[0]}}" max="{{parameter.options[1]}}" style="text-align:center" ng-init="data[$index].response = []" class="form-control" name="TA" ng-model="value" type="number" id="TAparam" ui-keypress="{13:'(subForm{{$index}}.$invalid || !value) || pushToArray($index,value)'}" ui-keydown="{'tab': '(subForm{{$index}}.$invalid || !value) || pushToArray($index,value)'}"/>
+								 	<input min="{{parameter.options[0]}}" max="{{parameter.options[1]}}" style="text-align:center" ng-init="data[$index].response = data[$index].response || []" class="form-control" name="TA" ng-model="value" type="number" id="TAparam" ui-keypress="{13:'(subForm{{$index}}.$invalid || !value) || pushToArray($index,value)'}" ui-keydown="{'tab': '(subForm{{$index}}.$invalid || !value) || pushToArray($index,value)'}"/>
 								 </div>
 								 <div class="col-xs-8">
 									<button ng-disabled="subForm{{$index}}.$invalid || !value " ng-click="pushToArray($index,value)" type="button" class="btn btn-default">
@@ -58,7 +58,7 @@
 				<div class="row" ng-switch-when="SB">
 						<label for="SB" class="row control-label">{{parameter.title}}:</label>
 						<div ng-class="{'has-error': subForm{{$index}}.SB.$invalid && !subForm{{$index}}.SB.$pristine,'has-success': !subForm{{$index}}.SB.$invalid && !subForm{{$index}}.SB.$pristine}" class="row">
-						<input style="width:100%" name="SB" ng-model="data[$index].response" ng-init="data[$index].response = parameter.options[0]" type="range" min='{{parameter.options[0]}}' ng-model="data[$index].response" max='{{parameter.options[1]}}' step='{{parameter.options[2]}}'/>
+						<input ng-init="data[$index].response = data[$index].response || parameter.options[0]" style="width:100%" name="SB" ng-model="data[$index].response" type="range" min='{{parameter.options[0]}}' ng-model="data[$index].response" max='{{parameter.options[1]}}' step='{{parameter.options[2]}}'/>
 						</div>
 					<small>
 						{{ parameter.help_text}}  :  {{data[$index].response}}	
