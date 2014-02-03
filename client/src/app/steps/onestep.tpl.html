@@ -33,7 +33,14 @@
 
 	<div ng-if="waitclock">
 		<div class="row" style="text-align:center">
-			<h3 ng-show="waitclock > 0"> Time left in queue:  <timer interval="1000" countdown="waitclock">{{countdown}} seconds</timer> </h3>
+			<h5 ng-show="waitclock > 0">
+				Time left in queue:
+				<timer interval="1000" countdown="waitclock">
+					<strong>
+						<span ng-show="hours > 0"> {{hours}} hour, </span> <span ng-show="minutes>0"> {{minutes}} minute<span ng-show="minutes!=1">s</span> and </span> <span ng-show="seconds>0"> {{seconds}} second<span ng-show="seconds!=1">s</span> </span>
+					</strong>
+				</timer> 
+			</h5>
 		</div>
 	</div>
 

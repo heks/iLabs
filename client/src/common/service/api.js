@@ -162,6 +162,31 @@ angular.module('service.api', [])
   };
 
   /* this call actually does a PATCH for the parameters and a POST to the equipment */
+  // this.submit_experiment = function(data_exp,data_param) {
+  //   var deferred = $q.defer();
+  //   var call_exp = '/experiment/';
+  //   var call_param = '/labjournalparameterresponse/';
+  //   $http({
+  //     url:dev_server+call_param+'?username='+username+'&api_key='+api_key,
+  //     method:"PATCH",
+  //     data:{objects:data_param}
+  //   }).success(function(response){
+  //     $http({
+  //       url:dev_server+call_exp+'?username='+username+'&api_key='+api_key,
+  //       method:"POST",
+  //       data:data_exp
+  //     }).success(function(data){
+  //       deferred.resolve(data);
+  //     }).error(function(data){
+  //       deferred.reject(data);
+  //     });
+  //   }).error(function(data){
+  //     deferred.reject(data);
+  //   });
+  //   return deferred.promise;
+  // };
+
+  /* this call actually does a PATCH for the parameters and a POST to the equipment */
   this.submit_experiment = function(data_exp,data_param) {
     var call_exp = '/experiment/';
     var exp = $http({
@@ -332,7 +357,8 @@ angular.module('service.api', [])
   };
 
   this.update_instance = function(data) {
-    var call = '/labjournalinstance/';
+    var params = '?username=' + username + '&api_key=' + api_key;
+    var call = '/labjournalinstance/' + params;
     return $http({
       url:dev_server+call,
       method:"POST",

@@ -3,4 +3,4 @@ client/vendor/
 client/node_modules/
 client/bin/
 client/build/
-client/karma/
+client/bower_components

@@ -138,8 +138,8 @@ angular.module( 'ilabs.steps', [
       $state.go('steps.step',{stepnumber:next});
     }
     var data = {
-      'GUID':$stateParams.GUID,
-      'last_step_completed':$scope.step.order.toString()
+      'GUID':$stateParams.GUID.toString(),
+      'last_step_completed':$scope.step.order
     };
     api.update_instance(data); 
   };
@@ -152,18 +152,20 @@ angular.module( 'ilabs.steps', [
     data.parameter_group = $scope.step.journal_parameter_group.resource_uri;
     data.instance = step_info.post_endpoint + $stateParams.GUID + '/';
     data.step = $scope.step.resource_uri;
-
+    console.log($scope.data_param);
     api.submit_experiment(data,$scope.data_param).then(function(response){
-      $scope.waitclock = parseInt(response[1].data.status.waitTime,10);
-      var run_rest = function() {
-        $scope.timerclock = parseInt(response[1].data.status.estRunTime,10)+5;
-        var experiment_id = response[1].data.experiment_id;
-        $timeout( function() {
-          var curr = parseInt($stateParams.stepnumber, 10);
-          $state.go('steps.result',{stepnumber:curr, experiment_id:experiment_id});
-          //do_call(experiment_id);
-        },$scope.timerclock*1000+3000);
-      };
+      response = response[1].data;
+      $scope.waitclock = parseInt(response.status.waitTime,10);
+        var run_rest = function() {
+          $scope.waitclock = 0; // reset the queue timer to 0
+          $scope.timerclock = parseInt(response.status.estRunTime,10)+5;
+          var experiment_id = response.experiment_id;
+          $timeout( function() {
+            var curr = parseInt($stateParams.stepnumber, 10);
+            $state.go('steps.result',{stepnumber:curr, experiment_id:experiment_id});
+            //do_call(experiment_id);
+          },$scope.timerclock*1000+3000);
+        };
       $timeout(run_rest,$scope.waitclock*1000 );
     });
   };
@@ -191,6 +193,16 @@ angular.module( 'ilabs.steps', [
           itemStyle: {
              fontSize:'19px',
              color: '#A0A0A0'
+          }
+        },
+        navigation: {
+          buttonOptions: {
+            height: 40,
+            width: 48,
+            symbolSize: 24,
+            symbolX: 23,
+            symbolY: 21,
+            symbolStrokeWidth: 2
           }
         }
     },
