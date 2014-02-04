@@ -109,10 +109,69 @@ angular.module('service.api', [])
         var data = {};
         /* In progress lab journal so dont start a new one but get the old one */
         if( angular.isDefined(lab_journal.status) ) {
+          /* this is a helper function to recreate the responses if the journal was already started */
+          var get_previous_answers = function(GUID) {
+              var call_param = '/labjournalparameterresponse/GUID/'+GUID;
+              var param = $http.get(dev_server+call_param+'/?username='+username+'&api_key='+api_key);
+              var call_ques = '/labjournalquestionresponse/GUID/'+GUID;
+              var ques = $http.get(dev_server+call_ques+'/?username='+username+'&api_key='+api_key);
+
+              function returnInt(ele) {
+                return parseInt(ele,10);
+              }
+
+              /* need to recreate local storage key:value pairs */
+              return $q.all([param,ques]).then(function(response){
+                var param_responses = response[0].data.objects;
+                var ques_responses = response[1].data.objects;
+                var data_param = {};
+                var data_ques = {};
+
+                /* recreate the students parameter answers */
+                angular.forEach(param_responses, function(ans, key){
+                  var t = {};
+                  t.parameter = ans.parameter;
+                  t.instance = ans.instance;
+                  /* hacky way of formatting the data in the correct way */
+                  t.response = ans.response.split(",").map(returnInt);
+                  t.response = (t.response.length===1) ? t.response[0].toString() : t.response;
+                  if(!data_param.hasOwnProperty(ans.step_order)) {
+                    data_param[ans.step_order] = [t];
+                  } else {
+                    data_param[ans.step_order].push(t);
+                  }
+                });
+
+                angular.forEach(ques_responses, function(ans, key){
+                  var t = {};
+                  t.question = ans.question;
+                  t.instance = ans.instance;
+                  t.response = ans.response;
+                  if(!data_ques.hasOwnProperty(ans.step_order)) {
+                    data_ques[ans.step_order] = [t];
+                  } else {
+                    data_ques[ans.step_order].push(t);
+                  }
+                });
+
+                /* Recreate the local storage for the parameters */
+                angular.forEach(data_param, function(value, key){
+                  localStorageService.add('data_param_'+key,value);        
+                });
+
+                /* Recreate the local storage for the questions */
+                angular.forEach(data_ques, function(value, key){
+                  localStorageService.add('data_questions_'+key,value);
+                });
+                return 'SUCCESS';
+              });
+          };
+
           data.GUID = lab_journal.GUID;
           if(!lab_journal.last_step_completed) {
             data.last_step_completed = 0;
           } else {
+            get_previous_answers(lab_journal.GUID);
             data.last_step_completed = parseInt(lab_journal.last_step_completed,10)-1;
           }
           deferred.resolve(data);
@@ -161,30 +220,6 @@ angular.module('service.api', [])
     });
   };
 
-  /* this call actually does a PATCH for the parameters and a POST to the equipment */
-  // this.submit_experiment = function(data_exp,data_param) {
-  //   var deferred = $q.defer();
-  //   var call_exp = '/experiment/';
-  //   var call_param = '/labjournalparameterresponse/';
-  //   $http({
-  //     url:dev_server+call_param+'?username='+username+'&api_key='+api_key,
-  //     method:"PATCH",
-  //     data:{objects:data_param}
-  //   }).success(function(response){
-  //     $http({
-  //       url:dev_server+call_exp+'?username='+username+'&api_key='+api_key,
-  //       method:"POST",
-  //       data:data_exp
-  //     }).success(function(data){
-  //       deferred.resolve(data);
-  //     }).error(function(data){
-  //       deferred.reject(data);
-  //     });
-  //   }).error(function(data){
-  //     deferred.reject(data);
-  //   });
-  //   return deferred.promise;
-  // };
 
   /* this call actually does a PATCH for the parameters and a POST to the equipment */
   this.submit_experiment = function(data_exp,data_param) {

@@ -13,7 +13,8 @@
     "showdown": "*",
     "angular-local-storage": "*",
     "angular-timer": "~1.0.11",
-    "highcharts-ng": "~0.0.3"
+    "highcharts-ng": "~0.0.3",
+    "highcharts":"*"
   },
   "dependencies": {},
   "resolutions": {

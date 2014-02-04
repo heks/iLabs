@@ -47,7 +47,7 @@
 				<div class="row" ng-switch-when="DD">
 					<label for="DD" class="row control-label">{{parameter.title}}: <small>{{ parameter.help_text}}</small></label>
 					 <div ng-class="{'has-error': subForm{{$index}}.DD.$invalid && !subForm{{$index}}.DD.$pristine,'has-success': !subForm{{$index}}.DD.$invalid && !subForm{{$index}}.DD.$pristine}" class="row">
-						 <select ng-model="data[$index].response" class="form-control" name="DD" id="DDparam" ng-model='options' type="value" ng-options="c for c in parameter.options" required>
+						 <select ng-init="data[$index].response = data[$index].response || parameter.options[0]" ng-model="data[$index].response" class="form-control" name="DD" id="DDparam" ng-model='options' type="value" ng-options="c for c in parameter.options" required>
 						 </select>
 					</div>
 				    <small class="error" ng-show="subForm{{$index}}.DD.$error.required && !subForm{{$index}}.DD.$pristine">

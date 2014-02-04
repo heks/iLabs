@@ -42,7 +42,8 @@
                   <dd>{{journal.description}}</dd>
                 </dl>
                 <div class="row">
-                  <button type="submit" ng-click="goToAssignments(journal)" class="btn btn-primary btn-block">Start Lab
+                  <button type="submit" ng-click="goToAssignments(journal)" class="btn btn-primary btn-block">
+                    <span ng-show="!journal.status">Start</span> <span ng-show="journal.status"> Resume </span> Lab
                   </button>
                 </div>
               </div>
