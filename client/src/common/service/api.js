@@ -119,6 +119,7 @@ angular.module('service.api', [])
               function returnInt(ele) {
                 return parseInt(ele,10);
               }
+// [{"parameter":"/api/v1/deviceparameter/1/","instance":"/api/v1/labjournalinstance/8df7ae72-762c-425d-a142-1888a5c16628/","step":"/api/v1/labjournalstep/6/","response":[30,50,80]},{"parameter":"/api/v1/deviceparameter/2/","instance":"/api/v1/labjournalinstance/8df7ae72-762c-425d-a142-1888a5c16628/","step":"/api/v1/labjournalstep/6/","response":"4"},{"parameter":"/api/v1/deviceparameter/3/","instance":"/api/v1/labjournalinstance/8df7ae72-762c-425d-a142-1888a5c16628/","step":"/api/v1/labjournalstep/6/","response":"4"}]
 
               /* need to recreate local storage key:value pairs */
               return $q.all([param,ques]).then(function(response){
@@ -132,6 +133,7 @@ angular.module('service.api', [])
                   var t = {};
                   t.parameter = ans.parameter;
                   t.instance = ans.instance;
+                  t.step = ans.step;
                   /* hacky way of formatting the data in the correct way */
                   t.response = ans.response.split(",").map(returnInt);
                   t.response = (t.response.length===1) ? t.response[0].toString() : t.response;

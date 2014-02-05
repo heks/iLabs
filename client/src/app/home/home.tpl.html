@@ -94,7 +94,8 @@
                 </div>
                 <br>
                 <div class="row">
-                  <button type="submit" ng-click="goToSuscriptions(journal)" class="btn btn-primary btn-block">Start Lab
+                  <button type="submit" ng-click="goToSuscriptions(journal)" class="btn btn-primary btn-block">
+                  <span ng-show="!journal.status"> Start </span ng-show="journal.status"> <span> Resume </span> Lab
                   </button>
                 </div>
                 <br>
